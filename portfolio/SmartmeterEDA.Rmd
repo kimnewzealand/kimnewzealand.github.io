@@ -1,12 +1,12 @@
-+++
-showonlyimage = true
-draft = false
-image = "img/portfolio/a4-paper.jpg"
-date = "2017-12-22T18:25:22+05:30"
-title = "Smart Meter Data Exploratory Data Analysis"
-weight = 0
-+++
 
+---
+title: SmartmeterEDA.Rmd
+author: ~
+date: '2017-12-22'
+slug: SmartmeterEDA-rmd
+categories: []
+tags: []
+---
 
 ## Synopsis
 

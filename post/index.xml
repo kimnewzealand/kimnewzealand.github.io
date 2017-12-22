@@ -14,14 +14,23 @@
     
     <item>
       <title>Hello blog</title>
-      <link>https://kimnewzealand.github.io/post/hello-blog/</link>
+      <link>https://kimnewzealand.github.io/2017/12/22/hello-blog/</link>
       <pubDate>Fri, 22 Dec 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://kimnewzealand.github.io/post/hello-blog/</guid>
+      <guid>https://kimnewzealand.github.io/2017/12/22/hello-blog/</guid>
       <description>Welcome to my personal blog of my data science journey.
 Until now I had been creating and publishing R code to github, but I realised I needed another medium to publish html output and interactive plots.
 In setting up this blog using blogdown R package and Hugo, I used the fantastic tutorial by Tyler Clavelle.
 I have also started using GitKraken which has changed my world.</description>
+    </item>
+    
+    <item>
+      <title>hello-blog.Rmd</title>
+      <link>https://kimnewzealand.github.io/2017/12/22/hello-blog-rmd/</link>
+      <pubDate>Fri, 22 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://kimnewzealand.github.io/2017/12/22/hello-blog-rmd/</guid>
+      <description></description>
     </item>
     
   </channel>

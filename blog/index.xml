@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Portfolios on Kim Fitter</title>
-    <link>https://kimnewzealand.github.io/portfolio/</link>
-    <description>Recent content in Portfolios on Kim Fitter</description>
+    <title>Blogs on Kim Fitter</title>
+    <link>https://kimnewzealand.github.io/blog/</link>
+    <description>Recent content in Blogs on Kim Fitter</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)</copyright>
     <lastBuildDate>Fri, 22 Dec 2017 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://kimnewzealand.github.io/portfolio/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://kimnewzealand.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Hello blog</title>
-      <link>https://kimnewzealand.github.io/portfolio/hello-blog/</link>
+      <link>https://kimnewzealand.github.io/blog/hello-blog/</link>
       <pubDate>Fri, 22 Dec 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://kimnewzealand.github.io/portfolio/hello-blog/</guid>
+      <guid>https://kimnewzealand.github.io/blog/hello-blog/</guid>
       <description>Welcome to my personal blog of my data science journey.
 Until now I had been creating and publishing R code to github, but I realised I needed another medium to publish html output and interactive plots.
 In setting up this blog using blogdown R package and Hugo, I used the fantastic tutorial by Tyler Clavelle.

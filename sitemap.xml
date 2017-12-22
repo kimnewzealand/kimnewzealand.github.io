@@ -3,7 +3,22 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://kimnewzealand.github.io/post/hello-blog/</loc>
+    <loc>https://kimnewzealand.github.io/blog/hello-blog/</loc>
+    <lastmod>2017-12-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kimnewzealand.github.io/portfolio/hello-blog/</loc>
+    <lastmod>2017-12-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kimnewzealand.github.io/2017/12/22/hello-blog/</loc>
+    <lastmod>2017-12-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kimnewzealand.github.io/2017/12/22/hello-blog-rmd/</loc>
     <lastmod>2017-12-22T00:00:00+00:00</lastmod>
   </url>
   
@@ -13,15 +28,9 @@
   </url>
   
   <url>
-    <loc>https://kimnewzealand.github.io/portfolio/smartmetereda/</loc>
-  </url>
-  
-  <url>
-    <loc>https://kimnewzealand.github.io/portfolio/intert1/</loc>
-  </url>
-  
-  <url>
-    <loc>https://kimnewzealand.github.io/portfolio/siteidsleaflet/</loc>
+    <loc>https://kimnewzealand.github.io/blog/</loc>
+    <lastmod>2017-12-22T00:00:00+00:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -37,6 +46,7 @@
   
   <url>
     <loc>https://kimnewzealand.github.io/portfolio/</loc>
+    <lastmod>2017-12-22T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
