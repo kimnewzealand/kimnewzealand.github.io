@@ -38,9 +38,9 @@ Inspired by Rob Hyndman’s talk, I decided to perform an exploratory data analy
       <pubDate>Mon, 01 Jan 2018 00:00:00 +0000</pubDate>
       
       <guid>/portfolio/creating-a-website-in-blogdown-and-hugo/</guid>
-      <description>There are a few tutorials on how to create a website using blogdown and Hugo. This is a summary of of my tips if you are using Windows and github.
+      <description>There are a few tutorials on how to create a website using blogdown and Hugo. This is a summary of of my tips if you are using Windows, github repo and hugo creative portfolio theme.
 Once you have installed your theme, do not change any of the theme folder files. You can override these with new files in your blog_down source directory.
-This theme does not accept list.html in layout.</description>
+This theme does not seem to accept list.html in layout.</description>
     </item>
     
     <item>
