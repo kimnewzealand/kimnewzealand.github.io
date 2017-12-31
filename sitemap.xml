@@ -3,103 +3,130 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://kimnewzealand.github.io/portfolio/smartmetereda/</loc>
+    <loc>/portfolio/smartmetereda/</loc>
     <lastmod>2017-12-19T21:13:14-05:00</lastmod>
   </url>
   
   <url>
-    <loc>https://kimnewzealand.github.io/2016/11/05/item-without-image/</loc>
+    <loc>/2016/11/05/item-without-image/</loc>
     <lastmod>2016-11-05T19:50:47+05:30</lastmod>
   </url>
   
   <url>
-    <loc>https://kimnewzealand.github.io/contact/</loc>
+    <loc>/portfolio/creating-a-website-in-blogdown-and-hugo/</loc>
+    <lastmod>2018-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2018/01/01/creating-a-website-in-blogdown-and-hugo/</loc>
+    <lastmod>2018-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/about/</loc>
+    <lastmod>2017-12-31T21:05:33+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>/contact/</loc>
     <lastmod>2016-11-06T13:00:25+05:30</lastmod>
   </url>
   
   <url>
-    <loc>https://kimnewzealand.github.io/portfolio/hello/</loc>
+    <loc>/portfolio/hello/</loc>
     <lastmod>2016-11-05T18:25:22+05:30</lastmod>
   </url>
   
   <url>
-    <loc>https://kimnewzealand.github.io/2016/11/05/hello-blog/</loc>
+    <loc>/2016/11/05/hello-blog/</loc>
     <lastmod>2016-11-05T18:25:22+05:30</lastmod>
   </url>
   
   <url>
-    <loc>https://kimnewzealand.github.io/categories/</loc>
+    <loc>/tags/blogdown/</loc>
+    <lastmod>2018-01-01T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://kimnewzealand.github.io/tags/dataviz/</loc>
+    <loc>/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/dataviz/</loc>
     <lastmod>2017-12-19T21:13:14-05:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://kimnewzealand.github.io/tags/eda/</loc>
+    <loc>/tags/eda/</loc>
     <lastmod>2017-12-19T21:13:14-05:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://kimnewzealand.github.io/tags/geoviz/</loc>
+    <loc>/tags/geoviz/</loc>
     <lastmod>2017-12-19T21:13:14-05:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://kimnewzealand.github.io/</loc>
+    <loc>/</loc>
     <lastmod>2017-12-19T21:13:14-05:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://kimnewzealand.github.io/tags/open-data/</loc>
+    <loc>/tags/open-data/</loc>
     <lastmod>2017-12-19T21:13:14-05:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://kimnewzealand.github.io/categories/personal-project/</loc>
+    <loc>/categories/personal-project/</loc>
     <lastmod>2017-12-19T21:13:14-05:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://kimnewzealand.github.io/portfolio/</loc>
+    <loc>/portfolio/</loc>
     <lastmod>2017-12-19T21:13:14-05:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://kimnewzealand.github.io/post/</loc>
+    <loc>/categories/post/</loc>
+    <lastmod>2018-01-01T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/post/</loc>
     <lastmod>2016-11-05T19:50:47+05:30</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://kimnewzealand.github.io/tags/r/</loc>
+    <loc>/tags/r/</loc>
     <lastmod>2017-12-19T21:13:14-05:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://kimnewzealand.github.io/tags/</loc>
+    <loc>/tags/</loc>
+    <lastmod>2018-01-01T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/time-series/</loc>
     <lastmod>2017-12-19T21:13:14-05:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://kimnewzealand.github.io/tags/time-series/</loc>
-    <lastmod>2017-12-19T21:13:14-05:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://kimnewzealand.github.io/tags/web-scraping/</loc>
+    <loc>/tags/web-scraping/</loc>
     <lastmod>2017-12-19T21:13:14-05:00</lastmod>
     <priority>0</priority>
   </url>
