@@ -3,23 +3,13 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://kimnewzealand.github.io/blog/hello-blog/</loc>
-    <lastmod>2017-12-22T00:00:00+00:00</lastmod>
+    <loc>https://kimnewzealand.github.io/portfolio/smartmetereda/</loc>
+    <lastmod>2017-12-19T21:13:14-05:00</lastmod>
   </url>
   
   <url>
-    <loc>https://kimnewzealand.github.io/portfolio/hello-blog/</loc>
-    <lastmod>2017-12-22T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kimnewzealand.github.io/2017/12/22/hello-blog/</loc>
-    <lastmod>2017-12-22T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kimnewzealand.github.io/2017/12/22/hello-blog-rmd/</loc>
-    <lastmod>2017-12-22T00:00:00+00:00</lastmod>
+    <loc>https://kimnewzealand.github.io/2016/11/05/item-without-image/</loc>
+    <lastmod>2016-11-05T19:50:47+05:30</lastmod>
   </url>
   
   <url>
@@ -28,9 +18,13 @@
   </url>
   
   <url>
-    <loc>https://kimnewzealand.github.io/blog/</loc>
-    <lastmod>2017-12-22T00:00:00+00:00</lastmod>
-    <priority>0</priority>
+    <loc>https://kimnewzealand.github.io/portfolio/hello/</loc>
+    <lastmod>2016-11-05T18:25:22+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kimnewzealand.github.io/2016/11/05/hello-blog/</loc>
+    <lastmod>2016-11-05T18:25:22+05:30</lastmod>
   </url>
   
   <url>
@@ -39,25 +33,74 @@
   </url>
   
   <url>
+    <loc>https://kimnewzealand.github.io/tags/dataviz/</loc>
+    <lastmod>2017-12-19T21:13:14-05:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://kimnewzealand.github.io/tags/eda/</loc>
+    <lastmod>2017-12-19T21:13:14-05:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://kimnewzealand.github.io/tags/geoviz/</loc>
+    <lastmod>2017-12-19T21:13:14-05:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://kimnewzealand.github.io/</loc>
-    <lastmod>2017-12-22T00:00:00+00:00</lastmod>
+    <lastmod>2017-12-19T21:13:14-05:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://kimnewzealand.github.io/tags/open-data/</loc>
+    <lastmod>2017-12-19T21:13:14-05:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://kimnewzealand.github.io/categories/personal-project/</loc>
+    <lastmod>2017-12-19T21:13:14-05:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://kimnewzealand.github.io/portfolio/</loc>
-    <lastmod>2017-12-22T00:00:00+00:00</lastmod>
+    <lastmod>2017-12-19T21:13:14-05:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://kimnewzealand.github.io/post/</loc>
-    <lastmod>2017-12-22T00:00:00+00:00</lastmod>
+    <lastmod>2016-11-05T19:50:47+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://kimnewzealand.github.io/tags/r/</loc>
+    <lastmod>2017-12-19T21:13:14-05:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://kimnewzealand.github.io/tags/</loc>
+    <lastmod>2017-12-19T21:13:14-05:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://kimnewzealand.github.io/tags/time-series/</loc>
+    <lastmod>2017-12-19T21:13:14-05:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://kimnewzealand.github.io/tags/web-scraping/</loc>
+    <lastmod>2017-12-19T21:13:14-05:00</lastmod>
     <priority>0</priority>
   </url>
   

@@ -7,21 +7,29 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)</copyright>
-    <lastBuildDate>Fri, 22 Dec 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 19 Dec 2017 21:13:14 -0500</lastBuildDate>
     
 	<atom:link href="https://kimnewzealand.github.io/portfolio/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Hello blog</title>
-      <link>https://kimnewzealand.github.io/portfolio/hello-blog/</link>
-      <pubDate>Fri, 22 Dec 2017 00:00:00 +0000</pubDate>
+      <title>Smart Meter Data Exploratory Data Analysis</title>
+      <link>https://kimnewzealand.github.io/portfolio/smartmetereda/</link>
+      <pubDate>Tue, 19 Dec 2017 21:13:14 -0500</pubDate>
       
-      <guid>https://kimnewzealand.github.io/portfolio/hello-blog/</guid>
-      <description>Welcome to my personal blog of my data science journey.
-Until now I had been creating and publishing R code to github, but I realised I needed another medium to publish html output and interactive plots.
-In setting up this blog using blogdown R package and Hugo, I used the fantastic tutorial by Tyler Clavelle.
-I have also started using GitKraken which has changed my world.</description>
+      <guid>https://kimnewzealand.github.io/portfolio/smartmetereda/</guid>
+      <description>SynopsisOn 13th December 2017 I attended a day of the IASC-ARS/68th Annual NZSA Conference. I attended a talk by Rob Hyndman on Probabilistic Outlier Detection And Visualization Of Smart Meter Data.
+Inspired by Rob Hyndman’s talk, I decided to perform an exploratory data analysis of smart meter data. There are a variety of open energy data resources.</description>
+    </item>
+    
+    <item>
+      <title>Hello blog</title>
+      <link>https://kimnewzealand.github.io/portfolio/hello/</link>
+      <pubDate>Sat, 05 Nov 2016 18:25:22 +0530</pubDate>
+      
+      <guid>https://kimnewzealand.github.io/portfolio/hello/</guid>
+      <description>Welcome to my personal blog and portfolio of my data science journey.
+I started coding in March 2017 and until now I have been creating and publishing R code to github and HTML to RPubs. I also have a Wordpress professional website to also reach out to both technical and non-technical audiences with summaries of projects. I realised I needed another more personalised medium to publish the detailed code and HTML from projects so I created this blog.</description>
     </item>
     
   </channel>
