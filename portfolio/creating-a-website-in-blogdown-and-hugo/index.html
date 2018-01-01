@@ -2,7 +2,7 @@
 <html lang="en-us">
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Creating a website in blogdown and Hugo</title>
+<title>Creating a website in hugo creative portfolio theme</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="all,follow">
@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="/css/owl.theme.css">
 
 
-  <link href="/css/style.sea.css" rel="stylesheet" id="theme-stylesheet">
+  <link href="/css/style.style.sea.css.css" rel="stylesheet" id="theme-stylesheet">
 
  
 
@@ -97,16 +97,24 @@
   <div class="row">
     <div class="col-lg-8">
       <div class="content-column-content">
-         <h1>Creating a website in blogdown and Hugo</h1>
-         <p>There are a few tutorials on how to create a website using blogdown and Hugo. This is a summary of of my tips if you are using Windows, github repo and hugo creative portfolio theme.</p>
+         <h1>Creating a website in hugo creative portfolio theme</h1>
+         <p>There are a many tutorials and the great <a href="https://bookdown.org/yihui/blogdown/">blogdown: Creating Websites with R Markdown</a> with detailed steps on how to create a website using blogdown and Hugo. I found these extremely useful in setting up this site.</p>
 
-<p>Once you have installed your theme, do not change any of the theme folder files. You can override these with new files in your blog_down source directory.</p>
+<p>I used the fantastic <a href="https://tclavelle.github.io/blog/blogdown_github/">tutorial</a> by Tyler Clavelle to create this blog. This blog uses <a href="https://github.com/rstudio/blogdown">blogdown</a> R package and static site generator Hugo. I chose to use the hugo creative portfolio theme, with side bar and tiles layout.</p>
 
-<p>This theme does not seem to accept list.html in layout.</p>
+<p>This post is a brief summary of my tips (discovered from a bit of trial and error) if you are using Windows, have installed the hugo creative portfolio theme and using a GitHub repo to deploy your website.</p>
 
-<p>I am using Atom text editor to edit markdown and html files.</p>
+<ul>
+<li><p>In order to change the style colours you need to specify the full style = &ldquo;style.sea.css&rdquo;, not just style= &ldquo;sea&rdquo; in the config.toml file</p></li>
 
-<p>I am using GitKraken to stage, commit and push files from my kimnewzealand.github.io repo.</p>
+<li><p>Once you have installed your theme, do not change any of the theme folder files. You can override these with updates or new files in your blog_down source directory. This is because of Hugo&rsquo;s <a href="https://gohugo.io/templates/lookup-order/">lookup order</a></p></li>
+
+<li><p>WIP I am still looking for a way to separate the projects and posts into content sections. I created params.navlinks for post in the config file but this theme does not seem to work with list.html in any layout folder.</p></li>
+
+<li><p>After a bit of research on text editors, I am using Atom text editor to edit markdown and html files in the blogdown_source folder.</p></li>
+
+<li><p>I have also transitioned from command line Git Bash to using a git client GitKraken and yes I am now <a href="http://happygitwithr.com/">happy with git</a>. I am using GitKraken to stage, commit and push files from the kimnewzealand.github.io repo.</p></li>
+</ul>
 
          
       </div>

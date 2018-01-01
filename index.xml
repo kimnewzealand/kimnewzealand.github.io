@@ -33,25 +33,13 @@ Inspired by Rob Hyndman’s talk, I decided to perform an exploratory data analy
     </item>
     
     <item>
-      <title>Creating a website in blogdown and Hugo</title>
+      <title>Creating a website in hugo creative portfolio theme</title>
       <link>/portfolio/creating-a-website-in-blogdown-and-hugo/</link>
       <pubDate>Mon, 01 Jan 2018 00:00:00 +0000</pubDate>
       
       <guid>/portfolio/creating-a-website-in-blogdown-and-hugo/</guid>
-      <description>There are a few tutorials on how to create a website using blogdown and Hugo. This is a summary of of my tips if you are using Windows, github repo and hugo creative portfolio theme.
-Once you have installed your theme, do not change any of the theme folder files. You can override these with new files in your blog_down source directory.
-This theme does not seem to accept list.html in layout.</description>
-    </item>
-    
-    <item>
-      <title>Creating a website in blogdown and Hugo</title>
-      <link>/2018/01/01/creating-a-website-in-blogdown-and-hugo/</link>
-      <pubDate>Mon, 01 Jan 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/2018/01/01/creating-a-website-in-blogdown-and-hugo/</guid>
-      <description>There are a few tutorials on how to create a website using blogdown and Hugo. This is a summary of my tips if you are using Windows and github and hugo creative portfolio theme.
-Once you have installed your theme, do not change any of the theme folder files. You can override these with new files in your blog_down source directory.
-This theme does not accept list.html in layout</description>
+      <description>There are a many tutorials and the great blogdown: Creating Websites with R Markdown with detailed steps on how to create a website using blogdown and Hugo. I found these extremely useful in setting up this site.
+I used the fantastic tutorial by Tyler Clavelle to create this blog. This blog uses blogdown R package and static site generator Hugo. I chose to use the hugo creative portfolio theme, with side bar and tiles layout.</description>
     </item>
     
     <item>
