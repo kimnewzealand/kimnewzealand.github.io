@@ -2,35 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Post on Kim Fitter</title>
-    <link>https://kimnewzealand.github.io/categories/post/</link>
+    <link>/categories/post/</link>
     <description>Recent content in Post on Kim Fitter</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)</copyright>
     <lastBuildDate>Mon, 01 Jan 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://kimnewzealand.github.io/categories/post/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/categories/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Creating a website in Hugo creative portfolio theme</title>
-      <link>https://kimnewzealand.github.io/portfolio/creating-a-website-in-blogdown-and-hugo/</link>
+      <link>/portfolio/creating-a-website-in-blogdown-and-hugo/</link>
       <pubDate>Mon, 01 Jan 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://kimnewzealand.github.io/portfolio/creating-a-website-in-blogdown-and-hugo/</guid>
+      <guid>/portfolio/creating-a-website-in-blogdown-and-hugo/</guid>
       <description>There are a many tutorials and the great bookdown blogdown: Creating Websites with R Markdown with detailed steps on how to create a website using blogdown and Hugo.
-I used the fantastic tutorial by Tyler Clavelle to create this blog. This website uses the blogdown R package and static site generator Hugo. I chose to use the Hugo creative portfolio theme, with side bar and tiles layout.
-This post is a brief summary of my tips (discovered through trial error and many github pushes) if you are using Windows, have installed the Hugo creative portfolio theme and using a GitHub repo to deploy your website.</description>
-    </item>
-    
-    <item>
-      <title>Hello blog</title>
-      <link>https://kimnewzealand.github.io/portfolio/hello/</link>
-      <pubDate>Sat, 05 Nov 2016 18:25:22 +0530</pubDate>
-      
-      <guid>https://kimnewzealand.github.io/portfolio/hello/</guid>
-      <description>Welcome to my personal blog and portfolio of my data science journey.
-I started coding in March 2017 and until now I have been creating and publishing R Markdown to github and HTML to RPubs. I also have a Wordpress professional website to reach out to both technical and non-technical audiences with summaries of my projects. I realised I needed another more personalised medium to easily publish a portfolio of projects with detailed code and HTML output so I created this website.</description>
+I used the fantastic tutorial by Tyler Clavelle to create this blog. This website uses the blogdown R package and static site generator Hugo. I chose to use the Hugo creative portfolio theme, with side bar and tiles layout. I use Windows and GitHub repo to deploy the website.</description>
     </item>
     
   </channel>
