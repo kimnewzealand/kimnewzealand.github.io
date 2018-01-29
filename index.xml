@@ -2,61 +2,52 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Kim Fitter</title>
-    <link>/</link>
+    <link>https://kimnewzealand.github.io/</link>
     <description>Recent content on Kim Fitter</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)</copyright>
     <lastBuildDate>Mon, 01 Jan 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://kimnewzealand.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Creating a website in Hugo creative portfolio theme</title>
-      <link>/portfolio/creating-a-website-in-blogdown-and-hugo/</link>
+      <link>https://kimnewzealand.github.io/portfolio/creating-a-website-in-blogdown-and-hugo/</link>
       <pubDate>Mon, 01 Jan 2018 00:00:00 +0000</pubDate>
       
-      <guid>/portfolio/creating-a-website-in-blogdown-and-hugo/</guid>
+      <guid>https://kimnewzealand.github.io/portfolio/creating-a-website-in-blogdown-and-hugo/</guid>
       <description>There are a many tutorials and the great bookdown blogdown: Creating Websites with R Markdown with detailed steps on how to create a website using blogdown and Hugo.
 I used the fantastic tutorial by Tyler Clavelle to create this blog. This website uses the blogdown R package and static site generator Hugo. I chose to use the Hugo creative portfolio theme, with side bar and tiles layout. I use Windows and GitHub repo to deploy the website.</description>
     </item>
     
     <item>
       <title>Hello blog</title>
-      <link>/portfolio/hello/</link>
+      <link>https://kimnewzealand.github.io/portfolio/hello/</link>
       <pubDate>Sat, 05 Nov 2016 18:25:22 +0530</pubDate>
       
-      <guid>/portfolio/hello/</guid>
+      <guid>https://kimnewzealand.github.io/portfolio/hello/</guid>
       <description>Welcome to my personal blog and portfolio of my data science journey.
 Until now I have been creating and publishing R code to github and HTML to RPubs. I also have a Wordpress professional website to reach out to both technical and non-technical audiences with summaries of projects. I realised I needed another more personalised medium to publish the detailed code and HTML from projects so I created this blog.</description>
     </item>
     
     <item>
       <title>Hello blog</title>
-      <link>/2016/11/05/hello-blog/</link>
+      <link>https://kimnewzealand.github.io/2016/11/05/hello-blog/</link>
       <pubDate>Sat, 05 Nov 2016 18:25:22 +0530</pubDate>
       
-      <guid>/2016/11/05/hello-blog/</guid>
+      <guid>https://kimnewzealand.github.io/2016/11/05/hello-blog/</guid>
       <description>Welcome to my personal blog and portfolio of my data science journey.
 Until now I have been creating and publishing R code to github and HTML to RPubs. I also have a Wordpress professional website to reach out to both technical and non-technical audiences with summaries of projects. I realised I needed another more personalised medium to publish the detailed code and HTML from projects so I created this blog.</description>
     </item>
     
     <item>
-      <title></title>
-      <link>/portfolio/intert1/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/portfolio/intert1/</guid>
-      <description>{&#34;x&#34;:{&#34;data&#34;:{&#34;name&#34;:&#34;Industry and sub-industries by building size(sq ft)&#34;,&#34;id&#34;:1,&#34;size&#34;:null,&#34;children&#34;:[{&#34;name&#34;:&#34;Commercial Property&#34;,&#34;color&#34;:&#34;#66C2A5&#34;,&#34;h&#34;:1,&#34;id&#34;:2,&#34;size&#34;:15262902,&#34;stdErr&#34;:15262902,&#34;vColor&#34;:25,&#34;vSize&#34;:15262902,&#34;w&#34;:0.677589799870661,&#34;x0&#34;:0,&#34;y0&#34;:0,&#34;children&#34;:[{&#34;name&#34;:&#34;Bank/Financial Services&#34;,&#34;color&#34;:&#34;#4BAF7F&#34;,&#34;h&#34;:0.167769012734276,&#34;id&#34;:3,&#34;size&#34;:814647,&#34;stdErr&#34;:814647,&#34;vColor&#34;:2,&#34;vSize&#34;:814647,&#34;w&#34;:0.215569571105697,&#34;x0&#34;:0.366500316017101,&#34;y0&#34;:0},{&#34;name&#34;:&#34;Business Services&#34;,&#34;color&#34;:&#34;#4BAF87&#34;,&#34;h&#34;:0.832230987265724,&#34;id&#34;:4,&#34;size&#34;:1981590,&#34;stdErr&#34;:1981590,&#34;vColor&#34;:3,&#34;vSize&#34;:1981590,&#34;w&#34;:0.105706005980487,&#34;x0&#34;:0.571883793890174,&#34;y0&#34;:0.167769012734276},{&#34;name&#34;:&#34;Commercial Real Estate&#34;,&#34;color&#34;:&#34;#4BAF8F&#34;,&#34;h&#34;:0.167769012734276,&#34;id&#34;:5,&#34;size&#34;:1385021,&#34;stdErr&#34;:1385021,&#34;vColor&#34;:4,&#34;vSize&#34;:1385021,&#34;w&#34;:0.366500316017101,&#34;x0&#34;:0,&#34;y0&#34;:0},{&#34;name&#34;:&#34;Corporate Office&#34;,&#34;color&#34;:&#34;#4BAF98&#34;,&#34;h&#34;:0.167769012734276,&#34;id&#34;:6,&#34;size&#34;:360974,&#34;stdErr&#34;:360974,&#34;vColor&#34;:2,&#34;vSize&#34;:360974,&#34;w&#34;:0.0955199127478624,&#34;x0&#34;:0.582069887122799,&#34;y0&#34;:0},{&#34;name&#34;:&#34;Shopping Center/Shopping Mall&#34;,&#34;color&#34;:&#34;#4BAFA0&#34;,&#34;h&#34;:0.832230987265724,&#34;id&#34;:7,&#34;size&#34;:10720670,&#34;stdErr&#34;:10720670,&#34;vColor&#34;:14,&#34;vSize&#34;:10720670,&#34;w&#34;:0.571883793890174,&#34;x0&#34;:0,&#34;y0&#34;:0.167769012734276}]},{&#34;name&#34;:&#34;Education&#34;,&#34;color&#34;:&#34;#FC8D62&#34;,&#34;h&#34;:0.480688495962963,&#34;id&#34;:8,&#34;size&#34;:3490943,&#34;stdErr&#34;:3490943,&#34;vColor&#34;:25,&#34;vSize&#34;:3490943,&#34;w&#34;:0.322410200129339,&#34;x0&#34;:0.677589799870661,&#34;y0&#34;:0.519311504037037,&#34;children&#34;:[{&#34;name&#34;:&#34;Primary/Secondary School&#34;,&#34;color&#34;:&#34;#FC8D62&#34;,&#34;h&#34;:0.480688495962963,&#34;id&#34;:9,&#34;size&#34;:3490943,&#34;stdErr&#34;:3490943,&#34;vColor&#34;:25,&#34;vSize&#34;:3490943,&#34;w&#34;:0.322410200129339,&#34;x0&#34;:0.677589799870661,&#34;y0&#34;:0.519311504037037}]},{&#34;name&#34;:&#34;Food Sales &amp; Storage&#34;,&#34;color&#34;:&#34;#8DA0CB&#34;,&#34;h&#34;:0.1439902423186,&#34;id&#34;:10,&#34;size&#34;:1045712,&#34;stdErr&#34;:1045712,&#34;vColor&#34;:25,&#34;vSize&#34;:1045712,&#34;w&#34;:0.322410200129339,&#34;x0&#34;:0.677589799870661,&#34;y0&#34;:0,&#34;children&#34;:[{&#34;name&#34;:&#34;Grocer/Market&#34;,&#34;color&#34;:&#34;#8DA0CB&#34;,&#34;h&#34;:0.1439902423186,&#34;id&#34;:11,&#34;size&#34;:1045712,&#34;stdErr&#34;:1045712,&#34;vColor&#34;:25,&#34;vSize&#34;:1045712,&#34;w&#34;:0.322410200129339,&#34;x0&#34;:0.677589799870661,&#34;y0&#34;:0}]},{&#34;name&#34;:&#34;Light Industrial&#34;,&#34;color&#34;:&#34;#E78AC3&#34;,&#34;h&#34;:0.375321261718436,&#34;id&#34;:12,&#34;size&#34;:2725726,&#34;stdErr&#34;:2725726,&#34;vColor&#34;:25,&#34;vSize&#34;:2725726,&#34;w&#34;:0.322410200129339,&#34;x0&#34;:0.677589799870661,&#34;y0&#34;:0.1439902423186,&#34;children&#34;:[{&#34;name&#34;:&#34;Food Processing&#34;,&#34;color&#34;:&#34;#D06BBA&#34;,&#34;h&#34;:0.372889820522356,&#34;id&#34;:13,&#34;size&#34;:1133956,&#34;stdErr&#34;:1133956,&#34;vColor&#34;:19,&#34;vSize&#34;:1133956,&#34;w&#34;:0.135003621757147,&#34;x0&#34;:0.864996378242853,&#34;y0&#34;:0.146421683514681},{&#34;name&#34;:&#34;Manufacturing&#34;,&#34;color&#34;:&#34;#D06BA9&#34;,&#34;h&#34;:0.375321261718436,&#34;id&#34;:14,&#34;size&#34;:1584376,&#34;stdErr&#34;:1584376,&#34;vColor&#34;:5,&#34;vSize&#34;:1584376,&#34;w&#34;:0.187406578372192,&#34;x0&#34;:0.677589799870661,&#34;y0&#34;:0.1439902423186},{&#34;name&#34;:&#34;Other Light Industrial&#34;,&#34;color&#34;:&#34;#D06B98&#34;,&#34;h&#34;:0.00243144119608026,&#34;id&#34;:15,&#34;size&#34;:7394,&#34;stdErr&#34;:7394,&#34;vColor&#34;:1,&#34;vSize&#34;:7394,&#34;w&#34;:0.135003621757147,&#34;x0&#34;:0.864996378242853,&#34;y0&#34;:0.1439902423186}]}]},&#34;meta&#34;:{&#34;type&#34;:&#34;index&#34;,&#34;vSize&#34;:&#34;sq_ft&#34;,&#34;vColor&#34;:null,&#34;stdErr&#34;:&#34;sq_ft&#34;,&#34;algorithm&#34;:&#34;pivotSize&#34;,&#34;vpCoorX&#34;:[0.0281214848143982,0.971878515185602],&#34;vpCoorY&#34;:[0.0196850393700787,0.920314960629921],&#34;aspRatio&#34;:1.46703969225389,&#34;range&#34;:null,&#34;mapping&#34;:[null,null,null],&#34;draw&#34;:true},&#34;legend&#34;:null,&#34;options&#34;:{&#34;celltext&#34;:&#34;name&#34;,&#34;id&#34;:&#34;id&#34;,&#34;valueField&#34;:&#34;size&#34;,&#34;clickAction&#34;:null}},&#34;evals&#34;:[],&#34;jsHooks&#34;:[]}{&#34;viewer&#34;:{&#34;width&#34;:450,&#34;height&#34;:350,&#34;padding&#34;:15,&#34;fill&#34;:true},&#34;browser&#34;:{&#34;width&#34;:960,&#34;height&#34;:500,&#34;padding&#34;:40,&#34;fill&#34;:false}}</description>
-    </item>
-    
-    <item>
       <title>Simple Blockchain Example in R</title>
-      <link>/portfolio/firstblockchain/</link>
+      <link>https://kimnewzealand.github.io/portfolio/firstblockchain/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/portfolio/firstblockchain/</guid>
+      <guid>https://kimnewzealand.github.io/portfolio/firstblockchain/</guid>
       <description>SynopsisThis R markdown post was inspired by the R-bloggers post Building your own blockchain in R.
 Blockchain technology, types such as bitcoin and ethereum and its associated terminology are ubiquitous in the media at the moment.
 The objective here is to learn how a generic blockchain works and understand some of the terminology through implementing a simple example. This generic example could then extended to various types of blockchains such as distributed ledgers, smart contracts or cryptocurrencies with network servers and appropriate privacy and security settings.</description>
@@ -64,10 +55,10 @@ The objective here is to learn how a generic blockchain works and understand som
     
     <item>
       <title>Smart Meter Data Exploratory Data Analysis</title>
-      <link>/portfolio/smartmetereda2/</link>
+      <link>https://kimnewzealand.github.io/portfolio/smartmetereda2/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/portfolio/smartmetereda2/</guid>
+      <guid>https://kimnewzealand.github.io/portfolio/smartmetereda2/</guid>
       <description>SynopsisOn 13th December 2017 I attended a day of the IASC-ARS/68th Annual NZSA Conference. I attended a talk by Rob Hyndman on Probabilistic Outlier Detection And Visualization Of Smart Meter Data.
 Inspired by Rob Hyndman’s talk, I decided to perform an exploratory data analysis of smart meter data. There are a variety of open energy data resources. This analysis will use ErNOC green button open data set.</description>
     </item>
