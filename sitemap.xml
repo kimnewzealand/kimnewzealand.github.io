@@ -3,81 +3,81 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://kimnewzealand.github.io/portfolio/creating-a-website-in-blogdown-and-hugo/</loc>
+    <loc>/portfolio/creating-a-website-in-blogdown-and-hugo/</loc>
     <lastmod>2018-01-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://kimnewzealand.github.io/about/</loc>
+    <loc>/about/</loc>
     <lastmod>2017-12-31T21:05:33+05:30</lastmod>
   </url>
   
   <url>
-    <loc>https://kimnewzealand.github.io/contact/</loc>
+    <loc>/contact/</loc>
     <lastmod>2016-11-06T13:00:25+05:30</lastmod>
   </url>
   
   <url>
-    <loc>https://kimnewzealand.github.io/portfolio/hello/</loc>
+    <loc>/portfolio/hello/</loc>
     <lastmod>2016-11-05T18:25:22+05:30</lastmod>
   </url>
   
   <url>
-    <loc>https://kimnewzealand.github.io/2016/11/05/hello-blog/</loc>
+    <loc>/2016/11/05/hello-blog/</loc>
     <lastmod>2016-11-05T18:25:22+05:30</lastmod>
   </url>
   
   <url>
-    <loc>https://kimnewzealand.github.io/portfolio/firstblockchain/</loc>
-  </url>
-  
-  <url>
-    <loc>https://kimnewzealand.github.io/tags/blogdown/</loc>
+    <loc>/tags/blogdown/</loc>
     <lastmod>2018-01-01T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://kimnewzealand.github.io/categories/</loc>
+    <loc>/categories/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://kimnewzealand.github.io/</loc>
+    <loc>/</loc>
     <lastmod>2018-01-01T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://kimnewzealand.github.io/portfolio/</loc>
+    <loc>/portfolio/</loc>
     <lastmod>2018-01-01T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://kimnewzealand.github.io/categories/post/</loc>
+    <loc>/categories/post/</loc>
     <lastmod>2018-01-01T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://kimnewzealand.github.io/post/</loc>
+    <loc>/post/</loc>
     <lastmod>2016-11-05T18:25:22+05:30</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://kimnewzealand.github.io/tags/r/</loc>
+    <loc>/tags/r/</loc>
     <lastmod>2018-01-01T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://kimnewzealand.github.io/portfolio/smartmetereda2/</loc>
+    <loc>/portfolio/firstblockchain/</loc>
   </url>
   
   <url>
-    <loc>https://kimnewzealand.github.io/tags/</loc>
+    <loc>/portfolio/smartmetereda2/</loc>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
     <lastmod>2018-01-01T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
