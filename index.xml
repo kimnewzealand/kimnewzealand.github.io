@@ -43,14 +43,15 @@ Until now I have been creating and publishing R code to github and HTML to RPubs
     </item>
     
     <item>
-      <title>Simple Blockchain Example in R</title>
+      <title></title>
       <link>https://kimnewzealand.github.io/portfolio/firstblockchain/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://kimnewzealand.github.io/portfolio/firstblockchain/</guid>
-      <description>SynopsisThis R markdown post was inspired by the R-bloggers post Building your own blockchain in R.
+      <description>+++ showonlyimage = false draft = false image = “img/portfolio/blockchain.jpg” date = “2018-01-29T18:25:22+05:30” title = “Simple Blockchain Example in R” weight = 0 +++
+SynopsisThis R markdown post was inspired by the R-bloggers post Building your own blockchain in R.
 Blockchain technology, types such as bitcoin and ethereum and its associated terminology are ubiquitous in the media at the moment.
-The objective here is to learn how a generic blockchain works and understand some of the terminology through implementing a simple example. This generic example could then extended to various types of blockchains such as distributed ledgers, smart contracts or cryptocurrencies with network servers and appropriate privacy and security settings.</description>
+The objective here is to learn how a generic blockchain works and understand some of the terminology through implementing a simple example.</description>
     </item>
     
     <item>

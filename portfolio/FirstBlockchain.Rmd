@@ -1,8 +1,12 @@
----
-title: "Simple Blockchain Example in R"
-output: html_document
-Author: kimnewzealand
----
++++
+showonlyimage = false
+draft = false
+image = "img/portfolio/blockchain.jpg"
+date = "2018-01-29T18:25:22+05:30"
+title = "Simple Blockchain Example in R"
+weight = 0
++++
+
 
 ## Synopsis
 
