@@ -1,16 +1,11 @@
 ---
 title: "Smart Meter Data Exploratory Data Analysis"
-date: 2017-12-19T21:13:14-05:00
-showonlyimage : false
-image : "img/portfolio/readvals.jpg"
-categories: ["Personal project"]
-tags: ["R","time series", "dataviz", "EDA","Geoviz","Web scraping","Open data"]
-weight : 1
+showonlyimage: no
+image: img/portfolio/readvals.jpg
+weight: 1
 ---
 
-
-
-## Synopsis
+*30 January 2018*  
 
 On 13th December 2017 I attended a day of the IASC-ARS/68th Annual NZSA Conference. I attended a talk by Rob Hyndman on [Probabilistic Outlier Detection And Visualization Of Smart Meter Data](https://jmcurran.github.io/NZSA-IASC-Prog/Wednesday.html#talk_188).
 

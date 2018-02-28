@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Smart Meter Data Exploratory Data Analysis</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all,follow">
+<meta name="googlebot" content="index,follow,snippet,archive">
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,300,700,400italic">
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/owl.carousel.css">
+<link rel="stylesheet" href="/css/owl.theme.css">
+
+
+  <link href="/css/style.style.sea.css.css" rel="stylesheet" id="theme-stylesheet">
+
+ 
+
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+
+<link href="/css/custom.css" rel="stylesheet">
+<link rel="shortcut icon" href="/img/favicon.png">
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-114904130-1', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body>
+  <div id="all">
+      <div class="container-fluid">
+          <div class="row row-offcanvas row-offcanvas-left">
+              <div id="sidebar" class="col-xs-6 col-sm-4 col-md-3 sidebar-offcanvas">
+  <div class="sidebar-content">
+    <h1 class="sidebar-heading"><a href="/">Kim Fitter</a></h1>
+    
+      <p class="sidebar-p">Curious about Data Science tools, algorithms and all types of visualisations. Based in Auckland, New Zealand</p>
+    
+    <ul class="sidebar-menu">
+      
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/about/">About</a></li>
+      
+    </ul>
+    <p class="social">
+  
+  
+  
+  <a href="https://twitter.com/kim_fitter" data-animate-hover="pulse" class="external twitter">
+    <i class="fa fa-twitter"></i>
+  </a>
+  
+  
+  
+  <a href="mailto:kim@validly.co" data-animate-hover="pulse" class="email">
+    <i class="fa fa-envelope"></i>
+  </a>
+  
+  
+  
+  
+  <a href="https://github.com/kimnewzealand" data-animate-hover="pulse">
+    <i class="fa fa-github"></i>
+  </a>
+  
+</p>
+
+
+    <div class="copyright">
+      <p class="credit">
+        
+          Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)
+        
+        | Template by <a href="https://bootstrapious.com/free-templates" class="external">Bootstrapious.com</a>
+
+&amp; ported to Hugo by <a href="https://github.com/kishaningithub">Kishan B</a>
+
+      </p>
+    </div>
+  </div>
+</div>
+
+              
+<div class="col-xs-12 col-sm-8 col-md-9 content-column white-background">
+  <div class="small-navbar visible-xs">
+  <button type="button" data-toggle="offcanvas" class="btn btn-ghost pull-left"> <i class="fa fa-align-left"> </i>Menu</button>
+  <h1 class="small-navbar-heading"><a href="/">Kim Fitter</a></h1>
+</div>
+
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="content-column-content">
+         <h1>Smart Meter Data Exploratory Data Analysis</h1>
+         <script src="/rmarkdown-libs/htmlwidgets/htmlwidgets.js"></script>
+<script src="/rmarkdown-libs/jquery/jquery.min.js"></script>
+<link href="/rmarkdown-libs/leaflet/leaflet.css" rel="stylesheet" />
+<script src="/rmarkdown-libs/leaflet/leaflet.js"></script>
+<link href="/rmarkdown-libs/leafletfix/leafletfix.css" rel="stylesheet" />
+<link href="/rmarkdown-libs/leaflet-label/leaflet.label.css" rel="stylesheet" />
+<script src="/rmarkdown-libs/leaflet-label/leaflet.label.js"></script>
+<script src="/rmarkdown-libs/Proj4Leaflet/proj4-compressed.js"></script>
+<script src="/rmarkdown-libs/Proj4Leaflet/proj4leaflet.js"></script>
+<script src="/rmarkdown-libs/leaflet-binding/leaflet.js"></script>
+<script src="/rmarkdown-libs/leaflet-providers/leaflet-providers.js"></script>
+<script src="/rmarkdown-libs/leaflet-providers-plugin/leaflet-providers-plugin.js"></script>
+<script src="/rmarkdown-libs/d3/d3.min.js"></script>
+<link href="/rmarkdown-libs/d3tree2/d3tree2.css" rel="stylesheet" />
+<script src="/rmarkdown-libs/d3tree2-binding/d3tree2.js"></script>
+
+
+<div id="synopsis" class="section level2">
+<h2>Synopsis</h2>
+<p>On 13th December 2017 I attended a day of the IASC-ARS/68th Annual NZSA Conference. I attended a talk by Rob Hyndman on <a href="https://jmcurran.github.io/NZSA-IASC-Prog/Wednesday.html#talk_188">Probabilistic Outlier Detection And Visualization Of Smart Meter Data</a>.</p>
+<p>Inspired by Rob Hyndman’s talk, I decided to perform an exploratory data analysis of smart meter data. There are a variety of open energy data <a href="hhttps://openei.org/wiki/Data">resources</a>. This analysis will use <a href="https://open-enernoc-data.s3.amazonaws.com/anon/index.html">ErNOC green button open data set</a>.</p>
+<p>This <a href="https://petolau.github.io/Forecast-electricity-consumption-with-similar-day-approach-in-R/">github</a> was a useful starting point for analysis.</p>
+<div id="section" class="section level3">
+<h3></h3>
+<hr />
+</div>
+</div>
+<div id="setup" class="section level2">
+<h2>Setup</h2>
+<p><strong>LOAD R PACKAGES</strong></p>
+<pre class="r"><code># Load the tidyverse packages
+library(tidyverse)
+# Load data manipulation packages
+library(stringr)
+library(data.table)
+# Load the web scraping package
+library(rvest)
+# Load data visualisation packages
+library(leaflet)
+library(googleVis)
+library(htmlwidgets)
+library(RColorBrewer)
+library(treemap)</code></pre>
+<pre><code>## Warning: package &#39;treemap&#39; was built under R version 3.4.3</code></pre>
+<pre class="r"><code># library(devtools)
+# install_github(&quot;timelyportfolio/d3treeR&quot;)
+library(d3treeR)
+library(GGally)</code></pre>
+<pre><code>## Warning: package &#39;GGally&#39; was built under R version 3.4.3</code></pre>
+<pre class="r"><code>library(plotly)</code></pre>
+<div id="section-1" class="section level3">
+<h3></h3>
+<hr />
+</div>
+</div>
+<div id="data" class="section level2">
+<h2>Data</h2>
+<p><strong>DATA SUMMARY</strong></p>
+<p>We can find a summary of the EnerNOC Green Button data in the <a href="https://open-enernoc-data.s3.amazonaws.com/anon/README">README</a>,</p>
+<blockquote>
+<p>This is anonymized 5-minute energy usage data for 100 commercial/ industrial sites for 2012. Actual reading values and identifying information such as geo coordinates and square footage have been anonymized, but the values have been skewed by a linear magnitude so that comparisons over time and between sites will remain consistent.</p>
+</blockquote>
+<p>The data consists of metadata and csv files by building site.</p>
+<p>This data is made available for non-commercial and research purposes only under the Creative Commons Attribution-NonCommercial 3.0 license.</p>
+<p><strong>LOAD DATA</strong></p>
+<p><strong>1. Metadata</strong></p>
+<p>First load the metadata from the website using read_csv function from the <a href="https://CRAN.R-project.org/package=readr">readr</a> R package.</p>
+<pre class="r"><code># Read in the meta data using read_csv
+meta &lt;- read_csv(&quot;https://open-enernoc-data.s3.amazonaws.com/anon/meta/all_sites.csv&quot;)
+# View the structure of meta
+str(meta)</code></pre>
+<pre><code>## Classes &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;:    100 obs. of  8 variables:
+##  $ SITE_ID     : int  6 8 9 10 12 13 14 21 22 25 ...
+##  $ INDUSTRY    : chr  &quot;Commercial Property&quot; &quot;Commercial Property&quot; &quot;Commercial Property&quot; &quot;Commercial Property&quot; ...
+##  $ SUB_INDUSTRY: chr  &quot;Shopping Center/Shopping Mall&quot; &quot;Shopping Center/Shopping Mall&quot; &quot;Corporate Office&quot; &quot;Shopping Center/Shopping Mall&quot; ...
+##  $ SQ_FT       : int  161532 823966 169420 1029798 179665 185847 1675720 783982 318130 1807149 ...
+##  $ LAT         : num  34.8 40.3 40.9 39.7 39.7 ...
+##  $ LNG         : num  -106.9 -76.4 -74.7 -75 -74.9 ...
+##  $ TIME_ZONE   : chr  &quot;America/Denver&quot; &quot;America/New_York&quot; &quot;America/New_York&quot; &quot;America/New_York&quot; ...
+##  $ TZ_OFFSET   : chr  &quot;-06:00&quot; &quot;-04:00&quot; &quot;-04:00&quot; &quot;-04:00&quot; ...
+##  - attr(*, &quot;spec&quot;)=List of 2
+##   ..$ cols   :List of 8
+##   .. ..$ SITE_ID     : list()
+##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_integer&quot; &quot;collector&quot;
+##   .. ..$ INDUSTRY    : list()
+##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_character&quot; &quot;collector&quot;
+##   .. ..$ SUB_INDUSTRY: list()
+##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_character&quot; &quot;collector&quot;
+##   .. ..$ SQ_FT       : list()
+##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_integer&quot; &quot;collector&quot;
+##   .. ..$ LAT         : list()
+##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_double&quot; &quot;collector&quot;
+##   .. ..$ LNG         : list()
+##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_double&quot; &quot;collector&quot;
+##   .. ..$ TIME_ZONE   : list()
+##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_character&quot; &quot;collector&quot;
+##   .. ..$ TZ_OFFSET   : list()
+##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_character&quot; &quot;collector&quot;
+##   ..$ default: list()
+##   .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_guess&quot; &quot;collector&quot;
+##   ..- attr(*, &quot;class&quot;)= chr &quot;col_spec&quot;</code></pre>
+<pre class="r"><code># Convert the headings from upper case to lower case
+meta &lt;- meta %&gt;%
+  rename_all(tolower)</code></pre>
+<p><strong>2. EnerNOC GreenButton Data</strong></p>
+<p>To import the green button data csv files, we will use a vectorisation approach and import each csv direct from the data source using tidyverse packages. This also seemed to be a good chance to practice web scraping. An alternative approach would be to load the all-data.tar.gz and then untar and rbind the individuals csv files but this would not be a flexible and scalable process if files were continuously saved to source as in a live system.</p>
+<p>First we will use the <a href="https://CRAN.R-project.org/package=rvest">rvest</a> R package which is used for web scraping.</p>
+<p>We need to check if the source with the csv files can be scraped and then identify the CSS selectors. Then we create a vector of the urls.</p>
+<pre class="r"><code># Set the source html link for the csv files in the ernoc website
+ernocindex &lt;- &quot;https://open-enernoc-data.s3.amazonaws.com/anon/csv/index.html&quot;
+# Parse the html page using read_html
+ernochtml &lt;- read_html(ernocindex)
+# From inspecting the page for the CSS slectors, we see the csv files are in element table with classname table, element td and element a.
+# Load the file names as a text vector using html_nodes and html_text functions
+filenames &lt;- ernochtml %&gt;%
+  html_nodes(&quot;table.table td a&quot;) %&gt;%
+  html_text()
+# Check there are a 100 filenames for each of the 100 sites as per the README
+length(filenames)</code></pre>
+<pre><code>## [1] 100</code></pre>
+<pre class="r"><code># Create a vector of the urls for the csvs. An examaple url is &quot;https://open-enernoc-data.s3.amazonaws.com/anon/csv/10.csv&quot;. First set the base url
+ernocbase &lt;- &quot;https://open-enernoc-data.s3.amazonaws.com/anon/csv/&quot;
+# Combine the base url with the filenames using paste
+urls &lt;- paste(ernocbase, filenames, sep = &quot;&quot;)
+# Check the first 5 urls to ensure the correct format
+head(urls)</code></pre>
+<pre><code>## [1] &quot;https://open-enernoc-data.s3.amazonaws.com/anon/csv/10.csv&quot; 
+## [2] &quot;https://open-enernoc-data.s3.amazonaws.com/anon/csv/100.csv&quot;
+## [3] &quot;https://open-enernoc-data.s3.amazonaws.com/anon/csv/101.csv&quot;
+## [4] &quot;https://open-enernoc-data.s3.amazonaws.com/anon/csv/103.csv&quot;
+## [5] &quot;https://open-enernoc-data.s3.amazonaws.com/anon/csv/109.csv&quot;
+## [6] &quot;https://open-enernoc-data.s3.amazonaws.com/anon/csv/111.csv&quot;</code></pre>
+<pre class="r"><code># Check the class of urls
+str(urls)</code></pre>
+<pre><code>##  chr [1:100] &quot;https://open-enernoc-data.s3.amazonaws.com/anon/csv/10.csv&quot; ...</code></pre>
+<p>The urls vector is of class character.</p>
+<p>The function map_dfr from the <a href="https://cran.r-project.org/web/packages/purrr/index.html">purrr</a> R package applies a function to every element of an input (in this case the vector urls) and binds together the result by row. Each of these results was another dataframe created by column joining two other dataframes.</p>
+<p>The function cbind was used to join the dataframes of each site id’s greenbutton data with the site id variable. The read function used is again read_csv.</p>
+<p>To create the new site id variable, we also need to extract and add the site id as a new column to the resulting dataframe to identify each location’s data using <a href="ttps://CRAN.R-project.org/package=stringr">stringr</a> R package.</p>
+<p>I initially tried the dplyr function bind_cols to have tidyverse consistency but this created errors as the dataframes needed to have the same number of rows. So I used the potentially slower cbind base function. Then realised that cbind is a wrapper for data.frame and defaults stringsAsFactors=TRUE. Therefore tried to use the data.frame with stringsAsFactors =FALSE with the added benefit that it also recycles the single character vector as needed here, and it may be faster. Reverted back to cbind, although not in the tidyverse and potentially slower it recycles the single character as required.</p>
+<pre class="r"><code># Since there are many files to read, suppress the messages for read_csv
+suppressMessages(read_csv)</code></pre>
+<pre><code>## function (file, col_names = TRUE, col_types = NULL, locale = default_locale(), 
+##     na = c(&quot;&quot;, &quot;NA&quot;), quoted_na = TRUE, quote = &quot;\&quot;&quot;, comment = &quot;&quot;, 
+##     trim_ws = TRUE, skip = 0, n_max = Inf, guess_max = min(1000, 
+##         n_max), progress = show_progress()) 
+## {
+##     tokenizer &lt;- tokenizer_csv(na = na, quoted_na = TRUE, quote = quote, 
+##         comment = comment, trim_ws = trim_ws)
+##     read_delimited(file, tokenizer, col_names = col_names, col_types = col_types, 
+##         locale = locale, skip = skip, comment = comment, n_max = n_max, 
+##         guess_max = guess_max, progress = progress)
+## }
+## &lt;environment: namespace:readr&gt;</code></pre>
+<pre class="r"><code>options(readr.num_columns = 0)
+# Set stringsAsFactors to FALSE for cbind which is wrapper for data.frame
+options(stringsAsFactors = F)
+# Create a function to extract the site ID from the urls using stringr
+siteid &lt;- function(x) {
+  str_replace_all(x, c(&quot;https://open-enernoc-data.s3.amazonaws.com/anon/csv/&quot; = &quot;&quot;, &quot;.csv&quot; = &quot;&quot;))
+}
+# Load all the csv file data into a single dataframe with the site ids as a new column, renamed to be the same as the site_id column in the meta dataframe.
+greenbutton &lt;- map_dfr(urls, function(x) cbind(read_csv(x), siteid(x))) %&gt;%
+  rename(site_id = &quot;siteid(x)&quot;)
+# Take a look at the structure of the greenbutton dataframe
+str(greenbutton)</code></pre>
+<pre><code>## &#39;data.frame&#39;:    10531288 obs. of  6 variables:
+##  $ timestamp: int  1325376600 1325376900 1325377200 1325377500 1325377800 1325378100 1325378400 1325378700 1325379000 1325379300 ...
+##  $ dttm_utc : POSIXct, format: &quot;2012-01-01 00:10:00&quot; &quot;2012-01-01 00:15:00&quot; ...
+##  $ value    : num  106 105 102 103 102 ...
+##  $ estimated: int  0 0 0 0 0 0 0 0 0 0 ...
+##  $ anomaly  : chr  NA NA NA NA ...
+##  $ site_id  : chr  &quot;10&quot; &quot;10&quot; &quot;10&quot; &quot;10&quot; ...</code></pre>
+<p>The green button data information from the README is as follows:</p>
+<blockquote>
+<p>Each row of the file contains the following values:</p>
+</blockquote>
+<blockquote>
+<p>epoch timestamp, Date/ time, reading value, estimated indicator, anomaly indicator</p>
+</blockquote>
+<blockquote>
+<p>The <code>estimated indicator</code> is a boolean indicating if the reading was estimated. The <code>anomaly indicator</code> is non-blank if the reading was erroneous. Note also that the unit of measure for energy data is kWh in the CSV files.</p>
+</blockquote>
+<div id="section-2" class="section level3">
+<h3></h3>
+<hr />
+</div>
+</div>
+<div id="exploratory-data-analysis" class="section level2">
+<h2>Exploratory Data Analysis</h2>
+<p><strong>SITE LOCATIONS</strong></p>
+<p>The meta data includes spatial coordinates. We can plot these point vector data on a map. We will consider two approaches, first using gVisMap then leaflet.</p>
+<p><strong>1. googleViz</strong></p>
+<p>We can map the site IDs of the 100 commercial locations using <a href="https://CRAN.R-project.org/package=googleVis">googleViz</a> R package and the function gvisMap, which plots the map in a new window. We would need to create a new column combining the latitude and longitude coordinates as a parameter for the googleViz map.</p>
+<p><strong>2. Leaflet</strong></p>
+<p>Next plot the site IDs using using the Hydda.Full provider from the leaflet <a href="http://leaflet-extras.github.io/leaflet-providers/preview/index.html">providers link</a>. The Hydda.Full provider has detailed cities and towns to get an idea of the proximity of these locations using the zoom.</p>
+<pre class="r"><code># Create leaflet map of the metadata
+IDmap2 &lt;- leaflet(meta) %&gt;%
+  addTiles() %&gt;%
+  addProviderTiles(providers$Hydda.Full) %&gt;%
+  addMarkers(~ lng, ~lat, label = ~as.character(site_id))
+# Plot leaflet map
+IDmap2</code></pre>
+<div id="htmlwidget-1" style="width:672px;height:480px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"maxNativeZoom":null,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"continuousWorld":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":null,"unloadInvisibleTiles":null,"updateWhenIdle":null,"detectRetina":false,"reuseTiles":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addProviderTiles","args":["Hydda.Full",null,null,{"errorTileUrl":"","noWrap":false,"zIndex":null,"unloadInvisibleTiles":null,"updateWhenIdle":null,"detectRetina":false,"reuseTiles":false}]},{"method":"addMarkers","args":[[34.78300117,40.32024733,40.94675135,39.73250384,39.69454093,38.78465068,47.82001743,36.80665087,38.16780583,41.98151724,40.63134048,47.29794461,33.18898647,34.37390331,40.29934951,41.03863897,37.56641953,44.74241776,36.36301864,41.2161756,43.18250295,39.91023717,39.20897557,39.25982033,35.69328223,40.31513263,40.24392238,36.57549581,38.63511632,35.59674915,38.00903622,36.28638818,39.81213322,35.66742272,38.63471614,40.86149476,38.14657096,40.26375183,39.22671205,38.14344984,35.47966886,33.09246724,40.3065895,35.58555457,36.18381825,35.58568398,34.90931424,40.8828578,39.70345378,40.26934257,33.61963386,33.95631704,34.77380195,34.42182061,42.02888731,34.49497719,41.49974856,34.29665466,33.56634185,40.65600584,40.97791628,34.0124428,33.81528003,40.66385677,34.45936366,33.69197248,33.74882211,42.95368979,33.33367945,33.78885024,41.59927972,34.95461612,40.72433907,34.84766914,35.64594568,34.64348922,37.0142531,38.67407233,38.04768265,42.20958534,37.22778053,44.47177365,41.71547771,40.52468055,41.11320068,40.44768449,42.06854592,27.84862487,38.52008877,43.29647851,42.10762651,40.02768022,43.00244098,33.7222721,33.68743829,42.94925552,42.24499761,40.40698005,35.81109974,38.83195039],[-106.8952497,-76.40494239,-74.74208726,-75.00686126,-74.89916595,-77.47833675,-122.101407,-76.82877146,-122.7019178,-71.62104984,-74.91601589,-122.5435293,-117.2366393,-87.04651781,-75.47752837,-74.86575381,-79.56338786,-73.58554074,-87.03013879,-78.14809154,-112.6869112,-80.51961034,-76.69972177,-76.95122033,-87.01858864,-75.47204123,-74.91771912,-86.22741261,-75.93401425,-83.83065746,-75.37697374,-87.11008289,-75.25236525,-87.517393,-75.35821879,-72.88557216,-75.84018987,-74.97108041,-76.86400257,-75.91579796,-107.095281,-96.6997555,-75.48928221,-86.53450821,-87.27503507,-106.3737145,-107.0155435,-73.56775637,-75.36276254,-74.74514292,-116.6222695,-117.0477889,-117.063032,-117.7651881,-71.62585461,-117.0152966,-72.80533999,-118.2585456,-117.6659077,-73.83714808,-72.32981842,-117.7648664,-117.53437,-73.6153218,-117.4634315,-118.0257395,-117.0801213,-72.71016807,-117.2877342,-118.3345952,-72.58562231,-118.474401,-73.25143779,-117.7419882,-118.7978549,-89.28865783,-87.06507281,-75.43989192,-120.9719731,-78.99903042,-122.1335847,-75.61789475,-87.9332212,-74.35378623,-81.7077033,-75.99049611,-71.2513348,-82.0480141,-76.08258013,-71.72979539,-87.78948284,-80.45340754,-114.1137001,-118.3243791,-112.0119562,-112.1840075,-71.06051803,-75.0701837,-89.96906061,-75.82502245],null,null,null,{"clickable":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,["6","8","9","10","12","13","14","21","22","25","29","30","31","32","36","41","42","44","45","49","51","55","56","65","78","88","92","99","100","101","103","109","111","116","136","137","144","153","186","197","213","214","217","218","224","228","236","259","270","275","281","285","304","339","341","363","366","384","386","391","399","400","401","404","427","454","455","472","474","475","478","484","492","496","512","648","654","673","674","690","697","703","716","718","731","737","742","744","745","755","761","765","766","767","771","786","805","808","832","887"],null,null]}],"limits":{"lat":[27.84862487,47.82001743],"lng":[-122.7019178,-71.06051803]}},"evals":[],"jsHooks":[]}</script>
+<p>The leaflet map automatically sizes the map of the US to fit these location markers and plots directly from the latitude and longitude variables. Unlike gvisMap, leaflet does not require pasting the coordinates together or a separate plot function.</p>
+<p><strong>MERGED METADATA AND GREEN BUTTON DATA</strong></p>
+<p>Next we will look at a sample of the merged green button and metadata as the dataset is very large to get an overview of the variables. We will use ggpairs from the <a href="https://CRAN.R-project.org/package=GGally">GGally</a> R package to see the relationships between the variables.</p>
+<pre class="r"><code># set seed for reproduceability
+set.seed(123)
+# Take a sample of the greenbutton dataset as it is very large
+gbsample &lt;- sample_n(greenbutton, 100000)
+# Merge the metadata and the greenbutton datasets into gball using the merge function
+gbmerge &lt;- merge(gbsample, meta, by = &quot;site_id&quot;)
+# ggpairs plot of the industry, sub-industry, value and sq_ft variables
+ggpairs(
+  gbmerge,
+  columns = c(&quot;industry&quot;, &quot;sub_industry&quot;, &quot;value&quot;, &quot;sq_ft&quot;)
+)</code></pre>
+<p><img src="/portfolio/SmartmeterEDA2_files/figure-html/gbmerge-1.png" width="672" /></p>
+<p>From the ggpairs plot we can see a correlation between the continuous variables sq_ft and the value of 0.474. The distribution of the sq_ft and values are both positively or right skewed. The box plots also suggest potential outliers.</p>
+<p><strong>BUILDING SIZE</strong></p>
+<p>Next let’s take a look at a treemap of the industry and sub-industries by building size in square foot.</p>
+<pre class="r"><code># Basic treemap with customised colours annd labels to
+T1 &lt;- treemap(
+  meta,
+  index = c(&quot;industry&quot;, &quot;sub_industry&quot;),
+  vSize = &quot;sq_ft&quot;,
+  type = &quot;index&quot;,
+  align.labels = list(
+    c(&quot;center&quot;, &quot;center&quot;),
+    c(&quot;right&quot;, &quot;bottom&quot;)
+  ),
+  fontcolor.labels = c(&quot;white&quot;, &quot;yellow&quot;),
+  palette = &quot;Set2&quot;,
+  title = &quot;Industry and sub-industries by building size(sq ft)&quot;,
+  fontsize.title = 12
+)</code></pre>
+<p><img src="/portfolio/SmartmeterEDA2_files/figure-html/treemap-1.png" width="672" /></p>
+<pre class="r"><code># Make the treemap interactive (&quot;rootname&quot; becomes the title of the plot):
+interT1 &lt;- d3tree2(T1, rootname = &quot;Industry and sub-industries by building size(sq ft)&quot;)
+interT1</code></pre>
+<div id="htmlwidget-2" style="width:672px;height:480px;" class="d3tree2 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-2">{"x":{"data":{"name":"Industry and sub-industries by building size(sq ft)","id":1,"size":null,"children":[{"name":"Commercial Property","color":"#66C2A5","h":1,"id":2,"size":15262902,"stdErr":15262902,"vColor":25,"vSize":15262902,"w":0.677589799870661,"x0":0,"y0":0,"children":[{"name":"Bank/Financial Services","color":"#4BAF7F","h":0.167769012734276,"id":3,"size":814647,"stdErr":814647,"vColor":2,"vSize":814647,"w":0.215569571105697,"x0":0.366500316017101,"y0":0},{"name":"Business Services","color":"#4BAF87","h":0.832230987265724,"id":4,"size":1981590,"stdErr":1981590,"vColor":3,"vSize":1981590,"w":0.105706005980487,"x0":0.571883793890174,"y0":0.167769012734276},{"name":"Commercial Real Estate","color":"#4BAF8F","h":0.167769012734276,"id":5,"size":1385021,"stdErr":1385021,"vColor":4,"vSize":1385021,"w":0.366500316017101,"x0":0,"y0":0},{"name":"Corporate Office","color":"#4BAF98","h":0.167769012734276,"id":6,"size":360974,"stdErr":360974,"vColor":2,"vSize":360974,"w":0.0955199127478624,"x0":0.582069887122799,"y0":0},{"name":"Shopping Center/Shopping Mall","color":"#4BAFA0","h":0.832230987265724,"id":7,"size":10720670,"stdErr":10720670,"vColor":14,"vSize":10720670,"w":0.571883793890174,"x0":0,"y0":0.167769012734276}]},{"name":"Education","color":"#FC8D62","h":0.480688495962963,"id":8,"size":3490943,"stdErr":3490943,"vColor":25,"vSize":3490943,"w":0.322410200129339,"x0":0.677589799870661,"y0":0.519311504037037,"children":[{"name":"Primary/Secondary School","color":"#FC8D62","h":0.480688495962963,"id":9,"size":3490943,"stdErr":3490943,"vColor":25,"vSize":3490943,"w":0.322410200129339,"x0":0.677589799870661,"y0":0.519311504037037}]},{"name":"Food Sales & Storage","color":"#8DA0CB","h":0.1439902423186,"id":10,"size":1045712,"stdErr":1045712,"vColor":25,"vSize":1045712,"w":0.322410200129339,"x0":0.677589799870661,"y0":0,"children":[{"name":"Grocer/Market","color":"#8DA0CB","h":0.1439902423186,"id":11,"size":1045712,"stdErr":1045712,"vColor":25,"vSize":1045712,"w":0.322410200129339,"x0":0.677589799870661,"y0":0}]},{"name":"Light Industrial","color":"#E78AC3","h":0.375321261718436,"id":12,"size":2725726,"stdErr":2725726,"vColor":25,"vSize":2725726,"w":0.322410200129339,"x0":0.677589799870661,"y0":0.1439902423186,"children":[{"name":"Food Processing","color":"#D06BBA","h":0.372889820522356,"id":13,"size":1133956,"stdErr":1133956,"vColor":19,"vSize":1133956,"w":0.135003621757147,"x0":0.864996378242853,"y0":0.146421683514681},{"name":"Manufacturing","color":"#D06BA9","h":0.375321261718436,"id":14,"size":1584376,"stdErr":1584376,"vColor":5,"vSize":1584376,"w":0.187406578372192,"x0":0.677589799870661,"y0":0.1439902423186},{"name":"Other Light Industrial","color":"#D06B98","h":0.00243144119608026,"id":15,"size":7394,"stdErr":7394,"vColor":1,"vSize":7394,"w":0.135003621757147,"x0":0.864996378242853,"y0":0.1439902423186}]}]},"meta":{"type":"index","vSize":"sq_ft","vColor":null,"stdErr":"sq_ft","algorithm":"pivotSize","vpCoorX":[0.0281214848143982,0.971878515185602],"vpCoorY":[0.0196850393700787,0.920314960629921],"aspRatio":1.46703969225389,"range":null,"mapping":[null,null,null],"draw":true},"legend":null,"options":{"celltext":"name","id":"id","valueField":"size","clickAction":null}},"evals":[],"jsHooks":[]}</script>
+<pre class="r"><code>saveWidget(interT1, &quot;interT1.html&quot;)</code></pre>
+<p>Take a look at the industry and sub-industry by the size of the location using density plots. The sub-industry has 10 data classes so I used the brewer palette Paired from <a href="http://colorbrewer2.org/" class="uri">http://colorbrewer2.org/</a> and to view the overlaying density plots, and set alpha to 0.75 change the transparency.</p>
+<pre class="r"><code># Density plot of the metadata sq_ft floor size by industry
+ggplot(meta, aes(sq_ft, colour = industry, fill = industry)) +
+  geom_density(alpha = 0.75) +
+  scale_fill_brewer(type = &quot;qual&quot;, palette = &quot;Dark2&quot;, direction = 1) +
+  scale_color_brewer(type = &quot;qual&quot;, palette = &quot;Dark2&quot;, direction = 1) +
+  scale_y_continuous(labels = scales::comma) +
+  xlab(&quot;Floor size (sq ft)&quot;) +
+  ylab(&quot;Density&quot;) +
+  ggtitle(&quot;Density Plot of the Industries by Floor Size&quot;)</code></pre>
+<p><img src="/portfolio/SmartmeterEDA2_files/figure-html/floor%20size%20density-1.png" width="672" /></p>
+<pre class="r"><code># Density plot of the metadata sq_ft floor size by sub-industry
+ggplot(meta, aes(sq_ft, colour = sub_industry, fill = sub_industry)) +
+  geom_density(alpha = 0.75) +
+  scale_fill_brewer(type = &quot;qual&quot;, palette = &quot;Paired&quot;, direction = 1) +
+  scale_colour_brewer(type = &quot;qual&quot;, palette = &quot;Paired&quot;, direction = 1) +
+  scale_y_continuous(labels = scales::comma) +
+  xlab(&quot;Floor size (sq ft)&quot;) +
+  ylab(&quot;Density&quot;) +
+  ggtitle(&quot;Density Plot of the Sub-Industries by Floor Size&quot;)</code></pre>
+<pre><code>## Warning: Groups with fewer than two data points have been dropped.</code></pre>
+<p><img src="/portfolio/SmartmeterEDA2_files/figure-html/floor%20size%20density-2.png" width="672" /></p>
+<p>From these density plots we can see the distributions of the industries and sub-industries by floor size.</p>
+<p>The light industrial and education industries have positive skew and high peaks, or high kurtosis. The Food sales industry has high kurtosis and centred around a smaller mean floor size than the other industries</p>
+<p>When looking at the sub-industries, these break out the industries further. The Shopping centers which is the large proportion of the commercial property industry is flat topped, or very low kurtosis across the floor size range. The other commercial sub-industries such as corporate office and banks are multimodal. The Grocer/Market explains the small Food Sales industry size.</p>
+<p><strong>READING VALUES</strong></p>
+<p>We will finally look at time series plots using ggplot of the reading value in kWh by sub-industry.</p>
+<pre class="r"><code># Plot time series of the values facetted by industry
+industryts &lt;- ggplot(gbmerge, aes(dttm_utc, value, colour = industry)) +
+  geom_line() +
+  facet_grid(industry ~ ., scales = &quot;free_y&quot;) +
+  ggtitle(&quot;Reading Value(kWh) by Industry for 2012&quot;) +
+  xlab(&quot;Date/ time&quot;) +
+  ylab(&quot;Reading value (kWh)&quot;)
+# Plot the industryts plot
+industryts</code></pre>
+<p><img src="/portfolio/SmartmeterEDA2_files/figure-html/time%20series-1.png" width="672" /></p>
+<pre class="r"><code># Plot an interactive version using ggplotly
+# ggplotly(industryts) # comment out to enable knit document
+
+# Plot time series of the values facetted by sub-industry
+ggplot(gbmerge, aes(dttm_utc, value, colour = sub_industry)) +
+  geom_line() +
+  facet_grid(sub_industry ~ ., scales = &quot;free_y&quot;) +
+  ggtitle(&quot;Reading Value(kWh) by Sub-Industry for 2012&quot;) +
+  theme(strip.text.y = element_blank()) +
+  xlab(&quot;Date/ time&quot;) +
+  ylab(&quot;Reading value (kWh)&quot;)</code></pre>
+<p><img src="/portfolio/SmartmeterEDA2_files/figure-html/time%20series-2.png" width="672" /></p>
+</div>
+
+         
+      </div>
+    </div>
+  </div>
+</div>
+
+          </div>
+      </div>
+  </div>
+  <script src="/js/jquery.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/jquery.cookie.js"> </script>
+<script src="/js/ekko-lightbox.js"></script>
+<script src="/js/jquery.scrollTo.min.js"></script>
+<script src="/js/masonry.pkgd.min.js"></script>
+<script src="/js/imagesloaded.pkgd.min.js"></script>
+<script src="/js/owl.carousel.min.js"></script>
+<script src="/js/front.js"></script>
+
+</body>
+</html>

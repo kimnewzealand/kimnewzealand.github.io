@@ -7,19 +7,18 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)</copyright>
-    <lastBuildDate>Sat, 05 Nov 2016 18:25:22 +0530</lastBuildDate>
     
 	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Hello blog</title>
-      <link>/2016/11/05/hello-blog/</link>
-      <pubDate>Sat, 05 Nov 2016 18:25:22 +0530</pubDate>
+      <title>Smart Meter Data Exploratory Data Analysis</title>
+      <link>/1/01/01/smart-meter-data-exploratory-data-analysis/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/2016/11/05/hello-blog/</guid>
-      <description>Welcome to my personal blog and portfolio of my data science journey.
-Until now I have been creating and publishing R code to github and HTML to RPubs. I also have a Wordpress professional website to reach out to both technical and non-technical audiences with summaries of projects. I realised I needed another more personalised medium to publish the detailed code and HTML from projects so I created this blog.</description>
+      <guid>/1/01/01/smart-meter-data-exploratory-data-analysis/</guid>
+      <description>SynopsisOn 13th December 2017 I attended a day of the IASC-ARS/68th Annual NZSA Conference. I attended a talk by Rob Hyndman on Probabilistic Outlier Detection And Visualization Of Smart Meter Data.
+Inspired by Rob Hyndman’s talk, I decided to perform an exploratory data analysis of smart meter data. There are a variety of open energy data resources. This analysis will use ErNOC green button open data set.</description>
     </item>
     
   </channel>
