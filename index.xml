@@ -12,6 +12,18 @@
     
     
     <item>
+      <title>Crepes made with Git</title>
+      <link>https://kimnewzealand.github.io/portfolio/gitcrepeexample/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://kimnewzealand.github.io/portfolio/gitcrepeexample/</guid>
+      <description>19 March 2018
+Version control seems like just creating and updating recipes. Since we were trying out crepe recipes, creating crepes with git seemed to be a good idea for a worked example.
+The objective of this post is to get to grips with GitHub from the command line and to create a personal git cheatsheet which can be incrementally updated with new tricks from future projects.
+Start a new projectCreate a new fileInitialise git trackingAdd filePublish fileStatus of fileChange fileAdd filePublish fileShowing remotesFork filesSwitching branchesAdd filePublish fileResourcesStart a new projectAdd a new remote repository in github.</description>
+    </item>
+    
+    <item>
       <title>Creating a website in Hugo creative portfolio theme</title>
       <link>https://kimnewzealand.github.io/portfolio/creating-a-website-in-blogdown-and-hugo/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

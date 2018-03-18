@@ -1,0 +1,277 @@
+
+---
+title : "Crepes made with Git"
+output: html_document
+Author: kimnewzealand
+image : "img/portfolio/crepes.jpg"
+# showonlyimage : false
+weight : 4
+---
+
+
+*19 March 2018*
+
+Version control seems like just creating and updating recipes. Since we were trying out crepe recipes, creating crepes with git seemed to be a good idea for a worked example. 
+
+The objective of this post is to get to grips with GitHub from the command line and to create a personal [git cheatsheet](https://github.com/kimnewzealand/Git-Resources/blob/master/GitCommands.md) which can be incrementally updated with new tricks from future projects.
+
+
++ [Start a new project](#start-a-new-project)
++ [Create a new file](#create-a-new-file)
++ [Initialise git tracking](#initialise-git-tracking)
++ [Add file](#add-file)
++ [Publish file](#publish-file)
++ [Status of file](#status-of-file)
++ [Change file](#change-file)
++ [Add file](#add-file)
++ [Publish file](#publish-file)
++ [Showing remotes](#showing-remotes)
++ [Fork files](#fork-files)
++ [Switching branches](#switching-branches)
++ [Add file](#add-file)
++ [Publish file](#publish-file)
++ [Resources](#resources)
+
+
+
+<br><hr>
+
+
+### Start a new project
+
+1. Add a new `remote repository` in github.com with repository name **BookRecipes**, which is also known as the `origin`.  
+2. Create a new local `working directory` **MyRecipes**. 
+
+### Create a new file
+
+1. Create a a file in called **CrepeRecipe.md**, which is a basic recipe for making crepes, in the local `working directory` **MyRecipes**
+
+```{ }
+# Load the package makecrepe
+library(makecrepe)
+
+# Create a vector with the ingredients
+ingredients <- c(1 cup flour,
+      1 tablespoon sugar ,
+      1/4 teaspoon salt ,
+      1 1/2 cups whole milk,
+      3 tablespoons butter,
+      4 large eggs)
+
+# Cook crepe using crepe functions from the package makecrepe
+melt(butter)
+mix(ingredients)
+heat(pan)
+cook(ingredients,pan)
+```
+
+### Initialise git tracking
+
+1. Open git   and change directory to `working directory` **MyRecipes**.
+
+```{ }
+Home@LAPTOP-222WWW MINGW64 ~
+$ cd Documents
+
+Home@LAPTOP-222WWW MINGW64 ~/Documents (master)
+$ cd MyRecipes
+
+Home@LAPTOP-222WWW MINGW64 ~/Documents/MyRecipes (master)
+```
+
+
+2. Initialize git tracking and version control on `working directory` **MyRecipes**.
+
+```{ }
+$ git init
+```
+
+3. Copy the HTTPS link in github.com using the clipboard to add the `remote repository` or `origin`  as https://github.com/kimnewzealand/BookRecipes.git.
+
+```{ }
+$ git remote add origin https://github.com/kimnewzealand/BookRecipes.git
+```
+
+### Add file
+
+1. Add the file snapshot to the `index / staging area` locally.
+
+```{ }
+$ git add "CrepeRecipe.md"
+```
+
+### Publish file
+
+1. Commit the file with the snapshot to the `local repository` locally.
+
+```{ }
+$ git commit -m "My first crepe recipe submission to the Recipe Book"
+```
+
+2.  Push the file from the `local repository` `master` branch to the `origin` or `remote repository` `master` branch. The -u is used for the first push to set the `upstream` link between the two repositories.
+ 
+```{ }
+$ git push -u origin master
+```
+
+### Status of file
+
+Before we make changes to a file in the `working directory` and add and commit to the `origin`, first we will take a look at the status of the file and the log of our initial commit, in `GitExampleNew.md`.
+
+```{ }
+$ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+$ git log
+commit ba5df6a41a26433534b011e10a236b50bacda40f (HEAD -> master, origin/master)
+Author: Kim Fitter <xx@xxx.com>
+Date:   Thu Mar 15 12:22:00 2018 +1300
+
+    My first crepe recipe submission to the Recipe Book
+```
+
+### Change file
+
+1. On testing the crepe recipe, the crepes tasted like omelettes so we will change the recipe in the file called **CrepeRecipe.md** in the local `working directory` **MyRecipes**, from 4 eggs to 2 eggs.
+
+```{ }
+# Load the package crepe
+library(crepe)
+
+# Create a vector with the ingredients
+ingredients<- c(1 cup flour,
+      1 tablespoon sugar ,
+      1/4 teaspoon salt ,
+      1 1/2 cups whole milk,
+      3 tablespoons butter,
+      2 large eggs)
+
+# Cook crepe using crepe functions from the package crepe
+melt(butter)
+mix(ingredients)
+heat(pan)
+cook(ingredients,pan)
+```
+
+
+
+### Add file
+
+1. Add the file to the `Index/Staging` area again.
+
+```{ }
+$ git add "CrepeRecipe.md"
+```
+
+### Publish file
+
+1. Commit the file to the `local repository` with a new message.
+
+```{ }
+$ git commit -m "Updates to crepe recipe submission to the Recipe Book"
+[master eff78f8] Updates to format
+ 1 file changed, 1 insertion(+), 1 deletions(-)
+```
+
+2.  Push the file from the local repository `master` branch to the remote `origin` repository `master` branch. This time we don't need to use the -u.
+ 
+```{ }
+$ git push  origin master
+Counting objects: 3, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 304 bytes | 152.00 KiB/s, done.
+Total 3 (delta 1), reused 0 (delta 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To https://github.com/kimnewzealand/Recipes.git
+   ba5df6a..eff78f8  master -> master
+```
+
+
+<br><hr>
+
+### Showing remotes
+
+In `GitExampleCHanges` we published a crepe recipe **CrepeRecipe.md** after making one change. Before we do any further work, we will consider remotes. So far we have been working with `origin` in kimnewzealand github.
+
+1. Martha Stewart has got a github account and publishes her recipes there so we will add a remote called `martha`.
+
+```{ }
+$ git remote add martha https://github.com/martha/Recipes.git
+```
+
+2. Let's take a look at the details of the remote. This git command lists the URL for the remote repository as well as the tracking branch information. Currently our `HEAD` is pointing to the `master` branch. 
+
+```{ }
+$ git remote show martha
+* remote martha
+  martha https://github.com/martha/Recipes.git (fetch)
+  martha https://github.com/martha/Recipes.git (push)
+  HEAD branch: master
+  Remote branches:
+    master                               tracked
+    dev-branch                           tracked
+  Local branch configured for 'git pull':
+    master merges with remote master
+  Local ref configured for 'git push':
+    master pushes to master (up to date)
+```
+
+### Fork files
+
+1. We are now going to pull selected recipes to make some proposed changes to push back to her repo. First we need to fork the repo https://github.com/martha/Recipes/ in github.com. We then return to the command line and clone the repo `Recipes`.
+
+```{ }
+git clone https://github.com/martha/Recipes 
+```
+
+### Switching branches
+
+1. As we can see, martha has a `dev-branch` so we will switch to this branch and work on one of her in development crepe recipes.
+
+```{ }
+$ git checkout dev-branch
+Switched to branch 'dev-branch'
+```
+
+### Add file
+
+1. Once ewe have made changes we then add the file `CrepeRecipeProposal.md` to the `Index/Staging` area.
+
+```{ }
+$ git add "CrepeRecipeProposal.md"
+```
+
+### Publish file
+
+1. Commit the file to the `local repository` with a new message.
+
+```{ }
+$ git commit -m "Updates to crepe recipe submission to the Recipe Book"
+[master eff78f8] Updates to format
+ 1 file changed, 1 insertion(+), 1 deletions(-)
+```
+
+2.  Push the file from the local repository `dev-branch` branch to the remote `origin` repository `dev-branch` branch. 
+ 
+```{ }
+$ git push -u origin dev-branch
+Counting objects: 2, done.
+Delta compression using up to 5 threads.
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 394 bytes | 182.00 KiB/s, done.
+Total 3 (delta 1), reused 0 (delta 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To https://github.com/martha/Recipes.git
+   ca5df6a..egf78f8  dev-branch -> dev-branch
+```
+
+## Resources
+
++ [Happy Git and GitHub for the useR by Jennifer Bryan](http://happygitwithr.com/rmd-test-drive.html) adapted under  [Creative Commons Attribution-NonCommercial 4.0 International License.](https://creativecommons.org/licenses/by/4.0/)
++ [Pro Git book, written by Scott Chacon and Ben Straub ](https://git-scm.com/book/en/v2) adapted under the [Creative Commons Attribution Non Commercial Share Alike 3.0 license](https://creativecommons.org/licenses/by/3.0/).
++ [Version Control with Git by Software Carpentry](http://swcarpentry.github.io/git-novice/) adapted under the [Attribution 4.0 International (CC BY 4.0 license](https://creativecommons.org/licenses/by/4.0/)
++ Crepe photo is a free stock picture, no attribution required.

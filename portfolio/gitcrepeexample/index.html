@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Crepes made with Git</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all,follow">
+<meta name="googlebot" content="index,follow,snippet,archive">
+<link rel="stylesheet" href="https://kimnewzealand.github.io/css/bootstrap.min.css">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,300,700,400italic">
+<link rel="stylesheet" href="https://kimnewzealand.github.io/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://kimnewzealand.github.io/css/owl.carousel.css">
+<link rel="stylesheet" href="https://kimnewzealand.github.io/css/owl.theme.css">
+
+
+  <link href="https://kimnewzealand.github.io/css/style.style.sea.css.css" rel="stylesheet" id="theme-stylesheet">
+
+ 
+
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+
+<link href="https://kimnewzealand.github.io/css/custom.css" rel="stylesheet">
+<link rel="shortcut icon" href="https://kimnewzealand.github.io/img/favicon.png">
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-114904130-1', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body>
+  <div id="all">
+      <div class="container-fluid">
+          <div class="row row-offcanvas row-offcanvas-left">
+              <div id="sidebar" class="col-xs-6 col-sm-4 col-md-3 sidebar-offcanvas">
+  <div class="sidebar-content">
+    <h1 class="sidebar-heading"><a href="https://kimnewzealand.github.io/">Kim Fitter</a></h1>
+    
+      <p class="sidebar-p">Curious about Data Science tools, algorithms and all types of visualisations. Based in Auckland, New Zealand</p>
+    
+    <ul class="sidebar-menu">
+      
+      
+        <li><a href="https://kimnewzealand.github.io/">Home</a></li>
+      
+        <li><a href="https://kimnewzealand.github.io/about/">About</a></li>
+      
+    </ul>
+    <p class="social">
+  
+  
+  
+  <a href="https://twitter.com/kim_fitter" data-animate-hover="pulse" class="external twitter">
+    <i class="fa fa-twitter"></i>
+  </a>
+  
+  
+  
+  <a href="mailto:kim@validly.co" data-animate-hover="pulse" class="email">
+    <i class="fa fa-envelope"></i>
+  </a>
+  
+  
+  
+  
+  <a href="https://github.com/kimnewzealand" data-animate-hover="pulse">
+    <i class="fa fa-github"></i>
+  </a>
+  
+</p>
+
+
+    <div class="copyright">
+      <p class="credit">
+        
+          Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)
+        
+        | Template by <a href="https://bootstrapious.com/free-templates" class="external">Bootstrapious.com</a>
+
+&amp; ported to Hugo by <a href="https://github.com/kishaningithub">Kishan B</a>
+
+      </p>
+    </div>
+  </div>
+</div>
+
+              
+<div class="col-xs-12 col-sm-8 col-md-9 content-column white-background">
+  <div class="small-navbar visible-xs">
+  <button type="button" data-toggle="offcanvas" class="btn btn-ghost pull-left"> <i class="fa fa-align-left"> </i>Menu</button>
+  <h1 class="small-navbar-heading"><a href="https://kimnewzealand.github.io/">Kim Fitter</a></h1>
+</div>
+
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="content-column-content">
+         <h1>Crepes made with Git</h1>
+         <p><em>19 March 2018</em></p>
+<p>Version control seems like just creating and updating recipes. Since we were trying out crepe recipes, creating crepes with git seemed to be a good idea for a worked example.</p>
+<p>The objective of this post is to get to grips with GitHub from the command line and to create a personal <a href="https://github.com/kimnewzealand/Git-Resources/blob/master/GitCommands.md">git cheatsheet</a> which can be incrementally updated with new tricks from future projects.</p>
+<ul>
+<li><a href="#start-a-new-project">Start a new project</a></li>
+<li><a href="#create-a-new-file">Create a new file</a></li>
+<li><a href="#initialise-git-tracking">Initialise git tracking</a></li>
+<li><a href="#add-file">Add file</a></li>
+<li><a href="#publish-file">Publish file</a></li>
+<li><a href="#status-of-file">Status of file</a></li>
+<li><a href="#change-file">Change file</a></li>
+<li><a href="#add-file">Add file</a></li>
+<li><a href="#publish-file">Publish file</a></li>
+<li><a href="#showing-remotes">Showing remotes</a></li>
+<li><a href="#fork-files">Fork files</a></li>
+<li><a href="#switching-branches">Switching branches</a></li>
+<li><a href="#add-file">Add file</a></li>
+<li><a href="#publish-file">Publish file</a></li>
+<li><a href="#resources">Resources</a></li>
+</ul>
+<br>
+<hr>
+<div id="start-a-new-project" class="section level3">
+<h3>Start a new project</h3>
+<ol style="list-style-type: decimal">
+<li>Add a new <code>remote repository</code> in github.com with repository name <strong>BookRecipes</strong>, which is also known as the <code>origin</code>.<br />
+</li>
+<li>Create a new local <code>working directory</code> <strong>MyRecipes</strong>.</li>
+</ol>
+</div>
+<div id="create-a-new-file" class="section level3">
+<h3>Create a new file</h3>
+<ol style="list-style-type: decimal">
+<li>Create a a file in called <strong>CrepeRecipe.md</strong>, which is a basic recipe for making crepes, in the local <code>working directory</code> <strong>MyRecipes</strong></li>
+</ol>
+<pre><code># Load the package makecrepe
+library(makecrepe)
+
+# Create a vector with the ingredients
+ingredients &lt;- c(1 cup flour,
+      1 tablespoon sugar ,
+      1/4 teaspoon salt ,
+      1 1/2 cups whole milk,
+      3 tablespoons butter,
+      4 large eggs)
+
+# Cook crepe using crepe functions from the package makecrepe
+melt(butter)
+mix(ingredients)
+heat(pan)
+cook(ingredients,pan)</code></pre>
+</div>
+<div id="initialise-git-tracking" class="section level3">
+<h3>Initialise git tracking</h3>
+<ol style="list-style-type: decimal">
+<li>Open git and change directory to <code>working directory</code> <strong>MyRecipes</strong>.</li>
+</ol>
+<pre><code>Home@LAPTOP-222WWW MINGW64 ~
+$ cd Documents
+
+Home@LAPTOP-222WWW MINGW64 ~/Documents (master)
+$ cd MyRecipes
+
+Home@LAPTOP-222WWW MINGW64 ~/Documents/MyRecipes (master)</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>Initialize git tracking and version control on <code>working directory</code> <strong>MyRecipes</strong>.</li>
+</ol>
+<pre><code>$ git init</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li>Copy the HTTPS link in github.com using the clipboard to add the <code>remote repository</code> or <code>origin</code> as <a href="https://github.com/kimnewzealand/BookRecipes.git" class="uri">https://github.com/kimnewzealand/BookRecipes.git</a>.</li>
+</ol>
+<pre><code>$ git remote add origin https://github.com/kimnewzealand/BookRecipes.git</code></pre>
+</div>
+<div id="add-file" class="section level3">
+<h3>Add file</h3>
+<ol style="list-style-type: decimal">
+<li>Add the file snapshot to the <code>index / staging area</code> locally.</li>
+</ol>
+<pre><code>$ git add &quot;CrepeRecipe.md&quot;</code></pre>
+</div>
+<div id="publish-file" class="section level3">
+<h3>Publish file</h3>
+<ol style="list-style-type: decimal">
+<li>Commit the file with the snapshot to the <code>local repository</code> locally.</li>
+</ol>
+<pre><code>$ git commit -m &quot;My first crepe recipe submission to the Recipe Book&quot;</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>Push the file from the <code>local repository</code> <code>master</code> branch to the <code>origin</code> or <code>remote repository</code> <code>master</code> branch. The -u is used for the first push to set the <code>upstream</code> link between the two repositories.</li>
+</ol>
+<pre><code>$ git push -u origin master</code></pre>
+</div>
+<div id="status-of-file" class="section level3">
+<h3>Status of file</h3>
+<p>Before we make changes to a file in the <code>working directory</code> and add and commit to the <code>origin</code>, first we will take a look at the status of the file and the log of our initial commit, in <code>GitExampleNew.md</code>.</p>
+<pre><code>$ git status
+On branch master
+Your branch is up-to-date with &#39;origin/master&#39;.
+
+no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)
+
+$ git log
+commit ba5df6a41a26433534b011e10a236b50bacda40f (HEAD -&gt; master, origin/master)
+Author: Kim Fitter &lt;xx@xxx.com&gt;
+Date:   Thu Mar 15 12:22:00 2018 +1300
+
+    My first crepe recipe submission to the Recipe Book</code></pre>
+</div>
+<div id="change-file" class="section level3">
+<h3>Change file</h3>
+<ol style="list-style-type: decimal">
+<li>On testing the crepe recipe, the crepes tasted like omelettes so we will change the recipe in the file called <strong>CrepeRecipe.md</strong> in the local <code>working directory</code> <strong>MyRecipes</strong>, from 4 eggs to 2 eggs.</li>
+</ol>
+<pre><code># Load the package crepe
+library(crepe)
+
+# Create a vector with the ingredients
+ingredients&lt;- c(1 cup flour,
+      1 tablespoon sugar ,
+      1/4 teaspoon salt ,
+      1 1/2 cups whole milk,
+      3 tablespoons butter,
+      2 large eggs)
+
+# Cook crepe using crepe functions from the package crepe
+melt(butter)
+mix(ingredients)
+heat(pan)
+cook(ingredients,pan)</code></pre>
+</div>
+<div id="add-file-1" class="section level3">
+<h3>Add file</h3>
+<ol style="list-style-type: decimal">
+<li>Add the file to the <code>Index/Staging</code> area again.</li>
+</ol>
+<pre><code>$ git add &quot;CrepeRecipe.md&quot;</code></pre>
+</div>
+<div id="publish-file-1" class="section level3">
+<h3>Publish file</h3>
+<ol style="list-style-type: decimal">
+<li>Commit the file to the <code>local repository</code> with a new message.</li>
+</ol>
+<pre><code>$ git commit -m &quot;Updates to crepe recipe submission to the Recipe Book&quot;
+[master eff78f8] Updates to format
+ 1 file changed, 1 insertion(+), 1 deletions(-)</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>Push the file from the local repository <code>master</code> branch to the remote <code>origin</code> repository <code>master</code> branch. This time we don’t need to use the -u.</li>
+</ol>
+<pre><code>$ git push  origin master
+Counting objects: 3, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 304 bytes | 152.00 KiB/s, done.
+Total 3 (delta 1), reused 0 (delta 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To https://github.com/kimnewzealand/Recipes.git
+   ba5df6a..eff78f8  master -&gt; master</code></pre>
+<br>
+<hr>
+</div>
+<div id="showing-remotes" class="section level3">
+<h3>Showing remotes</h3>
+<p>In <code>GitExampleCHanges</code> we published a crepe recipe <strong>CrepeRecipe.md</strong> after making one change. Before we do any further work, we will consider remotes. So far we have been working with <code>origin</code> in kimnewzealand github.</p>
+<ol style="list-style-type: decimal">
+<li>Martha Stewart has got a github account and publishes her recipes there so we will add a remote called <code>martha</code>.</li>
+</ol>
+<pre><code>$ git remote add martha https://github.com/martha/Recipes.git</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>Let’s take a look at the details of the remote. This git command lists the URL for the remote repository as well as the tracking branch information. Currently our <code>HEAD</code> is pointing to the <code>master</code> branch.</li>
+</ol>
+<pre><code>$ git remote show martha
+* remote martha
+  martha https://github.com/martha/Recipes.git (fetch)
+  martha https://github.com/martha/Recipes.git (push)
+  HEAD branch: master
+  Remote branches:
+    master                               tracked
+    dev-branch                           tracked
+  Local branch configured for &#39;git pull&#39;:
+    master merges with remote master
+  Local ref configured for &#39;git push&#39;:
+    master pushes to master (up to date)</code></pre>
+</div>
+<div id="fork-files" class="section level3">
+<h3>Fork files</h3>
+<ol style="list-style-type: decimal">
+<li>We are now going to pull selected recipes to make some proposed changes to push back to her repo. First we need to fork the repo <a href="https://github.com/martha/Recipes/" class="uri">https://github.com/martha/Recipes/</a> in github.com. We then return to the command line and clone the repo <code>Recipes</code>.</li>
+</ol>
+<pre><code>git clone https://github.com/martha/Recipes </code></pre>
+</div>
+<div id="switching-branches" class="section level3">
+<h3>Switching branches</h3>
+<ol style="list-style-type: decimal">
+<li>As we can see, martha has a <code>dev-branch</code> so we will switch to this branch and work on one of her in development crepe recipes.</li>
+</ol>
+<pre><code>$ git checkout dev-branch
+Switched to branch &#39;dev-branch&#39;</code></pre>
+</div>
+<div id="add-file-2" class="section level3">
+<h3>Add file</h3>
+<ol style="list-style-type: decimal">
+<li>Once ewe have made changes we then add the file <code>CrepeRecipeProposal.md</code> to the <code>Index/Staging</code> area.</li>
+</ol>
+<pre><code>$ git add &quot;CrepeRecipeProposal.md&quot;</code></pre>
+</div>
+<div id="publish-file-2" class="section level3">
+<h3>Publish file</h3>
+<ol style="list-style-type: decimal">
+<li>Commit the file to the <code>local repository</code> with a new message.</li>
+</ol>
+<pre><code>$ git commit -m &quot;Updates to crepe recipe submission to the Recipe Book&quot;
+[master eff78f8] Updates to format
+ 1 file changed, 1 insertion(+), 1 deletions(-)</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>Push the file from the local repository <code>dev-branch</code> branch to the remote <code>origin</code> repository <code>dev-branch</code> branch.</li>
+</ol>
+<pre><code>$ git push -u origin dev-branch
+Counting objects: 2, done.
+Delta compression using up to 5 threads.
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 394 bytes | 182.00 KiB/s, done.
+Total 3 (delta 1), reused 0 (delta 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To https://github.com/martha/Recipes.git
+   ca5df6a..egf78f8  dev-branch -&gt; dev-branch</code></pre>
+</div>
+<div id="resources" class="section level2">
+<h2>Resources</h2>
+<ul>
+<li><a href="http://happygitwithr.com/rmd-test-drive.html">Happy Git and GitHub for the useR by Jennifer Bryan</a> adapted under <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License.</a></li>
+<li><a href="https://git-scm.com/book/en/v2">Pro Git book, written by Scott Chacon and Ben Straub</a> adapted under the <a href="https://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution Non Commercial Share Alike 3.0 license</a>.</li>
+<li><a href="http://swcarpentry.github.io/git-novice/">Version Control with Git by Software Carpentry</a> adapted under the <a href="https://creativecommons.org/licenses/by/4.0/">Attribution 4.0 International (CC BY 4.0 license</a></li>
+<li>Crepe photo is a free stock picture, no attribution required.</li>
+</ul>
+</div>
+
+         
+      </div>
+    </div>
+  </div>
+</div>
+
+          </div>
+      </div>
+  </div>
+  <script src="https://kimnewzealand.github.io/js/jquery.min.js"></script>
+<script src="https://kimnewzealand.github.io/js/bootstrap.min.js"></script>
+<script src="https://kimnewzealand.github.io/js/jquery.cookie.js"> </script>
+<script src="https://kimnewzealand.github.io/js/ekko-lightbox.js"></script>
+<script src="https://kimnewzealand.github.io/js/jquery.scrollTo.min.js"></script>
+<script src="https://kimnewzealand.github.io/js/masonry.pkgd.min.js"></script>
+<script src="https://kimnewzealand.github.io/js/imagesloaded.pkgd.min.js"></script>
+<script src="https://kimnewzealand.github.io/js/owl.carousel.min.js"></script>
+<script src="https://kimnewzealand.github.io/js/front.js"></script>
+
+</body>
+</html>
