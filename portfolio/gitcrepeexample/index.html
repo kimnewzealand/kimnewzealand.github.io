@@ -250,7 +250,7 @@ cook(ingredients,pan)</code></pre>
  1 file changed, 1 insertion(+), 1 deletions(-)</code></pre>
 <p>Git Bash will return a message with the changes.</p>
 <ol start="2" style="list-style-type: decimal">
-<li>Push the file from the <code>local repository</code> <code>master</code> branch to the remote <code>origin</code> repository <code>master</code> branch. This time we don’t need to use the -u.</li>
+<li>Push the file from the <code>local repository</code>’s <code>master</code> branch to the <code>remote repository</code>’s <code>master</code> branch. This time we don’t need to use the -u.</li>
 </ol>
 <pre><code>$ git push  origin master
 Counting objects: 3, done.
@@ -264,9 +264,9 @@ To https://github.com/kimnewzealand/Recipes.git
 </div>
 <div id="review-of-remotes" class="section level3">
 <h3>Review of remotes</h3>
-<p>So far we have been working with the <code>remote repository</code> called <code>origin</code> in kimnewzealand github.</p>
+<p>So far we have been working with the <code>remote repository</code> called <code>origin</code> in <a href="https://github.com/kimnewzealand/" class="uri">https://github.com/kimnewzealand/</a>.</p>
 <ol style="list-style-type: decimal">
-<li>Suppose the chef James Olivier has a github account and publishes his recipes to a <code>remote repository</code> called <code>james</code>.</li>
+<li>Suppose the chef James Olivier has a github account with his recipes in a <code>remote repository</code> called <code>james</code>.</li>
 </ol>
 <p>Copy the HTTPS link in github.com using the clipboard to add the <code>remote repository</code> <a href="https://github.com/james/Recipes.git" class="uri">https://github.com/james/Recipes.git</a> as <code>james</code> in Git Bash.</p>
 <pre><code>$ git remote add james https://github.com/james/Recipes.git</code></pre>
@@ -298,7 +298,7 @@ To https://github.com/kimnewzealand/Recipes.git
 <div id="switching-branches" class="section level3">
 <h3>Switching branches</h3>
 <ol style="list-style-type: decimal">
-<li>As we can see, <code>james</code> has a <code>master</code> and also a <code>dev-branch</code> for his in development crepe recipes. We will switch to this <code>dev-branch</code> branch using checkout command.</li>
+<li>As we can see, <code>james</code> has a <code>master</code> and also a <code>dev-branch</code> for his development crepe recipes. We will switch to this <code>dev-branch</code> branch using checkout command.</li>
 </ol>
 <pre><code>$ git checkout dev-branch
 Switched to branch &#39;dev-branch&#39;</code></pre>
@@ -306,7 +306,7 @@ Switched to branch &#39;dev-branch&#39;</code></pre>
 <div id="add-proposed-file" class="section level3">
 <h3>Add proposed file</h3>
 <ol style="list-style-type: decimal">
-<li>Once we have made changes to <strong>CrepeRecipeProposal.md</strong>, then add the file to the <code>Index/Staging</code> area.</li>
+<li>Once we have made proposed changes to <strong>CrepeRecipeProposal.md</strong>, add the file to the <code>Index/Staging</code> area.</li>
 </ol>
 <pre><code>$ git add &quot;CrepeRecipeProposal.md&quot;</code></pre>
 </div>
@@ -315,7 +315,7 @@ Switched to branch &#39;dev-branch&#39;</code></pre>
 <ol style="list-style-type: decimal">
 <li>Commit the file to the <code>local repository</code> with a new commit message.</li>
 </ol>
-<pre><code>$ git commit -m &quot;Updates to crepe recipe submission to the Recipe Book&quot;
+<pre><code>$ git commit -m &quot;Proposed changes to crepe recipe submission to the Recipe Book&quot;
 [master eff78f8] Updates to format
  1 file changed, 1 insertion(+), 1 deletions(-)</code></pre>
 <ol start="2" style="list-style-type: decimal">
@@ -330,6 +330,7 @@ Total 3 (delta 1), reused 0 (delta 0)
 remote: Resolving deltas: 100% (1/1), completed with 1 local object.
 To https://github.com/james/Recipes.git
    ca5df6a..egf78f8  dev-branch -&gt; dev-branch</code></pre>
+<p>These proposed changes can be reviewed and accepted or rejected.</p>
 <br>
 <hr>
 </div>

@@ -176,7 +176,7 @@ $ git commit -m "Updates to crepe recipe submission to the Recipe Book"
 
 Git Bash will return a message with the changes.
 
-2.  Push the file from the `local repository` `master` branch to the remote `origin` repository `master` branch. This time we don't need to use the -u.
+2.  Push the file from the `local repository`'s `master` branch to the `remote repository`'s `master` branch. This time we don't need to use the -u.
  
 ```{ }
 $ git push  origin master
@@ -192,9 +192,9 @@ To https://github.com/kimnewzealand/Recipes.git
   
 ### Review of remotes
 
-So far we have been working with the `remote repository` called `origin` in kimnewzealand github.
+So far we have been working with the `remote repository` called `origin` in https://github.com/kimnewzealand/.
 
-1. Suppose the chef James Olivier has a github account and publishes his recipes to a `remote repository` called `james`. 
+1. Suppose the chef James Olivier has a github account with his recipes in a `remote repository` called `james`. 
 
 Copy the HTTPS link in github.com using the clipboard to add the `remote repository`  https://github.com/james/Recipes.git as `james` in Git Bash.
 
@@ -233,7 +233,7 @@ git clone https://github.com/james/Recipes
 
 ### Switching branches
 
-1. As we can see, `james` has a `master` and also a `dev-branch` for his in development crepe recipes. We will switch to this `dev-branch` branch using checkout command.
+1. As we can see, `james` has a `master` and also a `dev-branch` for his development crepe recipes. We will switch to this `dev-branch` branch using checkout command.
 
 ```{ }
 $ git checkout dev-branch
@@ -242,7 +242,7 @@ Switched to branch 'dev-branch'
 
 ### Add proposed file
 
-1. Once we have made changes to **CrepeRecipeProposal.md**, then add the file  to the `Index/Staging` area.
+1. Once we have made proposed changes to **CrepeRecipeProposal.md**, add the file  to the `Index/Staging` area.
 
 ```{ }
 $ git add "CrepeRecipeProposal.md"
@@ -253,7 +253,7 @@ $ git add "CrepeRecipeProposal.md"
 1. Commit the file to the `local repository` with a new commit message.
 
 ```{ }
-$ git commit -m "Updates to crepe recipe submission to the Recipe Book"
+$ git commit -m "Proposed changes to crepe recipe submission to the Recipe Book"
 [master eff78f8] Updates to format
  1 file changed, 1 insertion(+), 1 deletions(-)
 ```
@@ -272,6 +272,8 @@ To https://github.com/james/Recipes.git
    ca5df6a..egf78f8  dev-branch -> dev-branch
 ```
   
+These proposed changes can be reviewed and accepted or rejected.
+
 <br><hr>
 
 ## Resources

@@ -4,8 +4,7 @@ output: html_document
 Author: kimnewzealand
 ---
 
-## Synopsis
-
+*30 January 2018*
 
 This R markdown post was inspired by the R-bloggers post [Building your own blockchain in R.](https://www.r-bloggers.com/building-your-own-blockchain-in-r/)
 
