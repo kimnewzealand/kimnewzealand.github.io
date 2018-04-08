@@ -253,23 +253,7 @@ g <- ggplot(nz_region_f, aes(long, lat,group = group)) +
 fe2013 <- ggiraph(code = print(g))
 fe2013
 
-# Plot the male population density
-nz_region_f$tooltipm <- paste0(nz_region_f$REGC2017_N, "  : ", round(nz_region_f$maledens2013), " per sq km")
-
-g <- ggplot(nz_region_f, aes(long, lat,group = group)) +
-      geom_polygon_interactive(aes(fill=maledens2013, 
-                               tooltip = htmltools::htmlEscape(tooltipm, TRUE))) +
-      geom_path(color = "white") + 
-      coord_map() +
-     scale_fill_distiller(type="seq", trans="reverse", palette = "BuPu",   name="Population density") +
-      theme_void() +   
-      labs(color="Pop per sq km)") +
-      ggtitle("New Zealand Male Population Density in 2013")
-
-# Now plot the g object using ggiraph
-ma2013 <- ggiraph(code = print(g))
-ma2013
-# htmlwidgets::saveWidget(fe2013, "fe2013.html", selfcontained=FALSE) 
+# htmlwidgets::saveWidget(fe2013, "fe2013.html", selfcontained=FALSE) commented to out to not save separately in blogdown post
 ```
 
 **Conclusions**
@@ -281,5 +265,7 @@ Loading the Census and spatial data is reproducible and the cleaning process cou
 - Merging and joining datasets in combination with transforming data is tricky. Sanity checks and comparisons of the original data to the output is key to ensure that no data is lost in the process.
 
 - For the interactive plots, I tried the ggplotly function from the [plotly](https://cran.r-project.org/web/packages/plotly/index.html) R package for the interactive map. It took a really long time to render and although my first choice for interactive plots is [leaflet](https://rstudio.github.io/leaflet/), I investigated alternatives and discovered ggiraph, which can be customised with CSS and used in Shiny apps.
+
+With a prototype of the map, a Shiny App or Flexdashboard could be developed to switch between the different sexes, age groups or combined with other regional data to gain further insights.
 
 
