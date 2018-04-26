@@ -170,8 +170,39 @@ wgs84 = '+proj=longlat +datum=WGS84'
 nz_region_wgs <- spTransform(nz_region, CRS(wgs84))
 # Confirm the coord ref is now longlat
 summary(nz_region_wgs)
+# Remove the nz_regions spatial object to save memory
+rm(nz_region)
 ```
- 
+
+```{r plot check}
+# Plot the transformed dataframe
+plot(nz_region_wgs, col = 'light blue', border = 'blue')
+# Remove the Area outside region which is -176 longitude to focus in this exercise on the north and south  islands.
+nz_region_wgs<- subset(nz_region_wgs, REGC2017_N != "Area Outside Region")
+# Plot the transformed dataframe  
+plot(nz_region_wgs, col = 'blue',      border = 'white')
+```
+
+## Fortify Data
+
+Next we will use ggplot2 which requires a dataframe to plot spatial objects, according to the tutorial. We will use the fortify function from the [rgeos](https://cran.r-project.org/web/packages/rgeos/index.html) R package. 
+
+
+```{r fortify}
+# Update the region id 'REGC2017' 
+nz_region_wgs@data$id <- row.names(nz_region_wgs@data) 
+# Fortify the nz_region_wgs to add long and lat variables and convert to a dataframe
+nz_region_f <- fortify(nz_region_wgs,id='id')
+# Check the new id variable in the fortified dataframe. This refers to the number of elements in the SpatialPolygonsData
+table(nz_region_f$id)
+# Join the new fortified and the @data
+nz_region_f <- merge(nz_region_f, nz_region_wgs@data, by="id")
+# Let's check the longitude and latitude ranges to fit the map onto one page
+range(nz_region_f$long)
+# Now order the dataframe
+nz_region_f <- nz_region_f[order(nz_region_f$order), ] 
+```
+
 ## Join non-spatial Census and spatial data 
 
 Now let's join the non-spatial Census data with the data in the spatial object and create a population density variable.
@@ -187,64 +218,39 @@ sex_ages <- sex %>%
       group_by(region) %>% 
       summarize_at( .vars = colnames(.)[2:5] , sum)
 # Merge the nz_region and sex datasets by the region
-nz_region_wgs@data <- merge(nz_region@data,sex_ages, by.x='REGC2017_N', by.y='region')
-# Remove the nz_regions spatial object to save memory
-rm(nz_region)
-# Plot the transformed dataframe
-plot(nz_region_wgs, col = 'light blue', border = 'blue')
-# Remove the Area outside region which is -176 longitude to focus in this exercise on the north and south  islands.
-nz_region_wgs<- subset(nz_region_wgs, REGC2017_N != "Area Outside Region")
-# Plot the transformed dataframe  
-plot(nz_region_wgs, col = 'blue',      border = 'white')
+nz_region_f <- merge(nz_region_f,sex_ages, by.x='REGC2017_N', by.y='region')
 # Add new variables for the population density which is a relative measure than only population counts for the regions
-nz_region_wgs@data <- nz_region_wgs@data %>% 
+nz_region_f <- nz_region_f %>% 
      mutate(maledens2006 = male2006/AREA_SQ_KM,
             femaledens2006 = female2006/AREA_SQ_KM,
             maledens2013 = male2013/AREA_SQ_KM,
             femaledens2013 = female2013/AREA_SQ_KM)
 
 ```
-## Interactive Map ##
 
-Next we will use ggplot2 which requires a dataframe to plot spatial objects, according to the tutorial. We will use the fortify function from the [rgeos](https://cran.r-project.org/web/packages/rgeos/index.html) R package. 
-
-
-```{r fortify}
-# Update the region id 'REGC2017' 
-nz_region_wgs@data$id <- row.names(nz_region_wgs@data)
-# Fortify the nz_region_wgs to add long and lat variables and convert to a dataframe
-nz_region_f <- fortify(nz_region_wgs,id='id')
-# Check the new id variable in the fortified dataframe. This refers to the number of elements in the SpatialPolygonsData
-table(nz_region_f$id)
-# Check the row names in nz_region_wgs 
-table(nz_region_wgs$REGC2017)
-# Join the new fortified and the @data
-nz_region_f <- left_join(nz_region_f, nz_region_wgs@data, by="id")
-# Let's check the longitude and latitude ranges to fit the map onto one page
-range(nz_region_f$long)
-# Now order the dataframe
-nz_region_f <- nz_region_f[order(nz_region_f$order), ] 
-```
+## Interactive Map 
 
 Finally let's create an interactive map using [ggiraph](davidgohel.github.io/ggiraph/index.htm).
 
 ```{r interactive map}
+# Now order the dataframe
+nz_region_f <- nz_region_f[order(nz_region_f$order), ]
 # Compare the region names for the Census data and the transformed and fortified spatial dataframe to note differences
-setdiff(unique(sex$region),unique(nz_region_wgs$REGC2017_N))
+setdiff(unique(sex$region),unique(nz_region_f$REGC2017_N))
 # It seems like one of the regions did not get joined. Let's temporarily fix this missing data by imputing values to get to a map prototype
-nz_region_f[nz_region_f$id=="0",]$femaledens2013 <-0.6847874
-nz_region_f[nz_region_f$id=="0",]$REGC2017_N <-"West Coast Region"
+# nz_region_f[nz_region_f$id=="0",]$femaledens2013 <-0.6847874
+# nz_region_f[nz_region_f$id=="0",]$REGC2017_N <-"West Coast Region"
 # Remove the nz_region_wgs spatial object to save memory
 rm(nz_region_wgs)
 # Create an object g with the merged dataframe with the ggplot and geom_polygon functions
-nz_region_f$tooltipf <- paste0(nz_region_f$REGC2017_N, "  : ", round(nz_region_f$femaledens2013), " per sq km")
+nz_region_f$tooltip <- paste0(nz_region_f$REGC2017_N, "  : ", round(nz_region_f$femaledens2013), " per sq km")
    
-g <- ggplot(nz_region_f, aes(long, lat,group = group)) +
+g <- ggplot(nz_region_f[,c(1:11,19,20)], aes(long, lat,group = group)) +
       geom_polygon_interactive(aes(fill=femaledens2013, 
-                               tooltip = htmltools::htmlEscape(tooltipf, TRUE))) +
+                               tooltip = htmltools::htmlEscape(tooltip, TRUE))) +
       geom_path(color = "white") + 
       coord_map() +
-     scale_fill_distiller(type="seq", trans="reverse", palette = "BuPu",   name="Population density") +
+      scale_fill_distiller(type="seq", trans="reverse", palette = "BuPu", name="Population per sq km") +
       theme_void() +   
       labs(color="Pop per sq km)") +
       ggtitle("New Zealand Female Population Density in 2013")
@@ -253,7 +259,8 @@ g <- ggplot(nz_region_f, aes(long, lat,group = group)) +
 fe2013 <- ggiraph(code = print(g))
 fe2013
 
-# htmlwidgets::saveWidget(fe2013, "fe2013.html", selfcontained=FALSE) commented to out to not save separately in blogdown post
+# fe2013 <- widgetframe::frameWidget(fe2013)
+# htmlwidgets::saveWidget(fe2013, "fe2013.html", selfcontained=FALSE) #commented to out to not save separately in blogdown post
 ```
 
 **Conclusions**
@@ -262,9 +269,9 @@ Loading the Census and spatial data is reproducible and the cleaning process cou
 
 - Working with Spatial is slightly different to regular dataframes as some functions don't work such as the the filter from dplyr. Instead we need to use the subset function.
 
-- Merging and joining datasets in combination with transforming data is tricky. Sanity checks and comparisons of the original data to the output is key to ensure that no data is lost in the process.
+- Merging and joining datasets in combination with transforming the data format is tricky. Sanity checks and comparisons of the original data to the output is key to ensure that no data is lost in the process. I had an issue with the "West Coast Region" data being lost initially however changing the left_join to merge function resolved this issue.
 
-- For the interactive plots, I tried the ggplotly function from the [plotly](https://cran.r-project.org/web/packages/plotly/index.html) R package for the interactive map. It took a really long time to render and although my first choice for interactive plots is [leaflet](https://rstudio.github.io/leaflet/), I investigated alternatives and discovered ggiraph, which can be customised with CSS and used in Shiny apps.
+- For the interactive plots, I tried the ggplotly function from the [plotly](https://cran.r-project.org/web/packages/plotly/index.html) R package for the interactive map. It took a really long time to render and although my first choice for interactive plots is [leaflet](https://rstudio.github.io/leaflet/), I investigated alternatives and discovered ggiraph, which can be customised with CSS and also used in Shiny apps.
 
 With a prototype of the map, a Shiny App or Flexdashboard could be developed to switch between the different sexes, age groups or combined with other regional data to gain further insights.
 
