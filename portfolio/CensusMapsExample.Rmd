@@ -17,13 +17,13 @@ I have been experimenting with spatial data and looking at ways to combine data 
 - Understand the format and structure of spatial objects and required transformations to select appropriate plotting functions.
 - Join datasets to gain further insights to the original dataset.
 
-The data used is the New Zealand 2006 and 2013 age and sex Census data and a New Zealand spatial object, with regions as the common identifiers.
+The data used is the New Zealand 2013 age and sex Census data and a New Zealand spatial object, with regions as the common identifiers.
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-```{r load packages}
+```{r load packages, message=FALSE, warning=FALSE}
 library(tidyverse)
 # Packages for loading data
 library(XLConnect)
@@ -152,17 +152,18 @@ summary(nz_region,level=1)
 slotNames(nz_region)
 # First plot the spatial object using base plot
 plot(nz_region, col = 'light blue', border = 'blue')
-# Next plot the data AREA_SQ_KM
-plot(nz_region$AREA_SQ_KM)
 ```
   
 ## Transform coordinate reference system (CRS)
 
 In order to use the the other plotting packages available we need to convert the coordinate reference system (CRS) using the spTransform function from the [rgdal](https://cran.r-project.org/web/packages/rgdal/index.html) R package as described in this [blog](https://blog.exploratory.io/making-maps-for-new-zealand-regions-and-territories-in-r-4400333df644) 
 from   
+
 `r proj4string(nz_region)`  
+
 to  
-['WGS84' (epsg:4326) is a very commonly used CRS worldwide.](https://cran.r-project.org/doc/contrib/intro-spatial-rl.pdf)
+
+'WGS84' (epsg:4326) [which is a very commonly used CRS worldwide.](https://cran.r-project.org/doc/contrib/intro-spatial-rl.pdf)
 
 ```{r transform coords}
 # Transform the coordinate reference system (CRS)
@@ -237,14 +238,10 @@ Finally let's create an interactive map using [ggiraph](davidgohel.github.io/ggi
 nz_region_f <- nz_region_f[order(nz_region_f$order), ]
 # Compare the region names for the Census data and the transformed and fortified spatial dataframe to note differences
 setdiff(unique(sex$region),unique(nz_region_f$REGC2017_N))
-# It seems like one of the regions did not get joined. Let's temporarily fix this missing data by imputing values to get to a map prototype
-# nz_region_f[nz_region_f$id=="0",]$femaledens2013 <-0.6847874
-# nz_region_f[nz_region_f$id=="0",]$REGC2017_N <-"West Coast Region"
 # Remove the nz_region_wgs spatial object to save memory
 rm(nz_region_wgs)
 # Create an object g with the merged dataframe with the ggplot and geom_polygon functions
 nz_region_f$tooltip <- paste0(nz_region_f$REGC2017_N, "  : ", round(nz_region_f$femaledens2013), " per sq km")
-   
 g <- ggplot(nz_region_f[,c(1:11,19,20)], aes(long, lat,group = group)) +
       geom_polygon_interactive(aes(fill=femaledens2013, 
                                tooltip = htmltools::htmlEscape(tooltip, TRUE))) +
@@ -258,14 +255,11 @@ g <- ggplot(nz_region_f[,c(1:11,19,20)], aes(long, lat,group = group)) +
 # Now plot the g object using ggiraph
 fe2013 <- ggiraph(code = print(g))
 fe2013
-
-# fe2013 <- widgetframe::frameWidget(fe2013)
-# htmlwidgets::saveWidget(fe2013, "fe2013.html", selfcontained=FALSE) #commented to out to not save separately in blogdown post
 ```
 
 **Conclusions**
 
-Loading the Census and spatial data is reproducible and the cleaning process could be leveraged for other Excel sheets. However the main challenges in this exercise were primarily in the data format transformation. Although a prototype map was produced, further investigation into the id's would needed to build an end user product. 
+Loading the Census and spatial data is reproducible and the cleaning process could be leveraged for other Excel sheets. However the main challenges in this exercise were primarily in the data format transformation. 
 
 - Working with Spatial is slightly different to regular dataframes as some functions don't work such as the the filter from dplyr. Instead we need to use the subset function.
 

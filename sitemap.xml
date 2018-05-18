@@ -11,6 +11,11 @@
   </url>
   
   <url>
+    <loc>https://kimnewzealand.github.io/portfolio/projects2017/</loc>
+    <lastmod>2018-05-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://kimnewzealand.github.io/contact/</loc>
     <lastmod>2016-11-06T13:00:25+05:30</lastmod>
   </url>
@@ -39,11 +44,13 @@
   
   <url>
     <loc>https://kimnewzealand.github.io/</loc>
+    <lastmod>2018-05-15T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://kimnewzealand.github.io/portfolio/</loc>
+    <lastmod>2018-05-15T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
