@@ -34,6 +34,26 @@ I have been experimenting with spatial data and looking at ways to combine data 
     </item>
     
     <item>
+      <title>Name Entity Recognition using Python spaCy in R</title>
+      <link>https://kimnewzealand.github.io/portfolio/nlpspacy/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://kimnewzealand.github.io/portfolio/nlpspacy/</guid>
+      <description>23 May 2018
+I have been learning Natural Language Processing (NLP). Although there are many NLP R packages, this field appears to extensively use Python packages so I started my NLP journey in Python with a Jupyter notebook based on the the DataCamp NLP course. The Python packages included area the research tool NLTK, gensim then the more recent spaCy.
+The purpose of this post is the next step in the journey to produce a pipeline for text mining and Named Entity Recognition (NER) with the Python spaCy NLP Toolkit, in R.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://kimnewzealand.github.io/portfolio/nlpspacy.nb/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://kimnewzealand.github.io/portfolio/nlpspacy.nb/</guid>
+      <description>Basic Text Mining and Name Entity Recognition using Python spaCy in Rcode{white-space: pre;}pre:not([class]) {background-color: white;}if (window.hljs) {hljs.configure({languages: []});hljs.initHighlightingOnLoad();if (document.readyState &amp;&amp; document.readyState === &#34;complete&#34;) {window.setTimeout(function() { hljs.initHighlighting(); }, 0);}}h1 {font-size: 34px;}h1.title {font-size: 38px;}h2 {font-size: 30px;}h3 {font-size: 24px;}h4 {font-size: 18px;}h5 {font-size: 16px;}h6 {font-size: 12px;}.</description>
+    </item>
+    
+    <item>
       <title>Creating a website in Hugo creative portfolio theme</title>
       <link>https://kimnewzealand.github.io/portfolio/creating-a-website-in-blogdown-and-hugo/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
