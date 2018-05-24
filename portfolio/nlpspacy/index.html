@@ -106,9 +106,9 @@ ga('send', 'pageview');
       <div class="content-column-content">
          <h1>Name Entity Recognition using Python spaCy in R</h1>
          <p><em>23 May 2018</em></p>
-<p>I have been learning Natural Language Processing (NLP). Although there are many NLP R packages, this field appears to extensively use Python packages so I started my NLP journey in Python with a <a href="https://github.com/kimnewzealand/NLPexampleprojects/blob/master/Basic%2BText%2BMining%2BNLP%2BABC%2Bexample.ipynb">Jupyter notebook</a> based on the the DataCamp <a href="https://www.datacamp.com/courses/natural-language-processing-fundamentals-in-python">NLP course</a>. The Python packages included area the research tool <a href="https://www.nltk.org/">NLTK</a>, <a href="https://radimrehurek.com/gensim/">gensim</a> then the more recent <a href="https://spacy.io/">spaCy</a>.</p>
+<p>I have been learning Natural Language Processing (NLP). Although there are many NLP R packages, this field appears to extensively use Python packages so I started my NLP journey in Python with a <a href="https://github.com/kimnewzealand/NLPexampleprojects/blob/master/Basic%2BText%2BMining%2BNLP%2BABC%2Bexample.ipynb">Jupyter notebook</a>. The Python packages included are the research tool <a href="https://www.nltk.org/">NLTK</a>, <a href="https://radimrehurek.com/gensim/">gensim</a> then the more recent <a href="https://spacy.io/">spaCy</a>.</p>
 <p>The purpose of this post is the next step in the journey to produce a pipeline for text mining and Named Entity Recognition (NER) with the Python spaCy NLP Toolkit, in R.</p>
-<p>This is also made possible with the reticulate R packages.</p>
+<p>This is also made possible with the interface to Python, the reticulate R package, as an .</p>
 <p>This will cover the following:</p>
 <ul>
 <li><a href="#python-initialisation">Python initialisation in R</a></li>
@@ -127,13 +127,12 @@ library(stringr)
 library(lubridate)
 # Packages for NLP
 library(NLP)
+# install.packages(&quot;openNLPmodels.en&quot;,repos = &quot;http://datacube.wu.ac.at/&quot;, type = &quot;source&quot;)
 library(openNLP)
-#install.packages(&quot;openNLPmodels.en&quot;,
-#                 repos = &quot;http://datacube.wu.ac.at/&quot;,
-#                 type = &quot;source&quot;)
 library(cleanNLP)
 # cnlp_download_corenlp() # install the coreNLP Java back end &#39;CoreNLP&#39; &lt;http://stanfordnlp.github.io/CoreNLP/&gt;
 # Packages for Python interface
+# Packages for Python
 library(reticulate)
 use_virtualenv(&quot;r-reticulate&quot;)</code></pre>
 </div>
@@ -230,7 +229,7 @@ head(abc)</code></pre>
 </div>
 <div id="named-entity-recognition-using-cleannlp" class="section level2">
 <h2>Named Entity Recognition using CleanNLP</h2>
-<p>Annote the string of text using the cnlp_annotate function from CleanNLP. This annotate function performs the word tokensiation and parts of speech tagging steps.</p>
+<p>Annote the string of text using the cnlp_annotate function from <a href="https://cran.r-project.org/web/packages/cleanNLP/index.html">CleanNLP</a>. This annotate function performs the word tokensiation and parts of speech tagging steps.</p>
 <pre class="r"><code># Annotate the string tf by running the annotation engine over the corpus of text
 anno &lt;- cnlp_annotate(tf)
 # Summarise the tokens by parts of speech

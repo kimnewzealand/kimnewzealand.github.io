@@ -3,7 +3,15 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://kimnewzealand.github.io/code/gitcrepeexample/</loc>
+  </url>
+  
+  <url>
     <loc>https://kimnewzealand.github.io/portfolio/gitcrepeexample/</loc>
+  </url>
+  
+  <url>
+    <loc>https://kimnewzealand.github.io/code/censusmapsexample/</loc>
   </url>
   
   <url>
@@ -38,6 +46,11 @@
   </url>
   
   <url>
+    <loc>https://kimnewzealand.github.io/code/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://kimnewzealand.github.io/portfolio/creating-a-website-in-blogdown-and-hugo/</loc>
   </url>
   
@@ -63,6 +76,10 @@
   <url>
     <loc>https://kimnewzealand.github.io/tags/r/</loc>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://kimnewzealand.github.io/code/firstblockchain/</loc>
   </url>
   
   <url>

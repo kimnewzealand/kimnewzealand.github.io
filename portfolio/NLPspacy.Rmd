@@ -11,11 +11,11 @@ weight : 5
 
 *23 May 2018*
 
-I have been learning Natural Language Processing (NLP). Although there are many NLP R packages, this field appears to extensively use Python packages so I started my NLP journey in Python with a [Jupyter notebook](https://github.com/kimnewzealand/NLPexampleprojects/blob/master/Basic%2BText%2BMining%2BNLP%2BABC%2Bexample.ipynb) based on the the DataCamp [NLP course](https://www.datacamp.com/courses/natural-language-processing-fundamentals-in-python).  The Python packages included area the research tool [NLTK](https://www.nltk.org/), [gensim](https://radimrehurek.com/gensim/) then the more recent [spaCy](https://spacy.io/).
+I have been learning Natural Language Processing (NLP). Although there are many NLP R packages, this field appears to extensively use Python packages so I started my NLP journey in Python with a [Jupyter notebook](https://github.com/kimnewzealand/NLPexampleprojects/blob/master/Basic%2BText%2BMining%2BNLP%2BABC%2Bexample.ipynb).  The Python packages included are the research tool [NLTK](https://www.nltk.org/), [gensim](https://radimrehurek.com/gensim/) then the more recent [spaCy](https://spacy.io/).
 
 The purpose of this post is the next step in the journey to produce a pipeline for text mining and Named Entity Recognition (NER) with the Python spaCy NLP Toolkit, in R. 
 
-This is also made possible with the reticulate R packages.
+This is also made possible with the interface to Python, the reticulate R package, as an .
 
 This will cover the following:
 
@@ -45,13 +45,12 @@ library(stringr)
 library(lubridate)
 # Packages for NLP
 library(NLP)
+# install.packages("openNLPmodels.en",repos = "http://datacube.wu.ac.at/", type = "source")
 library(openNLP)
-#install.packages("openNLPmodels.en",
-#                 repos = "http://datacube.wu.ac.at/",
-#                 type = "source")
 library(cleanNLP)
 # cnlp_download_corenlp() # install the coreNLP Java back end 'CoreNLP' <http://stanfordnlp.github.io/CoreNLP/>
 # Packages for Python interface
+# Packages for Python
 library(reticulate)
 use_virtualenv("r-reticulate")
 ```
@@ -138,7 +137,7 @@ abctext <- as.String(abctext)
 writeLines(abctext, tf <- tempfile())
 ```
 
-Annote the string of text using the cnlp_annotate function from CleanNLP. This annotate function performs the word tokensiation and parts of speech tagging steps.
+Annote the string of text using the cnlp_annotate function from [CleanNLP](https://cran.r-project.org/web/packages/cleanNLP/index.html). This annotate function performs the word tokensiation and parts of speech tagging steps.
 
 ```{r echo=TRUE}
 # Annotate the string tf by running the annotation engine over the corpus of text

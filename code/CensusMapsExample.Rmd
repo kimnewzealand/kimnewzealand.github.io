@@ -1,0 +1,272 @@
+---
+title: "Excel to Interactive Census Map"
+output: html_document
+Author: kimnewzealand
+image : "img/portfolio/fe2013.jpg"
+# showonlyimage : false
+weight : 5
+---
+
+
+*6 April 2018*
+
+I have been experimenting with spatial data and looking at ways to combine data objects to get different views and perspectives. This post has the following objectives:
+
+- Import and load data direct to R without manually saving files to a local directory, so that the end to end process is reproducible.
+- Use vectors to efficiently clean the Excel sheet, reducing manual steps where possible so that the process could be leveraged to clean other Excel sheets in the Census data. 
+- Understand the format and structure of spatial objects and required transformations to select appropriate plotting functions.
+- Join datasets to gain further insights to the original dataset.
+
+The data used is the New Zealand 2013 age and sex Census data and a New Zealand spatial object, with regions as the common identifiers.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r load packages, message=FALSE, warning=FALSE}
+library(tidyverse)
+# Packages for loading data
+library(XLConnect)
+library(readxl)
+library(httr)
+# Packages for data manipulation
+library(stringi)
+library(purrr)
+# Packages for spatial files
+library(rgdal) 
+library(rgeos)
+# Packages for geoviz
+library(ggiraph)
+library(ggthemes)
+```
+
+## Load New Zealand 2006 and 2013 Census data 
+
+Firstly, get census data from the [Stats NZ website](http://archive.stats.govt.nz/Census/2013-census.aspx) using [httr](https://cran.r-project.org/web/packages/httr/index.html) and [readxl](https://cran.r-project.org/web/packages/readxl/index.html) R packages.
+
+The 2011 Census was cancelled due to the [Christchurch earthquake](https://nzhistory.govt.nz/media/photo/census-2011).  
+
+> The census eventually took place on 5 March 2013, two years late. The five-yearly pattern will resume when the next census is held on 6 March 2018.
+
+```{r get Census data}
+# Set the url and use GET function from httr to import the Excel file to a temporary local directory
+url <- "http://archive.stats.govt.nz/~/media/Statistics/Census/2013%20Census/data-tables/regional-summary-part-1/regional-summary-tables-RC-final.xls"
+GET(url, write_disk(tf <- tempfile(fileext = ".xls")))
+# Read list of tables from 1st worksheet that are available in subsequent worksheets
+censustables <- read_excel(tf, 1L)
+# Take a look at the census tables available
+head(censustables)
+# Read in table 1, which is the second sheet in the Excel file
+sex <- read_excel(tf,2L)
+# Inspect the file layout
+head(sex,20)
+```
+  
+## Clean Excel file
+
+Next we will clean the Census file using logical vectors and the [stringi](https://cran.r-project.org/web/packages/stringi/index.html) R package.
+
+```{r cleanfile}
+# Remove the two "Total People" columns
+sex <- sex[,c(-4,-7)]
+# Rename columns
+names(sex) <- c("agegroup", "male2006","female2006","male2013","female2013")
+# Replace the hypens with to in the agegroup column using regex and stringi
+sex$agegroup <- str_replace_all(sex$agegroup, pattern = "[[:punct:]]", "to")
+# Based on inspection of the file, remove header and footer file with empty space, Total regional council areas, Area Outside Region and Total New Zealand
+sex <- sex[c(10:377),]
+# Create a vector with the region names. From observing the file,  the regions are populated in the first column in steps of 23 and the len with is the number of rows, which should be divisible by the number of steps
+steps <- 23
+len <- dim(sex)[1]
+region <- sex[seq(1, len, by=steps),1]
+names(region) <-"region"
+# Add a column with the region names filled in groups of 23 using dplyr mutate
+sex <- sex %>% 
+      mutate(region =rep(region$region,each=steps) )
+# Create a logical vector which will be used to remove rows containing Total
+t <- sex %>% select(agegroup) %>% 
+            unlist() %>% 
+            stri_detect_fixed('Total')
+# Remove rows with Total
+sex <- sex %>% 
+            filter(!t)
+# Use a for loop to iterate over the region$region vector and remove each region name 1 by 1. 
+for (i in seq_along(region$region)) {
+      # Create a logical vector r to remove rows containing region name i
+      r <- sex %>% select(agegroup) %>% 
+            unlist() %>% 
+            stri_detect_fixed(region$region[i])
+      # Remove rows with region name i
+      sex <- sex %>% 
+            filter(!r)
+}
+# Change the numerical variables from characters
+sex[,c(2,3,4,5)] <- as.numeric(as.character(unlist(sex[,c(2,3,4,5)])))
+
+```
+
+
+## Load Spatial Data
+
+Next download the spatial file with New Zealand regions REGC2017_GV_Clipped.shp to a temporary directory from the [Stats NZ website](http://archive.stats.govt.nz/browse_for_stats/Maps_and_geography/Geographic-areas/digital-boundary-files.aspx#annual).
+
+
+```{r shapefile}
+# Download the ESRI shapefile to the working directory, first capture the url
+URL <- "http://www3.stats.govt.nz/digitalboundaries/annual/ESRI_Shapefile_2017_Digital_Boundaries_Generalised_Clipped.zip"
+# Create a temporary directory
+td <-  tempdir()
+# Create a placeholder file
+temp <- tempfile(tmpdir=td, fileext=".zip")
+# Download into the placeholder file
+download.file(URL, temp)
+# Check the name of the REGC2017_GV_Clipped.shp file in the zip archive
+unzip(temp, list=TRUE)$Name[52]
+# Unzip the file to the temporary directory
+unzip(temp, exdir=td, overwrite=TRUE)
+# Create a new directory path for thelocation of the unzipped files as they have a subfolder
+unziptd <- paste0(td,"\\",list.files(td)[1])
+# Read in the REGC2017_GV_Clipped.shp files
+nz_region <- readOGR(dsn = unziptd, layer="REGC2017_GV_Clipped", stringsAsFactors = F)
+# unlink the temporary files and folders 
+unlink(temp)
+unlink(td)
+unlink(unziptd)
+```
+
+## Explore Spatial Data
+
+Let's explore the plotting options first given this spatial object following the  [introduction to spatial in R](https://cran.r-project.org/doc/contrib/intro-spatial-rl.pdf) tutorial. This nz_region file is a `r class(nz_region)[1]`. These spatial files have data and polygons "slots" which are each accessed with @. Our plotting options are initially R base plot. 
+
+>  The generic plot() function can use Spatial* objects directly; 
+>  plot is one of the most useful functions in R, as it changes its behaviour depending on the input data (this is
+called polymorphism by computer scientists). Inputting another object such as plot(lnd@data) will generate
+an entirely different type of plot.
+
+Also note that the R package [ggmap](https://cran.r-project.org/web/packages/ggmap/index.html) plots objects of class ggmap and since we are using our sourced spatial object, we will not use this package in this exercise.
+
+```{r base plot}
+# Let's see a summary of the spatial object, the names refer the variables in the data slot
+summary(nz_region,level=1)
+# Take a look at the slot names
+slotNames(nz_region)
+# First plot the spatial object using base plot
+plot(nz_region, col = 'light blue', border = 'blue')
+```
+  
+## Transform coordinate reference system (CRS)
+
+In order to use the the other plotting packages available we need to convert the coordinate reference system (CRS) using the spTransform function from the [rgdal](https://cran.r-project.org/web/packages/rgdal/index.html) R package as described in this [blog](https://blog.exploratory.io/making-maps-for-new-zealand-regions-and-territories-in-r-4400333df644) 
+from   
+
+`r proj4string(nz_region)`  
+
+to  
+
+'WGS84' (epsg:4326) [which is a very commonly used CRS worldwide.](https://cran.r-project.org/doc/contrib/intro-spatial-rl.pdf)
+
+```{r transform coords}
+# Transform the coordinate reference system (CRS)
+wgs84 = '+proj=longlat +datum=WGS84'
+nz_region_wgs <- spTransform(nz_region, CRS(wgs84))
+# Confirm the coord ref is now longlat
+summary(nz_region_wgs)
+# Remove the nz_regions spatial object to save memory
+rm(nz_region)
+```
+
+```{r plot check}
+# Plot the transformed dataframe
+plot(nz_region_wgs, col = 'light blue', border = 'blue')
+# Remove the Area outside region which is -176 longitude to focus in this exercise on the north and south  islands.
+nz_region_wgs<- subset(nz_region_wgs, REGC2017_N != "Area Outside Region")
+# Plot the transformed dataframe  
+plot(nz_region_wgs, col = 'blue',      border = 'white')
+```
+
+## Fortify Data
+
+Next we will use ggplot2 which requires a dataframe to plot spatial objects, according to the tutorial. We will use the fortify function from the [rgeos](https://cran.r-project.org/web/packages/rgeos/index.html) R package. 
+
+
+```{r fortify}
+# Update the region id 'REGC2017' 
+nz_region_wgs@data$id <- row.names(nz_region_wgs@data) 
+# Fortify the nz_region_wgs to add long and lat variables and convert to a dataframe
+nz_region_f <- fortify(nz_region_wgs,id='id')
+# Check the new id variable in the fortified dataframe. This refers to the number of elements in the SpatialPolygonsData
+table(nz_region_f$id)
+# Join the new fortified and the @data
+nz_region_f <- merge(nz_region_f, nz_region_wgs@data, by="id")
+# Let's check the longitude and latitude ranges to fit the map onto one page
+range(nz_region_f$long)
+# Now order the dataframe
+nz_region_f <- nz_region_f[order(nz_region_f$order), ] 
+```
+
+## Join non-spatial Census and spatial data 
+
+Now let's join the non-spatial Census data with the data in the spatial object and create a population density variable.
+
+```{r join data}
+# Compare the region names for the Census data and the spatial data to note differences
+setdiff(unique(sex$region),unique(nz_region_wgs$REGC2017_N))
+# Replace the regions in the sex dataframe to match the spatial object
+sex <- sex %>% 
+    mutate(region = replace(region, region == "Hawketos Bay Region", "Hawke's Bay Region"), region = replace(region, region == "ManawatutoWanganui Region", "Manawatu-Wanganui Region"))
+# Sum the male and female numbers grouping by region
+sex_ages <- sex %>% 
+      group_by(region) %>% 
+      summarize_at( .vars = colnames(.)[2:5] , sum)
+# Merge the nz_region and sex datasets by the region
+nz_region_f <- merge(nz_region_f,sex_ages, by.x='REGC2017_N', by.y='region')
+# Add new variables for the population density which is a relative measure than only population counts for the regions
+nz_region_f <- nz_region_f %>% 
+     mutate(maledens2006 = male2006/AREA_SQ_KM,
+            femaledens2006 = female2006/AREA_SQ_KM,
+            maledens2013 = male2013/AREA_SQ_KM,
+            femaledens2013 = female2013/AREA_SQ_KM)
+
+```
+
+## Interactive Map 
+
+Finally let's create an interactive map using [ggiraph](davidgohel.github.io/ggiraph/index.htm).
+
+```{r interactive map}
+# Now order the dataframe
+nz_region_f <- nz_region_f[order(nz_region_f$order), ]
+# Compare the region names for the Census data and the transformed and fortified spatial dataframe to note differences
+setdiff(unique(sex$region),unique(nz_region_f$REGC2017_N))
+# Remove the nz_region_wgs spatial object to save memory
+rm(nz_region_wgs)
+# Create an object g with the merged dataframe with the ggplot and geom_polygon functions
+nz_region_f$tooltip <- paste0(nz_region_f$REGC2017_N, "  : ", round(nz_region_f$femaledens2013), " per sq km")
+g <- ggplot(nz_region_f[,c(1:11,19,20)], aes(long, lat,group = group)) +
+      geom_polygon_interactive(aes(fill=femaledens2013, 
+                               tooltip = htmltools::htmlEscape(tooltip, TRUE))) +
+      geom_path(color = "white") + 
+      coord_map() +
+      scale_fill_distiller(type="seq", trans="reverse", palette = "BuPu", name="Population per sq km") +
+      theme_void() +   
+      labs(color="Pop per sq km)") +
+      ggtitle("New Zealand Female Population Density in 2013")
+
+# Now plot the g object using ggiraph
+fe2013 <- ggiraph(code = print(g))
+fe2013
+```
+
+**Conclusions**
+
+Loading the Census and spatial data is reproducible and the cleaning process could be leveraged for other Excel sheets. However the main challenges in this exercise were primarily in the data format transformation. 
+
+- Working with Spatial is slightly different to regular dataframes as some functions don't work such as the the filter from dplyr. Instead we need to use the subset function.
+
+- Merging and joining datasets in combination with transforming the data format is tricky. Sanity checks and comparisons of the original data to the output is key to ensure that no data is lost in the process. I had an issue with the "West Coast Region" data being lost initially however changing the left_join to merge function resolved this issue.
+
+- For the interactive plots, I tried the ggplotly function from the [plotly](https://cran.r-project.org/web/packages/plotly/index.html) R package for the interactive map. It took a really long time to render and although my first choice for interactive plots is [leaflet](https://rstudio.github.io/leaflet/), I investigated alternatives and discovered ggiraph, which can be customised with CSS and also used in Shiny apps.
+
+With a prototype of the map, a Shiny App or Flexdashboard could be developed to switch between the different sexes, age groups or combined with other regional data to gain further insights.
+
+
