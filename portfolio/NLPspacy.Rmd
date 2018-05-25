@@ -15,7 +15,7 @@ I have been learning Natural Language Processing (NLP). Although there are many 
 
 The purpose of this post is the next step in the journey to produce a pipeline for text mining and Named Entity Recognition (NER) with the Python spaCy NLP Toolkit, in R. 
 
-This is also made possible with the interface to Python, the reticulate R package, as an .
+This is also made possible with the interface to Python, the reticulate R package.
 
 This will cover the following:
 
@@ -128,7 +128,7 @@ rm(abc)
 ```  
 
 
-## Named Entity Recognition using CleanNLP
+## Named Entity Recognition using CleanNLP and spaCy
 
 ```{r create string}
 # Collapse the list into one string
