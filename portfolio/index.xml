@@ -40,8 +40,8 @@ I have been experimenting with spatial data and looking at ways to combine data 
       
       <guid>https://kimnewzealand.github.io/portfolio/nlpspacy/</guid>
       <description>23 May 2018
-I have been learning Natural Language Processing (NLP). Although there are many NLP R packages, this field appears to extensively use Python packages so I started my NLP journey in Python with a Jupyter notebook. The Python packages included are the research tool NLTK, gensim then the more recent spaCy.
-The purpose of this post is the next step in the journey to produce a pipeline for text mining and Named Entity Recognition (NER) with the Python spaCy NLP Toolkit, in R.</description>
+Recently I have been working on an Natural Language Processing (NLP) client project. This field appears to extensively use Python packages so I used the opportunity to go on an NLP journey in Python, starting with a Jupyter notebook. The Python packages included here are the research tool NLTK, gensim then the more recent spaCy.
+The purpose of this post is the next step in the journey to produce a pipeline for the NLP areas of text mining and Named Entity Recognition (NER) using the Python spaCy NLP Toolkit, in R.</description>
     </item>
     
     <item>

@@ -11,13 +11,11 @@ weight : 5
 
 *23 May 2018*
 
-I have been learning Natural Language Processing (NLP). Although there are many NLP R packages, this field appears to extensively use Python packages so I started my NLP journey in Python with a [Jupyter notebook](https://github.com/kimnewzealand/NLPexampleprojects/blob/master/Basic%2BText%2BMining%2BNLP%2BABC%2Bexample.ipynb).  The Python packages included are the research tool [NLTK](https://www.nltk.org/), [gensim](https://radimrehurek.com/gensim/) then the more recent [spaCy](https://spacy.io/).
+Recently I have been working on an Natural Language Processing (NLP) client project. This field appears to extensively use Python packages so I used the opportunity to go on an NLP journey in Python, starting with a [Jupyter notebook](https://github.com/kimnewzealand/NLPexampleprojects/blob/master/Basic%2BText%2BMining%2BNLP%2BABC%2Bexample.ipynb).  The Python packages included here are the research tool [NLTK](https://www.nltk.org/), [gensim](https://radimrehurek.com/gensim/) then the more recent [spaCy](https://spacy.io/).
 
-The purpose of this post is the next step in the journey to produce a pipeline for text mining and Named Entity Recognition (NER) with the Python spaCy NLP Toolkit, in R. 
+The purpose of this post is the next step in the journey to produce a pipeline for the NLP areas of text mining and Named Entity Recognition (NER) using the Python spaCy NLP Toolkit, in R. This is made possible with the interface to Python, the reticulate R package.
 
-This is also made possible with the interface to Python, the reticulate R package.
-
-This will cover the following:
+This post will cover the following:
 
 + [Python initialisation in R](#python-initialisation)
 + [Load the data](#load-data)
@@ -25,7 +23,7 @@ This will cover the following:
 + [Named entity recognition with spaCy](#named-entity-recognition-using-cleannlp)
 
 
-This will not include advanced topic modeling and training annotation models in spaCy.
+This will not however include advanced topic modeling and training annotation models in spaCy.
 
 <br><hr>
 
@@ -137,7 +135,7 @@ abctext <- as.String(abctext)
 writeLines(abctext, tf <- tempfile())
 ```
 
-Annote the string of text using the cnlp_annotate function from [CleanNLP](https://cran.r-project.org/web/packages/cleanNLP/index.html). This annotate function performs the word tokensiation and parts of speech tagging steps.
+Annotate the string of text using the cnlp_annotate function from [CleanNLP](https://cran.r-project.org/web/packages/cleanNLP/index.html). This annotate function performs the word tokenisation and parts of speech tagging steps.
 
 ```{r echo=TRUE}
 # Annotate the string tf by running the annotation engine over the corpus of text

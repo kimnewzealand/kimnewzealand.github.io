@@ -106,17 +106,16 @@ ga('send', 'pageview');
       <div class="content-column-content">
          <h1>Name Entity Recognition using Python spaCy in R</h1>
          <p><em>23 May 2018</em></p>
-<p>I have been learning Natural Language Processing (NLP). Although there are many NLP R packages, this field appears to extensively use Python packages so I started my NLP journey in Python with a <a href="https://github.com/kimnewzealand/NLPexampleprojects/blob/master/Basic%2BText%2BMining%2BNLP%2BABC%2Bexample.ipynb">Jupyter notebook</a>. The Python packages included are the research tool <a href="https://www.nltk.org/">NLTK</a>, <a href="https://radimrehurek.com/gensim/">gensim</a> then the more recent <a href="https://spacy.io/">spaCy</a>.</p>
-<p>The purpose of this post is the next step in the journey to produce a pipeline for text mining and Named Entity Recognition (NER) with the Python spaCy NLP Toolkit, in R.</p>
-<p>This is also made possible with the interface to Python, the reticulate R package.</p>
-<p>This will cover the following:</p>
+<p>Recently I have been working on an Natural Language Processing (NLP) client project. This field appears to extensively use Python packages so I used the opportunity to go on an NLP journey in Python, starting with a <a href="https://github.com/kimnewzealand/NLPexampleprojects/blob/master/Basic%2BText%2BMining%2BNLP%2BABC%2Bexample.ipynb">Jupyter notebook</a>. The Python packages included here are the research tool <a href="https://www.nltk.org/">NLTK</a>, <a href="https://radimrehurek.com/gensim/">gensim</a> then the more recent <a href="https://spacy.io/">spaCy</a>.</p>
+<p>The purpose of this post is the next step in the journey to produce a pipeline for the NLP areas of text mining and Named Entity Recognition (NER) using the Python spaCy NLP Toolkit, in R. This is made possible with the interface to Python, the reticulate R package.</p>
+<p>This post will cover the following:</p>
 <ul>
 <li><a href="#python-initialisation">Python initialisation in R</a></li>
 <li><a href="#load-data">Load the data</a></li>
 <li><a href="#data-summary">Data Summaries</a></li>
 <li><a href="#named-entity-recognition-using-cleannlp">Named entity recognition with spaCy</a></li>
 </ul>
-<p>This will not include advanced topic modeling and training annotation models in spaCy.</p>
+<p>This will not however include advanced topic modeling and training annotation models in spaCy.</p>
 <br>
 <hr>
 <div id="load-packages" class="section level2">
@@ -229,7 +228,7 @@ head(abc)</code></pre>
 </div>
 <div id="named-entity-recognition-using-cleannlp-and-spacy" class="section level2">
 <h2>Named Entity Recognition using CleanNLP and spaCy</h2>
-<p>Annote the string of text using the cnlp_annotate function from <a href="https://cran.r-project.org/web/packages/cleanNLP/index.html">CleanNLP</a>. This annotate function performs the word tokensiation and parts of speech tagging steps.</p>
+<p>Annotate the string of text using the cnlp_annotate function from <a href="https://cran.r-project.org/web/packages/cleanNLP/index.html">CleanNLP</a>. This annotate function performs the word tokenisation and parts of speech tagging steps.</p>
 <pre class="r"><code># Annotate the string tf by running the annotation engine over the corpus of text
 anno &lt;- cnlp_annotate(tf)
 # Summarise the tokens by parts of speech
