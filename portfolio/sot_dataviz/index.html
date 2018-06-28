@@ -153,6 +153,10 @@ ga('send', 'pageview');
 <div id="section" class="section level3">
 <h3></h3>
 <hr />
+<pre class="r"><code>library(tidyverse)
+library(DataExplorer)
+library(skimr)
+library(networkD3)</code></pre>
 </div>
 </div>
 <div id="data" class="section level2">
@@ -168,6 +172,24 @@ ga('send', 'pageview');
 </li>
 <li>“Intern data Dec 2017.csv” includes student details and internship details</li>
 </ul>
+<pre class="r"><code># Import the &quot;2017 event detail report.csv&quot; 
+eventdetail &lt;- read_csv(&quot;https://raw.githubusercontent.com/R-LadiesAKL/sotdata/master/2017%20event%20detail%20report.csv&quot;)
+# Import the &quot;Event attendances data Dec 2017.csv&quot;
+event &lt;- read_csv(&quot;https://raw.githubusercontent.com/R-LadiesAKL/sotdata/master/Event%20attendances%20data%20Dec%202017.csv&quot;)
+# Import the intern data &quot;Intern data Dec 2017.csv&quot;
+intern &lt;- read_csv(&quot;https://raw.githubusercontent.com/R-LadiesAKL/sotdata/master/Intern%20data%20Dec%202017.csv&quot;)
+#  Only select the first 214 rows, the rest are N/A
+intern &lt;- intern[1:214,]
+# Import the &quot;Institution to region mapper.csv&quot;
+mapper &lt;- read_csv(&quot;https://raw.githubusercontent.com/R-LadiesAKL/sotdata/master/Institution%20to%20region%20mapper.csv&quot;)
+# Import the &quot;2017 interns per employer.csv&quot;
+internemployer &lt;- read_csv(&quot;https://raw.githubusercontent.com/R-LadiesAKL/sotdata/master/2017%20interns%20per%20employer.csv&quot;)</code></pre>
+<pre class="r"><code>#  We will use the make.names base R function to make syntactically valid names of the column variables for further analysis and output in R Markdown. For these names, it adds a &quot;.&quot; to the spaces in the names
+names(eventdetail) &lt;- make.names(names(eventdetail))
+#  Make Syntactically Valid Names of the eventdetail 
+names(event) &lt;- make.names(names(event))
+#  Make Syntactically Valid Names of the intern
+names(intern) &lt;- make.names(names(intern))</code></pre>
 <p><strong>Summarise the the data in numbers:</strong></p>
 <ul>
 <li><p>From the event attendances data, there are <strong>1381</strong> students from <strong>34</strong> institutions, studying <strong>886</strong> different qualifications, who express interest in the events.</p></li>
@@ -181,6 +203,11 @@ ga('send', 'pageview');
 <p>We will first clean the data.</p>
 <p><strong>Duplicates</strong></p>
 <p>From the summary statistics there appears to be a student who has two internships? Let’s view and remove the duplicate token.</p>
+<pre class="r"><code>#  Check which internship with the duplicated token ID
+intern %&gt;% 
+      filter(token==intern$token[duplicated(intern$token)]) %&gt;% 
+      kableExtra::kable() %&gt;%
+      kableExtra::kable_styling()</code></pre>
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -301,15 +328,56 @@ year
 </tr>
 </tbody>
 </table>
+<pre class="r"><code># Remove the duplicate token by identifying the row number with the duplicate and then using dplyr&#39;s slice function
+intern &lt;- intern %&gt;% 
+      slice(-which(duplicated(intern$token)))</code></pre>
 <p>There is one event that also appears in the event detail called Health and Safety with no registered attendees which may be a duplicate of another Health and Safety event.</p>
 <p><strong>Add successful intern flag</strong></p>
 <p>Add a variable to the intern data to identify successful internship students after joining with the event data.</p>
+<pre class="r"><code># Add a variable to the intern data to identify successful internship students after merged with the event data
+intern &lt;- intern %&gt;% 
+      mutate(internship=&quot;Successful&quot;)</code></pre>
 <p><strong>Rename column variables</strong></p>
 <p>Let’s rename some of the column variables to be able to track which dataset set they came from.</p>
+<pre class="r"><code># Rename column variables
+intern &lt;- intern %&gt;% 
+      # Rename the intern Region to intern.region
+      rename_at(vars(&#39;Region&#39;), ~ &#39;Intern.region&#39;) %&gt;% 
+      # Rename the intern institution to intern.institution
+      rename_at(vars(&#39;Institution&#39;), ~ &#39;Intern.institution&#39;) %&gt;% 
+      # Rename the intern Year of study to Intern.year.of.study
+      rename_at(vars(&#39;Year.of.study&#39;), ~ &#39;Intern.year.of.study&#39;)
+event &lt;- event %&gt;% 
+       # Rename the Student token variable in event to token so that this is the same as the intern variable name.
+      rename_at(vars(&#39;Student.token&#39;), ~ &#39;token&#39;) %&gt;% 
+      # Rename the region institution to region.institution
+      rename_at(vars(&#39;Institution&#39;), ~ &#39;Event.institution&#39;) 
+eventdetail &lt;- eventdetail %&gt;% 
+       # Rename the eventdetail Name variable in event to Event.name 
+      rename_at(vars(&#39;Name&#39;), ~ &#39;Event.name&#39;) %&gt;% 
+       # Rename the eventdetail Name variable in event to Event.name 
+      rename_at(vars(&#39;Location&#39;), ~ &#39;Event.region&#39;)</code></pre>
 <p><strong>Mapper update</strong></p>
 <p>Add a missing institution,“Toi Ohomai Institute of Technology”, to the region-institution mapper.</p>
+<pre class="r"><code># Add a missing institution to the mapper
+mapper &lt;- rbind(mapper,c(&quot;Toi Ohomai Institute of Technology&quot;,&quot;Multiple&quot;))</code></pre>
 <p><strong>Join files</strong></p>
 <p>Next Join the intern and event files by the common identifier, the student ID, “token”.</p>
+<pre class="r"><code># Join the intern and event by the common token variable
+combine &lt;- full_join(intern,event,by=&quot;token&quot;)
+# Replace the internship NA&#39;s to no. This will include event attendance states including late withdrawals
+combine$internship &lt;- replace_na(combine$internship,&quot;Unsuccessful&quot;)
+# Since some students attend multiple events, let&#39;s create a flag for attended events
+combine &lt;- combine %&gt;% 
+      mutate(registered.for.events=ifelse(is.na(Event.region),&quot;no&quot;,&quot;yes&quot;))
+# Create a new student institution variable from the Event and intern institution variables
+combine &lt;- combine %&gt;% 
+      mutate(Institution=ifelse(is.na(Event.institution),Intern.institution, Event.institution))
+# Map instititution to the region using the mapper 
+combine &lt;- combine %&gt;% 
+      left_join(mapper,by=&quot;Institution&quot;) %&gt;% 
+      rename(Student.institution=Institution) %&gt;% 
+      rename(Student.region=Region)</code></pre>
 </div>
 <div id="success-factors" class="section level2">
 <h2>Success Factors</h2>
@@ -320,13 +388,64 @@ year
 <p>Then I tried the <a href="https://cran.r-project.org/web/packages/networkD3/index.html">networkD3</a> R package to create a D3 JavaScript Sankey diagram.</p>
 <p>I included a check that the total number of intern tokens in original file is same as sum in this summary after the join and also include a new “Student Institution” variable.</p>
 <p>See below the interactive Sankey diagram:</p>
+<pre class="r"><code># Create a summary of the counts of Event institutions by unique interns
+inst_intern_count &lt;- combine %&gt;%
+      distinct(Student.institution,internship,token) %&gt;%
+      group_by(Student.institution,internship) %&gt;%  
+      summarize(counts = n()) %&gt;%
+      ungroup() %&gt;%  
+      arrange(desc(counts))
+# Replace the Event NA&#39;s to Other
+inst_intern_count$Event.institution &lt;- replace_na(inst_intern_count$Student.institution,&quot;Other&quot;)
+# Since there is a large number of institutions, Group the institutions with count less than 10 as Other
+l &lt;- length(inst_intern_count$counts)
+inst_intern_count$Student.institution[15:l] &lt;- &quot;Other&quot;
+# Check that the total intern tokens in original file is same as sum in this summary
+length(unique(intern$token))==
+inst_intern_count %&gt;% filter(internship==&quot;Successful&quot;) %&gt;% select(counts) %&gt;% sum()</code></pre>
 <p>[1] TRUE</p>
+<pre class="r"><code># Create the links and nodes for the Sankey and force network diagrams
+name_vec &lt;- c(unique(inst_intern_count$Student.institution), unique(inst_intern_count$internship))
+name_vec &lt;- name_vec[!is.na(name_vec)]
+lengthid &lt;- length(name_vec)
+nodes &lt;- data.frame(name = name_vec,id=0:(lengthid-1),stringsAsFactors = FALSE)
+links &lt;- inst_intern_count %&gt;%
+  left_join(nodes, by = c(&#39;Student.institution&#39; = &#39;name&#39;)) %&gt;%
+  rename(origin_id = id) %&gt;%
+  left_join(nodes, by = c(&#39;internship&#39; = &#39;name&#39;)) %&gt;%
+  rename(dest_id = id) %&gt;% 
+      data.frame()</code></pre>
+<pre class="r"><code>sankeyNetwork(Links = links, Nodes = nodes, Source = &#39;origin_id&#39;, Target = &#39;dest_id&#39;, Value = &#39;counts&#39;, NodeID = &#39;name&#39;, 
+              # Format
+              fontSize = 14,
+              nodeWidth = 20)   </code></pre>
 <div id="htmlwidget-1" style="width:672px;height:480px;" class="sankeyNetwork html-widget"></div>
 <script type="application/json" data-for="htmlwidget-1">{"x":{"links":{"source":[0,1,0,2,3,4,5,1,6,7,8,9,10,11,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12],"target":[13,13,14,13,13,13,13,14,13,13,13,13,13,13,13,14,13,14,13,14,13,13,13,13,14,14,14,14,13,13,14,14,13,13,14,13,13,13,13,14,13,13,14,13,14,13,14,13,13,13,14,14],"value":[461,312,108,68,58,50,48,39,25,25,24,22,17,16,16,15,15,14,7,6,5,5,5,5,4,4,4,4,3,3,3,3,3,2,2,2,2,2,2,2,2,1,1,1,1,1,1,1,1,1,1,1]},"nodes":{"name":["Victoria University of Wellington","Auckland University","Auckland University of Technology","Whitireia New Zealand","Wellington Institute of Technology (Weltec)","Massey University (Wellington)","Unitec Institute of Technology","Yoobee School of Design","University of Canterbury","Enspiral Dev Academy","University of Otago","Computer Power Plus","Other","Unsuccessful","Successful"],"group":["Victoria University of Wellington","Auckland University","Auckland University of Technology","Whitireia New Zealand","Wellington Institute of Technology (Weltec)","Massey University (Wellington)","Unitec Institute of Technology","Yoobee School of Design","University of Canterbury","Enspiral Dev Academy","University of Otago","Computer Power Plus","Other","Unsuccessful","Successful"]},"options":{"NodeID":"name","NodeGroup":"name","LinkGroup":null,"colourScale":"d3.scaleOrdinal(d3.schemeCategory20);","fontSize":14,"fontFamily":null,"nodeWidth":20,"nodePadding":10,"units":"","margin":{"top":null,"right":null,"bottom":null,"left":null},"iterations":32,"sinksRight":true}},"evals":[],"jsHooks":[]}</script>
+<pre class="r"><code># Use this to save the plot as html
+# saveNetwork(file = &#39;sankey.html&#39;)</code></pre>
 <p>Let’s view this with an interactive and zoom-able force directed network graph using the forceNetwork function from the same <a href="https://cran.r-project.org/web/packages/networkD3/index.html">networkD3</a> R package.</p>
+<pre class="r"><code># Create and plot the forcenetwork with the links and nodes
+forceNetwork(Links = links, Nodes = nodes, Source = &#39;origin_id&#39;, Target = &#39;dest_id&#39;, NodeID = &#39;name&#39;, Group = &#39;id&#39;, 
+             # Customise the edges
+             Value = &#39;counts&#39;, 
+             # Layout
+             #height = 500, 
+             #width = 500, 
+             zoom = TRUE,
+             # Customise the links
+             linkWidth = networkD3::JS(&quot;function(d) { return d.value/50; }&quot;),
+             charge=-1500,
+             # Format
+             fontFamily = &quot;serif&quot;,
+             opacity = 0.95, 
+             opacityNoHover = 0.5,
+             fontSize = 18) %&gt;% 
+      htmlwidgets::prependContent(htmltools::tags$h3(&quot;Institution Links to Successful and Unsuccessful Internships&quot;))  </code></pre>
 <h3>Institution Links to Successful and Unsuccessful Internships</h3>
 <div id="htmlwidget-2" style="width:672px;height:480px;" class="forceNetwork html-widget"></div>
 <script type="application/json" data-for="htmlwidget-2">{"x":{"links":{"source":[0,1,0,2,3,4,5,1,6,7,8,9,10,11,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12],"target":[13,13,14,13,13,13,13,14,13,13,13,13,13,13,13,14,13,14,13,14,13,13,13,13,14,14,14,14,13,13,14,14,13,13,14,13,13,13,13,14,13,13,14,13,14,13,14,13,13,13,14,14],"value":[461,312,108,68,58,50,48,39,25,25,24,22,17,16,16,15,15,14,7,6,5,5,5,5,4,4,4,4,3,3,3,3,3,2,2,2,2,2,2,2,2,1,1,1,1,1,1,1,1,1,1,1],"colour":["#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666"]},"nodes":{"name":["Victoria University of Wellington","Auckland University","Auckland University of Technology","Whitireia New Zealand","Wellington Institute of Technology (Weltec)","Massey University (Wellington)","Unitec Institute of Technology","Yoobee School of Design","University of Canterbury","Enspiral Dev Academy","University of Otago","Computer Power Plus","Other","Unsuccessful","Successful"],"group":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14]},"options":{"NodeID":"name","Group":"id","colourScale":"d3.scaleOrdinal(d3.schemeCategory20);","fontSize":18,"fontFamily":"serif","clickTextSize":45,"linkDistance":50,"linkWidth":"function(d) { return d.value/50; }","charge":-1500,"opacity":0.95,"zoom":true,"legend":false,"arrows":false,"nodesize":false,"radiusCalculation":" Math.sqrt(d.nodesize)+6","bounded":false,"opacityNoHover":0.5,"clickAction":null}},"evals":[],"jsHooks":[]}</script>
+<pre class="r"><code># Use this to save the plot as html
+# saveNetwork(file =  &#39;forcediag.html&#39;)</code></pre>
 <p>The two main Institution feeders appear to be Victoria University of Wellington and Auckland University, the former resulting in half of internships.</p>
 </div>
 <div id="specific-events-resulting-in-internships" class="section level2">
@@ -337,32 +456,119 @@ year
 <p><strong>Event Counts by Student Token</strong></p>
 <p>In order to arrange the data such that there is one token id by row, to summarise this one to many relationship, I have summarised the event counts as a wide data set, with column variables by region. This dataframe also has the internship variable as “Successful” or “Unsuccessful”. We can then look at whether total event attendance is a factor.</p>
 <p>After creating the new dataframe, check that there are the same number of successful interns in this new dataset as the original intern data.</p>
+<pre class="r"><code># Create a new summary dataframe of the event counts by student.
+eventcountbystudent  &lt;- combine %&gt;%     
+      select(token,internship,registered.for.events,Event.region,Student.region) %&gt;% 
+      group_by(token,internship,registered.for.events,Event.region,Student.region) %&gt;% 
+      mutate(event.count=n()) %&gt;% 
+      distinct()  %&gt;% 
+      ungroup()
+# Now create a wide dataset with the spread function
+eventcountbystudent_wide &lt;- eventcountbystudent %&gt;% 
+      spread(Event.region,event.count) %&gt;% 
+      rename(DirectApp=&#39;&lt;NA&gt;&#39;)  %&gt;% 
+      # Replace the NAs with 0 for this plot
+      mutate_at(vars(Auckland,Wellington,Christchurch,Dunedin,Hamilton,DirectApp), funs(replace(., is.na(.), 0))) %&gt;% 
+      # Add a total events variable
+      mutate(TotEvents = Auckland+Wellington+Christchurch+Dunedin+Hamilton)
+# Check that there are the same number of successful interns as the original intern data
+table(eventcountbystudent_wide$internship)[1]==length(unique(intern$token))</code></pre>
 <pre><code>## Successful 
 ##       TRUE</code></pre>
 <p><strong>Total registered events by student token</strong></p>
 <p>Of the <strong>213</strong> successful interns, <strong>43</strong> applied directly and did not attend any events. Let’s first take a look the balance who registered for events. The total event registration by internship success is plotted as a violin plot which is a mirrored density plot. A boxplot is layered on top to show the quantiles. We use registration as in indication of interest in interships, as actual attendance may be dependent on other external factors.</p>
+<pre class="r"><code># plot violin plot with boxploit layer
+eventcountbystudent_wide  %&gt;% 
+      ggplot() +
+      geom_violin(aes(internship,TotEvents),fill=&quot;purple&quot;) +
+      geom_boxplot(aes(internship,TotEvents),alpha=0.3) +
+      theme_bw() +
+      ggtitle(&quot;Distribution of Registered Events Count and Internship&quot;) +
+      xlab(&quot;Internship&quot;) +
+      ylab(&quot;Count of registered events (All Regions)&quot;)</code></pre>
 <p><img src="/portfolio/SoT_dataviz_files/figure-html/violin%20plot-1.png" width="672" /></p>
 <p>Overall, it appears from the quantile box that successful interns registered to attend more events. However there are some outliers of unsuccessful students who registered for a very large number events, the maximum number is <strong>47</strong> by one student. The greater spread at the bottom of the unsuccessful students indicates more unsuccessful students registered for fewer events than the successful interns.</p>
 <p><strong>Registration count by student region</strong></p>
 <p>Next we will break down and plot the total registered events by the region in which the student studies.</p>
 <p>This plot uses a jitter effect to add random variation to disperse the plotted points.</p>
+<pre class="r"><code># Rename the Multiple Student region to Multiple region Academy
+eventcountbystudent_wide    %&gt;%    
+# Replace the NAs with 0 for this plot
+      mutate_at(vars(Auckland,Wellington,Christchurch,Dunedin,Hamilton,DirectApp), funs(replace(., is.na(.), 0))) %&gt;% 
+      # Add a total events variable
+      mutate(TotEvents = Auckland+Wellington+Christchurch+Dunedin+Hamilton) %&gt;% 
+      mutate_at(vars(Student.region),funs(replace(.,.== &quot;Multiple&quot;,&quot;Multiple Region Academy&quot;))) %&gt;%  
+      ggplot() +
+      geom_jitter(aes(internship,TotEvents,colour=internship))+
+      xlab(&quot;Internship&quot;)+
+      ylab(&quot;Total number student registered events&quot;)+
+      ggtitle(&quot;Number of Student Registered Events by Student Region of Study&quot;) +
+      theme(axis.text.x=element_blank()) +
+      scale_color_manual(values=c(&quot;green&quot;, &quot;blue&quot;))+
+      facet_wrap(~Student.region)      </code></pre>
 <p><img src="/portfolio/SoT_dataviz_files/figure-html/count%20by%20region-1.png" width="672" /></p>
 <p>Students from outside the major centres are very low in numbers in registering and relatively unsuccessful in interships.</p>
 <p><strong>Decision Tree</strong></p>
 <p>Instead of trying to visualise all the events, we can use a model to visualise as a decision tree what possible combination of events successful interns attended in 2017. We will use the <a href="https://cran.r-project.org/web/packages/rpart/index.html">rpart</a> R package to create a classification model and the <a href="https://cran.r-project.org/web/packages/rattle/index.html">rattle</a> R package which has a nice function, fancyRpartPlot, to plot the tree below.</p>
 <p>This is a very simple model which is not intended as a prediction model with measures of accuracy. However the reshaped data with events classified with 0 or 1, which is also called one hot encoding, could be leveraged to build predictive models.</p>
+<pre class="r"><code># Create a new summary dataframe of the event names by student.
+eventnamebystudent_wide  &lt;- combine %&gt;%     
+      select(token,internship,Student.region,Event.name) %&gt;% 
+      mutate(count=1) %&gt;% 
+      distinct() %&gt;% 
+      spread(Event.name,count)  %&gt;% 
+      # Replace the NAs with 0 for this plot
+      mutate_if(is.numeric, funs(replace(., is.na(.), 0)))
+# Convert the internship values with 0 and 1 for the model
+eventnamebystudent_wide&lt;- eventnamebystudent_wide %&gt;% 
+      mutate_at(vars(internship),funs(replace(.,.== &quot;Successful&quot;,1))) %&gt;% 
+      mutate_at(vars(internship),funs(replace(.,.== &quot;Unsuccessful&quot;,0))) %&gt;% 
+# Rename the NA variable which are the Students who did not attend any events
+      rename(NoEvents=&#39;&lt;NA&gt;&#39;)
+eventnamebystudent_wide$Student.region &lt;- as.factor(eventnamebystudent_wide$Student.region )
+eventnamebystudent_wide$internship &lt;- as.factor(eventnamebystudent_wide$internship)
+#http://blog.revolutionanalytics.com/2013/06/plotting-classification-and-regression-trees-with-plotrpart.html
+model &lt;- rpart::rpart(internship~.,data=eventnamebystudent_wide[,-c(1,3)], cp=0.001 ) # default cp is 0.01, decresing this value creates a deeper tree
+rattle::fancyRpartPlot(model, sub = &quot;Decision tree of events that result in successful (green) 2017 internships&quot;,palettes=c(&quot;Greys&quot;, &quot;Greens&quot;))</code></pre>
 <p><img src="/portfolio/SoT_dataviz_files/figure-html/rpart-1.png" width="672" /></p>
 <p>From this tree we can see the <strong>43</strong> successful interns who applied directly as a percentage of the total pool of applicants <strong>1424</strong> or <strong>0.03</strong> on the far right green branch.</p>
 <p>The remaining branches relate to <strong>170</strong> students who registered for events and their success in green. Note only the top branches are shown.</p>
 <p>Now compare the tree to the tree using the <a href="https://cran.r-project.org/web/packages/visNetwork/index.html">visNetwork</a> R package visTree function. This creates an interactive tree and produces the numbers in each node.</p>
+<pre class="r"><code># http://www.sthda.com/english/articles/33-social-network-analysis/137-interactive-network-visualization-using-r/
+visNetwork::visTree(model, main = &quot;Decision tree of events that result in successful (green) 2017 internships&quot;,
+        width = &quot;80%&quot;,  height = &quot;400px&quot;)</code></pre>
 <div id="htmlwidget-3" style="width:80%;height:400px;" class="visNetwork html-widget"></div>
 <script type="application/json" data-for="htmlwidget-3">{"x":{"nodes":{"id":[1,2,4,8,9,18,19,38,39,5,10,20,40,41,82,83,21,11,3],"label":["NoEvents","SoT&Biz Guide to Offers","Meet & Greet - WELLINGTON","0","Guide to 2017 Offers","0","Meet & Greet ProTips - Alumni Panel","0","1","CV Clinics 1:1 feedback","Inside Guide to Summer of Tech","JavaScript Masterclass","0","Coding for Android with Kotlin - let’s build a simple app in 90 minutes","0","1","1","1","1"],"level":[1,2,3,4,4,5,5,6,6,3,4,5,6,6,7,7,5,4,2],"color":["#F1B8C2","#EABDAC","#DAC49C","#7D91B6","#C3CB9A","#7D91B6","#A9D1A5","#7D91B6","#B9828C","#92D4B9","#8AD3D0","#98CFE2","#7D91B6","#B4C7ED","#7D91B6","#B9828C","#B9828C","#B9828C","#B9828C"],"value":[1424,1381,1313,1037,276,256,20,12,8,68,60,53,12,41,33,8,7,8,43],"shape":["dot","dot","dot","square","dot","square","dot","square","square","dot","dot","dot","square","dot","square","square","square","square","square"],"title":["<div style=\"text-align:center;\">N% : <b>100%<\/b> (1424)<br>Complexity : <b>0.202<\/b><br><hr> 0 : <b>85%<\/b> (1211)<br>1 : <b>15%<\/b> (213)<\/div>","<div style=\"text-align:center;\">N% : <b>97%<\/b> (1381)<br>Complexity : <b>0.014<\/b><br><hr> 0 : <b>87.7%<\/b> (1211)<br>1 : <b>12.3%<\/b> (170)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b> NoEvents <\/b> < 0.5<\/div><\/div><\/div>","<div style=\"text-align:center;\">N% : <b>92.2%<\/b> (1313)<br>Complexity : <b>0.003<\/b><br><hr> 0 : <b>89.6%<\/b> (1177)<br>1 : <b>10.4%<\/b> (136)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b> NoEvents <\/b> < 0.5<br><b> SoT&Biz Guide to Offers <\/b> < 0.5<\/div><\/div><\/div>","<div style=\"text-align:center;\">N% : <b>72.8%<\/b> (1037)<br>Complexity : <b>0<\/b><br><hr> 0 : <b>91.9%<\/b> (953)<br>1 : <b>8.1%<\/b> (84)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b> NoEvents <\/b> < 0.5<br><b> SoT&Biz Guide to Offers <\/b> < 0.5<br><b> Meet & Greet - WELLINGTON <\/b> < 0.5<\/div><\/div><\/div>","<div style=\"text-align:center;\">N% : <b>19.4%<\/b> (276)<br>Complexity : <b>0.003<\/b><br><hr> 0 : <b>81.2%<\/b> (224)<br>1 : <b>18.8%<\/b> (52)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b> NoEvents <\/b> < 0.5<br><b> SoT&Biz Guide to Offers <\/b> < 0.5<br><b> Meet & Greet - WELLINGTON <\/b> >= 0.5<\/div><\/div><\/div>","<div style=\"text-align:center;\">N% : <b>18%<\/b> (256)<br>Complexity : <b>0<\/b><br><hr> 0 : <b>83.2%<\/b> (213)<br>1 : <b>16.8%<\/b> (43)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b> NoEvents <\/b> < 0.5<br><b> SoT&Biz Guide to Offers <\/b> < 0.5<br><b> Meet & Greet - WELLINGTON <\/b> >= 0.5<br><b> Guide to 2017 Offers <\/b> < 0.5<\/div><\/div><\/div>","<div style=\"text-align:center;\">N% : <b>1.4%<\/b> (20)<br>Complexity : <b>0.003<\/b><br><hr> 0 : <b>55%<\/b> (11)<br>1 : <b>45%<\/b> (9)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b> NoEvents <\/b> < 0.5<br><b> SoT&Biz Guide to Offers <\/b> < 0.5<br><b> Meet & Greet - WELLINGTON <\/b> >= 0.5<br><b> Guide to 2017 Offers <\/b> >= 0.5<\/div><\/div><\/div>","<div style=\"text-align:center;\">N% : <b>0.8%<\/b> (12)<br>Complexity : <b>0.001<\/b><br><hr> 0 : <b>66.7%<\/b> (8)<br>1 : <b>33.3%<\/b> (4)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b> NoEvents <\/b> < 0.5<br><b> SoT&Biz Guide to Offers <\/b> < 0.5<br><b> Meet & Greet - WELLINGTON <\/b> >= 0.5<br><b> Guide to 2017 Offers <\/b> >= 0.5<br><b> Meet & Greet ProTips - Alumni Panel <\/b> >= 0.5<\/div><\/div><\/div>","<div style=\"text-align:center;\">N% : <b>0.6%<\/b> (8)<br>Complexity : <b>0.001<\/b><br><hr> 0 : <b>37.5%<\/b> (3)<br>1 : <b>62.5%<\/b> (5)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b> NoEvents <\/b> < 0.5<br><b> SoT&Biz Guide to Offers <\/b> < 0.5<br><b> Meet & Greet - WELLINGTON <\/b> >= 0.5<br><b> Guide to 2017 Offers <\/b> >= 0.5<br><b> Meet & Greet ProTips - Alumni Panel <\/b> < 0.5<\/div><\/div><\/div>","<div style=\"text-align:center;\">N% : <b>4.8%<\/b> (68)<br>Complexity : <b>0.014<\/b><br><hr> 0 : <b>50%<\/b> (34)<br>1 : <b>50%<\/b> (34)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b> NoEvents <\/b> < 0.5<br><b> SoT&Biz Guide to Offers <\/b> >= 0.5<\/div><\/div><\/div>","<div style=\"text-align:center;\">N% : <b>4.2%<\/b> (60)<br>Complexity : <b>0.014<\/b><br><hr> 0 : <b>55%<\/b> (33)<br>1 : <b>45%<\/b> (27)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b> NoEvents <\/b> < 0.5<br><b> SoT&Biz Guide to Offers <\/b> >= 0.5<br><b> CV Clinics 1:1 feedback <\/b> < 0.5<\/div><\/div><\/div>","<div style=\"text-align:center;\">N% : <b>3.7%<\/b> (53)<br>Complexity : <b>0.009<\/b><br><hr> 0 : <b>58.5%<\/b> (31)<br>1 : <b>41.5%<\/b> (22)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b> NoEvents <\/b> < 0.5<br><b> SoT&Biz Guide to Offers <\/b> >= 0.5<br><b> CV Clinics 1:1 feedback <\/b> < 0.5<br><b> Inside Guide to Summer of Tech <\/b> < 0.5<\/div><\/div><\/div>","<div style=\"text-align:center;\">N% : <b>0.8%<\/b> (12)<br>Complexity : <b>0.001<\/b><br><hr> 0 : <b>83.3%<\/b> (10)<br>1 : <b>16.7%<\/b> (2)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b> NoEvents <\/b> < 0.5<br><b> SoT&Biz Guide to Offers <\/b> >= 0.5<br><b> CV Clinics 1:1 feedback <\/b> < 0.5<br><b> Inside Guide to Summer of Tech <\/b> < 0.5<br><b> JavaScript Masterclass <\/b> >= 0.5<\/div><\/div><\/div>","<div style=\"text-align:center;\">N% : <b>2.9%<\/b> (41)<br>Complexity : <b>0.009<\/b><br><hr> 0 : <b>51.2%<\/b> (21)<br>1 : <b>48.8%<\/b> (20)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b> NoEvents <\/b> < 0.5<br><b> SoT&Biz Guide to Offers <\/b> >= 0.5<br><b> CV Clinics 1:1 feedback <\/b> < 0.5<br><b> Inside Guide to Summer of Tech <\/b> < 0.5<br><b> JavaScript Masterclass <\/b> < 0.5<\/div><\/div><\/div>","<div style=\"text-align:center;\">N% : <b>2.3%<\/b> (33)<br>Complexity : <b>0<\/b><br><hr> 0 : <b>57.6%<\/b> (19)<br>1 : <b>42.4%<\/b> (14)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b> NoEvents <\/b> < 0.5<br><b> SoT&Biz Guide to Offers <\/b> >= 0.5<br><b> CV Clinics 1:1 feedback <\/b> < 0.5<br><b> Inside Guide to Summer of Tech <\/b> < 0.5<br><b> JavaScript Masterclass <\/b> < 0.5<br><b> Coding for Android with Kotlin - let’s build a simple app in 90 minutes <\/b> < 0.5<\/div><\/div><\/div>","<div style=\"text-align:center;\">N% : <b>0.6%<\/b> (8)<br>Complexity : <b>0.001<\/b><br><hr> 0 : <b>25%<\/b> (2)<br>1 : <b>75%<\/b> (6)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b> NoEvents <\/b> < 0.5<br><b> SoT&Biz Guide to Offers <\/b> >= 0.5<br><b> CV Clinics 1:1 feedback <\/b> < 0.5<br><b> Inside Guide to Summer of Tech <\/b> < 0.5<br><b> JavaScript Masterclass <\/b> < 0.5<br><b> Coding for Android with Kotlin - let’s build a simple app in 90 minutes <\/b> >= 0.5<\/div><\/div><\/div>","<div style=\"text-align:center;\">N% : <b>0.5%<\/b> (7)<br>Complexity : <b>0.001<\/b><br><hr> 0 : <b>28.6%<\/b> (2)<br>1 : <b>71.4%<\/b> (5)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b> NoEvents <\/b> < 0.5<br><b> SoT&Biz Guide to Offers <\/b> >= 0.5<br><b> CV Clinics 1:1 feedback <\/b> < 0.5<br><b> Inside Guide to Summer of Tech <\/b> >= 0.5<\/div><\/div><\/div>","<div style=\"text-align:center;\">N% : <b>0.6%<\/b> (8)<br>Complexity : <b>0.001<\/b><br><hr> 0 : <b>12.5%<\/b> (1)<br>1 : <b>87.5%<\/b> (7)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b> NoEvents <\/b> < 0.5<br><b> SoT&Biz Guide to Offers <\/b> >= 0.5<br><b> CV Clinics 1:1 feedback <\/b> >= 0.5<\/div><\/div><\/div>","<div style=\"text-align:center;\">N% : <b>3%<\/b> (43)<br>Complexity : <b>0.001<\/b><br><hr> 0 : <b>0%<\/b> (0)<br>1 : <b>100%<\/b> (43)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b> NoEvents <\/b> >= 0.5<\/div><\/div><\/div>"],"fixed":[true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true],"colorClust":["#7D91B6","#7D91B6","#7D91B6","#7D91B6","#7D91B6","#7D91B6","#7D91B6","#7D91B6","#B9828C","#7D91B6","#7D91B6","#7D91B6","#7D91B6","#7D91B6","#7D91B6","#B9828C","#B9828C","#B9828C","#B9828C"],"labelClust":["0","0","0","0","0","0","0","0","1","0","0","0","0","0","0","1","1","1","1"],"Leaf":[0,0,0,1,0,1,0,1,1,0,0,0,1,0,1,1,1,1,1],"font.size":[16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16],"scaling.min":[22.5,22.5,22.5,22.5,22.5,22.5,22.5,22.5,22.5,22.5,22.5,22.5,22.5,22.5,22.5,22.5,22.5,22.5,22.5],"scaling.max":[22.5,22.5,22.5,22.5,22.5,22.5,22.5,22.5,22.5,22.5,22.5,22.5,22.5,22.5,22.5,22.5,22.5,22.5,22.5]},"edges":{"id":["edge1","edge2","edge3","edge4","edge5","edge6","edge7","edge8","edge9","edge10","edge11","edge12","edge13","edge14","edge15","edge16","edge17","edge18"],"from":[1,2,4,4,9,9,19,19,2,5,10,20,20,41,41,10,5,1],"to":[2,4,8,9,18,19,38,39,5,10,20,40,41,82,83,21,11,3],"label":["< 0.5","< 0.5","< 0.5",">= 0.5","< 0.5",">= 0.5",">= 0.5","< 0.5",">= 0.5","< 0.5","< 0.5",">= 0.5","< 0.5","< 0.5",">= 0.5",">= 0.5",">= 0.5",">= 0.5"],"value":[1381,1313,1037,276,256,20,12,8,68,60,53,12,41,33,8,7,8,43],"title":["<div style=\"text-align:center;\"><b>NoEvents<\/b><\/div><div style=\"text-align:center;\"><0.5<\/div>","<div style=\"text-align:center;\"><b>SoT&Biz Guide to Offers<\/b><\/div><div style=\"text-align:center;\"><0.5<\/div>","<div style=\"text-align:center;\"><b>Meet & Greet - WELLINGTON<\/b><\/div><div style=\"text-align:center;\"><0.5<\/div>","<div style=\"text-align:center;\"><b>Meet & Greet - WELLINGTON<\/b><\/div><div style=\"text-align:center;\">>=0.5<\/div>","<div style=\"text-align:center;\"><b>Guide to 2017 Offers<\/b><\/div><div style=\"text-align:center;\"><0.5<\/div>","<div style=\"text-align:center;\"><b>Guide to 2017 Offers<\/b><\/div><div style=\"text-align:center;\">>=0.5<\/div>","<div style=\"text-align:center;\"><b>Meet & Greet ProTips - Alumni Panel<\/b><\/div><div style=\"text-align:center;\">>=0.5<\/div>","<div style=\"text-align:center;\"><b>Meet & Greet ProTips - Alumni Panel<\/b><\/div><div style=\"text-align:center;\"><0.5<\/div>","<div style=\"text-align:center;\"><b>SoT&Biz Guide to Offers<\/b><\/div><div style=\"text-align:center;\">>=0.5<\/div>","<div style=\"text-align:center;\"><b>CV Clinics 1:1 feedback<\/b><\/div><div style=\"text-align:center;\"><0.5<\/div>","<div style=\"text-align:center;\"><b>Inside Guide to Summer of Tech<\/b><\/div><div style=\"text-align:center;\"><0.5<\/div>","<div style=\"text-align:center;\"><b>JavaScript Masterclass<\/b><\/div><div style=\"text-align:center;\">>=0.5<\/div>","<div style=\"text-align:center;\"><b>JavaScript Masterclass<\/b><\/div><div style=\"text-align:center;\"><0.5<\/div>","<div style=\"text-align:center;\"><b>Coding for Android with Kotlin - let’s build a simple app in 90 minutes<\/b><\/div><div style=\"text-align:center;\"><0.5<\/div>","<div style=\"text-align:center;\"><b>Coding for Android with Kotlin - let’s build a simple app in 90 minutes<\/b><\/div><div style=\"text-align:center;\">>=0.5<\/div>","<div style=\"text-align:center;\"><b>Inside Guide to Summer of Tech<\/b><\/div><div style=\"text-align:center;\">>=0.5<\/div>","<div style=\"text-align:center;\"><b>CV Clinics 1:1 feedback<\/b><\/div><div style=\"text-align:center;\">>=0.5<\/div>","<div style=\"text-align:center;\"><b>NoEvents<\/b><\/div><div style=\"text-align:center;\">>=0.5<\/div>"],"color":["#8181F7","#8181F7","#8181F7","#8181F7","#8181F7","#8181F7","#8181F7","#8181F7","#8181F7","#8181F7","#8181F7","#8181F7","#8181F7","#8181F7","#8181F7","#8181F7","#8181F7","#8181F7"],"font.size":[14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14],"font.align":["horizontal","horizontal","horizontal","horizontal","horizontal","horizontal","horizontal","horizontal","horizontal","horizontal","horizontal","horizontal","horizontal","horizontal","horizontal","horizontal","horizontal","horizontal"],"smooth.enabled":[true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true],"smooth.type":["cubicBezier","cubicBezier","cubicBezier","cubicBezier","cubicBezier","cubicBezier","cubicBezier","cubicBezier","cubicBezier","cubicBezier","cubicBezier","cubicBezier","cubicBezier","cubicBezier","cubicBezier","cubicBezier","cubicBezier","cubicBezier"],"smooth.roundness":[0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5]},"nodesToDataframe":true,"edgesToDataframe":true,"options":{"width":"100%","height":"100%","nodes":{"shape":"dot"},"manipulation":{"enabled":false},"layout":{"hierarchical":{"enabled":true,"direction":"UD"}},"interaction":{"dragNodes":false,"selectConnectedEdges":false,"tooltipDelay":500},"edges":{"scaling":{"label":{"enabled":false}}}},"groups":null,"width":"80%","height":"400px","idselection":{"enabled":false,"style":"width: 150px; height: 26px","useLabels":true},"byselection":{"enabled":false,"style":"width: 150px; height: 26px","multiple":false,"hideColor":"rgba(200,200,200,0.5)"},"main":{"text":"Decision tree of events that result in successful (green) 2017 internships","style":"font-family:Georgia, Times New Roman, Times, serif;font-weight:bold;font-size:20px;text-align:center;"},"submain":{"text":"","style":"font-family:Georgia, Times New Roman, Times, serif;font-size:12px;text-align:center;"},"footer":{"text":"","style":"font-family:Georgia, Times New Roman, Times, serif;font-size:12px;text-align:center;"},"background":"rgba(0, 0, 0, 0)","highlight":{"enabled":true,"hoverNearest":false,"degree":{"from":50000,"to":0},"algorithm":"hierarchical","hideColor":"rgba(200,200,200,0.5)","labelOnly":true},"collapse":{"enabled":true,"fit":true,"resetHighlight":true,"clusterOptions":{"fixed":true,"physics":false}},"tooltipStay":300,"tooltipStyle":"position: fixed;visibility:hidden;padding: 5px;\n                      white-space: nowrap;\n                      font-family: cursive;font-size:12px;font-color:purple;background-color: #E6E6E6;\n                      border-radius: 15px;","OnceEvents":{"stabilized":"function() { \n        this.setOptions({layout:{hierarchical:false}, physics:{solver:'barnesHut', enabled:true, stabilization : false}, nodes : {physics : false, fixed : true}});\n    }"},"legend":{"width":0.1,"useGroups":false,"position":"left","ncol":1,"stepX":100,"stepY":100,"zoom":true,"nodes":{"label":["Coding for Android with Kotlin - let’s build a simple app in 90 minutes","CV Clinics 1:1 feedback","Guide to 2017 Offers","Inside Guide to Summer of Tech","JavaScript Masterclass","Meet & Greet - WELLINGTON","Meet & Greet ProTips - Alumni Panel","NoEvents","SoT&Biz Guide to Offers","0","1"],"color":["#B4C7ED","#92D4B9","#C3CB9A","#8AD3D0","#98CFE2","#DAC49C","#A9D1A5","#F1B8C2","#EABDAC","#7D91B6","#B9828C"],"shape":["dot","dot","dot","dot","dot","dot","dot","dot","dot","square","square"],"size":[22,22,22,22,22,22,22,22,22,22,22],"Leaf":[0,0,0,0,0,0,0,0,0,1,1],"font.size":[16,16,16,16,16,16,16,16,16,16,16],"id":[10000,10001,10002,10003,10004,10005,10006,10007,10008,10009,10010]},"nodesToDataframe":true},"tree":{"updateShape":true,"shapeVar":"dot","shapeY":"square","colorVar":{"variable":["NoEvents","SoT&Biz Guide to Offers","Meet & Greet - WELLINGTON","Guide to 2017 Offers","Meet & Greet ProTips - Alumni Panel","CV Clinics 1:1 feedback","Inside Guide to Summer of Tech","JavaScript Masterclass","Coding for Android with Kotlin - let’s build a simple app in 90 minutes"],"color":["#F1B8C2","#EABDAC","#DAC49C","#C3CB9A","#A9D1A5","#92D4B9","#8AD3D0","#98CFE2","#B4C7ED"]},"colorY":{"colorY":{"modality":["0","1"],"color":["#7D91B6","#B9828C"]},"vardecidedClust":["0","0","0","0","0","0","0","0","1","0","0","0","0","0","0","1","1","1","1"]}},"export":{"type":"png","css":"float:right;-webkit-border-radius: 10;\n                  -moz-border-radius: 10;\n                  border-radius: 10px;\n                  font-family: Arial;\n                  color: #ffffff;\n                  font-size: 12px;\n                  background: #090a0a;\n                  padding: 4px 8px 4px 4px;\n                  text-decoration: none;","background":"#fff","name":"network.png","label":"Export as png"}},"evals":["OnceEvents.stabilized"],"jsHooks":[]}</script>
 </div>
 <div id="social-impact" class="section level2">
 <h2>Social Impact</h2>
 <p>Let’s take a look at the percentage breakdown of intern ethnicity and gender of successful interns.</p>
+<pre class="r"><code># Plot the intern ethnicity data 
+intern_eth &lt;- intern %&gt;% 
+      select(Intern.ethnicity) %&gt;% 
+      table() %&gt;% 
+      prop.table() %&gt;% 
+      data.frame()  
+intern_eth %&gt;% 
+      ggplot( aes(., 100*Freq)) +
+      geom_col(fill=&quot;purple&quot;) +
+      coord_flip() +
+      labs(title = &quot;Intern Breakdown by Intern Ethnicity\n&quot;, x = &quot;\nEthnicity&quot;, y = &quot;Percentage\n&quot;)+ 
+      guides(fill=FALSE)</code></pre>
 <p><img src="/portfolio/SoT_dataviz_files/figure-html/ethnicity%20freq-1.png" width="672" /></p>
 <p><strong>46</strong> % of interns were pakeha however there is a large <strong>23</strong> % of undisclosed ethnicities.</p>
+<pre class="r"><code># Plot the intern gender data as a frequency plot
+intern_gender &lt;- intern %&gt;% 
+      select(Intern.gender) %&gt;% 
+      table() %&gt;% 
+      prop.table() %&gt;% 
+      data.frame(stringsAsFactors = FALSE)  
+intern_gender %&gt;% 
+      ggplot( aes(., 100*Freq)) +
+      geom_col(fill=&quot;purple&quot;) +
+      coord_flip() +
+      labs(title = &quot;Intern Breakdown by Intern Gender\n&quot;, x = &quot;\nGender&quot;, y = &quot;Percentage\n&quot;)+ 
+      guides(fill=FALSE)</code></pre>
 <p><img src="/portfolio/SoT_dataviz_files/figure-html/gender%20freq-1.png" width="672" /></p>
 <p><strong>39</strong> % of interns were female and <strong>59</strong> % were male in 2017.</p>
 </div>
@@ -392,13 +598,13 @@ year
 <li>There is demographic data for Intern ethnicity and Intern gender on the interns, but not currently on the students creating a profile or attending the events.</li>
 <li>It could be useful to obtain the gender and ethnicity demographic data for applicants over time to view trends and proportions of those who apply versus those who are successful for the social impact.</li>
 <li>Also the numbers for under-represented Intern ethnicities are very small or undisclosed for December 2017.</li>
-<li>Regarding the large undisclosed number in the intern ethnicities, is the ethnicity an optional field to fill in? Scottish/Phillipino is a unique combination! Perhaps make this field mandatory and drop down, and add a “prefer not to say” option.</li>
-<li>Additionally for the gender option, perhaps add a “prefer not to say” option.</li>
 </ul>
 <ol start="4" style="list-style-type: decimal">
-<li><strong>Other Missing Data</strong></li>
+<li><strong>Missing Data</strong></li>
 </ol>
 <ul>
+<li>Regarding the large undisclosed number in the intern ethnicities, is the ethnicity an optional field to fill in? Scottish/Phillipino is a unique combination! Perhaps make this field mandatory and drop down, and add a “prefer not to say” option.</li>
+<li>Additionally for the gender option, perhaps add a “prefer not to say” option.</li>
 <li>It could be useful to have an employer ID / token in the intern data to map and plot this with the other data variables.</li>
 </ul>
 </div>

@@ -48,7 +48,7 @@ The interviewing and hiring process can be subjective and often based on timing 
 
 
 ```{r setup, echo=FALSE, results='asis'}
-knitr::opts_chunk$set(echo=FALSE,warning=FALSE)
+knitr::opts_chunk$set(echo=TRUE,warning=FALSE)
 ```
 
 
@@ -457,11 +457,12 @@ Following this analysis see below preliminary insights to Summer of Tech's quest
 - There is demographic data for Intern ethnicity and Intern gender on the interns, but not currently on the students creating a profile or attending the events. 
 - It could be useful to obtain the gender and ethnicity demographic data for applicants over time to view trends and proportions of those who apply versus those who are successful for the social impact. 
 - Also the numbers for under-represented Intern ethnicities are very small or undisclosed for December 2017. 
+
+
+4. **Missing Data**
+
 - Regarding the large undisclosed number in the intern ethnicities, is the ethnicity an optional field to fill in? Scottish/Phillipino is a unique combination! Perhaps make this field mandatory and drop down, and add a "prefer not to say" option. 
 - Additionally for the gender option, perhaps add a "prefer not to say" option. 
-
-4. **Other Missing Data**
-
 - It could be useful to have an employer ID / token in the intern data to map and plot this with the other data variables.
 
 
