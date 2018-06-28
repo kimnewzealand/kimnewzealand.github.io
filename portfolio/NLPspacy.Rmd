@@ -28,10 +28,7 @@ This will not however include advanced topic modeling and training annotation mo
 <br><hr>
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE,  
-                      dev = "svglite",
-                      fig.ext = ".svg"
-)
+knitr::opts_chunk$set(echo = FALSE)
 ```
 
 ## Load Packages
