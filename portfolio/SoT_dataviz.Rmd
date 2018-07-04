@@ -1,7 +1,7 @@
 
 ---
 title: "Summer of Tech Event and Intern Analysis"
-image: img/portfolio/forcediag.png
+image: img/portfolio/sankey.png
 output:
   html_document: default
 Author: kimnewzealand
@@ -358,7 +358,7 @@ g <- ggplot() +
 # ani.options(convert=shortPathName("C:\\Program Files\\ImageMagick-7.0.8-Q16\\magick.exe"))
 gganimate(g) 
 # Save as a gif
-gganimate(g,"mapinterns.gif")      
+# gganimate(g,"mapinterns.gif")      
 ```
 
 The two main Institution feeders to internships appear to be Victoria University of Wellington and Auckland University, the former resulting in half of internships. The region as the largest feeder of interns to other regions is Christchurch.
