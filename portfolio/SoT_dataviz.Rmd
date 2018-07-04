@@ -1,11 +1,11 @@
 
 ---
-title : "Summer of Tech Event and Intern Analysis"
-output: html_document
+title: "Summer of Tech Event and Intern Analysis"
+image: img/portfolio/forcediag.png
+output:
+  html_document: default
 Author: kimnewzealand
-image : "img/portfolio/forcediag.png"
-# showonlyimage : false
-weight : 5
+weight: 5
 ---
 
 
@@ -16,7 +16,7 @@ weight : 5
 + [Clean Data](#Clean-Data)
 + [Success Factors](#Success-Factors)
 + [Specific Events Resulting in Internships](#Specific-events-resulting-in-internships)
-+ [Social Impact](##Social-Impact)
++ [Social Impact](#Social-Impact)
 + [Conclusion](#Conclusion)
 
 ## Introduction
@@ -32,7 +32,7 @@ The specific questions that SoT have are as follows:
 3. In order to understand the social impact, where and how are the under-represented groups fairing?
 4. What data and variables are missing and would be useful to collect?
 
-The objectives of this post is to:
+The objectives of this post are to:
 
 - Perform an initial exploratory data analysis. This will form a basis for further analysis with additional data provided and feedback gathered.  
 - Provide insights to SoT's questions (note these insights are not recommendations or predictions).
@@ -46,9 +46,10 @@ The interviewing and hiring process can be subjective and often based on timing 
 
 * * *
 
+**LOAD PACKAGES**
 
-```{r setup, echo=FALSE, results='asis'}
-knitr::opts_chunk$set(echo=TRUE,warning=FALSE)
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
 ```
 
 
@@ -57,9 +58,13 @@ library(tidyverse)
 library(DataExplorer)
 library(skimr)
 library(networkD3)
+library(maps)
+library(ggmap)
+library(gganimate)
+library(animation)
 ```
 
-## Data 
+### Data 
 
 The Summer of Tech data is available in the R-Ladies github [link](https://github.com/R-LadiesAKL/sotdata). 
 
@@ -107,7 +112,7 @@ names(intern) <- make.names(names(intern))
 
 - There are **`r length(unique(intern$internship.type))`** different internships role types.
 
-## Clean Data
+### Clean Data
 
 We will first clean the data. 
 
@@ -193,7 +198,7 @@ combine <- combine %>%
       rename(Student.region=Region)
 ```
 
-## Success Factors 
+### Success Factors 
 
 To view success factors I  wanted to visualise the flows from one set of values to another i.e. flow from a factor to whether the student was successful or unsuccessful with an internship.
 
@@ -201,83 +206,164 @@ To view success factors I  wanted to visualise the flows from one set of values 
 
 The flow I decided to look at is  the flow of number of students from institutions to successful and unsuccessful internships.
 
+**Sankey Diagram**
+
 I initially tried the Use the gvisSankey function from the [googleVis](https://cran.r-project.org/web/packages/googleVis/) R package. The downside is that it creates a plot in a new browser tab and not easily embedded to R Markdown so not suitable for use here.
 
-Then I tried the [networkD3](https://cran.r-project.org/web/packages/networkD3/index.html) R package to create a D3 JavaScript Sankey diagram.
+Then I tried the [networkD3](https://cran.r-project.org/web/packages/networkD3/index.html) R package to create a D3 JavaScript Sankey diagram. I used this [tutorial](# http://www.sthda.com/english/articles/33-social-network-analysis/137-interactive-network-visualization-using-r/) for the networkD3 diagrams.
 
 I included a check that the total number of intern tokens in original file is same as sum in this summary after the join and also include a new "Student Institution" variable.
 
 See below the interactive Sankey diagram:
 
-```{r instition to yes or no internships, results='asis'}
+```{r region to yes or no internships, results='asis'}
 # Create a summary of the counts of Event institutions by unique interns
-inst_intern_count <- combine %>%
-      distinct(Student.institution,internship,token) %>%
-      group_by(Student.institution,internship) %>%  
+regioninterncount <- combine %>%
+      distinct(Student.region,internship,token,Intern.region) %>%
+      group_by(Student.region,internship,Intern.region) %>%  
       summarize(counts = n()) %>%
       ungroup() %>%  
-      arrange(desc(counts))
-# Replace the Event NA's to Other
-inst_intern_count$Event.institution <- replace_na(inst_intern_count$Student.institution,"Other")
+      arrange(desc(counts)) %>% 
+      mutate(internship.long=ifelse(internship=="Unsuccessful","Unsuccessful",paste0(internship," intern in ",Intern.region))) %>% 
+      mutate(Student.region.long=paste0("Studies in ",Student.region))
 # Since there is a large number of institutions, Group the institutions with count less than 10 as Other
-l <- length(inst_intern_count$counts)
-inst_intern_count$Student.institution[15:l] <- "Other"
+l <- length(regioninterncount$counts)
+#regioninterncount$Student.region[15:l] <- "Other"
 # Check that the total intern tokens in original file is same as sum in this summary
 length(unique(intern$token))==
-inst_intern_count %>% filter(internship=="Successful") %>% select(counts) %>% sum()
+regioninterncount %>% filter(stringr::str_detect(internship.long ,"Successful")) %>% select(counts) %>% sum()
 
 # Create the links and nodes for the Sankey and force network diagrams
-name_vec <- c(unique(inst_intern_count$Student.institution), unique(inst_intern_count$internship))
+name_vec <- c(unique(regioninterncount$Student.region.long), unique(regioninterncount$internship.long))
 name_vec <- name_vec[!is.na(name_vec)]
 lengthid <- length(name_vec)
+# Create the nodes, this set up requires the id to start at 0
 nodes <- data.frame(name = name_vec,id=0:(lengthid-1),stringsAsFactors = FALSE)
-links <- inst_intern_count %>%
-  left_join(nodes, by = c('Student.institution' = 'name')) %>%
+links <- regioninterncount %>%
+  left_join(nodes, by = c('Student.region.long' = 'name')) %>%
   rename(origin_id = id) %>%
-  left_join(nodes, by = c('internship' = 'name')) %>%
+  left_join(nodes, by = c('internship.long' = 'name')) %>%
   rename(dest_id = id) %>% 
       data.frame()
 ```
 
 
-```{r sankey plot, results='asis'}
-sankeyNetwork(Links = links, Nodes = nodes, Source = 'origin_id', Target = 'dest_id', Value = 'counts', NodeID = 'name', 
+```{r sankey diagram, results='asis'}
+s <- sankeyNetwork(Links = links, Nodes = nodes, Source = 'origin_id', Target = 'dest_id', Value = 'counts', NodeID = 'name', 
               # Format
               fontSize = 14,
               nodeWidth = 20)   
-
-# Use this to save the plot as html
-# saveNetwork(file = 'sankey.html')
+# View Sankey s
+s
+# Save as htmlwidget
+# htmlwidgets::saveWidget(s, "sankeynet.html", selfcontained = TRUE)
 ```
+
+**Force Directed Network**
 
 Let's view this with an interactive and zoom-able force directed network graph using the forceNetwork function from the same [networkD3](https://cran.r-project.org/web/packages/networkD3/index.html) R package. 
 
 ```{r force network, results='asis'}
 # Create and plot the forcenetwork with the links and nodes
-forceNetwork(Links = links, Nodes = nodes, Source = 'origin_id', Target = 'dest_id', NodeID = 'name', Group = 'id', 
-             # Customise the edges
-             Value = 'counts', 
-             # Layout
-             #height = 500, 
-             #width = 500, 
-             zoom = TRUE,
+f <- forceNetwork(Links = links, Nodes = nodes, Source = 'origin_id', Target = 'dest_id', NodeID = 'name', Group = 'id', 
              # Customise the links
-             linkWidth = networkD3::JS("function(d) { return d.value/50; }"),
+             #Value = 'counts', 
+             zoom = TRUE,
+             #linkWidth = networkD3::JS("function(d) { return d.value/50; }"),
              charge=-1500,
              # Format
-             fontFamily = "serif",
-             opacity = 0.95, 
+             #width = 600, 
+             #height = 400,
+             #legend=T,
+             fontFamily = "arial",
+             opacity = 1, 
              opacityNoHover = 0.5,
              fontSize = 18) %>% 
-      htmlwidgets::prependContent(htmltools::tags$h3("Institution Links to Successful and Unsuccessful Internships"))  
-
-# Use this to save the plot as html
-# saveNetwork(file =  'forcediag.html')
+      htmlwidgets::prependContent(htmltools::tags$h3("Institution Links to Successful and Unsuccessful Internships")) 
+# View the f network created
+f
+# Save as htmlwidget
+# htmlwidgets::saveWidget(f, "forcenetwork.html", selfcontained = TRUE)
 ```
   
-The two main Institution feeders appear to be Victoria University of Wellington and Auckland University, the former resulting in half of internships.
+**Map**
 
-## Specific Events Resulting in Internships
+Since there is regional data let's view the flow spatially using a map. In R Markdown the [gganimate](https://github.com/dgrtwo/gganimate) R package's object will show as a sequence of panes, however we can save this as a gif to view it as an animation.
+
+```{r maps, message=FALSE, warning=FALSE}
+regioninterncount$Intern.region[8] <- "Palmerston North"
+# Geocode the region data using mutate_geocode from ggmap R package
+regioninterngeo <- regioninterncount %>% 
+      filter(internship=="Successful") %>% 
+      mutate_geocode(Student.region) %>% 
+      rename(lat.s =lat) %>% 
+      rename(lon.s=lon) %>% 
+      mutate_geocode( Intern.region)
+# Get a simple NZ map for ggplot
+nzMap <- borders("nz", colour="grey", fill="grey")
+# Extract the data of the students where there was a flow from region to region for the lines
+flowdata <- regioninterngeo %>% 
+      mutate(moved=ifelse(lon.s==lon,"no","yes")) %>% 
+      filter(moved=="yes") %>% 
+      # Remove the Multiple region from the Student.region
+      filter(Student.region!="Multiple")
+# Create a data.frame with the region cities and latitude and longitudes
+regioncodes <- regioninterngeo %>% 
+      select(Intern.region,lon,lat) %>%  
+      rbind(c("Waikato",175.18940, -37.45580),c("Otago" ,170.15476, -45.47907 )) %>% 
+      distinct() %>% 
+      drop_na() %>% 
+      rename(region=Intern.region) %>% 
+      mutate_at(vars(lon,lat),funs(as.numeric)) 
+
+# Plot the lables of the cities onto the nzMap using ggplot. We will ignore the student region multiple  in this map
+g <- ggplot() + 
+      nzMap +
+      # Adjust the region labels
+      geom_text(data = regioncodes, aes(x = (lon+0.5), y = (lat+0.5), label= region)) +
+      # Plot the geocoded data with the counts of the interns
+      geom_point(data = regioninterngeo,
+                 aes(x = lon, y = lat, 
+                     color=Intern.region,
+                     size=counts,
+                     alpha=0.6))  +
+      # Add the arrows from the students institutions to the intern cities using the flowdata 
+      # and the geom_curve function
+      geom_curve(data=flowdata, 
+                 aes(x = lon.s, y = lat.s, xend = lon, yend = lat, 
+                     color=Intern.region, 
+                     frame=Intern.region,
+                 size=counts),
+                 curvature = 0.5, 
+                 lineend ='square',
+                 arrow = arrow(length = unit(0.3,"cm"), type = "open")) +
+      # Use the ggthemes package theme_map to remove the axes
+      ggthemes::theme_map()  +
+      # Remove specific aesthetics from the legend
+      guides(size=FALSE, alpha=FALSE) + 
+      # Rename the legend title
+      scale_color_brewer(palette="Set1") +
+      labs(color = "Intern City")  +
+      # Reposition the legend over another theme
+      theme(
+              legend.position = "bottom",
+              legend.direction = "horizontal",
+              legend.justification = "center")
+      
+# Animate having reinstalled the gganimate and animation R packages from GitHub and install ImageMagick to convert to gif. 
+# devtools::install_github("dgrtwo/gganimate") 
+# devtools::install_github("yihui/animation")
+# library(installr)
+# install.ImageMagick()
+# ani.options(convert=shortPathName("C:\\Program Files\\ImageMagick-7.0.8-Q16\\magick.exe"))
+gganimate(g) 
+# Save as a gif
+gganimate(g,"mapinterns.gif")      
+```
+
+The two main Institution feeders to internships appear to be Victoria University of Wellington and Auckland University, the former resulting in half of internships. The region as the largest feeder of interns to other regions is Christchurch.
+
+### Specific Events Resulting in Internships
 
 One of the challenges with this data is that a student may attend one or many events but may only obtain one internship. A successful internship is potentially a result of a combination of event attendances. 
 
@@ -353,11 +439,12 @@ eventcountbystudent_wide    %>%
       facet_wrap(~Student.region)      
 ```
   
+
 Students from outside the major centres are very low in numbers in registering and relatively unsuccessful in interships.
 
 **Decision Tree**
 
-Instead of trying to visualise all the events, we can use a model to visualise as a decision tree what possible combination of events successful interns attended in 2017. We will use the [rpart](https://cran.r-project.org/web/packages/rpart/index.html) R package to create a classification model and the [rattle](https://cran.r-project.org/web/packages/rattle/index.html) R package which has a nice function, fancyRpartPlot, to plot the tree below. 
+Instead of trying to visualise all the events, we can use a model to visualise as a decision tree what possible combination of events successful interns attended in 2017. We will use the [rpart](https://cran.r-project.org/web/packages/rpart/index.html) R package to create a classification model and the [rattle](https://cran.r-project.org/web/packages/rattle/index.html) R package which has a nice function, fancyRpartPlot, to plot the tree below. Here I also used this [blog](http://blog.revolutionanalytics.com/2013/06/plotting-classification-and-regression-trees-with-plotrpart.html).
 
 This is a very simple model which is not intended as a prediction model with measures of accuracy. However the reshaped data with events classified with 0 or 1, which is also called one hot encoding, could be leveraged to build predictive models.
 
@@ -378,7 +465,7 @@ eventnamebystudent_wide<- eventnamebystudent_wide %>%
       rename(NoEvents='<NA>')
 eventnamebystudent_wide$Student.region <- as.factor(eventnamebystudent_wide$Student.region )
 eventnamebystudent_wide$internship <- as.factor(eventnamebystudent_wide$internship)
-#http://blog.revolutionanalytics.com/2013/06/plotting-classification-and-regression-trees-with-plotrpart.html
+# Create a model using rpart
 model <- rpart::rpart(internship~.,data=eventnamebystudent_wide[,-c(1,3)], cp=0.001 ) # default cp is 0.01, decresing this value creates a deeper tree
 rattle::fancyRpartPlot(model, sub = "Decision tree of events that result in successful (green) 2017 internships",palettes=c("Greys", "Greens"))
 ```
@@ -389,16 +476,7 @@ From this tree we can see the **`r sum(eventcountbystudent_wide$DirectApp,na.rm=
 
 The remaining branches relate to **`r length(unique(intern$token))-sum(eventcountbystudent_wide$DirectApp,na.rm=TRUE)`** students who registered for events and their success in green. Note only the top branches are shown. 
 
-Now compare the tree to the tree using the [visNetwork](https://cran.r-project.org/web/packages/visNetwork/index.html) R package visTree function. This creates an interactive tree and produces the numbers in each node.
-
-```{r visnetwork}
-# http://www.sthda.com/english/articles/33-social-network-analysis/137-interactive-network-visualization-using-r/
-visNetwork::visTree(model, main = "Decision tree of events that result in successful (green) 2017 internships",
-        width = "80%",  height = "400px")
-```
-
-
-## Social Impact
+### Social Impact
 
 Let's take a look at the percentage breakdown of intern ethnicity and gender of successful interns.
 
@@ -436,7 +514,7 @@ intern_gender %>%
   
  **`r round(100*intern_gender[intern_gender$.=="female",2])`** % of interns were female and **`r round(100*intern_gender[intern_gender$.=="male",2])`** % were male in 2017.
 
-## Conclusion
+### Conclusion
 
 Following this analysis see below preliminary insights to Summer of Tech's questions:
 
