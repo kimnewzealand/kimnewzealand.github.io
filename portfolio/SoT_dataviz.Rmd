@@ -1,7 +1,7 @@
 
 ---
 title: "Summer of Tech Event and Intern Analysis"
-image: img/portfolio/sankey.png
+image: img/portfolio/sankeynet.html
 output:
   html_document: default
 Author: kimnewzealand
