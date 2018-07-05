@@ -3,7 +3,7 @@
 title: "Summer of Tech Event and Intern Analysis"
 output: html_document
 Author: kimnewzealand
-image : "img/portfolio/sankey.jpg"
+image : "/img/portfolio/sankey.png"
 # showonlyimage : false
 weight : 5
 ---
