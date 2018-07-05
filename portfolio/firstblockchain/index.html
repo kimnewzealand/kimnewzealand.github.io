@@ -117,13 +117,8 @@ ga('send', 'pageview');
 <div id="setup" class="section level2">
 <h2>Setup</h2>
 <p><strong>LOAD R PACKAGES</strong></p>
-<pre class="r"><code>library(tidyverse) # imports all tidyverse packages incuding dplyr, ggplot2</code></pre>
-<pre><code>## Warning: package &#39;tidyverse&#39; was built under R version 3.4.3</code></pre>
-<pre><code>## Warning: package &#39;tibble&#39; was built under R version 3.4.3</code></pre>
-<pre><code>## Warning: package &#39;tidyr&#39; was built under R version 3.4.3</code></pre>
-<pre><code>## Warning: package &#39;stringr&#39; was built under R version 3.4.3</code></pre>
-<pre class="r"><code>library(digest) # Create hash function digests for R objects</code></pre>
-<pre><code>## Warning: package &#39;digest&#39; was built under R version 3.4.3</code></pre>
+<pre class="r"><code>library(tidyverse) # imports all tidyverse packages incuding dplyr, ggplot2
+library(digest) # Create hash function digests for R objects</code></pre>
 </div>
 <div id="background" class="section level2">
 <h2>Background</h2>
@@ -214,7 +209,7 @@ str(blockchain)</code></pre>
 ##   ..$ block:List of 1
 ##   .. ..$ block:List of 5
 ##   .. .. ..$ index       : int 0
-##   .. .. ..$ timestamp   : POSIXct[1:1], format: &quot;2018-05-24 11:53:37&quot;
+##   .. .. ..$ timestamp   : POSIXct[1:1], format: &quot;2018-07-05 12:15:27&quot;
 ##   .. .. ..$ transactions: chr &quot;Genesis block&quot;
 ##   .. .. ..$ thisHash    : chr &quot;744e41f7d7e1f05bd29229a944ee598b94d593aec4c012e50bdeb63a1cd0b6b7&quot;
 ##   .. .. ..$ previousHash: num 0
@@ -231,13 +226,13 @@ str(blockchain)</code></pre>
 ##   .. ..$ block:List of 1
 ##   .. .. ..$ block:List of 5
 ##   .. .. .. ..$ index       : int 0
-##   .. .. .. ..$ timestamp   : POSIXct[1:1], format: &quot;2018-05-24 11:53:37&quot;
+##   .. .. .. ..$ timestamp   : POSIXct[1:1], format: &quot;2018-07-05 12:15:27&quot;
 ##   .. .. .. ..$ transactions: chr &quot;Genesis block&quot;
 ##   .. .. .. ..$ thisHash    : chr &quot;744e41f7d7e1f05bd29229a944ee598b94d593aec4c012e50bdeb63a1cd0b6b7&quot;
 ##   .. .. .. ..$ previousHash: num 0
 ##   .. ..$ block:List of 5
 ##   .. .. ..$ index       : int 1
-##   .. .. ..$ timestamp   : POSIXct[1:1], format: &quot;2018-05-24 11:53:38&quot;
+##   .. .. ..$ timestamp   : POSIXct[1:1], format: &quot;2018-07-05 12:15:27&quot;
 ##   .. .. ..$ transactions: chr &quot;FACT ABC&quot;
 ##   .. .. ..$ thisHash    : chr &quot;1a90a573c200ff39ac0012de2dc7cfa29300068ecc958bb7149645bb593da909&quot;
 ##   .. .. ..$ previousHash: chr &quot;744e41f7d7e1f05bd29229a944ee598b94d593aec4c012e50bdeb63a1cd0b6b7&quot;

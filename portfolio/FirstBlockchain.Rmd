@@ -1,6 +1,8 @@
 ---
 title: "Simple Blockchain Example in R"
-output: html_document
+image: img/portfolio/blockchain.jpg
+output:
+  html_document: default
 Author: kimnewzealand
 ---
 
