@@ -375,16 +375,15 @@ combine &lt;- combine %&gt;%
       rename(Student.institution=Institution) %&gt;% 
       rename(Student.region=Region)</code></pre>
 </div>
-<div id="success-factors" class="section level3">
-<h3>Success Factors</h3>
-<p>To view success factors I wanted to visualise the flows from one set of values to another i.e. flow from a factor to whether the student was successful or unsuccessful with an internship.</p>
-<p><strong>Institutions</strong></p>
-<p>The flow I decided to look at is the flow of number of students from institutions to successful and unsuccessful internships.</p>
+<div id="success-factor---academic-institution" class="section level3">
+<h3>Success Factor - Academic Institution</h3>
+<p>Since we have a flow from one set of values to another i.e. flow from a factor to whether the student was successful or unsuccessful with an internship, we can use flow and network diagrams to visualise potential success factors.</p>
+<p>One potential factor is the region of study and if where the student studies is a success factor. This regional grouping consolidates the large number of <strong>34</strong> institutions for visualisation.</p>
+<p>The following diagrams are different representations of the total number of students from each region of study to successful or unsuccessful internships.</p>
 <p><strong>Sankey Diagram</strong></p>
 <p>I initially tried the Use the gvisSankey function from the <a href="https://cran.r-project.org/web/packages/googleVis/">googleVis</a> R package. The downside is that it creates a plot in a new browser tab and not easily embedded to R Markdown so not suitable for use here.</p>
 <p>Then I tried the <a href="https://cran.r-project.org/web/packages/networkD3/index.html">networkD3</a> R package to create a D3 JavaScript Sankey diagram. I used this <a href="#%20http://www.sthda.com/english/articles/33-social-network-analysis/137-interactive-network-visualization-using-r/">tutorial</a> for the networkD3 diagrams.</p>
-<p>I included a check that the total number of intern tokens in original file is same as sum in this summary after the join and also include a new “Student Institution” variable.</p>
-<p>See below the interactive Sankey diagram:</p>
+<p>After creating a summary of the data with the renamed Student.region and Intern.region variables, I included a check that the total number of intern tokens in original file is same as sum in this summary after the join.</p>
 <pre class="r"><code># Create a summary of the counts of Event institutions by unique interns
 regioninterncount &lt;- combine %&gt;%
       distinct(Student.region,internship,token,Intern.region) %&gt;%
@@ -394,9 +393,6 @@ regioninterncount &lt;- combine %&gt;%
       arrange(desc(counts)) %&gt;% 
       mutate(internship.long=ifelse(internship==&quot;Unsuccessful&quot;,&quot;Unsuccessful&quot;,paste0(internship,&quot; intern in &quot;,Intern.region))) %&gt;% 
       mutate(Student.region.long=paste0(&quot;Studies in &quot;,Student.region))
-# Since there is a large number of institutions, Group the institutions with count less than 10 as Other
-l &lt;- length(regioninterncount$counts)
-#regioninterncount$Student.region[15:l] &lt;- &quot;Other&quot;
 # Check that the total intern tokens in original file is same as sum in this summary
 length(unique(intern$token))==
 regioninterncount %&gt;% filter(stringr::str_detect(internship.long ,&quot;Successful&quot;)) %&gt;% select(counts) %&gt;% sum()</code></pre>
@@ -413,6 +409,7 @@ links &lt;- regioninterncount %&gt;%
   left_join(nodes, by = c(&#39;internship.long&#39; = &#39;name&#39;)) %&gt;%
   rename(dest_id = id) %&gt;% 
       data.frame()</code></pre>
+<p>See below the interactive Sankey diagram:</p>
 <pre class="r"><code>s &lt;- sankeyNetwork(Links = links, Nodes = nodes, Source = &#39;origin_id&#39;, Target = &#39;dest_id&#39;, Value = &#39;counts&#39;, NodeID = &#39;name&#39;, 
               # Format
               fontSize = 14,
