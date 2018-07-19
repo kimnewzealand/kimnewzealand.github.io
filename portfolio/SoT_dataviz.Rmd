@@ -102,7 +102,7 @@ names(event) <- make.names(names(event))
 names(intern) <- make.names(names(intern))
 ```
 
-**Summarise the the data in numbers:**
+**Summarise the data in numbers:**
 
 - From the event attendances data, there are **`r length(unique(event$Student.token))`** students from **`r length(unique(event$Institution))`** institutions, studying **`r length(unique(event$Qualification))`**  different qualifications, who express interest in the events. 
 
