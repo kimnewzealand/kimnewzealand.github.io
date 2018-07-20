@@ -2,9 +2,7 @@
 title: "Tutorial on Pivot Tables and other Excel things you can also do in R - Witch Trials data"
 author: "by Kim Fitter"
 output: 
-  html_document: 
-    toc: true
-    toc_float: true
+  html_document
 featuredImage: "img/portfolio/excel.png"
 # showonlyimage : false
 weight : 7    
@@ -270,11 +268,13 @@ witchdat %>%
 
 A neat R package that creates interactive pivot tables is [rpivotTable](https://cran.r-project.org/web/packages/rpivotTable/).   Have a look at this package's [vignette](https://cran.r-project.org/web/packages/rpivotTable/vignettes/rpivotTableIntroduction.html).
 
-This example shows the sum of the "witches"" tried by country.
+This example shows the sum of the "witches" tried by country.
 
 ```{r pivot}
 # Create an interactive pivot table using the rpivotTable function and package. 
-rpivotTable(witchdat,rows="country",vals="tried",aggregator="Sum")
+pivot <- rpivotTable(witchdat,rows="country",vals="tried",aggregator="Sum")
+# For this widget to show up  in a blogdown page, we can use the widgetframe package and frameWidget function
+widgetframe::frameWidget(pivot, height = '400')
 ```
   
   
@@ -310,5 +310,5 @@ write_csv(witchdat,"witchdat.csv")
   
 Thanks to Marcia Ferreira @DrMarciaFe, Chris Beltz @BeltzEcology, Duncan Garmonsway @nacnudus and Ivan Leung @urganmax for reviewing and providing suggestions on this tutorial through Twitter.
 
-If you have any further suggestions or corrections please raise an issue in [GitHub](https://github.com/kimnewzealand/R-tutorials)
+If you have any further suggestions or corrections please raise an issue in [GitHub](https://github.com/kimnewzealand/R-tutorials).
 
