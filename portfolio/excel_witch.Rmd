@@ -10,6 +10,8 @@ featuredImage: "img/portfolio/excel.png"
 weight : 7    
 ---
 
+*19 July 2018*
+
 ## Introduction
 
 This tutorial was inspired by the [R Curious tutorial at useR! 2018](https://user2018.r-project.org/tutorials/), and follows on thematically from the R Curious workshop [notes](https://github.com/softloud/rcurious/tree/master/workshop) as an extension.
