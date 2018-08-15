@@ -146,4 +146,7 @@ str(blockchain)
 ```
 
 
-  
+  <center>
+<img src="https://user-images.githubusercontent.com/26913197/44131862-cc3af2fe-a0a9-11e8-98fb-e8956057f2d0.png" style="width:60%">
+
+</center>
