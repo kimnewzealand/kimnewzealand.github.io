@@ -1,0 +1,493 @@
+---
+title: "Credit Risk Modeling and Scorecard Example"
+author: "by Kim Fitter"
+output: 
+  html_document
+featuredImage: "img/portfolio/credit.png"
+# showonlyimage : false
+weight : 8    
+---
+
+*15 August 2018*
+
++ [Introduction](#introduction)
++ [Load the data](#load-data)
++ [Summary of data](#summary-of-data)
++ [Clean Data](#clean-data)
++ [Exploratory Data Analysis](#exploratory-data-analysis)
++ [Feature Engineering](#feature-engineering)
++ [Training](#training)
++ [Create Scorecard](#create-scorecard)
++ [Conclusions](#conclusions)
+
+## Introduction
+
+Credit Risk modeling predicts whether a customer or applicant will default on their loan.  These models include predictor variables that are categorical or numeric. Since one of the key outputs in the modeling process is a credit scorecard with discrete attributes to allocate scores, the variables need to be discretised including the numerical variables. We will refer to this classification grouping process as binning.
+
+The objectives of this post are as follow:   
+
+- Compare models using logistic regression and tree-based methods 
+- Compare manual coarse binning with automated optimal Weight-of-Evidence (WOE) and Information Value (IV) binning
+- Create a credit scorecard 
+
+Here we will use a public dataset, German Credit Data, with a binary response variable, good or bad risk. We will evaluate and compare the models with typical credit risk model measures, AUC, [Kolmogorov-Smirnov test (KS)](https://www.itl.nist.gov/div898/handbook/eda/section3/eda35g.htm) and Gini measures.
+
+
+```{r settup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r packages, echo=TRUE, message=FALSE, warning=FALSE}
+library(tidyverse)
+# Packages for loading data
+library(httr)
+# Packages for data manipulation
+library(purrr)
+# Packages for visualisation
+library(Information)
+library(gmodels)
+library(DataExplorer)
+# Packages for modeling
+library(rpart)
+library(rpart.plot)
+library(pROC)
+library(scorecard)
+```
+
+
+## Load data
+
+Load the [Statlog (German Credit Data) Data Set](https://archive.ics.uci.edu/ml/support/statlog+(german+credit+data)) with [httr](https://cran.r-project.org/web/packages/httr/index.html) and [readr](https://cran.r-project.org/web/packages/readr/index.html) R packages. Note Readr is available from [loading and attaching the package to the search path](http://r-pkgs.had.co.nz/namespace.html#search-path) with library(tidyverse) above.
+
+```{r load data}
+# Set the url and uset GET function from httr to import the csv file to a temporary local directory, and read_csv from readr R package. This csv is also available at this url.
+url <- ("http://www.biz.uiowa.edu/faculty/jledolter/DataMining/germancredit.csv")
+GET(url, write_disk(tf <- tempfile(fileext = ".data")))
+creditdata <- read_csv(tf)
+```
+
+## Summary of data
+
+The dataset [metadata](https://archive.ics.uci.edu/ml/datasets/statlog+(german+credit+data)) describes this data, let's first take a look at a summary using skim function from the [skimr](https://cran.r-project.org/web/packages/skimr/index.html) package.
+
+```{r skim}
+# Plot the summary excluding the histograms as these do not print in R Markdown html yet
+skimr::skim_with(integer = list(hist = NULL))
+skimr::skim(creditdata)
+```
+
+
+## Clean Data
+
+Next we will clean the dataset using [dplyr](https://cran.r-project.org/web/packages/dplyr/index.html) and [purrr](https://cran.r-project.org/web/packages/purrr/index.html) R packages.
+
+From the [metadata](https://archive.ics.uci.edu/ml/datasets/statlog+(german+credit+data)), the following variables are numeric:
+
+- Attribute 2: duration (numerical) Duration in month   
+- Attribute 5: amount (numerical) Credit amount   
+- Attribute 8: instalment (numerical) Instalment rate in percentage of disposable income  
+- Attribute 11: residence (numerical) Present residence since  
+- Attribute 13: age (numerical) Age in years 
+- Attribute 18: liable (numerical) Number of people being liable to provide maintenance for
+
+However instalment, residence and duration appear to be categorical variables, as they are classification groupings. Therefore we will only convert duration, amount and age to numeric variables.
+
+```{r clean}
+# Change the numerical variables to numeric using map_at function from purrr R package
+creditdata <- creditdata %>% 
+      mutate_at(vars(duration,amount,age),as.numeric) %>% 
+      data.frame(stringsAsFactors = FALSE)
+
+# Convert remaining integer variables to character ie categorical variables using map_if function from purrr R package
+creditdata <- creditdata %>% 
+      map_if(is.integer,as.character) %>% 
+      data.frame() # leave the factors in except for the default value
+
+# Rename the default variable to lower case for naming consistency
+names(creditdata) <- tolower(names(creditdata))
+
+# Convert the predictor variable to numeric
+creditdata$default <- as.numeric(creditdata$default)
+creditdata$default <- recode(creditdata$default,'1'=0L,'2'=1L)
+```
+
+Next recode the variable levels with the [forcats](https://cran.r-project.org/web/packages/forcats/index.html) R package so that the variables are easier to understand in the plots.
+
+```{r recode factor values}
+# Recode with fct_recode function
+creditdata$checkingstatus1 <- fct_recode(creditdata$checkingstatus1, less0='A11', low0to200DM='A12', highover200DM='A13', noaccount='A14')
+creditdata$history <- fct_recode(creditdata$history, nocredit='A30', creditpaid='A31',creditpaidtilnow ='A32', pastdelays='A33',otherbankcredit='A34')
+creditdata$purpose <- fct_recode(creditdata$purpose, car_new='A40', car_used='A41',furniture ='A42', radio_tv='A43',appliance='A44', repairs='A45', education='A46',  retraining='A48', business='A49', others='A410') #vacation='A47'does not exist in data
+creditdata$others <- fct_recode(creditdata$others, noguarantors='A101', coapplicant='A102',guarantor ='A103')
+creditdata$property <- fct_recode(creditdata$property, realestate='A121', othersavings='A122',othercar ='A123',noproperty='A124')
+creditdata$otherplans <- fct_recode(creditdata$otherplans, bankplans='A141', storeplans='A142',noplans ='A143')
+creditdata$status <- fct_recode(creditdata$status, male_other='A91',female_other='A92', male_single='A93', male_other='A94', female_single='A95')
+creditdata$savings <- fct_recode(creditdata$savings, less100DM='A61',f100to500DM='A62',f500to1000DM='A63',greater1000DM='A64',unknown='A65')
+creditdata$employ <- fct_recode(creditdata$employ, unemployed='A71',less1year='A72',f1to4years='A73',f4to7years='A74',over7years='A75')
+creditdata$job <- fct_recode(creditdata$job, unemployed='A171',unskilled='A172',skilled='A173',management='A174')
+creditdata$foreign <- fct_recode(creditdata$foreign, yes='A201',no='A202')
+creditdata$housing <- fct_recode(creditdata$housing, rent='A151',own='A152',free='A153')
+creditdata$tele <- fct_recode(creditdata$tele, none='A191',yes='A192')
+```
+
+
+**MISSING VALUES**
+
+As per the [metadata](https://archive.ics.uci.edu/ml/datasets/statlog+(german+credit+data)), there are no missing values. Let's confirm with a missing values plot, plot_missing from Data Explorer package.
+
+The [DataExplorer](https://cran.r-project.org/web/packages/DataExplorer/index.html) speeds up data exploration process and automatically scans through each variable and does data profiling.
+
+```{r missing plot}
+plot_missing(creditdata)
+```
+```{r base copy}
+# Create a base dataset copy for the woe models
+creditdata_base <- creditdata
+```
+
+## Exploratory Data Analysis
+
+### Target variable
+
+The response variable is `default` (As per the metadata 1 = Good, 2 = Bad) however the variable has been coded to 0 = Good and 1 = Bad in the dataset.  
+
+Let's take a look at the proportions of `default` and the `checkingstatus1` using the [gmodels](https://cran.r-project.org/web/packages/gmodels/index.html) R package.
+
+```{r CrossTable}
+# Use the CrossTable function from gmodels package on default and checkingstatus1 
+gmodels::CrossTable(creditdata$default,
+                    creditdata$checkingstatus1,prop.r= FALSE, prop.c =FALSE, prop.t=FALSE, chisq = TRUE)
+```
+From the table, 30% of the loans defaulted in this dataset. If this was representative of the population then 30% of applicants cannot repay their loans. Given the Chi-squared test, we can reject a null hypothesis that these two variables, `default` and `checkingstatus1`, are independent.
+
+The imbalance in the dataset is worth noting, however real life datasets are typically highly imbalanced.
+
+### Categorical Variables
+
+To visualize distributions for the categorical features, let's view frequency bar charts using DataExplorer.
+
+```{r barplot}
+# Barplot of categorical features using DataExplorer.
+creditdata %>%
+      plot_bar()
+```
+
+From these barplots it appears that the majority of the loans are made by single males, however there is no data for single females. Most loans are used for purchasing a radio/ television, then new cars and majority of borrowers have low savings or no account with this bank. The borrowers are mostly foreign, skilled workers with existing property.
+
+### Numeric Variables
+
+Now let's take a look at the `default` variable against the numeric variables as density plots.
+
+```{r density plots}
+# Use keep function from purrr, where columns are numeric ie TRUE are kept for our plots, then use purrr map function to plot a density plot for each numeric variable by default value
+creditdata %>%
+      keep(is.numeric) %>% 
+      names()  %>% 
+      map(~ggplot(creditdata, aes_string(x = .)) +
+                geom_density(aes(fill=as.factor(default)),alpha=0.3) +
+                scale_fill_viridis_d()) # New ggplot v3.0.0 includes viridis palette
+```
+
+From these density plots there appear to be some outliers, but the `duration`, `amount` and `age` values are reasonable values so we will leave them in the dataset.
+
+The `duration` distribution and peaks appear to be different between `default` values, therefore `duration` could be a predictor variable. The distributions are similar shape for the `amount` and `age`. 
+
+
+## Information Theory (WoE and IV)
+
+We can use the [Information](https://cran.r-project.org/web/packages/Information/index.html) R package to perform exploratory data analysis and variable screening using weight-of-evidence (WOE) and information value (IV).
+
+> WOE and IV play two distinct roles when analyzing data:  
+- WOE describes the relationship between a predictive variable and a binary target variable.  
+- IV measures the strength of that relationship.
+
+The WOE framework optimises the number of bins and cut off points based on a risk value.
+
+```{r WOE, message=FALSE, warning=FALSE}
+# Create a WOE table
+IV <- create_infotables(data=creditdata,
+                        y="default")
+# Print the summary of the IV table
+IV$Summary %>% 
+      knitr::kable()
+# Plot the top 6 variables WOE bar charts
+plot_infotables(IV,"checkingstatus1", show_values=TRUE)
+plot_infotables(IV,"history", show_values=TRUE)
+plot_infotables(IV,"duration", show_values=TRUE)
+plot_infotables(IV,"savings", show_values=TRUE)
+plot_infotables(IV,"purpose", show_values=TRUE)
+```
+
+The following variables appear to be lead higher risk of default:  
+- `checkingstatus1` of less0 and low1to200DM  
+- `history` where no credits taken or credits paid  
+- longer `duration`s over 1 year have increasingly high proportions of default, although at 15,16 months there seems to be a slight improvement or lag  
+- `savings` less than 500DM  
+- `purpose` of education or others  
+
+Let's now view the `checkingstatus1` with `purpose` and `duration` as a boxplot by `default`.
+
+```{r boxplot}
+creditdata_base %>% 
+      ggplot(aes(purpose,duration,fill=as.factor(default))) +
+      geom_boxplot(position=position_dodge()) +
+      facet_wrap(~checkingstatus1) +
+      theme(axis.text.x = element_text(angle = 90, hjust = 1))
+```
+
+### Feature Engineering
+
+Before we fit models we will subjectively group the continuous numeric variables to binned categorical variables based on visualising cut-off points in the EDA above. This is called coarse binning as we will group values with similar risk, in as few bins as possible. With the new group variables, we will remove the original continuous variables.
+
+```{r age group}
+# Create a new age_group variable, with buckets based on the density distribution above
+creditdata <- creditdata %>% 
+  mutate(age_group=factor(case_when(
+  .$age <  25 ~ "25less",
+  .$age >= 25 & .$age <= 29 ~ "25to29",
+  .$age >= 30 & .$age <= 39 ~ "30to39",
+  .$age >= 40 & .$age <= 49 ~ "40to49",
+  .$age >= 50 & .$age <= 59 ~ "50to59",
+  .$age >= 60 & .$age <= 70 ~ "60over",
+  .$age >= 70 ~ "6")))
+# Remove the original age variable to avoid feature interactions
+creditdata <- creditdata %>% 
+      dplyr::select(-age)
+```
+
+```{r amount group}
+# Create a new amount_group variable, with buckets based on the density distribution above
+creditdata <- creditdata %>% 
+  mutate(amount_group=factor(case_when(
+  .$amount <  1250 ~ "1250less",
+  .$amount >= 1250 & .$amount <= 5000 ~ "1250to5000",
+  .$amount >= 5000  ~ "5000over")))
+# Remove the original amount variable to avoid feature interactions
+creditdata <- creditdata %>% 
+      dplyr::select(-amount)
+```
+
+```{r duration group}
+# Create a new  duration_group variable, with buckets based on the density distribution above. We will group the months into years, we see peaks at the incremental 12 month marks
+creditdata <- creditdata %>% 
+  mutate(duration_group=factor(case_when(
+  .$ duration <  12 ~ "1yearunder",
+  .$ duration >= 12 & .$ duration <= 24 ~ "1to2year",
+  .$ duration >= 24 & .$ duration <= 36 ~ "2to3year",
+  .$ duration >= 36 & .$ duration <= 48 ~ "3to4year",
+  .$ duration >= 48  ~ "4yearover")))
+# Remove the original  duration variable to avoid feature interactions
+creditdata <- creditdata %>% 
+      dplyr::select(- duration)
+```
+
+
+## Training
+
+Split the data into training and test sets following the Data Camp course steps in [Chapter 1](https://campus.datacamp.com/courses/introduction-to-credit-risk-modeling-in-r/chapter-1-introduction-and-data-preprocessing?ex=12). Here we will use a 70:30 split between training and test sets and create splits for the base dataset and one which will be feature engineered.
+
+```{r data splitting}
+# Set seed of 123 for reproduceability
+set.seed(123)
+# Store row numbers for training set: index_train using randomly assigned observations
+index_train <- sample(1:nrow(creditdata), 0.7 * nrow(creditdata))
+# Create training set: training with the index
+training <- creditdata[index_train, ]
+# Create test set: test with the index
+test <- creditdata[-index_train, ]
+
+# Store row numbers for training set: index_train using randomly assigned observations
+index_train_base <- sample(1:nrow(creditdata_base), 0.7 * nrow(creditdata_base))
+# Create training set: training with the index
+training_base <- creditdata_base[index_train_base, ]
+# Create test set: test with the index
+test_base <- creditdata_base[-index_train_base, ]
+```
+
+### Model 1 - Logistic Model with Coarse Binning
+
+Fit the first logistic model on the training data set where the variables have been coarse binned manually.
+
+```{r logistic model}
+# Fit a logistic model using the base glm function
+glm_model <- glm(default ~ .-liable, family = "binomial", data= training)
+```
+
+Make predictions on the test set and evaluate the model using AUC, K-S and Gini measures with the [pROC](https://cran.r-project.org/web/packages/pROC/index.html), [ROCR](https://cran.r-project.org/web/packages/ROCR/index.html) and [scoredcard](https://cran.r-project.org/web/packages/scorecard/index.html) R packages.
+
+```{r predict}
+prediction_prob <- predict(glm_model, newdata = test, type = "response")
+ROC <- pROC::roc(test$default,prediction_prob)
+# AUC for the logistic model
+AUC <- pROC::auc(ROC )
+AUC
+# KS for logistic
+pred <- ROCR::prediction(prediction_prob,test$default)
+perf <- ROCR::performance(pred,"tpr","fpr")
+KS <- max(attr(perf,'y.values')[[1]]-attr(perf,'x.values')[[1]])
+KS
+# Gini for the logistic model
+2*auc(ROC)-1
+```
+Now use the the [scorecard](https://cran.r-project.org/web/packages/scorecard/index.html) R package to plot the KS and AUC values.
+
+```{r perf plots}
+# performance
+test_perf <- scorecard::perf_eva(test$default, prediction_prob, title = "Model 1")
+```
+
+
+### Model 2 - Tree Model with Coarse Binning
+
+Next we will fit a classification tree model using the [rpart](https://cran.r-project.org/web/packages/rpart/index.html) R package. Trees are easy to interpret, in this case we will plot the tree with the [rpart.plot](https://cran.r-project.org/web/packages/rpart.plot/index.html) R package.
+
+We will use the training data set where the variables have been coarse binned to compare to a logistic model with this data.
+
+```{r tree model}
+# Let's fit a classifcation model
+tree <- rpart(formula = default~., data = training, method="class", cp=0.03)
+# Plot the tree
+rpart.plot(tree,type=1, fallen.leaves = FALSE, extra=4)
+```
+
+
+```{r predict rpart}
+# Calculate the prediction probabilities on the test data, using type prob and selecting the second column which is the probabilty of the default =1
+prediction_tree_probs <- predict(tree, newdata = test,type="prob")[,2]
+# Calculate the ROC
+ROC_tree <- pROC::roc(test$default,prediction_tree_probs)
+# AUC for tree
+AUC_tree <- pROC::auc(ROC_tree)
+AUC_tree
+# Gini for tree
+2*auc(ROC_tree)-1
+```
+
+```{r per plots tree}
+# performance plots of the tree
+test_perf_tree <- scorecard::perf_eva(test$default, prediction_tree_probs, title = "Model 2")
+```
+
+### Model 3 - Logistic Model with WOE Binning
+
+We will fit another logistic model on the training set. This model will filter variables and create WOE bins using the [scorecard](https://cran.r-project.org/web/packages/scorecard/index.html) R package.
+
+```{r model 3}
+# Filter out variables via missing rate, information value, identical value rate
+creditdata_filt <- var_filter(creditdata_base, y="default")
+# Print the remaining number variables of the filtered dataset
+dim(creditdata_filt)[2]
+# Weight of average (WOE) binning 
+bins <- woebin(creditdata_filt, y="default")
+# Let's visualise the bins created for the numeric variables age, duration and amount
+woebin_plot(bins$age)
+woebin_plot(bins$duration)
+woebin_plot(bins$amount)
+# Let's visualise the bins created for a categorical variable checkingstatus1 
+woebin_plot(bins$checkingstatus1)
+```
+  
+The WOE bin has grouped the `age` similarly to the coarse bins up until 35 where it has added a group for 35:37. The `duration` WOE bin grouped by 8 months rather than 12 months until 36 months. For `amount` there are 5 WOE bins as opposed to 3 bins. For `checkingstatus1`, the WOE binned less than 0 and 0 to 200DM levels.
+
+```{r woe modeling 3}
+# Convert train and test sets original input data to WOE values based on WOE binning 
+training_woe <- woebin_ply(training_base, bins)
+test_woe <- woebin_ply(test_base, bins)
+# Fit a logistic model 
+glm_model3 <- glm(default ~ ., family = "binomial", data = training_woe)
+```
+
+```{r perf model3}
+prediction_prob3 <- predict(glm_model3, newdata = test_woe, type = "response")
+# Calculate the ROC
+ROC_3 <- pROC::roc(test_woe$default,prediction_prob3)
+# AUC for fourth model
+AUC3 <- auc(ROC_3)
+AUC3
+# KS for fourth model
+prediction_3 <- ROCR::prediction(prediction_prob3,test_woe$default)
+perf_3 <- ROCR::performance(prediction_3,"tpr","fpr")
+KS3 <- max(attr(perf_3,'y.values')[[1]]-attr(perf_3,'x.values')[[1]])
+KS3
+# Gini for tree
+2*auc(ROC_3)-1
+```
+
+```{r perf model 3}
+# Performance of the WOE model
+test_perf <- perf_eva(test_woe$default, prediction_prob3, title = "Model 3")
+```
+
+```{r tree model woe}
+# Let's fit a classification model on the training set containing woe values
+tree_woe <- rpart(formula = default~., data = training_woe, method="class", cp=0.03)
+# Plot the tree
+rpart.plot(tree_woe,type=1, fallen.leaves = FALSE, extra=4)
+```
+  
+In the last two models, we Convert train and test sets original input data to WOE values. Therefore this tree splits based on woe values, not the bin values as per the first tree fitted on coarse binning of numerical variables. A positive WOE for a bin indicates the proportion of good is higher than the proportion of bad.
+
+```{r predict rpart woe}
+# Calculate the prediction probabilities on the test data, using type prob and selecting the second column which is the probabilty of the default =1
+prediction_tree_woe_probs <- predict(tree_woe, newdata = test_woe,type="prob")[,2]
+# Calculate the ROC
+ROC_tree_woe <- pROC::roc(test_woe$default,prediction_tree_woe_probs)
+# AUC for tree
+AUC_tree_woe <- pROC::auc(ROC_tree_woe)
+AUC_tree_woe
+# Gini for tree
+2*auc(ROC_tree_woe)-1
+```
+
+```{r per plots tree woe}
+# performance plots of the tree
+test_perf_tree_woe <- scorecard::perf_eva(test_woe$default, prediction_tree_woe_probs, title = "Model 4")
+```
+
+## Create Scorecard
+
+Now create a scorecard on the Model 3, which has the highest AUC, using the scorecard package.
+
+```{r scorecard}
+# Calculate score card
+card <- scorecard(bins, glm_model3)
+# Take a look at the scorecard for duration, which includes scorecard points
+card$duration %>% 
+      knitr::kable()
+card$checkingstatus1 %>% 
+      knitr::kable()
+```
+  
+
+This scorecards calculate points based on the probabilities, WOE and IV. We observed in the EDA that the probability of default by duration increased with duration. In the scorecard higher points are awarded for lower durations, which is indicates a similar relationship.
+
+## Conclusions
+
+This dataset has no missing variables, no outliers and is not a heavily imbalanced dataset so we have not had to overcome these real world challenges in this exercise. Although the binning would also have additional advantage of grouping outliers or missing values if these had been present.
+
+When we compare each of the four models, logistic and tree models with different manual and optimised binning methods, the AUCs for the four models are as follows:.
+
+```{r compare}
+# Model 1 - Logistic Model with Coarse Binning
+AUC
+# Model 2 - Tree Model with Coarse Binning
+AUC_tree
+# Model 3 - Logistic Model with WOE Binning
+AUC3
+# Model 4 - Tree Model with WOE Binning
+AUC_tree_woe
+```
+
+It appears that the WOE binning improved the logistic model, but did not improve the tree model from the manual binning. The best model overall appears to be the logistic model with WOE binning. 
+
+In this exercise we have included various plots. The woebin_plots are useful for visualising the bins created and associated probabilities. The tree plots are useful for interpretability of tree models.
+
+These models could be improved with further feature selection, engineering or parameter tuning.
+
+
+### References
+
+
+- DataCamp [Introduction to Credit Modeling course in R](https://campus.datacamp.com/courses/introduction-to-credit-risk-modeling-in-r/)  
+- [WoE and IV Variable Screening with {Information} in R](https://www.smartcat.io/blog/2017/woe-and-iv-variable-screening-with-information-in-r/)
+- [Sharma CreditScoring](https://cran.r-project.org/doc/contrib/Sharma-CreditScoring.pdf)
