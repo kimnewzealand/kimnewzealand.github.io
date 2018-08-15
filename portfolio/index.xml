@@ -1,114 +1,0 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Portfolios on Kim Fitter</title>
-    <link>/portfolio/</link>
-    <description>Recent content in Portfolios on Kim Fitter</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <copyright>Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)</copyright>
-    
-	<atom:link href="/portfolio/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title>Crepes made with Git</title>
-      <link>/portfolio/gitcrepeexample/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/portfolio/gitcrepeexample/</guid>
-      <description>19 March 2018
-Version control of code seems similar to creating, updating and sharing recipes. Since we were trying out crepe recipes at home, I decided to use this personal connection to work through a crepes made with git example to validate my understanding of Git from the command line.
-Inspired by Reflections on 4 months of GitHub: my advice to beginners by Suzan Baert, I also started a personal Git cheatsheet, which will be incrementally updated with gems from future projects.</description>
-    </item>
-    
-    <item>
-      <title>Excel to Interactive Census Map</title>
-      <link>/portfolio/censusmapsexample/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/portfolio/censusmapsexample/</guid>
-      <description>6 April 2018
-I have been experimenting with spatial data and looking at ways to combine data objects to get different views and perspectives. This post has the following objectives:
-Import and load data direct to R without manually saving files to a local directory, so that the end to end process is reproducible.Use vectors to efficiently clean the Excel sheet, reducing manual steps where possible so that the process could be leveraged to clean other Excel sheets in the Census data.</description>
-    </item>
-    
-    <item>
-      <title>Name Entity Recognition using Python spaCy in R</title>
-      <link>/portfolio/nlpspacy/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/portfolio/nlpspacy/</guid>
-      <description>23 May 2018
-Recently I have been working on an Natural Language Processing (NLP) client project. This field appears to extensively use Python packages so I used the opportunity to go on an NLP journey in Python, starting with a Jupyter notebook. The Python packages included here are the research tool NLTK, gensim then the more recent spaCy.
-The purpose of this post is the next step in the journey to produce a pipeline for the NLP areas of text mining and Named Entity Recognition (NER) using the Python spaCy NLP Toolkit, in R.</description>
-    </item>
-    
-    <item>
-      <title>Summer of Tech Event and Intern Analysis</title>
-      <link>/portfolio/sot_dataviz/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/portfolio/sot_dataviz/</guid>
-      <description>29 June 2018
-IntroductionDataClean DataSuccess FactorsSpecific Events Resulting in InternshipsSocial ImpactConclusionIntroductionWe were looking for a real data from a non-profit organisation for the R-Ladies Auckland Dataviz meetup. We were approached by Summer of Tech(SoT) who volunteered their data for the group to explore.
-SoT is a non-profit organisation that connects employers with students and graduates for paid work experience and graduate jobs.</description>
-    </item>
-    
-    <item>
-      <title>Tutorial on Pivot Tables and other Excel things you can also do in R - Witch Trials data</title>
-      <link>/portfolio/excel_witch/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/portfolio/excel_witch/</guid>
-      <description>19 July 2018
-IntroductionThis tutorial was inspired by the R Curious tutorial at useR! 2018, and follows on thematically from the R Curious workshop notes as an extension.
-It is aimed at those with a background in Excel, who would also like to use R for data analysis. This tutorial compares the things you would normally do in Excel, but with an equivalent function in R.</description>
-    </item>
-    
-    <item>
-      <title>Credit Risk Modeling and Scorecard Example</title>
-      <link>/portfolio/creditscoreexample/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/portfolio/creditscoreexample/</guid>
-      <description>15 August 2018
-Introduction(#introduction]Load the dataSummary of dataClean DataExploratory Data AnalysisFeature EngineeringTrainingCreate ScorecardConclusionsIntroductionCredit Risk modeling predicts whether a customer or applicant will default on their loan. These models include predictor variables that are categorical or numeric. Since one of the key outputs in the modeling process is a credit scorecard with discrete attributes to allocate scores, the variables need to be discretised including the numerical variables.</description>
-    </item>
-    
-    <item>
-      <title>Creating a website in Hugo creative portfolio theme</title>
-      <link>/portfolio/creating-a-website-in-blogdown-and-hugo/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/portfolio/creating-a-website-in-blogdown-and-hugo/</guid>
-      <description>30 January 2018
-There are a many tutorials and the great bookdown blogdown: Creating Websites with R Markdown with detailed steps on how to create a website using blogdown and Hugo.
-I used the fantastic tutorial by Tyler Clavelle to create this blog. This website uses the blogdown R package and static site generator Hugo. I chose to use the Hugo creative portfolio theme, with side bar and tiles layout. I use Windows and GitHub repo to deploy the website.</description>
-    </item>
-    
-    <item>
-      <title>Hello blog</title>
-      <link>/portfolio/hello/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/portfolio/hello/</guid>
-      <description>2 January 2018
-Welcome to my personal blog and portfolio of my data science journey.
-Until now I have been creating and publishing R code to github and HTML to RPubs. I also have a Wordpress professional website to reach out to both technical and non-technical audiences with summaries of projects. I realised I needed another more personalised medium to publish the detailed code and HTML from projects so I created this blog.</description>
-    </item>
-    
-    <item>
-      <title>Simple Blockchain Example in R</title>
-      <link>/portfolio/firstblockchain/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/portfolio/firstblockchain/</guid>
-      <description>30 January 2018
-This R markdown post was inspired by the R-bloggers post Building your own blockchain in R.
-Blockchain technology, types such as bitcoin and ethereum and its associated terminology are ubiquitous in the media at the moment.
-The objective here is to learn how a generic blockchain works and understand some of the terminology through implementing a simple example. This generic example could then extended to various types of blockchains such as distributed ledgers, smart contracts or cryptocurrencies with network servers and appropriate privacy and security settings.</description>
-    </item>
-    
-  </channel>
-</rss>

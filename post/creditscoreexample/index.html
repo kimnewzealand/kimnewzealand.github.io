@@ -21,13 +21,13 @@
   <!--<![endif]-->
 
   <!--[if lte IE 8]>
-  <link rel="stylesheet" href="https://kimnewzealand.github.io/css/side-menu-old-ie.css">
+  <link rel="stylesheet" href="/css/side-menu-old-ie.css">
   <![endif]-->
   <!--[if gt IE 8]><!-->
-  <link rel="stylesheet" href="https://kimnewzealand.github.io/css/side-menu.css">
+  <link rel="stylesheet" href="/css/side-menu.css">
   <!--<![endif]-->
 
-  <link rel="stylesheet" href="https://kimnewzealand.github.io/css/blackburn.css">
+  <link rel="stylesheet" href="/css/blackburn.css">
 
   
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -48,7 +48,7 @@
   <script>hljs.initHighlightingOnLoad();</script>
   
 
-  <link rel="shortcut icon" href="https://kimnewzealand.github.io/img/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
 
   
   
@@ -67,7 +67,7 @@
 <div id="menu">
 
   
-  <a class="pure-menu-heading brand" href="https://kimnewzealand.github.io/">Kim Fitter</a>
+  <a class="pure-menu-heading brand" href="/">Kim Fitter</a>
 
 
   <div class="pure-menu">
@@ -75,25 +75,25 @@
       
       
         <li class="pure-menu-item">
-          <a class="pure-menu-link" href="https://kimnewzealand.github.io/"><i class='fa fa-home fa-fw'></i>Home</a>
+          <a class="pure-menu-link" href="/"><i class='fa fa-home fa-fw'></i>Home</a>
       
         </li>
       
       
         <li class="pure-menu-item">
-          <a class="pure-menu-link" href="https://kimnewzealand.github.io/portfolio/"><i class='fa fa-list fa-fw'></i>Portfolio</a>
+          <a class="pure-menu-link" href="/portfolio/"><i class='fa fa-list fa-fw'></i>Portfolio</a>
       
         </li>
       
       
         <li class="pure-menu-item">
-          <a class="pure-menu-link" href="https://kimnewzealand.github.io/about/"><i class='fa fa-user fa-fw'></i>About</a>
+          <a class="pure-menu-link" href="/about/"><i class='fa fa-user fa-fw'></i>About</a>
       
         </li>
       
       
         <li class="pure-menu-item">
-          <a class="pure-menu-link" href="https://kimnewzealand.github.io/contact/"><i class='fa fa-phone fa-fw'></i>Contact</a>
+          <a class="pure-menu-link" href="/contact/"><i class='fa fa-phone fa-fw'></i>Contact</a>
       
         </li>
       
@@ -215,7 +215,7 @@
 
   <div>
     <i class="fa fa-calendar fa-fw"></i>
-    <time>01 Jan 0001, 00:00</time>
+    <time>01 Jan 0001</time>
   </div>
 
   
@@ -389,7 +389,7 @@ creditdata$tele &lt;- fct_recode(creditdata$tele, none=&#39;A191&#39;,yes=&#39;A
 <p>As per the <a href="https://archive.ics.uci.edu/ml/datasets/statlog+(german+credit+data)">metadata</a>, there are no missing values. Let’s confirm with a missing values plot, plot_missing from Data Explorer package.</p>
 <p>The <a href="https://cran.r-project.org/web/packages/DataExplorer/index.html">DataExplorer</a> speeds up data exploration process and automatically scans through each variable and does data profiling.</p>
 <pre class="r"><code>plot_missing(creditdata)</code></pre>
-<p><img src="https://kimnewzealand.github.io/post/CreditScoreExample_files/figure-html/missing%20plot-1.png" width="672" /></p>
+<p><img src="/post/CreditScoreExample_files/figure-html/missing%20plot-1.png" width="672" /></p>
 <pre class="r"><code># Create a base dataset copy for the woe models
 creditdata_base &lt;- creditdata</code></pre>
 </div>
@@ -445,7 +445,7 @@ gmodels::CrossTable(creditdata$default,
 <pre class="r"><code># Barplot of categorical features using DataExplorer.
 creditdata %&gt;%
       plot_bar()</code></pre>
-<p><img src="https://kimnewzealand.github.io/post/CreditScoreExample_files/figure-html/barplot-1.png" width="672" /><img src="https://kimnewzealand.github.io/post/CreditScoreExample_files/figure-html/barplot-2.png" width="672" /></p>
+<p><img src="/post/CreditScoreExample_files/figure-html/barplot-1.png" width="672" /><img src="/post/CreditScoreExample_files/figure-html/barplot-2.png" width="672" /></p>
 <p>From these barplots it appears that the majority of the loans are made by single males, however there is no data for single females. Most loans are used for purchasing a radio/ television, then new cars and majority of borrowers have low savings or no account with this bank. The borrowers are mostly foreign, skilled workers with existing property.</p>
 </div>
 <div id="numeric-variables" class="section level3">
@@ -459,16 +459,16 @@ creditdata %&gt;%
                 geom_density(aes(fill=as.factor(default)),alpha=0.3) +
                 scale_fill_viridis_d()) # New ggplot v3.0.0 includes viridis palette</code></pre>
 <pre><code>## [[1]]</code></pre>
-<p><img src="https://kimnewzealand.github.io/post/CreditScoreExample_files/figure-html/density%20plots-1.png" width="672" /></p>
+<p><img src="/post/CreditScoreExample_files/figure-html/density%20plots-1.png" width="672" /></p>
 <pre><code>## 
 ## [[2]]</code></pre>
-<p><img src="https://kimnewzealand.github.io/post/CreditScoreExample_files/figure-html/density%20plots-2.png" width="672" /></p>
+<p><img src="/post/CreditScoreExample_files/figure-html/density%20plots-2.png" width="672" /></p>
 <pre><code>## 
 ## [[3]]</code></pre>
-<p><img src="https://kimnewzealand.github.io/post/CreditScoreExample_files/figure-html/density%20plots-3.png" width="672" /></p>
+<p><img src="/post/CreditScoreExample_files/figure-html/density%20plots-3.png" width="672" /></p>
 <pre><code>## 
 ## [[4]]</code></pre>
-<p><img src="https://kimnewzealand.github.io/post/CreditScoreExample_files/figure-html/density%20plots-4.png" width="672" /></p>
+<p><img src="/post/CreditScoreExample_files/figure-html/density%20plots-4.png" width="672" /></p>
 <p>From these density plots there appear to be some outliers, but the <code>duration</code>, <code>amount</code> and <code>age</code> values are reasonable values so we will leave them in the dataset.</p>
 <p>The <code>duration</code> distribution and peaks appear to be different between <code>default</code> values, therefore <code>duration</code> could be a predictor variable. The distributions are similar shape for the <code>amount</code> and <code>age</code>.</p>
 </div>
@@ -601,15 +601,15 @@ IV$Summary %&gt;%
 </table>
 <pre class="r"><code># Plot the top 6 variables WOE bar charts
 plot_infotables(IV,&quot;checkingstatus1&quot;, show_values=TRUE)</code></pre>
-<p><img src="https://kimnewzealand.github.io/post/CreditScoreExample_files/figure-html/WOE-1.png" width="672" /></p>
+<p><img src="/post/CreditScoreExample_files/figure-html/WOE-1.png" width="672" /></p>
 <pre class="r"><code>plot_infotables(IV,&quot;history&quot;, show_values=TRUE)</code></pre>
-<p><img src="https://kimnewzealand.github.io/post/CreditScoreExample_files/figure-html/WOE-2.png" width="672" /></p>
+<p><img src="/post/CreditScoreExample_files/figure-html/WOE-2.png" width="672" /></p>
 <pre class="r"><code>plot_infotables(IV,&quot;duration&quot;, show_values=TRUE)</code></pre>
-<p><img src="https://kimnewzealand.github.io/post/CreditScoreExample_files/figure-html/WOE-3.png" width="672" /></p>
+<p><img src="/post/CreditScoreExample_files/figure-html/WOE-3.png" width="672" /></p>
 <pre class="r"><code>plot_infotables(IV,&quot;savings&quot;, show_values=TRUE)</code></pre>
-<p><img src="https://kimnewzealand.github.io/post/CreditScoreExample_files/figure-html/WOE-4.png" width="672" /></p>
+<p><img src="/post/CreditScoreExample_files/figure-html/WOE-4.png" width="672" /></p>
 <pre class="r"><code>plot_infotables(IV,&quot;purpose&quot;, show_values=TRUE)</code></pre>
-<p><img src="https://kimnewzealand.github.io/post/CreditScoreExample_files/figure-html/WOE-5.png" width="672" /></p>
+<p><img src="/post/CreditScoreExample_files/figure-html/WOE-5.png" width="672" /></p>
 <p>The following variables appear to be lead higher risk of default:<br />
 - <code>checkingstatus1</code> of less0 and low1to200DM<br />
 - <code>history</code> where no credits taken or credits paid<br />
@@ -622,7 +622,7 @@ plot_infotables(IV,&quot;checkingstatus1&quot;, show_values=TRUE)</code></pre>
       geom_boxplot(position=position_dodge()) +
       facet_wrap(~checkingstatus1) +
       theme(axis.text.x = element_text(angle = 90, hjust = 1))</code></pre>
-<p><img src="https://kimnewzealand.github.io/post/CreditScoreExample_files/figure-html/boxplot-1.png" width="672" /></p>
+<p><img src="/post/CreditScoreExample_files/figure-html/boxplot-1.png" width="672" /></p>
 <div id="feature-engineering" class="section level3">
 <h3>Feature Engineering</h3>
 <p>Before we fit models we will subjectively group the continuous numeric variables to binned categorical variables based on visualising cut-off points in the EDA above. This is called coarse binning as we will group values with similar risk, in as few bins as possible. With the new group variables, we will remove the original continuous variables.</p>
@@ -703,7 +703,7 @@ KS</code></pre>
 <p>Now use the the <a href="https://cran.r-project.org/web/packages/scorecard/index.html">scorecard</a> R package to plot the KS and AUC values.</p>
 <pre class="r"><code># performance
 test_perf &lt;- scorecard::perf_eva(test$default, prediction_prob, title = &quot;Model 1&quot;)</code></pre>
-<p><img src="https://kimnewzealand.github.io/post/CreditScoreExample_files/figure-html/perf%20plots-1.png" width="672" /></p>
+<p><img src="/post/CreditScoreExample_files/figure-html/perf%20plots-1.png" width="672" /></p>
 </div>
 <div id="model-2---tree-model-with-coarse-binning" class="section level3">
 <h3>Model 2 - Tree Model with Coarse Binning</h3>
@@ -713,7 +713,7 @@ test_perf &lt;- scorecard::perf_eva(test$default, prediction_prob, title = &quot
 tree &lt;- rpart(formula = default~., data = training, method=&quot;class&quot;, cp=0.03)
 # Plot the tree
 rpart.plot(tree,type=1, fallen.leaves = FALSE, extra=4)</code></pre>
-<p><img src="https://kimnewzealand.github.io/post/CreditScoreExample_files/figure-html/tree%20model-1.png" width="672" /></p>
+<p><img src="/post/CreditScoreExample_files/figure-html/tree%20model-1.png" width="672" /></p>
 <pre class="r"><code># Calculate the prediction probabilities on the test data, using type prob and selecting the second column which is the probabilty of the default =1
 prediction_tree_probs &lt;- predict(tree, newdata = test,type=&quot;prob&quot;)[,2]
 # Calculate the ROC
@@ -727,7 +727,7 @@ AUC_tree</code></pre>
 <pre><code>## [1] 0.4606446</code></pre>
 <pre class="r"><code># performance plots of the tree
 test_perf_tree &lt;- scorecard::perf_eva(test$default, prediction_tree_probs, title = &quot;Model 2&quot;)</code></pre>
-<p><img src="https://kimnewzealand.github.io/post/CreditScoreExample_files/figure-html/per%20plots%20tree-1.png" width="672" /></p>
+<p><img src="/post/CreditScoreExample_files/figure-html/per%20plots%20tree-1.png" width="672" /></p>
 </div>
 <div id="model-3---logistic-model-with-woe-binning" class="section level3">
 <h3>Model 3 - Logistic Model with WOE Binning</h3>
@@ -746,17 +746,17 @@ bins &lt;- woebin(creditdata_filt, y=&quot;default&quot;)</code></pre>
 <pre class="r"><code># Let&#39;s visualise the bins created for the numeric variables age, duration and amount
 woebin_plot(bins$age)</code></pre>
 <pre><code>## $age</code></pre>
-<p><img src="https://kimnewzealand.github.io/post/CreditScoreExample_files/figure-html/model%203-1.png" width="672" /></p>
+<p><img src="/post/CreditScoreExample_files/figure-html/model%203-1.png" width="672" /></p>
 <pre class="r"><code>woebin_plot(bins$duration)</code></pre>
 <pre><code>## $duration</code></pre>
-<p><img src="https://kimnewzealand.github.io/post/CreditScoreExample_files/figure-html/model%203-2.png" width="672" /></p>
+<p><img src="/post/CreditScoreExample_files/figure-html/model%203-2.png" width="672" /></p>
 <pre class="r"><code>woebin_plot(bins$amount)</code></pre>
 <pre><code>## $amount</code></pre>
-<p><img src="https://kimnewzealand.github.io/post/CreditScoreExample_files/figure-html/model%203-3.png" width="672" /></p>
+<p><img src="/post/CreditScoreExample_files/figure-html/model%203-3.png" width="672" /></p>
 <pre class="r"><code># Let&#39;s visualise the bins created for a categorical variable checkingstatus1 
 woebin_plot(bins$checkingstatus1)</code></pre>
 <pre><code>## $checkingstatus1</code></pre>
-<p><img src="https://kimnewzealand.github.io/post/CreditScoreExample_files/figure-html/model%203-4.png" width="672" /></p>
+<p><img src="/post/CreditScoreExample_files/figure-html/model%203-4.png" width="672" /></p>
 <p>The WOE bin has grouped the <code>age</code> similarly to the coarse bins up until 35 where it has added a group for 35:37. The <code>duration</code> WOE bin grouped by 8 months rather than 12 months until 36 months. For <code>amount</code> there are 5 WOE bins as opposed to 3 bins. For <code>checkingstatus1</code>, the WOE binned less than 0 and 0 to 200DM levels.</p>
 <pre class="r"><code># Convert train and test sets original input data to WOE values based on WOE binning 
 training_woe &lt;- woebin_ply(training_base, bins)</code></pre>
@@ -785,12 +785,12 @@ KS3</code></pre>
 <pre><code>## [1] 0.5902706</code></pre>
 <pre class="r"><code># Performance of the WOE model
 test_perf &lt;- perf_eva(test_woe$default, prediction_prob3, title = &quot;Model 3&quot;)</code></pre>
-<p><img src="https://kimnewzealand.github.io/post/CreditScoreExample_files/figure-html/perf%20model%203-1.png" width="672" /></p>
+<p><img src="/post/CreditScoreExample_files/figure-html/perf%20model%203-1.png" width="672" /></p>
 <pre class="r"><code># Let&#39;s fit a classification model on the training set containing woe values
 tree_woe &lt;- rpart(formula = default~., data = training_woe, method=&quot;class&quot;, cp=0.03)
 # Plot the tree
 rpart.plot(tree_woe,type=1, fallen.leaves = FALSE, extra=4)</code></pre>
-<p><img src="https://kimnewzealand.github.io/post/CreditScoreExample_files/figure-html/tree%20model%20woe-1.png" width="672" /></p>
+<p><img src="/post/CreditScoreExample_files/figure-html/tree%20model%20woe-1.png" width="672" /></p>
 <p>In the last two models, we Convert train and test sets original input data to WOE values. Therefore this tree splits based on woe values, not the bin values as per the first tree fitted on coarse binning of numerical variables. A positive WOE for a bin indicates the proportion of good is higher than the proportion of bad.</p>
 <pre class="r"><code># Calculate the prediction probabilities on the test data, using type prob and selecting the second column which is the probabilty of the default =1
 prediction_tree_woe_probs &lt;- predict(tree_woe, newdata = test_woe,type=&quot;prob&quot;)[,2]
@@ -805,7 +805,7 @@ AUC_tree_woe</code></pre>
 <pre><code>## [1] 0.3982648</code></pre>
 <pre class="r"><code># performance plots of the tree
 test_perf_tree_woe &lt;- scorecard::perf_eva(test_woe$default, prediction_tree_woe_probs, title = &quot;Model 4&quot;)</code></pre>
-<p><img src="https://kimnewzealand.github.io/post/CreditScoreExample_files/figure-html/per%20plots%20tree%20woe-1.png" width="672" /></p>
+<p><img src="/post/CreditScoreExample_files/figure-html/per%20plots%20tree%20woe-1.png" width="672" /></p>
 </div>
 </div>
 <div id="create-scorecard" class="section level2">
@@ -1017,13 +1017,13 @@ AUC_tree_woe</code></pre>
 <div class="prev-next-post pure-g">
   <div class="pure-u-1-24" style="text-align: left;">
     
-    <a href="https://kimnewzealand.github.io/post/creating-a-website-in-blogdown-and-hugo/"><i class="fa fa-chevron-left"></i></a>
+    <a href="/post/creating-a-website-in-blogdown-and-hugo/"><i class="fa fa-chevron-left"></i></a>
     
   </div>
   <div class="pure-u-10-24">
     
     <nav class="prev">
-      <a href="https://kimnewzealand.github.io/post/creating-a-website-in-blogdown-and-hugo/">Creating a website in Hugo creative portfolio theme</a>
+      <a href="/post/creating-a-website-in-blogdown-and-hugo/">Creating a website in Hugo creative portfolio theme</a>
     </nav>
     
   </div>
@@ -1033,13 +1033,13 @@ AUC_tree_woe</code></pre>
   <div class="pure-u-10-24">
     
     <nav class="next">
-      <a href="https://kimnewzealand.github.io/post/excel_witch/">Tutorial on Pivot Tables and other Excel things you can also do in R - Witch Trials data</a>
+      <a href="/post/excel_witch/">Tutorial on Pivot Tables and other Excel things you can also do in R - Witch Trials data</a>
     </nav>
     
   </div>
   <div class="pure-u-1-24" style="text-align: right;">
     
-    <a href="https://kimnewzealand.github.io/post/excel_witch/"><i class="fa fa-chevron-right"></i></a>
+    <a href="/post/excel_witch/"><i class="fa fa-chevron-right"></i></a>
     
   </div>
 </div>
@@ -1052,7 +1052,7 @@ AUC_tree_woe</code></pre>
 
 </div>
 </div>
-<script src="https://kimnewzealand.github.io/js/ui.js"></script>
+<script src="/js/ui.js"></script>
 
 
 <script>
