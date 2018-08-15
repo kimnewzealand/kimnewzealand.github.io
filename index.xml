@@ -24,17 +24,6 @@ I have been experimenting with spatial data and looking at ways to combine data 
     </item>
     
     <item>
-      <title>Name Entity Recognition using Python spaCy in R</title>
-      <link>/post/nlpspacy/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/post/nlpspacy/</guid>
-      <description>23 May 2018
-Recently I have been working on an Natural Language Processing (NLP) client project. This field appears to extensively use Python packages so I used the opportunity to go on an NLP journey in Python, starting with a Jupyter notebook. The Python packages included here are the research tool NLTK, gensim then the more recent spaCy.
-The purpose of this post is the next step in the journey to produce a pipeline for the NLP areas of text mining and Named Entity Recognition (NER) using the Python spaCy NLP Toolkit, in R.</description>
-    </item>
-    
-    <item>
       <title>Changing Theme with Blogdown</title>
       <link>/post/changing-theme-with-blogdown/</link>
       <pubDate>Wed, 15 Aug 2018 00:00:00 +0000</pubDate>
@@ -73,6 +62,16 @@ This introductory level tutorial assumes you have already installed R and R stud
       <guid>/post/sot-analysis/</guid>
       <description>IntroductionDataClean DataSuccess FactorsSpecific Events Resulting in InternshipsSocial ImpactConclusionIntroductionWe were looking for a real data from a non-profit organisation for the R-Ladies Auckland Dataviz meetup. We were approached by Summer of Tech(SoT) who volunteered their data for the group to explore.
 SoT is a non-profit organisation that connects employers with students and graduates for paid work experience and graduate jobs.</description>
+    </item>
+    
+    <item>
+      <title>Name Entity Recognition using Python spaCy in R</title>
+      <link>/post/name-entity-recognition/</link>
+      <pubDate>Wed, 23 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/name-entity-recognition/</guid>
+      <description>Recently I have been working on an Natural Language Processing (NLP) client project. This field appears to extensively use Python packages so I used the opportunity to go on an NLP journey in Python, starting with a Jupyter notebook. The Python packages included here are the research tool NLTK, gensim then the more recent spaCy.
+The purpose of this post is the next step in the journey to produce a pipeline for the NLP areas of text mining and Named Entity Recognition (NER) using the Python spaCy NLP Toolkit, in R.</description>
     </item>
     
     <item>

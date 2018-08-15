@@ -7,10 +7,6 @@
   </url>
   
   <url>
-    <loc>/post/nlpspacy/</loc>
-  </url>
-  
-  <url>
     <loc>/post/changing-theme-with-blogdown/</loc>
     <lastmod>2018-08-15T00:00:00+00:00</lastmod>
   </url>
@@ -28,6 +24,11 @@
   <url>
     <loc>/post/sot-analysis/</loc>
     <lastmod>2018-06-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/name-entity-recognition/</loc>
+    <lastmod>2018-05-23T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -118,8 +119,20 @@
   </url>
   
   <url>
+    <loc>/tags/nlp/</loc>
+    <lastmod>2018-05-23T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>/post/</loc>
     <lastmod>2018-08-15T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/python/</loc>
+    <lastmod>2018-05-23T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
