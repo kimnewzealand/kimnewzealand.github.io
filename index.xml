@@ -7,6 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)</copyright>
+    <lastBuildDate>Wed, 15 Aug 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
@@ -74,6 +75,17 @@ It is aimed at those with a background in Excel, who would also like to use R fo
       <guid>/post/creditscoreexample/</guid>
       <description>15 August 2018
 IntroductionLoad the dataSummary of dataClean DataExploratory Data AnalysisFeature EngineeringTrainingCreate ScorecardConclusionsIntroductionCredit Risk modeling predicts whether a customer or applicant will default on their loan. These models include predictor variables that are categorical or numeric. Since one of the key outputs in the modeling process is a credit scorecard with discrete attributes to allocate scores, the variables need to be discretised including the numerical variables.</description>
+    </item>
+    
+    <item>
+      <title>Changing Theme with Blogdown</title>
+      <link>/post/changing-theme-with-blogdown/</link>
+      <pubDate>Wed, 15 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/changing-theme-with-blogdown/</guid>
+      <description>This blog was using the creative portfolio theme until the number of posts grew, and require a different format with lists and an archive.
+I have changed the theme to Blackburn following this post by Mike Treglia.
+So far so good&amp;hellip;.</description>
     </item>
     
     <item>
