@@ -13,23 +13,12 @@
     
     
     <item>
-      <title>Excel to Interactive Census Map</title>
-      <link>/post/censusmapsexample/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/post/censusmapsexample/</guid>
-      <description>6 April 2018
-I have been experimenting with spatial data and looking at ways to combine data objects to get different views and perspectives. This post has the following objectives:
-Import and load data direct to R without manually saving files to a local directory, so that the end to end process is reproducible.Use vectors to efficiently clean the Excel sheet, reducing manual steps where possible so that the process could be leveraged to clean other Excel sheets in the Census data.</description>
-    </item>
-    
-    <item>
       <title>Changing Theme with Blogdown</title>
       <link>/post/changing-theme-with-blogdown/</link>
       <pubDate>Wed, 15 Aug 2018 00:00:00 +0000</pubDate>
       
       <guid>/post/changing-theme-with-blogdown/</guid>
-      <description>This blog was using the creative portfolio theme until the number of posts grew, and require a different format with lists and an archive.
+      <description>This blog was using the creative portfolio theme until the number of posts grew. The tiled effect became busy and the website required a different website format including an archive list.
 I have changed the theme to Blackburn following this post by Mike Treglia.
 So far so good&amp;hellip;.</description>
     </item>
@@ -85,6 +74,16 @@ Inspired by Reflections on 4 months of GitHub: my advice to beginners by Suzan B
     </item>
     
     <item>
+      <title>Excel to Interactive Census Map</title>
+      <link>/post/excel-to-map/</link>
+      <pubDate>Fri, 06 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/excel-to-map/</guid>
+      <description>I have been experimenting with spatial data and looking at ways to combine data objects to get different views and perspectives. This post has the following objectives:
+Import and load data direct to R without manually saving files to a local directory, so that the end to end process is reproducible.Use vectors to efficiently clean the Excel sheet, reducing manual steps where possible so that the process could be leveraged to clean other Excel sheets in the Census data.</description>
+    </item>
+    
+    <item>
       <title>Simple Blockchain Example in R</title>
       <link>/post/simple-blockchain/</link>
       <pubDate>Tue, 30 Jan 2018 00:00:00 +0000</pubDate>
@@ -111,8 +110,7 @@ Until now I have been creating and publishing R code to github and HTML to RPubs
       <pubDate>Mon, 01 Jan 2018 00:00:00 +0000</pubDate>
       
       <guid>/post/creating-a-website-in-blogdown-and-hugo/</guid>
-      <description>30 January 2018
-There are a many tutorials and the great bookdown blogdown: Creating Websites with R Markdown with detailed steps on how to create a website using blogdown and Hugo.
+      <description>There are a many tutorials and the great bookdown blogdown: Creating Websites with R Markdown with detailed steps on how to create a website using blogdown and Hugo.
 I used the fantastic tutorial by Tyler Clavelle to create this blog. This website uses the blogdown R package and static site generator Hugo. I chose to use the Hugo creative portfolio theme, with side bar and tiles layout. I use Windows and GitHub repo to deploy the website.</description>
     </item>
     

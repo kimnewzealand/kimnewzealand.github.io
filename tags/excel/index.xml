@@ -23,5 +23,15 @@ It is aimed at those with a background in Excel, who would also like to use R fo
 This introductory level tutorial assumes you have already installed R and R studio and had a brief introduction to the R basics and R Markdown.</description>
     </item>
     
+    <item>
+      <title>Excel to Interactive Census Map</title>
+      <link>/post/excel-to-map/</link>
+      <pubDate>Fri, 06 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/excel-to-map/</guid>
+      <description>I have been experimenting with spatial data and looking at ways to combine data objects to get different views and perspectives. This post has the following objectives:
+Import and load data direct to R without manually saving files to a local directory, so that the end to end process is reproducible.Use vectors to efficiently clean the Excel sheet, reducing manual steps where possible so that the process could be leveraged to clean other Excel sheets in the Census data.</description>
+    </item>
+    
   </channel>
 </rss>
