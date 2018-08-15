@@ -32,6 +32,16 @@
   </url>
   
   <url>
+    <loc>/post/hello-blog/</loc>
+    <lastmod>2018-01-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/creating-a-website-in-blogdown-and-hugo/</loc>
+    <lastmod>2018-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/contact/</loc>
     <lastmod>2016-11-06T13:00:25+05:30</lastmod>
   </url>
@@ -41,17 +51,13 @@
   </url>
   
   <url>
+    <loc>/about/about-me/</loc>
+  </url>
+  
+  <url>
     <loc>/tags/blogdown/</loc>
     <lastmod>2018-08-15T00:00:00+00:00</lastmod>
     <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/post/creating-a-website-in-blogdown-and-hugo/</loc>
-  </url>
-  
-  <url>
-    <loc>/post/hello/</loc>
   </url>
   
   <url>
@@ -68,6 +74,7 @@
   
   <url>
     <loc>/tags/r/</loc>
+    <lastmod>2018-08-15T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

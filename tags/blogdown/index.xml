@@ -24,9 +24,19 @@ So far so good&amp;hellip;.</description>
     </item>
     
     <item>
+      <title>Hello Blog</title>
+      <link>/post/hello-blog/</link>
+      <pubDate>Tue, 02 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/hello-blog/</guid>
+      <description>Welcome to my personal blog and portfolio of my data science journey.
+Until now I have been creating and publishing R code to github and HTML to RPubs. I also have a Wordpress professional website to reach out to both technical and non-technical audiences with summaries of projects. I realised I needed another more personalised medium to publish the detailed code and HTML from projects so I created this blog.</description>
+    </item>
+    
+    <item>
       <title>Creating a website in Hugo creative portfolio theme</title>
       <link>/post/creating-a-website-in-blogdown-and-hugo/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 01 Jan 2018 00:00:00 +0000</pubDate>
       
       <guid>/post/creating-a-website-in-blogdown-and-hugo/</guid>
       <description>30 January 2018
