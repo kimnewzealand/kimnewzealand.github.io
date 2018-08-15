@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>/post/gitcrepeexample/</loc>
+  </url>
+  
+  <url>
+    <loc>/post/censusmapsexample/</loc>
+  </url>
+  
+  <url>
+    <loc>/post/nlpspacy/</loc>
+  </url>
+  
+  <url>
+    <loc>/post/sot_dataviz/</loc>
+  </url>
+  
+  <url>
+    <loc>/post/excel_witch/</loc>
+  </url>
+  
+  <url>
+    <loc>/post/creditscoreexample/</loc>
+  </url>
+  
+  <url>
+    <loc>/contact/</loc>
+    <lastmod>2016-11-06T13:00:25+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>/about/</loc>
+  </url>
+  
+  <url>
+    <loc>/tags/blogdown/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/post/creating-a-website-in-blogdown-and-hugo/</loc>
+  </url>
+  
+  <url>
+    <loc>/post/hello/</loc>
+  </url>
+  
+  <url>
+    <loc>/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/post/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/r/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/post/firstblockchain/</loc>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/topics/</loc>
+    <priority>0</priority>
+  </url>
+  
+</urlset>
