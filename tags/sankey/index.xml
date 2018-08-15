@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Sankey on Kim Fitter</title>
+    <link>/tags/sankey/</link>
+    <description>Recent content in Sankey on Kim Fitter</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)</copyright>
+    <lastBuildDate>Fri, 29 Jun 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/sankey/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Summer of Tech Event and Intern Analysis</title>
+      <link>/post/sot-analysis/</link>
+      <pubDate>Fri, 29 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/sot-analysis/</guid>
+      <description>IntroductionDataClean DataSuccess FactorsSpecific Events Resulting in InternshipsSocial ImpactConclusionIntroductionWe were looking for a real data from a non-profit organisation for the R-Ladies Auckland Dataviz meetup. We were approached by Summer of Tech(SoT) who volunteered their data for the group to explore.
+SoT is a non-profit organisation that connects employers with students and graduates for paid work experience and graduate jobs.</description>
+    </item>
+    
+  </channel>
+</rss>
