@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.31.1" />
+
+  <title>Name Entity Recognition using Python spaCy in R &middot; Kim Fitter</title>
+
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/pure-min.css">
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-old-ie-min.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-min.css">
+  <!--<![endif]-->
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="/css/side-menu-old-ie.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="/css/side-menu.css">
+  <!--<![endif]-->
+
+  <link rel="stylesheet" href="/css/blackburn.css">
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+ 
+  
+
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/androidstudio.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+
+  
+  
+
+</head>
+
+
+<body>
+<div id="layout">
+
+  
+<a href="#menu" id="menuLink" class="menu-link">
+  
+  <span></span>
+</a>
+<div id="menu">
+
+  
+  <a class="pure-menu-heading brand" href="/">Kim Fitter</a>
+
+
+  <div class="pure-menu">
+    <ul class="pure-menu-list">
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/"><i class='fa fa-home fa-fw'></i>Home</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/about/"><i class='fa fa-user fa-fw'></i>About</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/post/"><i class='fa fa-list fa-fw'></i>Blog Archive</a>
+      
+        </li>
+      
+    </ul>
+  </div>
+
+  <div class="pure-menu social">
+  <ul class="pure-menu-list">
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://twitter.com/kim_fitter" target="_blank"><i class="fa fa-twitter-square fa-fw"></i>Twitter</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://github.com/kimnewzealand" target="_blank"><i class="fa fa-github-square fa-fw"></i>GitHub</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </ul>
+</div>
+
+
+  <div>
+  <div class="small-print">
+    <small>Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)</small>
+  </div>
+  <div class="small-print">
+    <small>Built with&nbsp;<a href="https://gohugo.io/" target="_blank">Hugo</a></small>
+    <small>Theme&nbsp;<a href="https://github.com/yoshiharuyamashita/blackburn" target="_blank">Blackburn</a></small>
+  </div>
+</div>
+
+</div>
+
+
+  <div id="main">
+
+
+<div class="header">
+  <h1>Name Entity Recognition using Python spaCy in R</h1>
+  <h2></h2>
+</div>
+<div class="content">
+
+  <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>23 May 2018</time>
+  </div>
+
+  
+
+  
+  
+  
+  
+
+  
+  
+  
+  <div>
+    <i class="fa fa-tags fa-fw"></i>
+    
+      <a class="post-taxonomy-tag" href="/tags/r">R</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="/tags/python">Python</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="/tags/nlp">NLP</a>
+    
+  </div>
+  
+  
+
+</div>
+
+  <p>Recently I have been working on an Natural Language Processing (NLP) client project. This field appears to extensively use Python packages so I used the opportunity to go on an NLP journey in Python, starting with a <a href="https://github.com/kimnewzealand/NLPexampleprojects/blob/master/Basic%2BText%2BMining%2BNLP%2BABC%2Bexample.ipynb">Jupyter notebook</a>. The Python packages included here are the research tool <a href="https://www.nltk.org/">NLTK</a>, <a href="https://radimrehurek.com/gensim/">gensim</a> then the more recent <a href="https://spacy.io/">spaCy</a>.</p>
+<p>The purpose of this post is the next step in the journey to produce a pipeline for the NLP areas of text mining and Named Entity Recognition (NER) using the Python spaCy NLP Toolkit, in R. This is made possible with the interface to Python, the reticulate R package.</p>
+<p>This post will cover the following:</p>
+<ul>
+<li><a href="#python-initialisation">Python initialisation in R</a></li>
+<li><a href="#load-data">Load the data</a></li>
+<li><a href="#data-summary">Data Summaries</a></li>
+<li><a href="#named-entity-recognition-using-cleannlp">Named entity recognition with spaCy</a></li>
+</ul>
+<p>This will not however include advanced topic modeling and training annotation models in spaCy.</p>
+<br>
+<hr>
+<div id="load-packages" class="section level2">
+<h2>Load Packages</h2>
+<pre class="r"><code>library(tidyverse)
+# Packages for manipulating data
+library(stringr)
+library(lubridate)
+# Packages for NLP
+library(NLP)
+# install.packages(&quot;openNLPmodels.en&quot;,repos = &quot;http://datacube.wu.ac.at/&quot;, type = &quot;source&quot;)
+library(openNLP)
+library(cleanNLP)
+# cnlp_download_corenlp() # install the coreNLP Java back end &#39;CoreNLP&#39; &lt;http://stanfordnlp.github.io/CoreNLP/&gt;
+# Packages for Python interface
+# Packages for Python
+library(reticulate)
+use_virtualenv(&quot;r-reticulate&quot;)</code></pre>
+</div>
+<div id="python-initialisation" class="section level2">
+<h2>Python Initialisation</h2>
+<p>We have loaded the required R packages including the <a href="https://rstudio.github.io/reticulate/articles/introduction.html">reticulate</a> R package which provides an R interface to Python modules, classes, and functions.</p>
+<p>As per the <a href="https://cran.r-project.org/web/packages/cleanNLP/cleanNLP.pdf">cleanNLP R package documentation</a>, we will load the <a href="https://spacy.io/">spaCy</a> Python NLP backend.</p>
+<pre class="r"><code># First set the executable. Note this needs to be set before any initialising
+use_python(&quot;C:/Users/HOME/Anaconda3/python.exe&quot;) 
+# py_available(initialize = TRUE) # should give TRUE
+# Check Python configuration
+py_config()</code></pre>
+<pre><code>## python:         C:/Users/HOME/Anaconda3/python.exe
+## libpython:      C:/Users/HOME/Anaconda3/python36.dll
+## pythonhome:     C:\Users\HOME\ANACON~1
+## version:        3.6.3 |Anaconda, Inc.| (default, Oct 15 2017, 03:27:45) [MSC v.1900 64 bit (AMD64)]
+## Architecture:   64bit
+## numpy:          C:\Users\HOME\ANACON~1\lib\site-packages\numpy
+## numpy_version:  1.13.3
+## 
+## python versions found: 
+##  C:/Users/HOME/Anaconda3/python.exe
+##  C:\Users\Home\AppData\Local\Programs\Python\Python36\python.exe
+##  C:\Users\Home\AppData\Local\Programs\Python\Python36\\python.exe
+##  C:\Users\Home\ANACON~1\python.exe</code></pre>
+<pre class="r"><code># Initialise the spaCy backend
+cnlp_init_spacy()</code></pre>
+</div>
+<div id="load-data" class="section level2">
+<h2>Load Data</h2>
+<p>The <a href="https://www.kaggle.com/therohk/million-headlines/data">A Million News Headlines dataset</a> is easy to load with the read_csv function from the <a href="https://cran.r-project.org/web/packages/readr/index.html">readr</a> R package.</p>
+<blockquote>
+<p>This contains data of news headlines published over a period of 15 years. From the reputable Australian news source ABC (Australian Broadcasting Corp.)</p>
+</blockquote>
+<p>These files have been downloaded into a local directory first to agree to the terms of use.</p>
+</div>
+<div id="data-summary" class="section level2">
+<h2>Data Summary</h2>
+<p>Let’s take a look at the ABC headline data.</p>
+<pre class="r"><code># Change the date to a date format
+abc$publish_date &lt;- as.Date(as.character(abc$publish_date), format = &#39;%Y%m%d&#39;)
+# Add new columns for the year, month and day using the lubridate R package
+abc &lt;- abc %&gt;%  
+      mutate(year = lubridate::year(abc$publish_date),
+             month = lubridate::month(abc$publish_date),
+             day = lubridate::day(abc$publish_date))
+# Take a look at the first rows in the  dataset
+head(abc)</code></pre>
+<pre><code>## # A tibble: 6 x 5
+##   publish_date headline_text                              year month   day
+##   &lt;date&gt;       &lt;chr&gt;                                     &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt;
+## 1 2003-02-19   aba decides against community broadcasti~  2003     2    19
+## 2 2003-02-19   act fire witnesses must be aware of defa~  2003     2    19
+## 3 2003-02-19   a g calls for infrastructure protection ~  2003     2    19
+## 4 2003-02-19   air nz staff in aust strike for pay rise   2003     2    19
+## 5 2003-02-19   air nz strike to affect australian trave~  2003     2    19
+## 6 2003-02-19   ambitious olsson wins triple jump          2003     2    19</code></pre>
+<pre><code>## # A tibble: 15 x 2
+## # Groups:   year [15]
+##     year     n
+##    &lt;dbl&gt; &lt;int&gt;
+##  1  2017 44182
+##  2  2016 54615
+##  3  2015 77941
+##  4  2014 82330
+##  5  2013 92337
+##  6  2012 89109
+##  7  2011 77829
+##  8  2010 74948
+##  9  2009 76454
+## 10  2008 80015
+## 11  2007 77192
+## 12  2006 66912
+## 13  2005 73124
+## 14  2004 72674
+## 15  2003 64003</code></pre>
+<pre><code>## # A tibble: 12 x 3
+## # Groups:   year, month [12]
+##     year month     n
+##    &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt;
+##  1  2017    12  3032
+##  2  2017    11  3607
+##  3  2017    10  3747
+##  4  2017     9  3588
+##  5  2017     8  3893
+##  6  2017     7  3723
+##  7  2017     6  3456
+##  8  2017     5  3616
+##  9  2017     4  3486
+## 10  2017     3  4474
+## 11  2017     2  3873
+## 12  2017     1  3687</code></pre>
+<p>Since this is a large dataset, we will use a subset of articles from January, 2017.</p>
+</div>
+<div id="named-entity-recognition-using-cleannlp-and-spacy" class="section level2">
+<h2>Named Entity Recognition using CleanNLP and spaCy</h2>
+<p>Annotate the string of text using the cnlp_annotate function from <a href="https://cran.r-project.org/web/packages/cleanNLP/index.html">CleanNLP</a>. This annotate function performs the word tokenisation and parts of speech tagging steps.</p>
+<pre class="r"><code># Annotate the string tf by running the annotation engine over the corpus of text
+anno &lt;- cnlp_annotate(tf)
+# Summarise the tokens by parts of speech
+cnlp_get_token(anno, include_root = FALSE) %&gt;%
+  group_by(upos) %&gt;%
+  summarize(posnum = n()) %&gt;%
+  arrange(desc(posnum)) </code></pre>
+<pre><code>## # A tibble: 15 x 2
+##    upos  posnum
+##    &lt;chr&gt;  &lt;int&gt;
+##  1 NOUN   14026
+##  2 VERB    5051
+##  3 ADJ     3831
+##  4 ADP     3491
+##  5 PART     716
+##  6 NUM      650
+##  7 ADV      597
+##  8 DET      509
+##  9 CCONJ    231
+## 10 PRON     223
+## 11 PUNCT    146
+## 12 PROPN     79
+## 13 X         45
+## 14 INTJ      17
+## 15 SYM       13</code></pre>
+<pre class="r"><code># Summarise the count of entities
+cnlp_get_entity(anno) %&gt;%
+  group_by(entity_type) %&gt;%
+  summarize(count = n())  %&gt;%
+  arrange(desc(count)) </code></pre>
+<pre><code>## # A tibble: 13 x 2
+##    entity_type count
+##    &lt;chr&gt;       &lt;int&gt;
+##  1 DATE          340
+##  2 CARDINAL      330
+##  3 ORDINAL       133
+##  4 NORP           40
+##  5 GPE            38
+##  6 TIME           28
+##  7 MONEY          17
+##  8 QUANTITY       11
+##  9 PERSON          4
+## 10 ORG             2
+## 11 EVENT           1
+## 12 LOC             1
+## 13 PRODUCT         1</code></pre>
+<pre class="r"><code># Extract the entities of type GPE which is are geo-political entities such as city, state/province, and country
+cnlp_get_entity(anno) %&gt;%
+  filter(entity_type == &quot;GPE&quot;) %&gt;%
+  group_by(entity) %&gt;%
+  summarize(count = n()) %&gt;%
+  arrange(desc(count)) </code></pre>
+<pre><code>## # A tibble: 6 x 2
+##   entity  count
+##   &lt;chr&gt;   &lt;int&gt;
+## 1 india      15
+## 2 china      11
+## 3 japan       7
+## 4 mexico      3
+## 5 chicago     1
+## 6 london      1</code></pre>
+<pre class="r"><code># Extract the entities of type NORP which are Nationalities or religious or political groups.
+cnlp_get_entity(anno) %&gt;%
+  filter(entity_type == &quot;NORP&quot;) %&gt;%
+  group_by(entity) %&gt;%
+  summarize(count = n()) %&gt;%
+  arrange(desc(count))</code></pre>
+<pre><code>## # A tibble: 15 x 2
+##    entity      count
+##    &lt;chr&gt;       &lt;int&gt;
+##  1 chinese        15
+##  2 japanese        4
+##  3 russian         4
+##  4 american        3
+##  5 british         2
+##  6 european        2
+##  7 mexico          2
+##  8 173yo           1
+##  9 190117          1
+## 10 canadian        1
+## 11 christian       1
+## 12 israeli         1
+## 13 korean          1
+## 14 palestinian     1
+## 15 republican      1</code></pre>
+<pre class="r"><code># Extract the entities of type PERSON which are People, including fictional.
+cnlp_get_entity(anno) %&gt;%
+  filter(entity_type == &quot;PERSON&quot;) %&gt;%
+  group_by(entity) %&gt;%
+  summarize(count = n()) %&gt;%
+  arrange(desc(count))</code></pre>
+<pre><code>## # A tibble: 2 x 2
+##   entity    count
+##   &lt;chr&gt;     &lt;int&gt;
+## 1 elizabeth     2
+## 2 jack          2</code></pre>
+<pre class="r"><code># Extract the entities of type ORG which are Companies, agencies, institutions, etc.
+cnlp_get_entity(anno) %&gt;%
+  filter(entity_type == &quot;ORG&quot;) %&gt;%
+  group_by(entity) %&gt;%
+  summarize(count = n()) %&gt;%
+  arrange(desc(count))</code></pre>
+<pre><code>## # A tibble: 2 x 2
+##   entity count
+##   &lt;chr&gt;  &lt;int&gt;
+## 1 7 134      1
+## 2 mafia      1</code></pre>
+<pre class="r"><code># Extract the entities of type MONEY which are Monetary values, including unit.
+cnlp_get_entity(anno) %&gt;%
+  filter(entity_type == &quot;MONEY&quot;) %&gt;%
+  group_by(entity) %&gt;%
+  summarize(count = n()) %&gt;%
+  arrange(desc(count))</code></pre>
+<pre><code>## # A tibble: 17 x 2
+##    entity              count
+##    &lt;chr&gt;               &lt;int&gt;
+##  1 $20m                    1
+##  2 $493 billion            1
+##  3 $6 million              1
+##  4 $60 million             1
+##  5 $6m                     1
+##  6 15000                   1
+##  7 20 cents                1
+##  8 3 million dollars       1
+##  9 5.8 per cent            1
+## 10 50 per cent             1
+## 11 500000                  1
+## 12 70                      1
+## 13 76                      1
+## 14 8 mark                  1
+## 15 more than $860000       1
+## 16 more than 4 billion     1
+## 17 over $60m               1</code></pre>
+<p>The other entities types can be viewed in the spaCy <a href="https://spacy.io/usage/linguistic-features#section-named-entities">documentation</a>.</p>
+<p>See the <a href="https://github.com/kimnewzealand/NLPexampleprojects">GitHub NLPexamples repo</a> for my other NLP projects in R and Python.</p>
+</div>
+
+
+  
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+    <a href="/post/crepes-made-with-git/"><i class="fa fa-chevron-left"></i></a>
+    
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="/post/crepes-made-with-git/">Crepes made with Git</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="next">
+      <a href="/post/sot-analysis/">Summer of Tech Event and Intern Analysis</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+    <a href="/post/sot-analysis/"><i class="fa fa-chevron-right"></i></a>
+    
+  </div>
+</div>
+
+
+
+  
+
+</div>
+
+</div>
+</div>
+<script src="/js/ui.js"></script>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-114904130-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+
+
+</body>
+</html>
+
