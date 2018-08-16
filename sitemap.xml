@@ -58,11 +58,16 @@
   </url>
   
   <url>
+    <loc>/about/about-me/</loc>
+  </url>
+  
+  <url>
     <loc>/about/</loc>
   </url>
   
   <url>
-    <loc>/about/about-me/</loc>
+    <loc>/about/</loc>
+    <priority>0</priority>
   </url>
   
   <url>

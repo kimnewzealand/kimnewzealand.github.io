@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>About me on Kim Fitter</title>
+    <title>Abouts on Kim Fitter</title>
     <link>/about/</link>
-    <description>Recent content in About me on Kim Fitter</description>
+    <description>Recent content in Abouts on Kim Fitter</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)</copyright>
@@ -17,6 +17,17 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/about/about-me/</guid>
+      <description>Background I have a background in Actuarial Science and have worked in analyst roles and project delivery in Credit Risk and Finance.
+I discovered data science as a magical field that combines my statistics and analytical skills; my project and multitasking experience; a curiosity of numbers and patterns; love of learning new tools and concepts whilst working with a variety of people and teams.
+Current Role I now work as an independent through Validly and am available for remote data science work.</description>
+    </item>
+    
+    <item>
+      <title>About me</title>
+      <link>/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/about/</guid>
       <description>Background I have a background in Actuarial Science and have worked in analyst roles and project delivery in Credit Risk and Finance.
 I discovered data science as a magical field that combines my statistics and analytical skills; my project and multitasking experience; a curiosity of numbers and patterns; love of learning new tools and concepts whilst working with a variety of people and teams.
 Current Role I now work as an independent through Validly and am available for remote data science work.</description>

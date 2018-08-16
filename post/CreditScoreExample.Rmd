@@ -2,9 +2,12 @@
 title: "Credit Risk Modeling and Scorecard Example"
 date: '2018-08-15'
 slug: credit-risk-modeling
-categories: ["Post"]
-tags: ["R","modeling","creditrisk","EDA"]
-  
+tags:
+- R
+- modeling
+- creditrisk
+- EDA
+categories: Post
 ---
 
 
@@ -20,15 +23,15 @@ tags: ["R","modeling","creditrisk","EDA"]
 
 ## Introduction
 
-Credit Risk modeling predicts whether a customer or applicant will default on their loan.  These models include predictor variables that are categorical or numeric. Since one of the key outputs in the modeling process is a credit scorecard with discrete attributes to allocate scores, the variables need to be discretised including the numerical variables. We will refer to this classification grouping process as binning.
+Credit Risk modeling predicts whether a customer or applicant will default on his or her loan.  The models include predictor variables that are categorical or numeric. Since one of the key outputs in the modeling process is a credit scorecard with discrete attributes to allocate scores, the variables need to be discretised. We will refer to this grouping process as binning.
 
-The objectives of this post are as follow:   
+The objectives of this post are as follows:   
 
 - Compare models using logistic regression and tree-based methods 
 - Compare manual coarse binning with automated optimal Weight-of-Evidence (WOE) and Information Value (IV) binning
 - Create a credit scorecard 
 
-Here we will use a public dataset, German Credit Data, with a binary response variable, good or bad risk. We will evaluate and compare the models with typical credit risk model measures, AUC, [Kolmogorov-Smirnov test (KS)](https://www.itl.nist.gov/div898/handbook/eda/section3/eda35g.htm) and Gini measures.
+Here we will use a public dataset, German Credit Data, with a binary response variable, good or bad risk. We will evaluate and compare the models with typical credit risk model measures, AUC, Kolmogorov-Smirnov(KS) and Gini.
 
 
 ```{r settup, include=FALSE}
@@ -36,6 +39,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ```{r packages, echo=TRUE, message=FALSE, warning=FALSE}
+# Meta package for tidyverse
 library(tidyverse)
 # Packages for loading data
 library(httr)
@@ -55,7 +59,9 @@ library(scorecard)
 
 ## Load data
 
-Load the [Statlog (German Credit Data) Data Set](https://archive.ics.uci.edu/ml/support/statlog+(german+credit+data)) with [httr](https://cran.r-project.org/web/packages/httr/index.html) and [readr](https://cran.r-project.org/web/packages/readr/index.html) R packages. Note Readr is available from [loading and attaching the package to the search path](http://r-pkgs.had.co.nz/namespace.html#search-path) with library(tidyverse) above.
+The German Credit data set is available from the [UCI Machine Learning Repository Set](https://archive.ics.uci.edu/ml/support/statlog+(german+credit+data)). We will load the data  with [httr](https://cran.r-project.org/web/packages/httr/index.html) and [readr](https://cran.r-project.org/web/packages/readr/index.html) R packages. 
+
+Note Readr is available from [loading and attaching the package to the search path](http://r-pkgs.had.co.nz/namespace.html#search-path) with library(tidyverse) above.
 
 ```{r load data}
 # Set the url and uset GET function from httr to import the csv file to a temporary local directory, and read_csv from readr R package. This csv is also available at this url.
@@ -74,6 +80,7 @@ skimr::skim_with(integer = list(hist = NULL))
 skimr::skim(creditdata)
 ```
 
+This is a relatively small dataset with  `r dim(creditdata)[1]` observations and `r dim(creditdata)[2]` variables. 
 
 ## Clean Data
 
@@ -106,7 +113,6 @@ names(creditdata) <- tolower(names(creditdata))
 
 # Convert the predictor variable to numeric
 creditdata$default <- as.numeric(creditdata$default)
-creditdata$default <- recode(creditdata$default,'1'=0L,'2'=1L)
 ```
 
 Next recode the variable levels with the [forcats](https://cran.r-project.org/web/packages/forcats/index.html) R package so that the variables are easier to understand in the plots.
@@ -131,14 +137,16 @@ creditdata$tele <- fct_recode(creditdata$tele, none='A191',yes='A192')
 
 **MISSING VALUES**
 
-As per the [metadata](https://archive.ics.uci.edu/ml/datasets/statlog+(german+credit+data)), there are no missing values. Let's confirm with a missing values plot, plot_missing from Data Explorer package.
+As per the [metadata](https://archive.ics.uci.edu/ml/datasets/statlog+(german+credit+data)), there are no missing values. Let's confirm with a missing values plot, using the plot_missing function from Data Explorer package.
 
-The [DataExplorer](https://cran.r-project.org/web/packages/DataExplorer/index.html) speeds up data exploration process and automatically scans through each variable and does data profiling.
+[DataExplorer](https://cran.r-project.org/web/packages/DataExplorer/index.html) speeds up data exploration process and automatically scans through each variable and does data profiling.
 
 ```{r missing plot}
 plot_missing(creditdata)
 ```
 ```{r base copy}
+# Recode the default value to 0 and 1 for the modeling with binary outcomes
+creditdata$default <- recode(creditdata$default,'1'=0L,'2'=1L)
 # Create a base dataset copy for the woe models
 creditdata_base <- creditdata
 ```
@@ -147,18 +155,22 @@ creditdata_base <- creditdata
 
 ### Target variable
 
-The response variable is `default` (As per the metadata 1 = Good, 2 = Bad) however the variable has been coded to 0 = Good and 1 = Bad in the dataset.  
+The response variable is `default` classifies people described by a set of attributes as good or bad credit risks, as per the the abstract. This type of data could be used to make a loan application decision. As per the metadata  `default` values are 1 = Good or 2 = Bad, however the variable has been coded to 0 = Good and 1 = Bad in the dataset. 
 
 Let's take a look at the proportions of `default` and the `checkingstatus1` using the [gmodels](https://cran.r-project.org/web/packages/gmodels/index.html) R package.
+
+We will include the row proportions as indicators of the proportion good and proportion bad for each value.
 
 ```{r CrossTable}
 # Use the CrossTable function from gmodels package on default and checkingstatus1 
 gmodels::CrossTable(creditdata$default,
-                    creditdata$checkingstatus1,prop.r= FALSE, prop.c =FALSE, prop.t=FALSE, chisq = TRUE)
+                    creditdata$checkingstatus1, prop.r= TRUE, prop.c =FALSE, prop.t=FALSE, 
+                    chisq = TRUE)
 ```
-From the table, 30% of the loans defaulted in this dataset. If this was representative of the population then 30% of applicants cannot repay their loans. Given the Chi-squared test, we can reject a null hypothesis that these two variables, `default` and `checkingstatus1`, are independent.
+  
+From the table, 30% of the loan applications are risky in this dataset. If this was representative of the population then 30% of applicants cannot repay their loans. Given the Chi-squared test, we can reject a null hypothesis that these two variables, `default` and `checkingstatus1`, are independent.
 
-The imbalance in the dataset is worth noting, however real life datasets are typically highly imbalanced.
+The imbalance in the dataset is worth noting, however real life datasets are typically more highly imbalanced.
 
 ### Categorical Variables
 
@@ -201,29 +213,32 @@ We can use the [Information](https://cran.r-project.org/web/packages/Information
 
 The WOE framework optimises the number of bins and cut off points based on a risk value.
 
+Let's calculate the information values for the dataset, sorted from highest importance or predictive strength to the lowest. Then plot the variables with highest importance and the corresponding WOE values. A positive WOE for a bin value indicates the proportion of good is higher than the proportion of bad, ie the log odds of the row proportions from the CrossTable above.
+
 ```{r WOE, message=FALSE, warning=FALSE}
-# Create a WOE table
+# Create a WOE table with IV values
 IV <- create_infotables(data=creditdata,
                         y="default")
 # Print the summary of the IV table
 IV$Summary %>% 
       knitr::kable()
-# Plot the top 6 variables WOE bar charts
-plot_infotables(IV,"checkingstatus1", show_values=TRUE)
-plot_infotables(IV,"history", show_values=TRUE)
-plot_infotables(IV,"duration", show_values=TRUE)
-plot_infotables(IV,"savings", show_values=TRUE)
-plot_infotables(IV,"purpose", show_values=TRUE)
+# Plot the top 6 variables WOE bar charts. Raised potential issue with woe signage in GitHub https://github.com/klarsen1/Information/issues/2
+# plot_infotables(IV,"checkingstatus1", show_values=TRUE)
+# plot_infotables(IV,"history", show_values=TRUE)
+# plot_infotables(IV,"duration", show_values=TRUE)
+# plot_infotables(IV,"savings", show_values=TRUE)
+# plot_infotables(IV,"purpose", show_values=TRUE)
 ```
 
-The following variables appear to be lead higher risk of default:  
+
+The following variables appear to be linked to riskier applicants:  
 - `checkingstatus1` of less0 and low1to200DM  
 - `history` where no credits taken or credits paid  
 - longer `duration`s over 1 year have increasingly high proportions of default, although at 15,16 months there seems to be a slight improvement or lag  
 - `savings` less than 500DM  
 - `purpose` of education or others  
 
-Let's now view the `checkingstatus1` with `purpose` and `duration` as a boxplot by `default`.
+Let's now view the `checkingstatus1` with `purpose` and `duration` as a boxplot by `default` to view the relationships between these variables.
 
 ```{r boxplot}
 creditdata_base %>% 
@@ -235,7 +250,7 @@ creditdata_base %>%
 
 ### Feature Engineering
 
-Before we fit models we will subjectively group the continuous numeric variables to binned categorical variables based on visualising cut-off points in the EDA above. This is called coarse binning as we will group values with similar risk, in as few bins as possible. With the new group variables, we will remove the original continuous variables.
+Before we fit models we will subjectively group the continuous numeric variables to binned categorical variables based on visualising cut-off points in the EDA above. This is called coarse binning as we will group values with similar risk, into as few bins as possible. We will remove the original continuous numeric variables.
 
 ```{r age group}
 # Create a new age_group variable, with buckets based on the density distribution above
@@ -282,7 +297,9 @@ creditdata <- creditdata %>%
 
 ## Training
 
-Split the data into training and test sets following the Data Camp course steps in [Chapter 1](https://campus.datacamp.com/courses/introduction-to-credit-risk-modeling-in-r/chapter-1-introduction-and-data-preprocessing?ex=12). Here we will use a 70:30 split between training and test sets and create splits for the base dataset and one which will be feature engineered.
+Split the data into training and test sets following the Data Camp course steps in [Chapter 1](https://campus.datacamp.com/courses/introduction-to-credit-risk-modeling-in-r/chapter-1-introduction-and-data-preprocessing?ex=12). Here we will use a 70:30 split between training and test sets.
+
+We will create two sets of splits, one training and test set for the feature engineered coarse binning and training_base and test_base for the woe binning.
 
 ```{r data splitting}
 # Set seed of 123 for reproduceability
@@ -304,14 +321,14 @@ test_base <- creditdata_base[-index_train_base, ]
 
 ### Model 1 - Logistic Model with Coarse Binning
 
-Fit the first logistic model on the training data set where the variables have been coarse binned manually.
+Fit the first logistic model on the training data set where the coarse binned variables.
 
 ```{r logistic model}
 # Fit a logistic model using the base glm function
 glm_model <- glm(default ~ .-liable, family = "binomial", data= training)
 ```
 
-Make predictions on the test set and evaluate the model using AUC, K-S and Gini measures with the [pROC](https://cran.r-project.org/web/packages/pROC/index.html), [ROCR](https://cran.r-project.org/web/packages/ROCR/index.html) and [scoredcard](https://cran.r-project.org/web/packages/scorecard/index.html) R packages.
+Make predictions on the test set and evaluate the model using AUC, [KS](https://en.wikipedia.org/wiki/Kolmogorov%E2%80%93Smirnov_test) and Gini measures with the [pROC](https://cran.r-project.org/web/packages/pROC/index.html), [ROCR](https://cran.r-project.org/web/packages/ROCR/index.html) and [scoredcard](https://cran.r-project.org/web/packages/scorecard/index.html) R packages.
 
 ```{r predict}
 prediction_prob <- predict(glm_model, newdata = test, type = "response")
@@ -342,16 +359,20 @@ Next we will fit a classification tree model using the [rpart](https://cran.r-pr
 We will use the training data set where the variables have been coarse binned to compare to a logistic model with this data.
 
 ```{r tree model}
-# Let's fit a classifcation model
-tree <- rpart(formula = default~., data = training, method="class", cp=0.03)
+# Let's fit a classification model
+tree <- rpart(formula = default~., data = training, method="class", cp=0.001,parms = list(split="information"))
+# Plot the cp complexity parameter of the tree
+plotcp(tree)
+# Prune the tree at the minimum cp value
+ptree <- prune(tree, cp= tree$cptable[which.min(tree$cptable[,"xerror"]),"CP"])
 # Plot the tree
-rpart.plot(tree,type=1, fallen.leaves = FALSE, extra=4)
+rpart.plot(ptree,type=1, fallen.leaves = FALSE, extra=4)
 ```
 
 
 ```{r predict rpart}
 # Calculate the prediction probabilities on the test data, using type prob and selecting the second column which is the probabilty of the default =1
-prediction_tree_probs <- predict(tree, newdata = test,type="prob")[,2]
+prediction_tree_probs <- predict(ptree, newdata = test,type="prob")[,2]
 # Calculate the ROC
 ROC_tree <- pROC::roc(test$default,prediction_tree_probs)
 # AUC for tree
@@ -368,15 +389,11 @@ test_perf_tree <- scorecard::perf_eva(test$default, prediction_tree_probs, title
 
 ### Model 3 - Logistic Model with WOE Binning
 
-We will fit another logistic model on the training set. This model will filter variables and create WOE bins using the [scorecard](https://cran.r-project.org/web/packages/scorecard/index.html) R package.
+We will fit another logistic model on the training set. This model will create WOE bins using the [scorecard](https://cran.r-project.org/web/packages/scorecard/index.html) R package.
 
 ```{r model 3}
-# Filter out variables via missing rate, information value, identical value rate
-creditdata_filt <- var_filter(creditdata_base, y="default")
-# Print the remaining number variables of the filtered dataset
-dim(creditdata_filt)[2]
-# Weight of average (WOE) binning 
-bins <- woebin(creditdata_filt, y="default")
+# Weight of average (WOE) binning generates optimal binning for numerical, factor and categorical variables>. Note the default values are still 1 and 2.
+bins <- woebin(training_base, y="default",max_num_bin = 5)
 # Let's visualise the bins created for the numeric variables age, duration and amount
 woebin_plot(bins$age)
 woebin_plot(bins$duration)
@@ -385,7 +402,7 @@ woebin_plot(bins$amount)
 woebin_plot(bins$checkingstatus1)
 ```
   
-The WOE bin has grouped the `age` similarly to the coarse bins up until 35 where it has added a group for 35:37. The `duration` WOE bin grouped by 8 months rather than 12 months until 36 months. For `amount` there are 5 WOE bins as opposed to 3 bins. For `checkingstatus1`, the WOE binned less than 0 and 0 to 200DM levels.
+The WOE bin has grouped the `age` similarly to the coarse bins up until 35 where it has added a group for 35:37. The `duration` WOE bin has also grouped by 12 months initially and not annually thereafter. For `amount` there are 5 WOE bins as opposed to 3 bins. The WOE binning has also grouped catageorical variables; WOE binning has grouped `checkingstatus1` less than 0 and 0 to 200DM levels.
 
 ```{r woe modeling 3}
 # Convert train and test sets original input data to WOE values based on WOE binning 
@@ -394,6 +411,7 @@ test_woe <- woebin_ply(test_base, bins)
 # Fit a logistic model 
 glm_model3 <- glm(default ~ ., family = "binomial", data = training_woe)
 ```
+
 
 ```{r perf model3}
 prediction_prob3 <- predict(glm_model3, newdata = test_woe, type = "response")
@@ -418,16 +436,24 @@ test_perf <- perf_eva(test_woe$default, prediction_prob3, title = "Model 3")
 
 ```{r tree model woe}
 # Let's fit a classification model on the training set containing woe values
-tree_woe <- rpart(formula = default~., data = training_woe, method="class", cp=0.03)
-# Plot the tree
-rpart.plot(tree_woe,type=1, fallen.leaves = FALSE, extra=4)
+tree_woe <- rpart(formula = default~., 
+                  data = training_woe, 
+                  method="class", 
+                  cp=0.001, 
+                  parms = list(split="information"))
+# Plot CP
+plotcp(tree_woe)
+# Prune the tree based on min CP
+ptree_woe <- prune(tree_woe, cp= tree$cptable[which.min(tree$cptable[,"xerror"]),"CP"])
+# Plot the pruned tree 
+rpart.plot(ptree_woe,type=1, fallen.leaves = FALSE, extra=4)
 ```
   
-In the last two models, we Convert train and test sets original input data to WOE values. Therefore this tree splits based on woe values, not the bin values as per the first tree fitted on coarse binning of numerical variables. A positive WOE for a bin indicates the proportion of good is higher than the proportion of bad.
+In the last two models, we converted the training and test sets original input data to WOE values. Therefore this tree splits based on woe values, not the bin values as per the first tree fitted on coarse binning of numerical variables. 
 
 ```{r predict rpart woe}
 # Calculate the prediction probabilities on the test data, using type prob and selecting the second column which is the probabilty of the default =1
-prediction_tree_woe_probs <- predict(tree_woe, newdata = test_woe,type="prob")[,2]
+prediction_tree_woe_probs <- predict(ptree_woe, newdata = test_woe,type="prob")[,2]
 # Calculate the ROC
 ROC_tree_woe <- pROC::roc(test_woe$default,prediction_tree_woe_probs)
 # AUC for tree
@@ -444,11 +470,11 @@ test_perf_tree_woe <- scorecard::perf_eva(test_woe$default, prediction_tree_woe_
 
 ## Create Scorecard
 
-Now create a scorecard on the Model 3, which has the highest AUC, using the scorecard package.
+Now create a scorecard on the Model 1, which has the highest AUC, using the scorecard package.
 
 ```{r scorecard}
 # Calculate score card
-card <- scorecard(bins, glm_model3)
+card <- scorecard(bins, glm_model)
 # Take a look at the scorecard for duration, which includes scorecard points
 card$duration %>% 
       knitr::kable()
@@ -463,24 +489,25 @@ This scorecards calculate points based on the probabilities, WOE and IV. We obse
 
 This dataset has no missing variables, no outliers and is not a heavily imbalanced dataset so we have not had to overcome these real world challenges in this exercise. Although the binning would also have additional advantage of grouping outliers or missing values if these had been present.
 
-When we compare each of the four models, logistic and tree models with different manual and optimised binning methods, the AUCs for the four models are as follows:.
+The baseline model in this case could be the `default` split of 0.7 as AUC.
 
-```{r compare}
-# Model 1 - Logistic Model with Coarse Binning
-AUC
-# Model 2 - Tree Model with Coarse Binning
-AUC_tree
-# Model 3 - Logistic Model with WOE Binning
-AUC3
-# Model 4 - Tree Model with WOE Binning
-AUC_tree_woe
+We compare the AUC of each of the four models, logistic and tree models with different manual and optimised binning methods as follows:
+
+```{r compare results}
+results <- cbind(c("Model 1 - Logistic Model with Coarse Binning","Model 2 - Tree Model with Coarse Binning","Model 3 - Logistic Model with WOE Binning","Model 4 - Tree Model with WOE Binning"),c(AUC,AUC_tree,AUC3,AUC_tree_woe)) %>% 
+      data.frame()
+names(results) <- c("Model","AUC")
+results %>%  
+      knitr::kable(digits=c(0,2))
 ```
 
-It appears that the WOE binning improved the logistic model, but did not improve the tree model from the manual binning. The best model overall appears to be the logistic model with WOE binning. 
+It appears that all models are better than the baseline model.
 
-In this exercise we have included various plots. The woebin_plots are useful for visualising the bins created and associated probabilities. The tree plots are useful for interpretability of tree models.
+The tree models perform worse than the logistic models and the WOE binning  did not improve the models from the manual binning. The best model overall appears to be the logistic model with coarse binning.  This is surprising, as I was expecting an optimised woe process to create a better model.
 
-These models could be improved with further feature selection, engineering or parameter tuning.
+In this exercise we have included various plots to visualise calculations. The woebin_plots are useful for visualising the bins created and associated probabilities. The tree plots are useful for interpretability of the tree models.
+
+Since this has been an exercise in comparing binning methods, in a separate exercise these models could be improved with further feature selection, engineering or parameter tuning.
 
 
 ### References
