@@ -3,58 +3,62 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/post/changing-theme-with-blogdown/</loc>
+    <loc>/2018/08/15/changing-theme-with-blogdown/</loc>
     <lastmod>2018-08-15T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/post/credit-risk-modeling/</loc>
+    <loc>/2018/08/15/credit-risk-modeling/</loc>
     <lastmod>2018-08-15T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/post/excel-r-tutorial/</loc>
+    <loc>/2018/07/19/excel-r-tutorial/</loc>
     <lastmod>2018-07-19T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/post/sot-analysis/</loc>
+    <loc>/2018/06/29/sot-analysis/</loc>
     <lastmod>2018-06-29T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/post/name-entity-recognition/</loc>
+    <loc>/2018/05/23/name-entity-recognition/</loc>
     <lastmod>2018-05-23T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/post/crepes-made-with-git/</loc>
+    <loc>/2018/05/19/crepes-made-with-git/</loc>
     <lastmod>2018-05-19T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/post/excel-to-map/</loc>
+    <loc>/2018/04/06/excel-to-map/</loc>
     <lastmod>2018-04-06T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/post/simple-blockchain/</loc>
+    <loc>/2018/01/30/simple-blockchain/</loc>
     <lastmod>2018-01-30T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/post/hello-blog/</loc>
+    <loc>/2018/01/02/hello-blog/</loc>
     <lastmod>2018-01-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/post/creating-a-website-in-blogdown-and-hugo/</loc>
+    <loc>/2018/01/01/creating-a-website-in-blogdown-and-hugo/</loc>
     <lastmod>2018-01-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/contact/</loc>
     <lastmod>2016-11-06T13:00:25+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>/about-me/</loc>
   </url>
   
   <url>

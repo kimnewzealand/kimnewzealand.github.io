@@ -14,10 +14,10 @@
     
     <item>
       <title>Name Entity Recognition using Python spaCy in R</title>
-      <link>/post/name-entity-recognition/</link>
+      <link>/2018/05/23/name-entity-recognition/</link>
       <pubDate>Wed, 23 May 2018 00:00:00 +0000</pubDate>
       
-      <guid>/post/name-entity-recognition/</guid>
+      <guid>/2018/05/23/name-entity-recognition/</guid>
       <description>Recently I have been working on an Natural Language Processing (NLP) client project. This field appears to extensively use Python packages so I used the opportunity to go on an NLP journey in Python, starting with a Jupyter notebook. The Python packages included here are the research tool NLTK, gensim then the more recent spaCy.
 The purpose of this post is the next step in the journey to produce a pipeline for the NLP areas of text mining and Named Entity Recognition (NER) using the Python spaCy NLP Toolkit, in R.</description>
     </item>

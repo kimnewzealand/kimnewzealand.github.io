@@ -14,10 +14,10 @@
     
     <item>
       <title>Crepes made with Git</title>
-      <link>/post/crepes-made-with-git/</link>
+      <link>/2018/05/19/crepes-made-with-git/</link>
       <pubDate>Sat, 19 May 2018 00:00:00 +0000</pubDate>
       
-      <guid>/post/crepes-made-with-git/</guid>
+      <guid>/2018/05/19/crepes-made-with-git/</guid>
       <description>Version control of code seems similar to creating, updating and sharing recipes. Since we were trying out crepe recipes at home, I decided to use this personal connection to work through a crepes made with git example to validate my understanding of Git from the command line.
 Inspired by Reflections on 4 months of GitHub: my advice to beginners by Suzan Baert, I also started a personal Git cheatsheet, which will be incrementally updated with gems from future projects.</description>
     </item>

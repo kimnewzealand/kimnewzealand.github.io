@@ -14,10 +14,10 @@
     
     <item>
       <title>Simple Blockchain Example in R</title>
-      <link>/post/simple-blockchain/</link>
+      <link>/2018/01/30/simple-blockchain/</link>
       <pubDate>Tue, 30 Jan 2018 00:00:00 +0000</pubDate>
       
-      <guid>/post/simple-blockchain/</guid>
+      <guid>/2018/01/30/simple-blockchain/</guid>
       <description>This R markdown post was inspired by the R-bloggers post Building your own blockchain in R.
 Blockchain technology, types such as bitcoin and ethereum and its associated terminology are ubiquitous in the media at the moment.
 The objective here is to learn how a generic blockchain works and understand some of the terminology through implementing a simple example. This generic example could then extended to various types of blockchains such as distributed ledgers, smart contracts or cryptocurrencies with network servers and appropriate privacy and security settings.</description>
