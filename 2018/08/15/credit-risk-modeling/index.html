@@ -281,11 +281,11 @@ library(scorecard)</code></pre>
 url &lt;- (&quot;http://www.biz.uiowa.edu/faculty/jledolter/DataMining/germancredit.csv&quot;)
 GET(url, write_disk(tf &lt;- tempfile(fileext = &quot;.data&quot;)))</code></pre>
 <pre><code>## Response [https://www.biz.uiowa.edu/faculty/jledolter/DataMining/germancredit.csv]
-##   Date: 2018-08-16 07:24
+##   Date: 2018-08-16 07:30
 ##   Status: 200
 ##   Content-Type: text/csv
 ##   Size: 81 kB
-## &lt;ON DISK&gt;  C:\Users\Home\AppData\Local\Temp\RtmpYfXCGe\file4d8c76f53f23.data</code></pre>
+## &lt;ON DISK&gt;  C:\Users\Home\AppData\Local\Temp\Rtmp8M1PSw\file4d3c73f754aa.data</code></pre>
 <pre class="r"><code>creditdata &lt;- read_csv(tf)</code></pre>
 <pre><code>## Parsed with column specification:
 ## cols(
@@ -635,7 +635,8 @@ IV$Summary %&gt;%
       ggplot(aes(purpose,duration,fill=as.factor(default))) +
       geom_boxplot(position=position_dodge()) +
       facet_wrap(~checkingstatus1) +
-      theme(axis.text.x = element_text(angle = 90, hjust = 1))</code></pre>
+      theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
+      scale_fill_viridis_d()</code></pre>
 <p><img src="/post/CreditScoreExample_files/figure-html/boxplot-1.png" width="672" /></p>
 <div id="feature-engineering" class="section level3">
 <h3>Feature Engineering</h3>
@@ -757,7 +758,7 @@ bins &lt;- woebin(training_base, y=&quot;default&quot;,max_num_bin = 5)</code></
 <pre><code>## Warning in e$fun(obj, substitute(ex), parent.frame(), e$data): already
 ## exporting variable(s): dt, xs, y, breaks_list, min_perc_fine_bin,
 ## stop_limit, max_num_bin</code></pre>
-<pre><code>## Binning on 700 rows and 21 columns in  0: 0:13</code></pre>
+<pre><code>## Binning on 700 rows and 21 columns in  0: 0:12</code></pre>
 <pre class="r"><code># Let&#39;s visualise the bins created for the numeric variables age, duration and amount
 woebin_plot(bins$age)</code></pre>
 <pre><code>## $age</code></pre>
@@ -777,6 +778,7 @@ woebin_plot(bins$checkingstatus1)</code></pre>
 training_woe &lt;- woebin_ply(training_base, bins)</code></pre>
 <pre><code>## Warning in e$fun(obj, substitute(ex), parent.frame(), e$data): already
 ## exporting variable(s): dt, xs</code></pre>
+<pre><code>## Woe transformating on 700 rows and 20 columns in  0: 0:10</code></pre>
 <pre class="r"><code>test_woe &lt;- woebin_ply(test_base, bins)</code></pre>
 <pre><code>## Warning in e$fun(obj, substitute(ex), parent.frame(), e$data): already
 ## exporting variable(s): dt, xs</code></pre>
@@ -854,9 +856,33 @@ card$duration %&gt;%
 <pre class="r"><code>results &lt;- cbind(c(&quot;Model 1 - Logistic Model with Coarse Binning&quot;,&quot;Model 2 - Tree Model with Coarse Binning&quot;,&quot;Model 3 - Logistic Model with WOE Binning&quot;,&quot;Model 4 - Tree Model with WOE Binning&quot;),c(AUC,AUC_tree,AUC3,AUC_tree_woe)) %&gt;% 
       data.frame()
 names(results) &lt;- c(&quot;Model&quot;,&quot;AUC&quot;)
-print(AUC,AUC_tree,AUC3,AUC_tree_woe)</code></pre>
-<pre><code>## Area under the curve: 0.8</code></pre>
-<pre class="r"><code>#knitr::kable(head(results))</code></pre>
+knitr::kable(head(results))</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Model</th>
+<th align="left">AUC</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Model 1 - Logistic Model with Coarse Binning</td>
+<td align="left">0.780850728219149</td>
+</tr>
+<tr class="even">
+<td align="left">Model 2 - Tree Model with Coarse Binning</td>
+<td align="left">0.72027972027972</td>
+</tr>
+<tr class="odd">
+<td align="left">Model 3 - Logistic Model with WOE Binning</td>
+<td align="left">0.763272051229085</td>
+</tr>
+<tr class="even">
+<td align="left">Model 4 - Tree Model with WOE Binning</td>
+<td align="left">0.708376368518901</td>
+</tr>
+</tbody>
+</table>
 <p>It appears that all models are better than the baseline model.</p>
 <p>The tree models perform worse than the logistic models and the WOE binning did not improve the models from the manual binning. The best model overall appears to be the logistic model with coarse binning. This is surprising, as I was expecting an optimised woe process to create a better model.</p>
 <p>In this exercise we have included various plots to visualise calculations. The woebin_plots are useful for visualising the bins created and associated probabilities. The tree plots are useful for interpretability of the tree models.</p>
