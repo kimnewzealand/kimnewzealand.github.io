@@ -18,7 +18,8 @@
       <pubDate>Wed, 15 Aug 2018 00:00:00 +0000</pubDate>
       
       <guid>/2018/08/15/credit-risk-modeling/</guid>
-      <description>IntroductionLoad the dataSummary of dataClean DataExploratory Data AnalysisFeature EngineeringTrainingCreate ScorecardConclusionsIntroductionCredit Risk modeling predicts whether a customer or applicant will default on his or her loan. The models include predictor variables that are categorical or numeric. Since one of the key outputs in the modeling process is a credit scorecard with discrete attributes to allocate scores, the variables need to be discretised.</description>
+      <description>IntroductionLoad the dataSummary of dataClean DataExploratory Data AnalysisFeature EngineeringTrainingCreate ScorecardConclusionsIntroductionCredit Risk modeling predicts whether a customer or applicant may or may not default on a loan. These models include predictor variables that are categorical or numeric. One of the outputs in the modeling process is a credit scorecard with attributes to allocate scores.
+The objectives of this post are as follow:</description>
     </item>
     
     <item>
