@@ -278,11 +278,11 @@ library(scorecard)</code></pre>
 url &lt;- (&quot;http://www.biz.uiowa.edu/faculty/jledolter/DataMining/germancredit.csv&quot;)
 GET(url, write_disk(tf &lt;- tempfile(fileext = &quot;.data&quot;)))</code></pre>
 <pre><code>## Response [https://www.biz.uiowa.edu/faculty/jledolter/DataMining/germancredit.csv]
-##   Date: 2018-08-22 06:02
+##   Date: 2018-08-22 07:33
 ##   Status: 200
 ##   Content-Type: text/csv
 ##   Size: 81 kB
-## &lt;ON DISK&gt;  C:\Users\Home\AppData\Local\Temp\Rtmpyy4ClA\file3f1867634e.data</code></pre>
+## &lt;ON DISK&gt;  C:\Users\Home\AppData\Local\Temp\RtmpcFFJMW\file49887e632b1.data</code></pre>
 <pre class="r"><code>creditdata &lt;- read_csv(tf)</code></pre>
 <pre><code>## Parsed with column specification:
 ## cols(
@@ -391,7 +391,7 @@ names(creditdata) &lt;- tolower(names(creditdata))
 # Convert the default variable to numeric and binary for modeling
 creditdata$default &lt;- as.numeric(creditdata$default)
 creditdata$default &lt;- recode(creditdata$default,&#39;1&#39;=0L,&#39;2&#39;=1L)</code></pre>
-<p>Next recode the variable levels with the <a href="https://cran.r-project.org/web/packages/forcats/index.html">forcats</a> R package so that the variables are easier to understand in the plots. We have recoded as per the [metadata](<a href="https://archive.ics.uci.edu/ml/datasets/statlog+(german+credit+data)" class="uri">https://archive.ics.uci.edu/ml/datasets/statlog+(german+credit+data)</a>.</p>
+<p>Next recode the variable levels with the <a href="https://cran.r-project.org/web/packages/forcats/index.html">forcats</a> R package so that the variables are easier to understand in the plots. We have recoded as per the <a href="https://archive.ics.uci.edu/ml/datasets/statlog+(german+credit+data)">metadata</a>.</p>
 <pre class="r"><code># Recode with fct_recode function
 creditdata$checkingstatus1 &lt;- fct_recode(creditdata$checkingstatus1, less0=&#39;A11&#39;, low0to200DM=&#39;A12&#39;, highover200DM=&#39;A13&#39;, noaccount=&#39;A14&#39;)
 creditdata$history &lt;- fct_recode(creditdata$history, nocredit=&#39;A30&#39;, creditpaid=&#39;A31&#39;,creditpaidtilnow =&#39;A32&#39;, pastdelays=&#39;A33&#39;,otherbankcredit=&#39;A34&#39;)
@@ -619,12 +619,6 @@ IV$Summary %&gt;%
 </tr>
 </tbody>
 </table>
-<p>The following variables appear to be lead higher risk of default:<br />
-- <code>checkingstatus1</code> of less0 and low1to200DM<br />
-- <code>history</code> where no credits taken or credits paid<br />
-- longer <code>duration</code>s over 1 year have increasingly high proportions of default, although at 15,16 months there seems to be a slight improvement or lag<br />
-- <code>savings</code> less than 500DM<br />
-- <code>purpose</code> of education or others</p>
 <div id="feature-engineering" class="section level3">
 <h3>Feature Engineering</h3>
 <p>Before we fit models we will subjectively group the continuous numeric variables to binned categorical variables based on visualising cut-off points in the EDA above. This is called coarse binning as we will group values with similar risk, in as few bins as possible. With the new group variables, we will remove the original continuous variables.</p>
@@ -733,11 +727,12 @@ woebin_plot(bins$checkingstatus1)</code></pre>
 <pre><code>## $checkingstatus1</code></pre>
 <p><img src="/post/CreditScoreExample_files/figure-html/logistic%20model%202-4.png" width="672" /></p>
 <p>The WOE bin has grouped the <code>age</code> similarly to the coarse bins up until 35 where it has added a group for 35:37. The <code>duration</code> WOE bin grouped by 8 months rather than 12 months until 36 months. For <code>amount</code> there are 5 WOE bins as opposed to 3 bins. For <code>checkingstatus1</code>, the WOE binned less than 0 and 0 to 200DM levels.</p>
-<p>This is contrary to our density plots where it appeared that higher duration is riskier, higher amount is riskier and lower age is riskier.</p>
+<p>The bad probability lines for the age and amount appear contrary to our density plots where it appeared that higher amount is riskier and lower age is riskier.</p>
 <pre class="r"><code># Convert train and test sets original input data to WOE values based on WOE binning 
 training_woe &lt;- woebin_ply(training_base, bins)</code></pre>
 <pre><code>## Warning in e$fun(obj, substitute(ex), parent.frame(), e$data): already
 ## exporting variable(s): dt, xs</code></pre>
+<pre><code>## Woe transformating on 700 rows and 14 columns in  0: 0:10</code></pre>
 <pre class="r"><code>test_woe &lt;- woebin_ply(test_base, bins)</code></pre>
 <pre><code>## Warning in e$fun(obj, substitute(ex), parent.frame(), e$data): already
 ## exporting variable(s): dt, xs</code></pre>
@@ -878,6 +873,7 @@ AUC</code></pre>
 AUC2</code></pre>
 <pre><code>## Area under the curve: 0.7951</code></pre>
 <p>Model 2 with the WOE binning has the higher AUC.</p>
+<p>This dataset is however limited and for further learning it would be worth investigating datasets that are representative of real life applications.</p>
 <div id="acknowledgements" class="section level3">
 <h3>Acknowledgements</h3>
 <ul>
@@ -885,7 +881,7 @@ AUC2</code></pre>
 </li>
 <li><a href="https://www.smartcat.io/blog/2017/woe-and-iv-variable-screening-with-information-in-r/">WoE and IV Variable Screening with {Information} in R</a></li>
 <li><a href="https://cran.r-project.org/doc/contrib/Sharma-CreditScoring.pdf">Sharma CreditScoring</a></li>
-<li><a href="@ross_gaylor">Ross Gaylor</a> for review and discussion on credit risk models in practice.</li>
+<li><a href="@ross_gaylor">Ross Gaylor</a> for review and discussion on credit risk modeling in practice.</li>
 </ul>
 </div>
 </div>
