@@ -273,16 +273,16 @@ library(scorecard)</code></pre>
 </div>
 <div id="load-data" class="section level2">
 <h2>Load data</h2>
-<p>Load the <a href="https://archive.ics.uci.edu/ml/support/statlog+(german+credit+data)">Statlog (German Credit Data) Data Set</a> with <a href="https://cran.r-project.org/web/packages/httr/index.html">httr</a> and <a href="https://cran.r-project.org/web/packages/readr/index.html">readr</a> R packages. Note Readr is available from <a href="http://r-pkgs.had.co.nz/namespace.html#search-path">loading and attaching the package to the search path</a> with library(tidyverse) above.</p>
+<p>Load the <a href="https://archive.ics.uci.edu/ml/support/statlog+(german+credit+data)">Statlog (German Credit Data) Data Set</a> with <a href="https://cran.r-project.org/web/packages/httr/index.html">httr</a> and <a href="https://cran.r-project.org/web/packages/readr/index.html">readr</a> R packages. Note readr is available from <a href="http://r-pkgs.had.co.nz/namespace.html#search-path">loading and attaching the package to the search path</a> with library(tidyverse) above.</p>
 <pre class="r"><code># Set the url and uset GET function from httr to import the csv file to a temporary local directory, and read_csv from readr R package. This csv is also available at this url, with variable names. The UCI link does not include variable names and this will save us a step.
 url &lt;- (&quot;http://www.biz.uiowa.edu/faculty/jledolter/DataMining/germancredit.csv&quot;)
 GET(url, write_disk(tf &lt;- tempfile(fileext = &quot;.data&quot;)))</code></pre>
 <pre><code>## Response [https://www.biz.uiowa.edu/faculty/jledolter/DataMining/germancredit.csv]
-##   Date: 2018-08-22 07:33
+##   Date: 2018-09-03 22:10
 ##   Status: 200
 ##   Content-Type: text/csv
 ##   Size: 81 kB
-## &lt;ON DISK&gt;  C:\Users\Home\AppData\Local\Temp\RtmpcFFJMW\file49887e632b1.data</code></pre>
+## &lt;ON DISK&gt;  C:\Users\Home\AppData\Local\Temp\RtmpEREOML\file16080716649d9.data</code></pre>
 <pre class="r"><code>creditdata &lt;- read_csv(tf)</code></pre>
 <pre><code>## Parsed with column specification:
 ## cols(
@@ -300,7 +300,8 @@ GET(url, write_disk(tf &lt;- tempfile(fileext = &quot;.data&quot;)))</code></pre
 </div>
 <div id="summary-of-data" class="section level2">
 <h2>Summary of data</h2>
-<p>The dataset <a href="https://archive.ics.uci.edu/ml/datasets/statlog+(german+credit+data)">metadata</a> describes this data, let’s first take a look at a summary using skim function from the <a href="https://cran.r-project.org/web/packages/skimr/index.html">skimr</a> package.</p>
+<p>The dataset <a href="https://archive.ics.uci.edu/ml/datasets/statlog+(german+credit+data)">metadata</a> describes this data. This dataset appears to represent approved loan data, and would therefore exclude rejected applications.</p>
+<p>Let’s first take a look at a summary using skim function from the <a href="https://cran.r-project.org/web/packages/skimr/index.html">skimr</a> package.</p>
 <pre class="r"><code># Plot the summary excluding the histograms as these do not print in R Markdown html yet
 skimr::skim_with(integer = list(hist = NULL))
 skimr::skim(creditdata)</code></pre>
@@ -492,20 +493,101 @@ creditdata %&gt;%
 <p>From these density plots there do not appear to be outliers.</p>
 <p>The <code>duration</code>, <code>amount</code> and <code>age</code> distributions and peaks appear to be different between <code>default</code> values, therefore these could be a predictor variable where higher duration is riskier, higher amount is riskier and lower age is riskier.</p>
 </div>
+<div id="feature-engineering" class="section level3">
+<h3>Feature Engineering</h3>
+<p>Before we fit models we will subjectively group the continuous numeric variables to binned categorical variables based on visualising cut-off points in the EDA above. This is called coarse binning as we will group values with similar risk, in as few bins as possible. With the new group variables, we will remove the original continuous variables.</p>
+<pre class="r"><code># Create a new age_group variable, with buckets based on the density distribution above
+creditdata &lt;- creditdata %&gt;% 
+  mutate(age_group=factor(case_when(
+  .$age &lt;  25 ~ &quot;25less&quot;,
+  .$age &gt;= 25 &amp; .$age &lt;= 29 ~ &quot;25to29&quot;,
+  .$age &gt;= 30 &amp; .$age &lt;= 39 ~ &quot;30to39&quot;,
+  .$age &gt;= 40 &amp; .$age &lt;= 49 ~ &quot;40to49&quot;,
+  .$age &gt;= 50 &amp; .$age &lt;= 59 ~ &quot;50to59&quot;,
+  .$age &gt;= 60 &amp; .$age &lt;= 70 ~ &quot;60over&quot;,
+  .$age &gt;= 70 ~ &quot;6&quot;)))
+# Remove the original age variable to avoid feature interactions
+creditdata &lt;- creditdata %&gt;% 
+      dplyr::select(-age)</code></pre>
+<pre class="r"><code># Create a new amount_group variable, with buckets based on the density distribution above
+creditdata &lt;- creditdata %&gt;% 
+  mutate(amount_group=factor(case_when(
+  .$amount &lt;  1250 ~ &quot;1250less&quot;,
+  .$amount &gt;= 1250 &amp; .$amount &lt;= 5000 ~ &quot;1250to5000&quot;,
+  .$amount &gt;= 5000  ~ &quot;5000over&quot;)))
+# Remove the original amount variable to avoid feature interactions
+creditdata &lt;- creditdata %&gt;% 
+      dplyr::select(-amount)</code></pre>
+<pre class="r"><code># Create a new  duration_group variable, with buckets based on the density distribution above. We will group the months into years, we see peaks at the incremental 12 month marks
+creditdata &lt;- creditdata %&gt;% 
+  mutate(duration_group=factor(case_when(
+  .$ duration &lt;  12 ~ &quot;1yearunder&quot;,
+  .$ duration &gt;= 12 &amp; .$ duration &lt;= 24 ~ &quot;1to2year&quot;,
+  .$ duration &gt;= 24 &amp; .$ duration &lt;= 36 ~ &quot;2to3year&quot;,
+  .$ duration &gt;= 36 &amp; .$ duration &lt;= 48 ~ &quot;3to4year&quot;,
+  .$ duration &gt;= 48  ~ &quot;4yearover&quot;)))
+# Remove the original  duration variable to avoid feature interactions
+creditdata &lt;- creditdata %&gt;% 
+      dplyr::select(- duration)</code></pre>
 </div>
-<div id="information-theory-woe-and-iv" class="section level2">
-<h2>Information Theory (WoE and IV)</h2>
-<p>We can use the <a href="https://cran.r-project.org/web/packages/Information/index.html">Information</a> R package to perform exploratory data analysis and variable screening using weight-of-evidence (WOE) and information value (IV).</p>
+</div>
+<div id="training" class="section level2">
+<h2>Training</h2>
+<p>Split the data into training and test sets following the Data Camp course steps in <a href="https://campus.datacamp.com/courses/introduction-to-credit-risk-modeling-in-r/chapter-1-introduction-and-data-preprocessing?ex=12">Chapter 1</a>. Here we will use a 70:30 split between training and test sets and create splits for the base dataset for WOE binning and one which will be feature engineered with coarse binning.</p>
+<pre class="r"><code># Set seed of 123 for reproduceability
+set.seed(123)
+# Store row numbers for training set: index_train using randomly assigned observations
+index_train &lt;- sample(1:nrow(creditdata), 0.7 * nrow(creditdata))
+# Create training set: training with the index
+training &lt;- creditdata[index_train, ]
+# Create test set: test with the index
+test &lt;- creditdata[-index_train, ]
+
+# Store row numbers for training set: index_train using randomly assigned observations
+index_train_base &lt;- sample(1:nrow(creditdata_base), 0.7 * nrow(creditdata_base))
+# Create training set: training with the index
+training_base &lt;- creditdata_base[index_train_base, ]
+# Create test set: test with the index
+test_base &lt;- creditdata_base[-index_train_base, ]</code></pre>
+<div id="model-1---logistic-model-with-coarse-binning" class="section level3">
+<h3>Model 1 - Logistic Model with Coarse Binning</h3>
+<p>Fit the first logistic model on the training data set where the variables have been coarse binned manually.</p>
+<pre class="r"><code># Fit a logistic model using the base glm function
+glm_model &lt;- glm(default ~ ., family = &quot;binomial&quot;, data= training)</code></pre>
+<p>Make predictions on the test set and evaluate the model using AUC and K-S measures with the <a href="https://cran.r-project.org/web/packages/pROC/index.html">pROC</a>, <a href="https://cran.r-project.org/web/packages/ROCR/index.html">ROCR</a> and <a href="https://cran.r-project.org/web/packages/scorecard/index.html">scoredcard</a> R packages.</p>
+<pre class="r"><code>prediction_prob &lt;- predict(glm_model, newdata = test, type = &quot;response&quot;)
+ROC &lt;- pROC::roc(test$default,prediction_prob)
+# AUC for the logistic model
+AUC &lt;- pROC::auc(ROC )
+AUC</code></pre>
+<pre><code>## Area under the curve: 0.7804</code></pre>
+<pre class="r"><code># KS for logistic
+pred &lt;- ROCR::prediction(prediction_prob,test$default)
+perf &lt;- ROCR::performance(pred,&quot;tpr&quot;,&quot;fpr&quot;)
+KS &lt;- max(attr(perf,&#39;y.values&#39;)[[1]]-attr(perf,&#39;x.values&#39;)[[1]])
+KS</code></pre>
+<pre><code>## [1] 0.4548609</code></pre>
+<p>Now use the the <a href="https://cran.r-project.org/web/packages/scorecard/index.html">scorecard</a> R package to plot the KS and AUC values.</p>
+<pre class="r"><code># performance
+test_perf &lt;- scorecard::perf_eva(test$default, prediction_prob, title = &quot;Model 1&quot;)</code></pre>
+<p><img src="/post/CreditScoreExample_files/figure-html/perf%20plots-1.png" width="672" /></p>
+</div>
+<div id="model-2---logistic-model-with-woe-binning" class="section level3">
+<h3>Model 2 - Logistic Model with WOE Binning</h3>
+<div id="information-theory-woe-and-iv" class="section level4">
+<h4>Information Theory (WoE and IV)</h4>
+<p>We can use the <a href="https://cran.r-project.org/web/packages/Information/index.html">Information</a> R package to perform variable screening using weight-of-evidence (WOE) and information value (IV).</p>
 <blockquote>
 <p>WOE and IV play two distinct roles when analyzing data:<br />
 - WOE describes the relationship between a predictive variable and a binary target variable.<br />
 - IV measures the strength of that relationship.</p>
 </blockquote>
 <p>The WOE framework optimises the number of bins and cut off points based on a risk value. If the variable is numeric then the cut off will respect the ordering, but it may not respect the ordering of the categorical values.</p>
+<p>Let’s view a summary of the information values.</p>
 <pre class="r"><code># Create a WOE table
-IV &lt;- create_infotables(data=creditdata,
+IV &lt;- create_infotables(data=creditdata_base,
                         y=&quot;default&quot;)
-# Print the summary of the IV table
+# Print the summary of the IV table information values. Thes IVs are derived from the WOE.
 IV$Summary %&gt;% 
       knitr::kable()</code></pre>
 <table>
@@ -619,87 +701,6 @@ IV$Summary %&gt;%
 </tr>
 </tbody>
 </table>
-<div id="feature-engineering" class="section level3">
-<h3>Feature Engineering</h3>
-<p>Before we fit models we will subjectively group the continuous numeric variables to binned categorical variables based on visualising cut-off points in the EDA above. This is called coarse binning as we will group values with similar risk, in as few bins as possible. With the new group variables, we will remove the original continuous variables.</p>
-<pre class="r"><code># Create a new age_group variable, with buckets based on the density distribution above
-creditdata &lt;- creditdata %&gt;% 
-  mutate(age_group=factor(case_when(
-  .$age &lt;  25 ~ &quot;25less&quot;,
-  .$age &gt;= 25 &amp; .$age &lt;= 29 ~ &quot;25to29&quot;,
-  .$age &gt;= 30 &amp; .$age &lt;= 39 ~ &quot;30to39&quot;,
-  .$age &gt;= 40 &amp; .$age &lt;= 49 ~ &quot;40to49&quot;,
-  .$age &gt;= 50 &amp; .$age &lt;= 59 ~ &quot;50to59&quot;,
-  .$age &gt;= 60 &amp; .$age &lt;= 70 ~ &quot;60over&quot;,
-  .$age &gt;= 70 ~ &quot;6&quot;)))
-# Remove the original age variable to avoid feature interactions
-creditdata &lt;- creditdata %&gt;% 
-      dplyr::select(-age)</code></pre>
-<pre class="r"><code># Create a new amount_group variable, with buckets based on the density distribution above
-creditdata &lt;- creditdata %&gt;% 
-  mutate(amount_group=factor(case_when(
-  .$amount &lt;  1250 ~ &quot;1250less&quot;,
-  .$amount &gt;= 1250 &amp; .$amount &lt;= 5000 ~ &quot;1250to5000&quot;,
-  .$amount &gt;= 5000  ~ &quot;5000over&quot;)))
-# Remove the original amount variable to avoid feature interactions
-creditdata &lt;- creditdata %&gt;% 
-      dplyr::select(-amount)</code></pre>
-<pre class="r"><code># Create a new  duration_group variable, with buckets based on the density distribution above. We will group the months into years, we see peaks at the incremental 12 month marks
-creditdata &lt;- creditdata %&gt;% 
-  mutate(duration_group=factor(case_when(
-  .$ duration &lt;  12 ~ &quot;1yearunder&quot;,
-  .$ duration &gt;= 12 &amp; .$ duration &lt;= 24 ~ &quot;1to2year&quot;,
-  .$ duration &gt;= 24 &amp; .$ duration &lt;= 36 ~ &quot;2to3year&quot;,
-  .$ duration &gt;= 36 &amp; .$ duration &lt;= 48 ~ &quot;3to4year&quot;,
-  .$ duration &gt;= 48  ~ &quot;4yearover&quot;)))
-# Remove the original  duration variable to avoid feature interactions
-creditdata &lt;- creditdata %&gt;% 
-      dplyr::select(- duration)</code></pre>
-</div>
-</div>
-<div id="training" class="section level2">
-<h2>Training</h2>
-<p>Split the data into training and test sets following the Data Camp course steps in <a href="https://campus.datacamp.com/courses/introduction-to-credit-risk-modeling-in-r/chapter-1-introduction-and-data-preprocessing?ex=12">Chapter 1</a>. Here we will use a 70:30 split between training and test sets and create splits for the base dataset for WOE binning and one which will be feature engineered with coarse binning.</p>
-<pre class="r"><code># Set seed of 123 for reproduceability
-set.seed(123)
-# Store row numbers for training set: index_train using randomly assigned observations
-index_train &lt;- sample(1:nrow(creditdata), 0.7 * nrow(creditdata))
-# Create training set: training with the index
-training &lt;- creditdata[index_train, ]
-# Create test set: test with the index
-test &lt;- creditdata[-index_train, ]
-
-# Store row numbers for training set: index_train using randomly assigned observations
-index_train_base &lt;- sample(1:nrow(creditdata_base), 0.7 * nrow(creditdata_base))
-# Create training set: training with the index
-training_base &lt;- creditdata_base[index_train_base, ]
-# Create test set: test with the index
-test_base &lt;- creditdata_base[-index_train_base, ]</code></pre>
-<div id="model-1---logistic-model-with-coarse-binning" class="section level3">
-<h3>Model 1 - Logistic Model with Coarse Binning</h3>
-<p>Fit the first logistic model on the training data set where the variables have been coarse binned manually.</p>
-<pre class="r"><code># Fit a logistic model using the base glm function
-glm_model &lt;- glm(default ~ ., family = &quot;binomial&quot;, data= training)</code></pre>
-<p>Make predictions on the test set and evaluate the model using AUC and K-S measures with the <a href="https://cran.r-project.org/web/packages/pROC/index.html">pROC</a>, <a href="https://cran.r-project.org/web/packages/ROCR/index.html">ROCR</a> and <a href="https://cran.r-project.org/web/packages/scorecard/index.html">scoredcard</a> R packages.</p>
-<pre class="r"><code>prediction_prob &lt;- predict(glm_model, newdata = test, type = &quot;response&quot;)
-ROC &lt;- pROC::roc(test$default,prediction_prob)
-# AUC for the logistic model
-AUC &lt;- pROC::auc(ROC )
-AUC</code></pre>
-<pre><code>## Area under the curve: 0.7804</code></pre>
-<pre class="r"><code># KS for logistic
-pred &lt;- ROCR::prediction(prediction_prob,test$default)
-perf &lt;- ROCR::performance(pred,&quot;tpr&quot;,&quot;fpr&quot;)
-KS &lt;- max(attr(perf,&#39;y.values&#39;)[[1]]-attr(perf,&#39;x.values&#39;)[[1]])
-KS</code></pre>
-<pre><code>## [1] 0.4548609</code></pre>
-<p>Now use the the <a href="https://cran.r-project.org/web/packages/scorecard/index.html">scorecard</a> R package to plot the KS and AUC values.</p>
-<pre class="r"><code># performance
-test_perf &lt;- scorecard::perf_eva(test$default, prediction_prob, title = &quot;Model 1&quot;)</code></pre>
-<p><img src="/post/CreditScoreExample_files/figure-html/perf%20plots-1.png" width="672" /></p>
-</div>
-<div id="model-2---logistic-model-with-woe-binning" class="section level3">
-<h3>Model 2 - Logistic Model with WOE Binning</h3>
 <p>We will fit another logistic model on the training set. This model will filter variables and create WOE bins using the <a href="https://cran.r-project.org/web/packages/scorecard/index.html">scorecard</a> R package.</p>
 <pre class="r"><code># Filter out variables via missing rate, information value, identical value rate
 creditdata_filt &lt;- var_filter(creditdata_base, y=&quot;default&quot;)
@@ -732,7 +733,6 @@ woebin_plot(bins$checkingstatus1)</code></pre>
 training_woe &lt;- woebin_ply(training_base, bins)</code></pre>
 <pre><code>## Warning in e$fun(obj, substitute(ex), parent.frame(), e$data): already
 ## exporting variable(s): dt, xs</code></pre>
-<pre><code>## Woe transformating on 700 rows and 14 columns in  0: 0:10</code></pre>
 <pre class="r"><code>test_woe &lt;- woebin_ply(test_base, bins)</code></pre>
 <pre><code>## Warning in e$fun(obj, substitute(ex), parent.frame(), e$data): already
 ## exporting variable(s): dt, xs</code></pre>
@@ -756,9 +756,10 @@ test_perf &lt;- perf_eva(test_woe$default, prediction_prob2, title = &quot;Model
 <p><img src="/post/CreditScoreExample_files/figure-html/perf%20model%202-1.png" width="672" /></p>
 </div>
 </div>
+</div>
 <div id="create-scorecard" class="section level2">
 <h2>Create Scorecard</h2>
-<p>Now create a scorecard on the Model 2, which has the highest AUC, using the scorecard package.</p>
+<p>Now create a scorecard on the Model 2 using the scorecard package.</p>
 <pre class="r"><code># Calculate score card
 card &lt;- scorecard(bins, glm_model2)
 # Take a look at the scorecard for duration, which includes scorecard points
@@ -864,7 +865,7 @@ card$duration %&gt;%
 </div>
 <div id="conclusions" class="section level2">
 <h2>Conclusions</h2>
-<p>This dataset has no missing variables, no outliers and is not a heavily imbalanced dataset so we have not had to overcome these real world challenges in this exercise. However the imbalance and size of dataset is not representative of real world data.</p>
+<p>This dataset has no missing variables, no outliers and is not a heavily imbalanced dataset so we have not had to overcome these real world challenges in this exercise. However the imbalance and size of dataset is not representative of real world data. Other data such as credit bureau and time series data could be used in addition to approved loans data in practice.</p>
 <p>When we compare each of the models, with different manual and optimised binning methods, the AUCs for the two models are as follows:</p>
 <pre class="r"><code># Model 1 - Logistic Model with Coarse Binning
 AUC</code></pre>
@@ -873,7 +874,7 @@ AUC</code></pre>
 AUC2</code></pre>
 <pre><code>## Area under the curve: 0.7951</code></pre>
 <p>Model 2 with the WOE binning has the higher AUC.</p>
-<p>This dataset is however limited and for further learning it would be worth investigating datasets that are representative of real life applications.</p>
+<p>Finally, this very simple model using the glm function is one model option for credit risk modeling. In a real life application, other algorithms and packages would be used as baseline and for comparison in building models for implementation.</p>
 <div id="acknowledgements" class="section level3">
 <h3>Acknowledgements</h3>
 <ul>
@@ -881,7 +882,7 @@ AUC2</code></pre>
 </li>
 <li><a href="https://www.smartcat.io/blog/2017/woe-and-iv-variable-screening-with-information-in-r/">WoE and IV Variable Screening with {Information} in R</a></li>
 <li><a href="https://cran.r-project.org/doc/contrib/Sharma-CreditScoring.pdf">Sharma CreditScoring</a></li>
-<li><a href="@ross_gaylor">Ross Gaylor</a> for review and discussion on credit risk modeling in practice.</li>
+<li><a href="https://twitter.com/ross_gayler?lang=en">Ross Gayler</a> for review and discussion on credit risk modeling in practice.</li>
 </ul>
 </div>
 </div>
