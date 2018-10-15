@@ -42,7 +42,7 @@
     <item>
       <title>Eda</title>
       <link>/tags/eda/</link>
-      <pubDate>Wed, 15 Aug 2018 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 15 Oct 2018 00:00:00 +0000</pubDate>
       
       <guid>/tags/eda/</guid>
       <description></description>
@@ -69,7 +69,7 @@
     <item>
       <title>Modeling</title>
       <link>/tags/modeling/</link>
-      <pubDate>Wed, 15 Aug 2018 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 15 Oct 2018 00:00:00 +0000</pubDate>
       
       <guid>/tags/modeling/</guid>
       <description></description>
@@ -105,7 +105,7 @@
     <item>
       <title>R</title>
       <link>/tags/r/</link>
-      <pubDate>Wed, 15 Aug 2018 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 15 Oct 2018 00:00:00 +0000</pubDate>
       
       <guid>/tags/r/</guid>
       <description></description>
@@ -126,6 +126,15 @@
       <pubDate>Fri, 06 Apr 2018 00:00:00 +0000</pubDate>
       
       <guid>/tags/spatial/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Timeseries</title>
+      <link>/tags/timeseries/</link>
+      <pubDate>Mon, 15 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/timeseries/</guid>
       <description></description>
     </item>
     

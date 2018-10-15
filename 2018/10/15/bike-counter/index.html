@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.31.1" />
+
+  <title>Auckland Bike Counter Analysis &middot; Kim Fitter</title>
+
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/pure-min.css">
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-old-ie-min.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-min.css">
+  <!--<![endif]-->
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="/css/side-menu-old-ie.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="/css/side-menu.css">
+  <!--<![endif]-->
+
+  <link rel="stylesheet" href="/css/blackburn.css">
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+ 
+  
+
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/androidstudio.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+
+  
+  
+
+</head>
+
+
+<body>
+<div id="layout">
+
+  
+<a href="#menu" id="menuLink" class="menu-link">
+  
+  <span></span>
+</a>
+<div id="menu">
+
+  
+  <a class="pure-menu-heading brand" href="/">Kim Fitter</a>
+
+
+  <div class="pure-menu">
+    <ul class="pure-menu-list">
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/"><i class='fa fa-home fa-fw'></i>Home</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/about/"><i class='fa fa-user fa-fw'></i>About</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/post/"><i class='fa fa-list fa-fw'></i>Blog Archive</a>
+      
+        </li>
+      
+    </ul>
+  </div>
+
+  <div class="pure-menu social">
+  <ul class="pure-menu-list">
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://twitter.com/kim_fitter" target="_blank"><i class="fa fa-twitter-square fa-fw"></i>Twitter</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://github.com/kimnewzealand" target="_blank"><i class="fa fa-github-square fa-fw"></i>GitHub</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </ul>
+</div>
+
+
+  <div>
+  <div class="small-print">
+    <small>Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)</small>
+  </div>
+  <div class="small-print">
+    <small>Built with&nbsp;<a href="https://gohugo.io/" target="_blank">Hugo</a></small>
+    <small>Theme&nbsp;<a href="https://github.com/yoshiharuyamashita/blackburn" target="_blank">Blackburn</a></small>
+  </div>
+</div>
+
+</div>
+
+
+  <div id="main">
+
+
+<div class="header">
+  <h1>Auckland Bike Counter Analysis</h1>
+  <h2></h2>
+</div>
+<div class="content">
+
+  <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>15 Oct 2018</time>
+  </div>
+
+  
+
+  
+
+  
+  
+  
+  <div>
+    <i class="fa fa-tags fa-fw"></i>
+    
+      <a class="post-taxonomy-tag" href="/tags/r">R</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="/tags/modeling">modeling</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="/tags/timeseries">timeseries</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="/tags/eda">EDA</a>
+    
+  </div>
+  
+  
+
+</div>
+
+  <script src="/rmarkdown-libs/htmlwidgets/htmlwidgets.js"></script>
+<script src="/rmarkdown-libs/jquery/jquery.min.js"></script>
+<link href="/rmarkdown-libs/leaflet/leaflet.css" rel="stylesheet" />
+<script src="/rmarkdown-libs/leaflet/leaflet.js"></script>
+<link href="/rmarkdown-libs/leafletfix/leafletfix.css" rel="stylesheet" />
+<script src="/rmarkdown-libs/Proj4Leaflet/proj4-compressed.js"></script>
+<script src="/rmarkdown-libs/Proj4Leaflet/proj4leaflet.js"></script>
+<link href="/rmarkdown-libs/rstudio_leaflet/rstudio_leaflet.css" rel="stylesheet" />
+<script src="/rmarkdown-libs/leaflet-binding/leaflet.js"></script>
+<script src="/rmarkdown-libs/leaflet-providers/leaflet-providers.js"></script>
+<script src="/rmarkdown-libs/leaflet-providers-plugin/leaflet-providers-plugin.js"></script>
+
+
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#data">Data</a></li>
+<li><a href="#data-cleaning">Data Cleaning</a></li>
+<li><a href="#visualisations">Visualisations</a></li>
+<li><a href="#conclusions">Conclusions</a></li>
+</ul>
+<div id="introduction" class="section level2">
+<h2>Introduction</h2>
+<p>The motivations for cycling around town can be for fitness, economic or environmental reasons. However in Auckland the weather and <a href="https://en.wikipedia.org/wiki/Auckland_volcanic_field">the 53 odd volcanoes</a> could be deterrents to would-be cyclists.</p>
+<p>Auckland Transport (AT) publishes daily and monthly bike count data from counters around Auckland.</p>
+<p>We will analyse and visualise this data, then fit a model to forecast Auckland bike activity and trends to see if more cyclists are braving the weather and taking on the hills.</p>
+</div>
+<div id="load-packages" class="section level2">
+<h2>Load Packages</h2>
+<pre class="r"><code># Load the tidyverse metapackage
+library(tidyverse)
+# Load skimr for summary statistics
+library(skimr)
+# Load the leaflet and htmltools packages for maps
+library(leaflet)
+library(htmltools)
+# Load the sf package for map coordinate manipulations
+library(sf)
+# Load the lubridate package for time variable manipulations
+library(lubridate)
+# Load the forecast package for time series
+library(forecast)
+# Load the cowplot package for side by side ggplots
+library(cowplot)</code></pre>
+</div>
+<div id="data" class="section level2">
+<h2>Data</h2>
+<p><strong>Import data</strong></p>
+<p>Use the read_csv functions from the <a href="https://cran.r-project.org/web/packages/readr/README.html">readr</a> R package to import the csv files directly from urls. These function can be used for most csv files, reading and parsing the files to dataframes.</p>
+<pre class="r"><code># Import the bikes daily counter dataset for August
+url &lt;- &quot;https://at.govt.nz/media/1977986/august2018akldcyclecounterdata.csv&quot;
+bikes_daily &lt;- read_csv(url)</code></pre>
+<pre><code>## Parsed with column specification:
+## cols(
+##   .default = col_integer(),
+##   Date = col_character()
+## )</code></pre>
+<pre><code>## See spec(...) for full column specifications.</code></pre>
+<pre class="r"><code># Import the bikes mounthly counter dataset. Set the counter variables types to numeric
+url2 &lt;-&quot;https://at.govt.nz/media/1975708/monthlyakldcyclecountdatanov2010-dec2017.csv&quot;
+bikes_monthly &lt;- read_csv(url2, 
+                          col_types = cols(.default = col_number(), Month=col_character()))</code></pre>
+<p><strong>Data Summaries</strong></p>
+<p>View the summary statistics with the <a href="https://cran.r-project.org/web/packages/skimr/">skimr</a> R package.</p>
+<pre class="r"><code># Produce a skim summary excluding the histograms as these do not plot in R markdown currently
+skim_with(numeric = list(hist = NULL))
+skim_with(
+  numeric = list(p0 = NULL, p25 = NULL, p50 = NULL, p75 = NULL, p100 = NULL,sd = NULL,hist = NULL),
+  integer = list(p0 = NULL, p25 = NULL, p50 = NULL, p75 = NULL, p100 = NULL,sd = NULL,hist = NULL)  
+)
+skim(bikes_daily)</code></pre>
+<pre><code>## Skim summary statistics
+##  n obs: 32 
+##  n variables: 42 
+## 
+## -- Variable type:character ---------------------------------------------------------------------
+##  variable missing complete  n min max empty n_unique
+##      Date       1       31 32  14  15     0       31
+## 
+## -- Variable type:integer -----------------------------------------------------------------------
+##                             variable missing complete  n    mean
+##                  Beach Road Cyclists       1       31 32  275.9 
+##  Carlton Gore Cycle Counter Cyclists       1       31 32  225.94
+##         Curran Street Total Cyclists       1       31 32  248.23
+##         Dominion Road Total Cyclists       1       31 32  295.55
+##             East Coast Road Cyclists       1       31 32   88.65
+##   GI TO TAMAKI DR SECTION-1 Cyclists       1       31 32   20.19
+##              Grafton Bridge Cyclists       1       31 32  550.87
+##               Grafton Gully Cyclists       1       31 32  347.23
+##                Grafton Road Cyclists       1       31 32   81.29
+##        Great North Rd Total Cyclists       1       31 32  226.1 
+##        Great South Rd Total Cyclists       1       31 32   80.71
+##                   HighBrook Cyclists       1       31 32   37.9 
+##             Hopetoun Street Cyclists       1       31 32  159.03
+##            Karangahape Road Cyclists       1       31 32  456.9 
+##                Lagoon Drive Cyclists       1       31 32  142.13
+##             Lake Road Total Cyclists       1       31 32  320.29
+##              Mangere Bridge Cyclists       1       31 32  322.68
+##         Mangere Safe Routes Cyclists       1       31 32   18.61
+##                    Matakana Cyclists       1       31 32   14.97
+##               Nelson Street Cyclists       1       31 32  419.9 
+##     Nelson Street Lightpath Cyclists       1       31 32  383.23
+##       NW Cycleway Kingsland Cyclists       1       31 32  794.23
+##         NW Cycleway TeAtatu Cyclists       1       31 32  607.55
+##        Oceanview Rd Waiheke Cyclists       1       31 32   92.32
+##                  Orewa Path Cyclists       1       31 32  240.35
+##           Ormiston Rd Total Cyclists       1       31 32   48.48
+##         Pukekohe - Queen St Cyclists       1       31 32    9.06
+##         Quay St Eco Display Cyclists       1       31 32  828.58
+##   Quay St Spark Arena Total Cyclists       1       31 32  575.45
+##                  Rankin Ave Cyclists       1       31 32   23.45
+##        Saint Lukes Rd Total Cyclists       1       31 32  170.94
+##              SW Shared Path Cyclists       1       31 32  165.26
+##            Symonds St Total Cyclists       1       31 32  361.77
+##          Tamaki Drive Total Cyclists       1       31 32 1138.06
+##   TeAtatu Peninsula Pathway Cyclists       1       31 32  151.55
+##  TeWero Bridge Bike Counter Cyclists       1       31 32  582.13
+##                Twin Streams Cyclists       1       31 32   83.65
+##              Upper Harbour  Cyclists       1       31 32  136.03
+##          Upper Queen Street Cyclists       1       31 32  127.52
+##  Victoria Street West Total Cyclists       1       31 32  114.94
+##    Waterview Unitec Counter Cyclists       1       31 32  174.81</code></pre>
+<p>The <code>bikes_daily</code> dataset has the following variables in wide format:</p>
+<p><strong>Date</strong> : daily from Wed 1 Aug 2018<br />
+<strong>Bike counter street location names</strong> : 41 locations</p>
+<p>It seems like the last row consists of NAs, so we can remove this row in the cleaning step.</p>
+<pre class="r"><code># Produce a skim summary excluding the histograms as these do not plot in R markdown currently
+skim(bikes_monthly)</code></pre>
+<pre><code>## Skim summary statistics
+##  n obs: 87 
+##  n variables: 42 
+## 
+## -- Variable type:character ---------------------------------------------------------------------
+##  variable missing complete  n min max empty n_unique
+##     Month       0       87 87   6  11     0       87
+## 
+## -- Variable type:numeric -----------------------------------------------------------------------
+##                                   variable missing complete  n     mean
+##                                   Beach Rd      48       39 87  8537   
+##                                  Canada St      85        2 87  1067   
+##                            Carlton Gore Rd      58       29 87  6008.21
+##                                  Curran St      61       26 87  8046.12
+##             Dominion Rd (near Balmoral Rd)      51       36 87  3391.72
+##                 Dominion Rd (near View Rd)      82        5 87  8959.6 
+##                              East Coast Rd      24       63 87  3880.1 
+##                                 G Sth Road       1       86 87  2684.43
+##          Glen Innes (Te Ara ki Uta ki Tai)      73       14 87   658.64
+##                             Grafton Bridge      26       61 87 14727.38
+##                              Grafton Gully      48       39 87  9556.64
+##                                 Grafton Rd      61       26 87  2291.31
+##  Gt Nth Rd (citybound only until May 2017)      70       17 87  5030.88
+##                                  Highbrook       1       86 87  1162.44
+##                                Hopetoun St      61       26 87  4317   
+##                                       K Rd      49       38 87 15239   
+##                                  Lagoon Dr      25       62 87  5166.73
+##                                  Lake Road       1       86 87  8714.14
+##                             Mangere Bridge      11       76 87 12440.62
+##                        Mangere Safe Routes      70       17 87  1233.41
+##                            Matakana Bridge      85        2 87   679   
+##                         Nelson St cycleway      62       25 87 10846   
+##                        Nelson St Lightpath      62       25 87 14633.92
+##                   NW Cycleway \n(Te Atatu)       1       86 87 12861.63
+##                    NW Cycleway (Kingsland)       1       86 87 14751.98
+##                      Oceanview Rd, Waiheke      86        1 87  6086   
+##                                      Orewa       1       86 87  8587.48
+##                      Ormiston Rd Flat Bush      85        2 87  1194.5 
+##                          Pukekohe Queen St      85        2 87   264   
+##                        Quay St Spark Arena      61       26 87 32134.92
+##                              Quay St totem      69       18 87 23498.89
+##                                SH20 Dom Rd      25       62 87  3140.39
+##                               St Luke&#39;s Rd      80        7 87  5307.29
+##                                 Symonds St      49       38 87 11254.61
+##                        Tamaki Dr (EB + WB)      18       69 87 34166.7 
+##                             Te Wero Bridge      56       31 87 17058.1 
+##                               Twin Streams       1       86 87  3315.06
+##                              Upper Harbour       1       86 87  4345.03
+##                             Upper Queen St      61       26 87  4198.5 
+##                           Victoria St West      61       26 87  3927.35
+##                      Waterview SP (Unitec)      82        5 87  4907.4</code></pre>
+<p>The <code>bikes_monthly</code> dataset has the following variables in wide format:</p>
+<p><strong>Date</strong> : monthly from Nov-10<br />
+<strong>Bike counter street location Names</strong> : 41 locations</p>
+<p>There are missing values as NA’s to be considered in data aggregations.</p>
+<p><strong>Auckland Population Data</strong></p>
+<p>Population estimates for regional council, territorial authority (including Auckland local board), area unit, and urban areas is available from <a href="http://nzdotstat.stats.govt.nz/wbos/index.aspx">DataHub table viewer</a>. In order to download the data, a request needs to be submitted online but the Stats NZ link doesn’t currently work. As an interim workaround, a manual dataframe is created based on the online query results.</p>
+<pre class="r"><code># Create Auckland population dataset
+population &lt;- data.frame(Date= c(&quot;30-June-11&quot;,&quot;30-June-12&quot;,&quot;30-June-13&quot;,&quot;30-June-14&quot;,&quot;30-June-15&quot;,         &quot;30-June-16&quot;,&quot;30-June-17&quot;), Auckland = c(1459600, 1476500, 1493200, 1526900, 1569900, 1614500, 1657200   ))</code></pre>
+</div>
+<div id="data-cleaning" class="section level2">
+<h2>Data Cleaning</h2>
+<p>The <code>bikes_daily</code> and <code>bikes_monthly</code> counter data do not have coordinates available so we will manually create a dataframe with selected points with the longitude and latitude coordinates from a <a href="https://gps-coordinates.org/new-zealand-latitude.php">GPS coordinates lookup website</a>.</p>
+<ul>
+<li>Curran_Street<br />
+</li>
+<li>Quay_Street<br />
+</li>
+<li>Grafton_Gully</li>
+</ul>
+<p>Feedback has been sent to AT to add the longitude and latitude coordinates to their csv files, so that further mapping and joins with other data can be performed another time.</p>
+<pre class="r"><code># Create a streets datafarme
+streets &lt;- data.frame(street = c(&quot;Curran_Street&quot;,&quot;Quay_Street&quot;,&quot;Grafton_Gully&quot;),  longitude=c(174.739289,174.773376,174.7678), latitude=c(-36.840521,-36.844713,-36.8623), stringsAsFactors = FALSE)</code></pre>
+<p>Now clean the the <code>bikes_daily</code> and <code>bikes_monthly</code> using <a href="https://cran.r-project.org/web/packages/dplyr/index.html">dplyr</a> and <a href="https://cran.r-project.org/web/packages/lubridate/index.html">lubridate</a> R packages.</p>
+<pre class="r"><code># Convert the character date variable to a date variable using lubridate
+bikes_daily$Date &lt;- dmy(bikes_daily$Date)
+# Add a new weekday variable using lubridate and dplyr
+bikes_daily &lt;- bikes_daily %&gt;% 
+      mutate(weekday =weekdays(Date)) %&gt;% 
+      # Remove the last row with NAs in the dataframe using slice using this tip https://stackoverflow.com/questions/38916660/r-delete-last-row-in-dataframe-for-each-group
+      slice(-n())
+
+# View the column names by position in bikes_daily to check they are the 3 points we have selected
+names(bikes_daily)[4]</code></pre>
+<pre><code>## [1] &quot;Curran Street Total Cyclists&quot;</code></pre>
+<pre class="r"><code>names(bikes_daily)[9]</code></pre>
+<pre><code>## [1] &quot;Grafton Gully Cyclists&quot;</code></pre>
+<pre class="r"><code>names(bikes_daily)[29]</code></pre>
+<pre><code>## [1] &quot;Quay St Eco Display Cyclists&quot;</code></pre>
+<pre class="r"><code># Rename the 3 points in bikes_daily to match the streets points
+names(bikes_daily)[4] &lt;- streets[1,1]
+names(bikes_daily)[9] &lt;- streets[2,1]
+names(bikes_daily)[29] &lt;- streets[3,1]
+
+# View the column names by position in bikes_monthly to check they are the 3 points we have selected
+names(bikes_monthly)[5]</code></pre>
+<pre><code>## [1] &quot;Curran St&quot;</code></pre>
+<pre class="r"><code>names(bikes_monthly)[11]</code></pre>
+<pre><code>## [1] &quot;Grafton Gully&quot;</code></pre>
+<pre class="r"><code>names(bikes_monthly)[32]</code></pre>
+<pre><code>## [1] &quot;Quay St totem&quot;</code></pre>
+<pre class="r"><code># Rename the 3 points in bikes_monthly to match the streets points
+names(bikes_monthly)[5] &lt;- streets[1,1]
+names(bikes_monthly)[11] &lt;- streets[2,1]
+names(bikes_monthly)[32] &lt;- streets[3,1]
+
+# Add the row sums ignoring the NAs and remove the first row which has a month as Te Atatu
+bikes_monthly &lt;- bikes_monthly %&gt;% 
+      mutate(sumStreets = rowSums(.[2:dim(bikes_monthly)[2]],na.rm = TRUE)) %&gt;% 
+      slice(-1)
+# Convert the character date variable to a date variable using lubridate
+bikes_monthly$Month &lt;- dmy(paste0(&quot;01-&quot;, bikes_monthly$Month)) 
+# In order to select the bikes columns as the vector of points in the streets dataframe, we need to provide column names as variables which contain strings. We could use select_ as the standard evaluation counterpart of select. However from the docs select_ has been deprecated in favour of tidy eval. https://timmastny.rbind.io/blog/nse-tidy-eval-dplyr-leadr/#expressions. We use the unquote !! https://adv-r.hadley.nz/quasiquotation.html to tell dplyr to select the variables that match the values in the streets$street vector and combine with the Date and weekday variable in the bikes dataset
+bikes_subset &lt;- bikes_daily %&gt;% 
+      select(!!streets$street) %&gt;% 
+      cbind(bikes_daily %&gt;% select(Date,weekday))
+
+# Now convert this dataframe into a tidy dataset using gather, where the Key is the street and the value is the count http://garrettgman.github.io/tidying/
+bikes_subset &lt;- bikes_subset %&gt;% 
+      gather(key = &quot;street&quot;, value=&quot;counts&quot;,1:3)
+
+# Now join the streets coordinates and the bikes subset dataframe using dplyr function inner_join    
+bikes_streets &lt;- streets %&gt;%
+      inner_join(bikes_subset,by = &quot;street&quot;)</code></pre>
+<pre class="r"><code># Creat a sf object from the streets dataframe with points geometries with crs as 2193 https://epsg.io/2193
+bikes_streets_sf &lt;- st_as_sf(bikes_streets, 
+                             coords = c(&quot;longitude&quot;, &quot;latitude&quot;), crs=2193)</code></pre>
+</div>
+<div id="visualisations" class="section level1">
+<h1>Visualisations</h1>
+<p><strong>Bike Counter Locations Daily Data</strong></p>
+<p>Let’s visualise the selected bike counter locations using the <a href="https://cran.r-project.org/web/packages/leaflet/">leaflet</a> R package.</p>
+<pre class="r"><code># Create a leaflet map centred at the mean of the streets points
+long &lt;- mean(streets$longitude)
+lat &lt;- mean(streets$latitude)
+m &lt;- leaflet() %&gt;% 
+      setView(lng = long, lat = lat, zoom = 13) %&gt;% 
+      addTiles()
+m %&gt;% 
+      addMarkers(data = bikes_streets_sf, 
+                 popup = ~htmlEscape(street)) %&gt;% 
+      addProviderTiles(providers$ Stamen.TonerBackground)</code></pre>
+<div id="htmlwidget-1" style="width:672px;height:480px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"setView":[[-36.849178,174.760155],13,[]],"calls":[{"method":"addTiles","args":["//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addMarkers","args":[[-36.840521,-36.840521,-36.840521,-36.840521,-36.840521,-36.840521,-36.840521,-36.840521,-36.840521,-36.840521,-36.840521,-36.840521,-36.840521,-36.840521,-36.840521,-36.840521,-36.840521,-36.840521,-36.840521,-36.840521,-36.840521,-36.840521,-36.840521,-36.840521,-36.840521,-36.840521,-36.840521,-36.840521,-36.840521,-36.840521,-36.840521,-36.844713,-36.844713,-36.844713,-36.844713,-36.844713,-36.844713,-36.844713,-36.844713,-36.844713,-36.844713,-36.844713,-36.844713,-36.844713,-36.844713,-36.844713,-36.844713,-36.844713,-36.844713,-36.844713,-36.844713,-36.844713,-36.844713,-36.844713,-36.844713,-36.844713,-36.844713,-36.844713,-36.844713,-36.844713,-36.844713,-36.844713,-36.8623,-36.8623,-36.8623,-36.8623,-36.8623,-36.8623,-36.8623,-36.8623,-36.8623,-36.8623,-36.8623,-36.8623,-36.8623,-36.8623,-36.8623,-36.8623,-36.8623,-36.8623,-36.8623,-36.8623,-36.8623,-36.8623,-36.8623,-36.8623,-36.8623,-36.8623,-36.8623,-36.8623,-36.8623,-36.8623,-36.8623],[174.739289,174.739289,174.739289,174.739289,174.739289,174.739289,174.739289,174.739289,174.739289,174.739289,174.739289,174.739289,174.739289,174.739289,174.739289,174.739289,174.739289,174.739289,174.739289,174.739289,174.739289,174.739289,174.739289,174.739289,174.739289,174.739289,174.739289,174.739289,174.739289,174.739289,174.739289,174.773376,174.773376,174.773376,174.773376,174.773376,174.773376,174.773376,174.773376,174.773376,174.773376,174.773376,174.773376,174.773376,174.773376,174.773376,174.773376,174.773376,174.773376,174.773376,174.773376,174.773376,174.773376,174.773376,174.773376,174.773376,174.773376,174.773376,174.773376,174.773376,174.773376,174.773376,174.7678,174.7678,174.7678,174.7678,174.7678,174.7678,174.7678,174.7678,174.7678,174.7678,174.7678,174.7678,174.7678,174.7678,174.7678,174.7678,174.7678,174.7678,174.7678,174.7678,174.7678,174.7678,174.7678,174.7678,174.7678,174.7678,174.7678,174.7678,174.7678,174.7678,174.7678],null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},["Curran_Street","Curran_Street","Curran_Street","Curran_Street","Curran_Street","Curran_Street","Curran_Street","Curran_Street","Curran_Street","Curran_Street","Curran_Street","Curran_Street","Curran_Street","Curran_Street","Curran_Street","Curran_Street","Curran_Street","Curran_Street","Curran_Street","Curran_Street","Curran_Street","Curran_Street","Curran_Street","Curran_Street","Curran_Street","Curran_Street","Curran_Street","Curran_Street","Curran_Street","Curran_Street","Curran_Street","Quay_Street","Quay_Street","Quay_Street","Quay_Street","Quay_Street","Quay_Street","Quay_Street","Quay_Street","Quay_Street","Quay_Street","Quay_Street","Quay_Street","Quay_Street","Quay_Street","Quay_Street","Quay_Street","Quay_Street","Quay_Street","Quay_Street","Quay_Street","Quay_Street","Quay_Street","Quay_Street","Quay_Street","Quay_Street","Quay_Street","Quay_Street","Quay_Street","Quay_Street","Quay_Street","Quay_Street","Grafton_Gully","Grafton_Gully","Grafton_Gully","Grafton_Gully","Grafton_Gully","Grafton_Gully","Grafton_Gully","Grafton_Gully","Grafton_Gully","Grafton_Gully","Grafton_Gully","Grafton_Gully","Grafton_Gully","Grafton_Gully","Grafton_Gully","Grafton_Gully","Grafton_Gully","Grafton_Gully","Grafton_Gully","Grafton_Gully","Grafton_Gully","Grafton_Gully","Grafton_Gully","Grafton_Gully","Grafton_Gully","Grafton_Gully","Grafton_Gully","Grafton_Gully","Grafton_Gully","Grafton_Gully","Grafton_Gully"],null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addProviderTiles","args":["Stamen.TonerBackground",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false}]}],"limits":{"lat":[-36.8623,-36.840521],"lng":[174.739289,174.773376]}},"evals":[],"jsHooks":[]}</script>
+<p>Let’s view the daily counts by the 3 counter points with scatter plot and labelled scatterplot, with the regression trend line.</p>
+<pre class="r"><code># Plot a facetted plot of the  daily bike counts
+ggplot(bikes_streets,aes(Date,counts))+ 
+      geom_point() +
+      geom_smooth(method=&quot;lm&quot;) +
+      facet_wrap(~street) +
+      theme_bw()+
+      ggtitle(&quot;Daily Bicycle Counts and Weekdays for Counter Locations&quot;)</code></pre>
+<p><img src="/post/Bikes_files/figure-html/weekday%20plots-1.png" width="672" /></p>
+<pre class="r"><code># Plot a facetted plot of the  daily bike counts
+ggplot(bikes_streets,aes(Date,counts))+ 
+      geom_point() +
+      geom_label(aes(label=weekday)) +
+      geom_smooth(method=&quot;lm&quot;) +
+      facet_wrap(~street) +
+      theme_bw()+
+      ggtitle(&quot;Daily Bicycle Counts and Weekdays for Counter Locations&quot;)</code></pre>
+<p><img src="/post/Bikes_files/figure-html/weekday%20label%20plots-1.png" width="672" /></p>
+<p>It seems like there is a downward trend for August, perhaps this is related to the winter weather in August?</p>
+<p>Next create a ggplot of the total aggregated count by weekday and street.</p>
+<pre class="r"><code># Create a gpplot of the total aggregated count by weekday and street
+bikes_streets %&gt;% 
+      group_by(weekday,street) %&gt;% 
+      summarise(weekday_sum=sum(counts)) %&gt;% 
+      na.omit() %&gt;% 
+      # Plot the weekday sum of counts and order the factor levels of the weekday variable but then use forcats fc_rev to reverse the ordering of labels when we add the coord_flip
+      ggplot(aes(forcats::fct_rev(factor(weekday, c(&quot;Monday&quot;, &quot;Tuesday&quot;, &quot;Wednesday&quot;, &quot;Thursday&quot;,&quot;Friday&quot;, &quot;Saturday&quot;,&quot;Sunday&quot;))) , weekday_sum, fill=street))  + 
+      geom_col(position=&quot;dodge&quot;) +
+      scale_fill_viridis_d()  +     
+      xlab(&quot;Weekday&quot;)+
+      ylab(&quot;Sum of Weekday Counts&quot;) +
+      coord_flip()  +
+      theme_bw() +
+      ggtitle(&quot;Total Aggregated Bicyle Count by Weekday and Street&quot;)+ 
+      labs(caption = &quot;Source: AT https://at.govt.nz/cycling-walking/research-monitoring/&quot;)</code></pre>
+<p><img src="/post/Bikes_files/figure-html/weekdays%20bar%20plots-1.png" width="672" /></p>
+<p>Weekdays notably Thursday appears to be the most popular day in Grafton Gully and Quay Street, but Sunday appears the most popular day for cycling in Curran Street.</p>
+<p><strong>Bike Counter Locations Monthly Aggregated Data</strong></p>
+<p>Now lets turn to the monthly bike count dataset <code>bike_monthly</code> and look at this as a time series.</p>
+<p>First we will use the base decompose function to break the time series into its components.</p>
+<pre class="r"><code># Create a time series object bikes_monthly_ts
+bikes_monthly_ts &lt;- ts(bikes_monthly$sumStreets, start=c(2010,11), frequency=12)
+decomp &lt;- decompose(bikes_monthly_ts)
+# Plot the decomposed time series
+autoplot(decomp)</code></pre>
+<p><img src="/post/Bikes_files/figure-html/decompose%20monthly%20counts-1.png" width="672" /></p>
+<p>From the decomposed components it appears there is a repetitive seasonality pattern dipping in winter months and an overall upwards trend.</p>
+<pre class="r"><code># Plot the Auckland population
+population$Date &lt;- dmy(population$Date)
+pop_ts &lt;- ts(population$Auckland, start=c(2011), frequency=1)
+
+bike_trend &lt;- decomp$trend
+# Plot the Auckland bicycle growth
+bike_plot &lt;- autoplot(bike_trend,na.rm=TRUE) +
+      ylab(&quot;Bicycle Counts&quot;) +
+      xlab(&quot;Date&quot;)+
+      scale_y_continuous(labels = scales::comma)+
+      ggtitle(&quot;Auckland Estimated Bicyle Counts&quot;) +
+      theme_bw() + 
+      labs(caption = &quot;Source: AT https://at.govt.nz/cycling-walking/research-monitoring/&quot;)
+# Plot the Auckland population growth
+pop_plot &lt;- autoplot(pop_ts)+xlab(&quot;Date&quot;) +
+      ylab(&quot;Population number&quot;)+
+      scale_y_continuous(labels = scales::comma)+
+      ggtitle(&quot;Auckland Estimated Population&quot;) +
+      theme_bw()+ 
+      labs(caption = &quot;Source: NZ Stats http://nzdotstat.stats.govt.nz/&quot;)
+# Plot side by side plots with cowplot package
+plot_grid(bike_plot,pop_plot, labels = &quot;AUTO&quot;)</code></pre>
+<p><img src="/post/Bikes_files/figure-html/pop%20and%20bike%20plots-1.png" width="672" /></p>
+<pre class="r"><code># save_plot(&quot;cowplot.png&quot;, p, ncol = 2)</code></pre>
+<p>The cycling trend in A looks remarkably similar to Auckland population growth in B?!? Are more people cycling regardless of the hilly roads ?</p>
+<p>Finally create an arima model using the auto.arima function from the <a href="https://cran.r-project.org/web/packages/forecast/index.html">forecast</a> R package.</p>
+<pre class="r"><code># Fit an arima model using auto.arima function
+fit &lt;- bikes_monthly_ts %&gt;% 
+      auto.arima(seasonal=TRUE) 
+# Produce a summary of the fitted model
+summary(fit)</code></pre>
+<pre><code>## Series: . 
+## ARIMA(0,1,1)(2,1,0)[12] 
+## 
+## Coefficients:
+##           ma1     sar1     sar2
+##       -0.1933  -0.6515  -0.2840
+## s.e.   0.1198   0.1203   0.1369
+## 
+## sigma^2 estimated as 365080369:  log likelihood=-824.49
+## AIC=1656.97   AICc=1657.56   BIC=1666.13
+## 
+## Training set error measures:
+##                    ME     RMSE      MAE       MPE     MAPE      MASE
+## Training set 1445.464 17238.28 12216.95 0.2184844 6.939697 0.2421102
+##                      ACF1
+## Training set -0.002190182</code></pre>
+<pre class="r"><code># Check ACF and PACF plots for model residuals
+tsdisplay(residuals(fit), lag.max=45, main=&#39;(0,1,1) Model Residuals&#39;)</code></pre>
+<p><img src="/post/Bikes_files/figure-html/fit%20arima%20model-1.png" width="672" /></p>
+<pre class="r"><code># Plot the forecasted model
+fit %&gt;% 
+      forecast() %&gt;% 
+      autoplot() +
+      ylab(&quot;Bicycle counts&quot;)+
+      xlab(&quot;Date&quot;)+
+      scale_y_continuous(labels = scales::comma)+
+      scale_x_continuous(labels = scales::number)+
+      theme_bw()</code></pre>
+<pre><code>## Scale for &#39;x&#39; is already present. Adding another scale for &#39;x&#39;, which
+## will replace the existing scale.</code></pre>
+<p><img src="/post/Bikes_files/figure-html/fit%20arima%20model-2.png" width="672" /></p>
+<p>This model is a <a href="http://people.duke.edu/~rnau/seasarim.htm">seasonal</a> Arima model. The moving average model has p=0 autoregressive terms, d=1 , q=1 moving average terms, where d=1 ie differencing of order 1. The seasonal part of the model has P=2 seasonal autoregressive (SAR) terms, D=1 number of seasonal differences, Q=0 seasonal moving average (SMA) terms.</p>
+<div id="conclusions" class="section level2">
+<h2>Conclusions</h2>
+<p>The bike count data is interesting data to look at, especially the time series components and forecasting model. Once the coordinates are available further geospatial analysis can be performed through delving further into the sf package.</p>
+<p>The data cleaning hereused some new functions and operators i.e. the unquote <code>!!</code> and it has been good to start reading up on <code>tidy eval</code>.</p>
+</div>
+</div>
+
+
+  
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+    <a href="/2018/08/15/changing-theme-with-blogdown/"><i class="fa fa-chevron-left"></i></a>
+    
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="/2018/08/15/changing-theme-with-blogdown/">Changing Theme with Blogdown</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+  </div>
+</div>
+
+
+
+  
+
+</div>
+
+</div>
+</div>
+<script src="/js/ui.js"></script>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-114904130-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+
+
+</body>
+</html>
+
