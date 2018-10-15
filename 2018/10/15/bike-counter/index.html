@@ -260,7 +260,7 @@
 <h2>Introduction</h2>
 <p>The motivations for cycling around town can be for fitness, economic or environmental reasons. However in Auckland the weather and <a href="https://en.wikipedia.org/wiki/Auckland_volcanic_field">the 53 odd volcanoes</a> could be deterrents to would-be cyclists.</p>
 <p>Auckland Transport (AT) publishes daily and monthly bike count data from counters around Auckland.</p>
-<p>We will analyse and visualise this data, then fit a model to forecast Auckland bike activity and trends to see if more cyclists are braving the weather and taking on the hills.</p>
+<p>We will analyse and visualise this data, then fit a model to forecast Auckland bike activity and trends to see if cyclists are braving the weather and taking on the hills.</p>
 </div>
 <div id="load-packages" class="section level2">
 <h2>Load Packages</h2>
@@ -554,6 +554,8 @@ decomp &lt;- decompose(bikes_monthly_ts)
 autoplot(decomp)</code></pre>
 <p><img src="/post/Bikes_files/figure-html/decompose%20monthly%20counts-1.png" width="672" /></p>
 <p>From the decomposed components it appears there is a repetitive seasonality pattern dipping in winter months and an overall upwards trend.</p>
+<p><strong>Compare Aggregated Bike Data with another Dataset</strong></p>
+<p>Now extract and plot the trend line against another dataset. Here we will use the Auckland population data over a similar time period.</p>
 <pre class="r"><code># Plot the Auckland population
 population$Date &lt;- dmy(population$Date)
 pop_ts &lt;- ts(population$Auckland, start=c(2011), frequency=1)
@@ -574,12 +576,13 @@ pop_plot &lt;- autoplot(pop_ts)+xlab(&quot;Date&quot;) +
       ggtitle(&quot;Auckland Estimated Population&quot;) +
       theme_bw()+ 
       labs(caption = &quot;Source: NZ Stats http://nzdotstat.stats.govt.nz/&quot;)
-# Plot side by side plots with cowplot package
+# Plot side by side plots with cowplot packagefor comparison instead of using 2 y-axis
 plot_grid(bike_plot,pop_plot, labels = &quot;AUTO&quot;)</code></pre>
 <p><img src="/post/Bikes_files/figure-html/pop%20and%20bike%20plots-1.png" width="672" /></p>
 <pre class="r"><code># save_plot(&quot;cowplot.png&quot;, p, ncol = 2)</code></pre>
-<p>The cycling trend in A looks remarkably similar to Auckland population growth in B?!? Are more people cycling regardless of the hilly roads ?</p>
-<p>Finally create an arima model using the auto.arima function from the <a href="https://cran.r-project.org/web/packages/forecast/index.html">forecast</a> R package.</p>
+<p>The cycling trend in A looks remarkably similar to Auckland population growth in B?!? It seems like increasing population is cycling regardless of the hilly roads.</p>
+<p><strong>Forecast Bike Numbers</strong></p>
+<p>Finally create an arima model using the auto.arima function from the <a href="https://cran.r-project.org/web/packages/forecast/index.html">forecast</a> R package to see what the growth in cycling could look like.</p>
 <pre class="r"><code># Fit an arima model using auto.arima function
 fit &lt;- bikes_monthly_ts %&gt;% 
       auto.arima(seasonal=TRUE) 
@@ -604,14 +607,14 @@ summary(fit)</code></pre>
 <pre class="r"><code># Check ACF and PACF plots for model residuals
 tsdisplay(residuals(fit), lag.max=45, main=&#39;(0,1,1) Model Residuals&#39;)</code></pre>
 <p><img src="/post/Bikes_files/figure-html/fit%20arima%20model-1.png" width="672" /></p>
-<pre class="r"><code># Plot the forecasted model
+<pre class="r"><code># Plot the forecast using the autoplot function
 fit %&gt;% 
       forecast() %&gt;% 
       autoplot() +
-      ylab(&quot;Bicycle counts&quot;)+
-      xlab(&quot;Date&quot;)+
-      scale_y_continuous(labels = scales::comma)+
-      scale_x_continuous(labels = scales::number)+
+      ylab(&quot;Bicycle counts&quot;) +
+      xlab(&quot;Date&quot;) +
+      scale_y_continuous(labels = scales::comma) +
+      scale_x_continuous(labels = scales::number) +
       theme_bw()</code></pre>
 <pre><code>## Scale for &#39;x&#39; is already present. Adding another scale for &#39;x&#39;, which
 ## will replace the existing scale.</code></pre>
@@ -619,8 +622,8 @@ fit %&gt;%
 <p>This model is a <a href="http://people.duke.edu/~rnau/seasarim.htm">seasonal</a> Arima model. The moving average model has p=0 autoregressive terms, d=1 , q=1 moving average terms, where d=1 ie differencing of order 1. The seasonal part of the model has P=2 seasonal autoregressive (SAR) terms, D=1 number of seasonal differences, Q=0 seasonal moving average (SMA) terms.</p>
 <div id="conclusions" class="section level2">
 <h2>Conclusions</h2>
-<p>The bike count data is interesting data to look at, especially the time series components and forecasting model. Once the coordinates are available further geospatial analysis can be performed through delving further into the sf package.</p>
-<p>The data cleaning hereused some new functions and operators i.e. the unquote <code>!!</code> and it has been good to start reading up on <code>tidy eval</code>.</p>
+<p>The bike count data is interesting data to look at, especially the time series components and forecast. Once the coordinates are available in the AT datasets, further geospatial analysis can be performed through delving into the <a href="https://cran.r-project.org/web/packages/sf/index.html">sf</a> package and using other data.</p>
+<p>The data cleaning here used new functions and packages including lubridate and cowplot and operators including the unquote <code>!!</code> . It has also been good to start reading up on <code>tidy eval</code>.</p>
 </div>
 </div>
 
