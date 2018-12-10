@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Blockchain on Kim Fitter</title>
-    <link>/tags/blockchain/</link>
+    <link>https://kimnewzealand.github.io/tags/blockchain/</link>
     <description>Recent content in Blockchain on Kim Fitter</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)</copyright>
     <lastBuildDate>Tue, 30 Jan 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/blockchain/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://kimnewzealand.github.io/tags/blockchain/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Simple Blockchain Example in R</title>
-      <link>/2018/01/30/simple-blockchain/</link>
+      <link>https://kimnewzealand.github.io/2018/01/30/simple-blockchain/</link>
       <pubDate>Tue, 30 Jan 2018 00:00:00 +0000</pubDate>
       
-      <guid>/2018/01/30/simple-blockchain/</guid>
+      <guid>https://kimnewzealand.github.io/2018/01/30/simple-blockchain/</guid>
       <description>This R markdown post was inspired by the R-bloggers post Building your own blockchain in R.
 Blockchain technology, types such as bitcoin and ethereum and its associated terminology are ubiquitous in the media at the moment.
 The objective here is to learn how a generic blockchain works and understand some of the terminology through implementing a simple example. This generic example could then extended to various types of blockchains such as distributed ledgers, smart contracts or cryptocurrencies with network servers and appropriate privacy and security settings.</description>
