@@ -520,20 +520,10 @@ plot(kaikoura_lidar,sub=&quot;Source: LINZ CC 4.0&quot;) + title(&quot;Digital E
 <pre><code>## integer(0)</code></pre>
 <pre class="r"><code>points(highest_point,col=&quot;green&quot;,pch = 19)</code></pre>
 <p><img src="https://kimnewzealand.github.io/post/KaikouraLIDARanalysis_files/figure-html/plot%20lidar%20raster-1.png" width="672" /></p>
-<pre class="r"><code># Use plot3D plot to plot the lidar raster in 3D
-rasterVis::plot3D(kaikoura_lidar, col=topo.colors,main=&quot;Digital Elevation Model (DEM) Data \n Kaikoura, New Zealand \n Before the Earthquake in 2012&quot;,sub=&quot;Source: LINZ CC 4.0&quot;)
-# Plot levelplotusing rasterVis package
+<pre class="r"><code># Plot levelplotusing rasterVis package
 levelplot&lt;- levelplot(kaikoura_lidar, layers = 1, margin = list(FUN = &#39;median&#39;), contour=TRUE)
 levelplot</code></pre>
 <p><img src="https://kimnewzealand.github.io/post/KaikouraLIDARanalysis_files/figure-html/plot%20lidar%20raster-2.png" width="672" /></p>
-<pre class="r"><code># Plot rayshader 3D. This plots in a separate window so it will not show in the R markdown
-# elmat &lt;- matrix(raster::extract(kaikoura_lidar,raster::extent(kaikoura_lidar),buffer=10000),nrow=ncol(kaikoura_lidar),ncol=nrow(kaikoura_lidar))
-#elmat %&gt;%
-#  sphere_shade(texture = &quot;imhof4&quot;) %&gt;%
-#  add_water(detect_water(elmat, min_area = 50), #color=&quot;imhof4&quot;) %&gt;%
-  #add_shadow(ray_shade(elmat,zscale=50,lambert=FALSE),0.5)  %&gt;% 
-# plot_3d(elmat)
-# write_png()</code></pre>
 <p>Now let’s view a recent satellite imagery so see what the sea beds look like now.</p>
 <pre class="r"><code># Map AOI using leaflet with satellite basemap
 m2 &lt;- AOI_sf_4326 %&gt;% 
@@ -544,8 +534,7 @@ m2 &lt;- AOI_sf_4326 %&gt;%
 m2</code></pre>
 <div id="htmlwidget-3" style="width:672px;height:480px;" class="leaflet html-widget"></div>
 <script type="application/json" data-for="htmlwidget-3">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addProviderTiles","args":["Esri.WorldImagery",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addPolylines","args":[[[[{"lng":[173.670985450106,173.670916320855,173.723418897906,173.723493435761,173.670985450106],"lat":[-42.4229890377847,-42.4165051587042,-42.4161858501577,-42.4226696571504,-42.4229890377847]}]]],null,null,{"interactive":true,"className":"","stroke":true,"color":"#03F","weight":5,"opacity":0.5,"fill":false,"fillColor":"#03F","fillOpacity":0.2,"smoothFactor":1,"noClip":false},null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[-42.4229890377847,-42.4161858501577],"lng":[173.670916320855,173.723493435761]}},"evals":[],"jsHooks":[]}</script>
-<pre class="r"><code># Save htmlwidget for blog post
-# htmlwidgets::saveWidget(m2,&quot;SatelliteAfterQuakes.html&quot;)</code></pre>
+<pre class="r"><code># htmlwidgets::saveWidget(m2,&quot;SatelliteAfterQuakes.html&quot;)</code></pre>
 <p>We can see the raised sea beds from the earthquake in the leaflet satellite plot.</p>
 </div>
 <div id="conclusions" class="section level2">
@@ -556,7 +545,7 @@ m2</code></pre>
 <li>Use base plot in R for initial visualisations of raster data as these data may be very large and using ggplot may just crash your PC.</li>
 <li>Select the appropriate CRS up front in the data analysis and then reproject data. However reprojections of raster datasets can also be memory intensive. Using QGIS for on the fly projections are a good way to take a look at the data.</li>
 <li>Most basic plots use the native OSM unprojected CRM system of WGS84. Since leaflet also defaults to this CRS, this would be the familiar starting point for first attempts at geospatial analysis.</li>
-<li>3D plots are certainly exciting and interesting and there is so much more scope for playing with rayshader and other 3D R packages and programs.</li>
+<li>Another way to view DEM’s is with 3D and there is so much more scope for playing with 3D R packages and other tools.</li>
 </ul>
 </div>
 
