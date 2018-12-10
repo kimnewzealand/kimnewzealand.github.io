@@ -42,7 +42,7 @@
     <item>
       <title>Eda</title>
       <link>/tags/eda/</link>
-      <pubDate>Mon, 15 Oct 2018 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 07 Dec 2018 00:00:00 +0000</pubDate>
       
       <guid>/tags/eda/</guid>
       <description></description>
@@ -54,6 +54,15 @@
       <pubDate>Thu, 19 Jul 2018 00:00:00 +0000</pubDate>
       
       <guid>/tags/excel/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Gis</title>
+      <link>/tags/gis/</link>
+      <pubDate>Fri, 07 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/gis/</guid>
       <description></description>
     </item>
     
@@ -105,7 +114,7 @@
     <item>
       <title>R</title>
       <link>/tags/r/</link>
-      <pubDate>Mon, 15 Oct 2018 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 07 Dec 2018 00:00:00 +0000</pubDate>
       
       <guid>/tags/r/</guid>
       <description></description>
