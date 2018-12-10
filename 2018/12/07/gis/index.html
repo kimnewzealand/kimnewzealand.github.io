@@ -340,7 +340,7 @@ ggplot(kaikoura_bbox_sf)+
 <blockquote>
 <p>OpenStreetMap uses the WGS84 spatial reference system used by the Global Positioning System (GPS). It uses geographic coordinates between -180° and 180° longitude and -90° and 90° latitude. So this is the “native” OSM format.</p>
 </blockquote>
-<p>Let’s plot this bbox to see where it is on a map.</p>
+<p>Let’s plot this bbox using <a href="https://cran.r-project.org/web/packages/leaflet/index.html">leaflet</a> R package to see where it is on a map.</p>
 <pre class="r"><code># Map Kaikoura using leaflet and the bbox
 kaikoura_bbox_sf %&gt;% 
       leaflet() %&gt;% 
@@ -358,7 +358,7 @@ st_crs(kaikoura_bbox_sf_2193)</code></pre>
 <pre><code>## Coordinate Reference System:
 ##   EPSG: 2193 
 ##   proj4string: &quot;+proj=tmerc +lat_0=0 +lon_0=173 +k=0.9996 +x_0=1600000 +y_0=10000000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs&quot;</code></pre>
-<pre class="r"><code># We can check the bbox extent  of our reprojected sf object is in metres using st_bbox function
+<pre class="r"><code># We can check the bbox extent  of our reprojected sf object in metres using st_bbox function
 st_bbox(kaikoura_bbox_sf_2193)</code></pre>
 <pre><code>##    xmin    ymin    xmax    ymax 
 ## 1652666 5301077 1659321 5310012</code></pre>
@@ -485,7 +485,7 @@ m</code></pre>
 <div id="htmlwidget-2" style="width:672px;height:480px;" class="leaflet html-widget"></div>
 <script type="application/json" data-for="htmlwidget-2">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addPolylines","args":[[[[{"lng":[173.670985450106,173.670916320855,173.723418897906,173.723493435761,173.670985450106],"lat":[-42.4229890377847,-42.4165051587042,-42.4161858501577,-42.4226696571504,-42.4229890377847]}]]],null,null,{"interactive":true,"className":"","stroke":true,"color":"#03F","weight":5,"opacity":0.5,"fill":false,"fillColor":"#03F","fillOpacity":0.2,"smoothFactor":1,"noClip":false},null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[-42.4229890377847,-42.4161858501577],"lng":[173.670916320855,173.723493435761]}},"evals":[],"jsHooks":[]}</script>
 <pre class="r"><code># Save htmlwidget for blog post
-#htmlwidgets::saveWidget(m,&quot;AOI.html&quot;)</code></pre>
+# htmlwidgets::saveWidget(m,&quot;AOI.html&quot;)</code></pre>
 <p>Now convert the merged LiDAR raster to a dataframe.</p>
 <pre class="r"><code># Convert the raster data to a dataframe
 kaikoura_lidar_df &lt;- as.data.frame(kaikoura_lidar, xy = TRUE)</code></pre>
@@ -509,11 +509,12 @@ highest_point &lt;- kaikoura_lidar_df %&gt;%
 <pre class="r"><code>highest_point</code></pre>
 <pre><code>##         x       y layer
 ## 1 1656957 5303102 108.7</code></pre>
-<p>From this histogram we can see that this is mostly low lying coastal land. We could use LiDAR data from after the earthquake to measure the earth and seabed movements if this is made available by LINZ.</p>
+<p>From this histogram it seems this coastal land has some flat sea level land and steep sections to hilly viewpoints.</p>
+<p>We could use LiDAR data from after the earthquake to measure the earth and seabed movements from the elevation differences if this data is made available by LINZ.</p>
 </div>
 <div id="data-visualisation" class="section level2">
 <h2>Data Visualisation</h2>
-<p>Let’s visualise the LiDAR raster in our AOI using base plot and levelplot from the <a href="https://cran.r-project.org/web/packages/rasterVis/index.html">rasterVis</a>.</p>
+<p>Let’s visualise the LiDAR raster in our AOI using base plot and levelplot from the <a href="https://cran.r-project.org/web/packages/rasterVis/index.html">rasterVis</a> R package.</p>
 <pre class="r"><code># Use base plot to plot the lidar raster with the highest point
 plot(kaikoura_lidar,sub=&quot;Source: LINZ CC 4.0&quot;) + title(&quot;Digital Elevation Model (DEM) Data \n Kaikoura, New Zealand \n Before the Earthquake in 2012&quot;)</code></pre>
 <pre><code>## integer(0)</code></pre>
@@ -534,7 +535,7 @@ levelplot</code></pre>
 # plot_3d(elmat)
 # write_png()</code></pre>
 <p>Now let’s view a recent satellite imagery so see what the sea beds look like now.</p>
-<pre class="r"><code># Map AOI using leaflet with satelitte basemap
+<pre class="r"><code># Map AOI using leaflet with satellite basemap
 m2 &lt;- AOI_sf_4326 %&gt;% 
       leaflet() %&gt;% 
       addTiles() %&gt;%
@@ -544,8 +545,8 @@ m2</code></pre>
 <div id="htmlwidget-3" style="width:672px;height:480px;" class="leaflet html-widget"></div>
 <script type="application/json" data-for="htmlwidget-3">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addProviderTiles","args":["Esri.WorldImagery",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addPolylines","args":[[[[{"lng":[173.670985450106,173.670916320855,173.723418897906,173.723493435761,173.670985450106],"lat":[-42.4229890377847,-42.4165051587042,-42.4161858501577,-42.4226696571504,-42.4229890377847]}]]],null,null,{"interactive":true,"className":"","stroke":true,"color":"#03F","weight":5,"opacity":0.5,"fill":false,"fillColor":"#03F","fillOpacity":0.2,"smoothFactor":1,"noClip":false},null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[-42.4229890377847,-42.4161858501577],"lng":[173.670916320855,173.723493435761]}},"evals":[],"jsHooks":[]}</script>
 <pre class="r"><code># Save htmlwidget for blog post
-#htmlwidgets::saveWidget(m2,&quot;SatelliteAfterQuakes.html&quot;)</code></pre>
-<p>We can see the raised sea beds from the earthquake in the leaflet satelite plot.</p>
+# htmlwidgets::saveWidget(m2,&quot;SatelliteAfterQuakes.html&quot;)</code></pre>
+<p>We can see the raised sea beds from the earthquake in the leaflet satellite plot.</p>
 </div>
 <div id="conclusions" class="section level2">
 <h2>Conclusions</h2>
