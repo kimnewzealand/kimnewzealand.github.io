@@ -7,17 +7,26 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)</copyright>
-    <lastBuildDate>Fri, 07 Dec 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 12 Dec 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://kimnewzealand.github.io/tags/r/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>The Structure of Static Sites using Blogdown</title>
+      <link>https://kimnewzealand.github.io/2018/12/12/structure-blogdown/</link>
+      <pubDate>Wed, 12 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://kimnewzealand.github.io/2018/12/12/structure-blogdown/</guid>
+      <description>I have been updating my blogdown website with posts, and then I hit an issue. The about link would not update. I tried multiple amendments and multiple commits to no avail. I then re-created the whole website and reinstalled the theme. This still didn&amp;rsquo;t work. I finally figured out that the slug in the about.md file was about-me, and the build site saved the index.html in an about-me folder. However the corresponding HTML file was looking for a github.</description>
+    </item>
+    
+    <item>
       <title>LiDAR Analysis of Kaikoura NZ</title>
-      <link>https://kimnewzealand.github.io/2018/12/07/gis/</link>
+      <link>https://kimnewzealand.github.io/2018/12/07/lidar-kaikoura/</link>
       <pubDate>Fri, 07 Dec 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://kimnewzealand.github.io/2018/12/07/gis/</guid>
+      <guid>https://kimnewzealand.github.io/2018/12/07/lidar-kaikoura/</guid>
       <description>IntroductionData OverviewLoad DataData ManipulationData ExplorationData VisualisationConclusionsIntroductionThe Kaikoura earthquake happened just after midnight on 14 November 2016.
 After reading this article Astonishing Nasa photos show Kaikoura land raised by earthquake I thought it would interesting to look at what open data is available to view the land changes from the article.
 This analysis has the following objectives:</description>

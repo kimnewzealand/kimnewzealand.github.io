@@ -3,7 +3,12 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://kimnewzealand.github.io/2018/12/07/gis/</loc>
+    <loc>https://kimnewzealand.github.io/2018/12/12/structure-blogdown/</loc>
+    <lastmod>2018-12-12T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kimnewzealand.github.io/2018/12/07/lidar-kaikoura/</loc>
     <lastmod>2018-12-07T00:00:00+00:00</lastmod>
   </url>
   
@@ -63,7 +68,7 @@
   </url>
   
   <url>
-    <loc>https://kimnewzealand.github.io/about-me/</loc>
+    <loc>https://kimnewzealand.github.io/about/</loc>
   </url>
   
   <url>
@@ -74,7 +79,7 @@
   
   <url>
     <loc>https://kimnewzealand.github.io/tags/blogdown/</loc>
-    <lastmod>2018-08-15T00:00:00+00:00</lastmod>
+    <lastmod>2018-12-12T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -110,7 +115,7 @@
   
   <url>
     <loc>https://kimnewzealand.github.io/</loc>
-    <lastmod>2018-12-07T00:00:00+00:00</lastmod>
+    <lastmod>2018-12-12T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -134,7 +139,7 @@
   
   <url>
     <loc>https://kimnewzealand.github.io/post/</loc>
-    <lastmod>2018-12-07T00:00:00+00:00</lastmod>
+    <lastmod>2018-12-12T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -146,7 +151,7 @@
   
   <url>
     <loc>https://kimnewzealand.github.io/tags/r/</loc>
-    <lastmod>2018-12-07T00:00:00+00:00</lastmod>
+    <lastmod>2018-12-12T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
