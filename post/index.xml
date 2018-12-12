@@ -33,17 +33,6 @@ This analysis has the following objectives:</description>
     </item>
     
     <item>
-      <title>Auckland Bike Counter Analysis</title>
-      <link>https://kimnewzealand.github.io/2018/10/15/bike-counter/</link>
-      <pubDate>Mon, 15 Oct 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://kimnewzealand.github.io/2018/10/15/bike-counter/</guid>
-      <description>IntroductionDataData CleaningVisualisationsConclusionsIntroductionThe motivations for cycling around town can be for fitness, economic or environmental reasons. However in Auckland the weather and the 53 odd volcanoes could be deterrents to would-be cyclists.
-Auckland Transport (AT) publishes daily and monthly bike count data from counters around Auckland.
-We will analyse and visualise this data, then fit a model to forecast Auckland bike activity and trends to see if cyclists are braving the weather and taking on the hills.</description>
-    </item>
-    
-    <item>
       <title>Changing Theme with Blogdown</title>
       <link>https://kimnewzealand.github.io/2018/08/15/changing-theme-with-blogdown/</link>
       <pubDate>Wed, 15 Aug 2018 00:00:00 +0000</pubDate>

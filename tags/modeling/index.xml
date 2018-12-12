@@ -7,21 +7,10 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)</copyright>
-    <lastBuildDate>Mon, 15 Oct 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 15 Aug 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://kimnewzealand.github.io/tags/modeling/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Auckland Bike Counter Analysis</title>
-      <link>https://kimnewzealand.github.io/2018/10/15/bike-counter/</link>
-      <pubDate>Mon, 15 Oct 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://kimnewzealand.github.io/2018/10/15/bike-counter/</guid>
-      <description>IntroductionDataData CleaningVisualisationsConclusionsIntroductionThe motivations for cycling around town can be for fitness, economic or environmental reasons. However in Auckland the weather and the 53 odd volcanoes could be deterrents to would-be cyclists.
-Auckland Transport (AT) publishes daily and monthly bike count data from counters around Auckland.
-We will analyse and visualise this data, then fit a model to forecast Auckland bike activity and trends to see if cyclists are braving the weather and taking on the hills.</description>
-    </item>
     
     <item>
       <title>Credit Risk Modeling and Scorecard Example</title>
