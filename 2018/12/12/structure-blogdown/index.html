@@ -229,9 +229,17 @@
 
 </div>
 
-  <p>I have been updating my blogdown  website with posts, and then I hit an issue. The <a href="`https://kimnewzealand.github.io/about/`">about</a> link would not update. I tried multiple amendments and multiple commits to no avail. I then re-created the whole website and reinstalled the theme. This still didn&rsquo;t work. I finally figured out that the slug in the <code>about.md</code> file was about-me, and the build site saved the <code>index.html</code> in an about-me folder. However the corresponding HTML file was looking for a github.io base URL ending with about-me, which did not exist. I changed the slug to about and it now updates.</p>
+  
 
-<p>This post is of the the folder structure of a blogdown website, to get a basic understanding of how it works and to also remind myself next time !</p>
+<p>This post is of the the folder structure of a blogdown website, to get a basic understanding of how it works and to also remind myself next time I face a similar publishing issue!</p>
+
+<h2 id="publishing-issue">Publishing issue</h2>
+
+<p>I have been updating my blogdown  website with posts, and then I hit an issue. The <a href="`https://kimnewzealand.github.io/about/`">about</a> link would not update. I tried multiple amendments and multiple commits to no avail. I then re-created the whole website and reinstalled the theme. This still didn&rsquo;t work. I finally figured out that the slug in the <code>about.md</code> file was about-me, and the build site saved the <code>index.html</code> in an about-me folder. However the corresponding HTML file was looking for a github.io base URL ending with about-me, which did not exist. I changed the slug to about and it now updates.</p>
+
+<h2 id="review-of-blogdown-website-structure">Review of blogdown website structure</h2>
+
+<p>I went back through the documentation to review the structure of a blogdown website:</p>
 
 <ul>
 <li><p>a <code>config.toml</code> file uses TOML to <a href="https://bookdown.org/yihui/blogdown/configuration.html">configure the website</a> and to define global variable names and links.</p></li>
@@ -256,15 +264,10 @@
 
 <p>For example :</p>
 
-<p>[social]
- twitter = &ldquo;kim_fitter&rdquo;
- github = &ldquo;kimnewzealand&rdquo;</p>
-
-<blockquote>
-<p>Inline tables provide a more compact syntax for expressing tables.</p>
-</blockquote>
-
-<p>social = { twitter = &ldquo;kim_fitter&rdquo; , github = &ldquo;kimnewzealand&rdquo;}</p>
+<pre><code>  [social]
+        twitter = &quot;kim_fitter&quot;
+        github = &quot;kimnewzealand&quot;
+</code></pre>
 
 <blockquote>
 <p>An array of tables&hellip; can be expressed by using a table name in double brackets. Each table with the same double bracketed name will be an element in the array.</p>
@@ -272,28 +275,29 @@
 
 <p>For example :</p>
 
-<p>[menu]
-  [[menu.main]]
-    name = &ldquo;Home&rdquo;
-    url = &ldquo;/&rdquo;</p>
+<pre><code>  [menu]
+        [[menu.main]]
+              name = &quot;Home&quot;
+              url = &quot;/&quot;
 
-<p>[[menu.main]]
-    name = &ldquo;About&rdquo;
-    url = &ldquo;/about/&rdquo;</p>
-
-<ul>
-<li>each URL has a corresponding <code>index.html</code> file. When we build the Hugo site, a markdown source file in the blog source directory creates this <code>index.html</code> in another publishDir variable directory, in a folder with the same name as the source file&rsquo;s slug by default. This publishDir directory folder structure determines the permanent links (permalink) of your web pages. The permalink rules can also be customised in the <code>config.toml</code> file.</li>
-</ul>
-
-<p>In this case <code>\blogdown_source\content\about.md</code> creates <code>\kimnewzealand.github.io\about\index.html</code> which is seen in the <code>https://kimnewzealand.github.io/about/</code> URL.</p>
+        [[menu.main]]
+              name = &quot;About&quot;
+              url = &quot;/about/&quot;
+</code></pre>
 
 <ul>
-<li>Each markdown source file has <a href="https://bookdown.org/yihui/blogdown/content.html#yaml-metadata">YAML metadata</a> at the start. This YAML includes the</li>
+<li><p>each URL has a corresponding <code>index.html</code> file. When we build the Hugo site, a markdown source file in the blog source directory creates this <code>index.html</code> in another publishDir variable directory, in a folder with the same name as the source file&rsquo;s slug by default. This publishDir directory folder structure determines the permanent links (permalink) of your web pages. The permalink rules can also be customised in the <code>config.toml</code> file.</p></li>
+
+<li><p>Each markdown source file has <a href="https://bookdown.org/yihui/blogdown/content.html#yaml-metadata">YAML metadata</a> at the start. This YAML includes the slug which is a character string as the tail of the URL.</p></li>
 </ul>
 
-<blockquote>
-<p>slug: A character string as the tail of the URL. It is particularly useful when you define custom rules for permanent URLs</p>
-</blockquote>
+<h2 id="in-summary">In Summary</h2>
+
+<p>1) The source file <code>\blogdown_source\content\about.md</code></p>
+
+<p>2) Creates <code>\kimnewzealand.github.io\about\index.html</code></p>
+
+<p>3) As viewed in the <code>https://kimnewzealand.github.io/about/</code> URL.</p>
 
 
   
