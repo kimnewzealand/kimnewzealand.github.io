@@ -13,6 +13,11 @@
   </url>
   
   <url>
+    <loc>https://kimnewzealand.github.io/2018/10/15/bike-counter/</loc>
+    <lastmod>2018-10-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://kimnewzealand.github.io/2018/08/15/changing-theme-with-blogdown/</loc>
     <lastmod>2018-08-15T00:00:00+00:00</lastmod>
   </url>
@@ -116,7 +121,7 @@
   
   <url>
     <loc>https://kimnewzealand.github.io/tags/modeling/</loc>
-    <lastmod>2018-08-15T00:00:00+00:00</lastmod>
+    <lastmod>2018-10-15T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -165,6 +170,12 @@
   <url>
     <loc>https://kimnewzealand.github.io/tags/</loc>
     <lastmod>2018-01-30T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://kimnewzealand.github.io/tags/timeseries/</loc>
+    <lastmod>2018-10-15T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
