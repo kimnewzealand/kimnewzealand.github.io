@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://kimnewzealand.github.io/2019/01/31/animation-basketball/</loc>
+    <lastmod>2019-01-31T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://kimnewzealand.github.io/2018/12/12/structure-blogdown/</loc>
     <lastmod>2018-12-12T00:00:00+00:00</lastmod>
   </url>
@@ -72,6 +77,12 @@
   </url>
   
   <url>
+    <loc>https://kimnewzealand.github.io/tags/animation/</loc>
+    <lastmod>2019-01-31T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://kimnewzealand.github.io/tags/blockchain/</loc>
     <lastmod>2018-01-30T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -115,7 +126,7 @@
   
   <url>
     <loc>https://kimnewzealand.github.io/</loc>
-    <lastmod>2018-12-12T00:00:00+00:00</lastmod>
+    <lastmod>2019-01-31T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -139,7 +150,7 @@
   
   <url>
     <loc>https://kimnewzealand.github.io/post/</loc>
-    <lastmod>2018-12-12T00:00:00+00:00</lastmod>
+    <lastmod>2019-01-31T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -151,7 +162,7 @@
   
   <url>
     <loc>https://kimnewzealand.github.io/tags/r/</loc>
-    <lastmod>2018-12-12T00:00:00+00:00</lastmod>
+    <lastmod>2019-01-31T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -169,7 +180,7 @@
   
   <url>
     <loc>https://kimnewzealand.github.io/tags/</loc>
-    <lastmod>2018-01-30T00:00:00+00:00</lastmod>
+    <lastmod>2019-01-31T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
