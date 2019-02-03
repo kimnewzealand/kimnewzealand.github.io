@@ -7,7 +7,7 @@
   <meta name="description" content="">
   <meta name="generator" content="Hugo 0.31.1" />
 
-  <title>Animation of Breakers Basketball Shots &middot; Kim Fitter</title>
+  <title>Animation of Basketball Shots &middot; Kim Fitter</title>
 
   
   
@@ -194,7 +194,7 @@
 
 
 <div class="header">
-  <h1>Animation of Breakers Basketball Shots</h1>
+  <h1>Animation of Basketball Shots</h1>
   <h2></h2>
 </div>
 <div class="content">
@@ -231,7 +231,8 @@
 <li><a href="#data%20overview">Data Overview</a></li>
 <li><a href="#load-data">Load Data</a></li>
 <li><a href="#data-cleaning">Data Cleaning</a></li>
-<li><a href="#data-visualisation">Visualisatiosn</a></li>
+<li><a href="#exploratory-data-analysis">Exploratory Data Analysis</a></li>
+<li><a href="#animation">Animation</a></li>
 <li><a href="#conclusions">Conclusions</a></li>
 <li><a href="#references">References</a></li>
 </ul>
@@ -255,7 +256,7 @@
 </div>
 <div id="data-overview" class="section level2">
 <h2>Data Overview</h2>
-<p>There are some stats available on the Breakers and NBL websites however it would require time and effort to web scrape. There is also shots data in csv format available from <span class="citation">@andrewbprice</span>’s <a href="https://github.com/andrewbprice">GitHib</a> which we will use. The downside is that this was published in 2016, so covering recent data from Sunday’s game but it will serve the purpose of a first attempt at analysing Breakers data.</p>
+<p>There are some stats available on the Breakers and NBL websites however it would require time and effort to web scrape. There is also shots data in csv format available from Andrew Price’s <a href="https://github.com/andrewbprice">GitHib</a> which we will use. The downside is that this was published in 2016, so covering recent data from Sunday’s game but it will serve the purpose of a first attempt at analysing Breakers data.</p>
 </div>
 <div id="load-data" class="section level2">
 <h2>Load Data</h2>
@@ -336,7 +337,7 @@ skimr::skim(shots)</code></pre>
 shots &lt;- shots %&gt;% 
       # Recode the Result to a more descriptive categorical values Made and Missed
       mutate(Result = ifelse(Result == 1,&quot;Made&quot;, &quot;Missed&quot;)) %&gt;% 
-      # F. Delaney is mispelt in some enteries so we can recode to the correct spelliung F. Delany
+      # F. Delaney is mispelt in some entries so we can recode to the correct spelling F. Delany
       mutate(Player = ifelse(Player == &quot;F. Delaney&quot;,&quot;F. Delany&quot;,Player))  </code></pre>
 <p>We will pick a season to analyse, one with lesser data than the others for quicker plots and ability to cross reference to the <a href="https://spatialjam.com/shot-machine">shot machine</a> plots which appears to groups the New Zealand teams together.</p>
 <pre class="r"><code># View the Season variable list
@@ -389,7 +390,7 @@ totalshots</code></pre>
 ## 10         R. Loe    3      2             5 0.6000000
 ## 11    E. Rusbatch    2      2             4 0.5000000</code></pre>
 <p>From we can choose one player to view an initial plot.</p>
-<pre class="r"><code># Selecting the highest scorer (although not the most accurate!) to view a breakdown of shots
+<pre class="r"><code># Select the highest scorer (although not the most accurate!) to view a breakdown of shots
 shotsBreakers %&gt;% 
       filter(Player==&quot;T. Abercrombie&quot;)  %&gt;% 
       select(PlayerNo,Player,opponent,ShotType,Result) %&gt;% 
@@ -412,8 +413,8 @@ shotsBreakers %&gt;%
 ## 11 T. Abercrombie        4 Sydney Kings   3pt      Made       1
 ## 12 T. Abercrombie        4 Sydney Kings   3pt      Missed     3</code></pre>
 </div>
-<div id="visualisations" class="section level2">
-<h2>Visualisations</h2>
+<div id="exploratory-data-analysis" class="section level2">
+<h2>Exploratory Data Analysis</h2>
 <p>Let’s use <a href="https://cran.r-project.org/web/packages/ggplot2/index.html">ggplot2</a> to visualise the players shots.</p>
 <pre class="r"><code># Select highest scoring player to view the shots, Create 
 shotsBreakers  %&gt;% 
@@ -427,7 +428,7 @@ shotsBreakers  %&gt;%
       theme_classic() +
       ggtitle(&quot;Shots by T. Abercrombie for 2016 ACB Season Breakers Season&quot;)</code></pre>
 <p><img src="https://kimnewzealand.github.io/post/BreakersAnalysis_files/figure-html/first%20plot-1.png" width="672" /></p>
-<p>In order to plot the court layout I first looked at this <a href="https://thedatagame.com.au/2015/09/27/how-to-create-nba-shot-charts-in-r/">blog</a> which plotted the points on an image. I preferred to plot the court layout using ggplot so that I could have some flexibility and ability to the scale of the data available. So I adapted the code found in this <a href="https://gist.github.com/edkupfer/6354964">GitHub</a> link. I had to select only the half court, then rotate the court and then scale to match the Breakers data. This was to avoid manipulating the Breakers X,Y point data which could potentially introduce errors.</p>
+<p>In order to plot the court layout I first looked at this <a href="https://thedatagame.com.au/2015/09/27/how-to-create-nba-shot-charts-in-r/">blog</a> which plotted the points on an image. I preferred to plot the court layout using ggplot so that I could have some flexibility and ability to the scale of the data available. So I adapted the code found in this <a href="https://gist.github.com/edkupfer/6354964">GitHub</a> link. I only needed the half court, then rotate the court and then scale to match the Breakers data. This was to avoid manipulating the Breakers X,Y point data which could potentially introduce errors.</p>
 <pre class="r"><code># Half court adapted from full court https://gist.github.com/edkupfer/6354964 code 
 halfcourt &lt;- ggplot(data=data.frame(x=1,y=1),aes(x,y))+
    ###outside box:
@@ -450,7 +451,7 @@ geom_path(data=data.frame(x=c(-3,3)*2+50,y=-c(43,43)+47),lineend=&#39;butt&#39;)
 geom_path(data=data.frame(x=c(-22,-22,-22000:(-1)/1000,1:22000/1000,22,22)*2+50,y=-c(47,47-169/12,41.75-sqrt(23.75^2-c(-22000:(-1)/1000,1:22000/1000)^2),47-169/12,47)+47),aes(x=x,y=y))+
 # rotate the half court using coord_flip
 coord_flip()</code></pre>
-<p>Now we will plot the shots onto the half court.</p>
+<p>Now we will plot the shots onto the half court split by player.</p>
 <pre class="r"><code># Plot on half court split by player using facet_wrap
 ACBplot &lt;- halfcourt +
             # We swap the X and Y coordinates to plot correctly on the coord_flipped halfcourt
@@ -479,8 +480,11 @@ shotsBreakers %&gt;%
 ## #   Result &lt;chr&gt;, Quarter &lt;int&gt;, `Game #` &lt;int&gt;, Season &lt;chr&gt;,
 ## #   League &lt;chr&gt;</code></pre>
 <p>There are no missing <code>Quarters</code>.</p>
+</div>
+<div id="animation" class="section level2">
+<h2>Animation</h2>
 <p>When we initially think of animations we think that there are flip cards by a specified variable. We have already used <code>facet_wrap</code> which <a href="https://www.rdocumentation.org/packages/ggplot2/versions/3.1.0/topics/facet_wrap">wraps a 1d sequence of panels into 2d</a>. Let’s use this function again to create flip cards and then animate with <a href="https://cran.r-project.org/web/packages/gganimate/index.html">gganimate</a> R package and the <a href="https://gganimate.com/reference/transition_states.html?q=tween">transition_states</a> function.</p>
-<p>Initially I thought to use the <a href="https://gganimate.com/reference/transition_reveal">transition_reveal</a> R function to gradually show the shooting spots. I thought a transition would show up the difference better between <code>Quarters</code> minimising the persistence between states as this would convey movement of the spots. By adding a group aesthetic and then transitioning on the same variable, this ensured no persistence or movement between states.</p>
+<p>Initially I thought to use the <a href="https://gganimate.com/reference/transition_reveal">transition_reveal</a> R function to gradually show the shooting spots. I thought a transition would show up the difference better between <code>Quarters</code> minimising the persistence between states as this could convey movement of the spots. By adding a group aesthetic to override the default grouping and then transitioning on the same variable, this ensured no persistence or movement between states.</p>
 <pre class="r"><code>allseason &lt;-  halfcourt  +
       # We swap the X and Y coordinates to plot correctly on the coord_flipped halfcourt
       geom_point(data=shotsBreakers ,aes(Y,X,color=Result,group=Quarter),size=3)  +
@@ -508,15 +512,16 @@ anim</code></pre>
 </div>
 <div id="conclusions" class="section level2">
 <h2>Conclusions</h2>
-<p>It does appear from these high level plots and animation that the players shoot closer to the hoop in quarter 4. Is this because they are under time and opposition defence pressure individually or is it part of team game strategy?</p>
-<p>It would also good to try out the recent version of <a href="https://cran.r-project.org/web/packages/gganimate/index.html">gganimate</a> after the <a href="https://user2018.r-project.org/scientific/">Grammar of animation keynote at useR2018</a>. I had to update from version 0.1.1 to 1.0.0 due to the package revisions and install the <a href="https://cran.r-project.org/web/packages/gifski/index.html">giski</a> R package for the animations to work.</p>
+<p>It does appear from these high level plots and animation that the players shoot closer to the hoop in quarter 4. Is this because they are under time and opposition defense pressure individually or is it part of a team game strategy?</p>
+<p>It was also good to try out the recent version of <a href="https://cran.r-project.org/web/packages/gganimate/index.html">gganimate</a> after the listening to the <a href="https://user2018.r-project.org/scientific/">Grammar of animation keynote at useR2018</a>. I had to update from version 0.1.1 to 1.0.0 due to the package revisions and install the <a href="https://cran.r-project.org/web/packages/gifski/index.html">giski</a> R package for the animations to work.</p>
+<p>On workflow note, I use blogs to improve the efficiency of my end to end workflow. I try to explore a variety of subject matter with the objective of getting something published within a self imposed deadline. Over and above practicing and learning new code, good writing practice I believe this is also good debugging experience. In this example my initial animations were not as expected, the shot spots were moving around ie persisting between states. I discovered that the <a href="https://ggplot2.tidyverse.org/reference/aes_group_order.html">group</a> aesthetic was key from rereading the package’s vignettes.</p>
 </div>
 <div id="references" class="section level2">
 <h2>References</h2>
 <ul>
 <li>The revisions of <a href="https://www.data-imaginist.com/2019/gganimate-has-transitioned-to-a-state-of-release/">gganimate has transitioned to a state of release</a> by Thomas Lin Pedersen.</li>
 <li>This <a href="http://curleylab.psych.columbia.edu/nba.html">Animating NBA Play by Play using R James blog by P Curley</a> was inspiration for the animation.</li>
-<li>The [full court plot court by Ed Kt</li>
+<li>The <a href="https://gist.github.com/edkupfer/6354964">full court plot court by Ed Küpfer</a> was used as the basis for the half court plot.</li>
 </ul>
 </div>
 

@@ -13,12 +13,12 @@
     
     
     <item>
-      <title>Animation of Breakers Basketball Shots</title>
+      <title>Animation of Basketball Shots</title>
       <link>https://kimnewzealand.github.io/2019/01/31/animation-basketball/</link>
       <pubDate>Thu, 31 Jan 2019 00:00:00 +0000</pubDate>
       
       <guid>https://kimnewzealand.github.io/2019/01/31/animation-basketball/</guid>
-      <description>IntroductionData OverviewLoad DataData CleaningVisualisatiosnConclusionsReferencesIntroductionI went to my first basketball game on 27 January 2019 to watch the Skycity Breakers versus Brisbane Bullets. The final score was Breakers 109-96 Bullets.
+      <description>IntroductionData OverviewLoad DataData CleaningExploratory Data AnalysisAnimationConclusionsReferencesIntroductionI went to my first basketball game on 27 January 2019 to watch the Skycity Breakers versus Brisbane Bullets. The final score was Breakers 109-96 Bullets.
 Since it was a close game I wondered if the type of shots attempted got closer to the hoop under pressure near the end of time, assuming that shorter range shots have a better success rate ?</description>
     </item>
     
