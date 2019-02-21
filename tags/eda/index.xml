@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)</copyright>
-    <lastBuildDate>Fri, 07 Dec 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 31 Jan 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://kimnewzealand.github.io/tags/eda/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Celestial Maps</title>
+      <link>https://kimnewzealand.github.io/2019/01/31/celestial-maps/</link>
+      <pubDate>Thu, 31 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://kimnewzealand.github.io/2019/01/31/celestial-maps/</guid>
+      <description>IntroductionImport DataData SummaryExploratory Data AnalysisData CleaningVisualisationsConclusionsReferencesIntroductionWhile touring the New Zealand South Island with friends in January 2019, one of our stops was the The University of Canterbury Mt John Observatory. Since it this area is a dark sky reserve, with a clear night and a new moon the midnight sky was lit up with stars and the milky way.</description>
+    </item>
     
     <item>
       <title>LiDAR Analysis of Kaikoura NZ</title>
