@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)</copyright>
-    <lastBuildDate>Thu, 31 Jan 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 21 Feb 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://kimnewzealand.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Celestial Maps</title>
+      <link>https://kimnewzealand.github.io/2019/02/21/celestial-maps/</link>
+      <pubDate>Thu, 21 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://kimnewzealand.github.io/2019/02/21/celestial-maps/</guid>
+      <description>IntroductionImport DataData SummaryExploratory Data AnalysisData CleaningVisualisationsConclusionsReferencesIntroductionWhile touring the New Zealand South Island with friends in January 2019, one of our stops was the The University of Canterbury Mt John Observatory. Since it this area is a dark sky reserve, with a clear night and a new moon the midnight sky was lit up with stars and the milky way.</description>
+    </item>
     
     <item>
       <title>Animation of Basketball Shots</title>
@@ -20,15 +29,6 @@
       <guid>https://kimnewzealand.github.io/2019/01/31/animation-basketball/</guid>
       <description>IntroductionData OverviewLoad DataData CleaningExploratory Data AnalysisAnimationConclusionsReferencesIntroductionI went to my first basketball game on 27 January 2019 to watch the Skycity Breakers versus Brisbane Bullets. The final score was Breakers 109-96 Bullets.
 Since it was a close game I wondered if the type of shots attempted got closer to the hoop under pressure near the end of time, assuming that shorter range shots have a better success rate ?</description>
-    </item>
-    
-    <item>
-      <title>Celestial Maps</title>
-      <link>https://kimnewzealand.github.io/2019/01/31/celestial-maps/</link>
-      <pubDate>Thu, 31 Jan 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://kimnewzealand.github.io/2019/01/31/celestial-maps/</guid>
-      <description>IntroductionImport DataData SummaryExploratory Data AnalysisData CleaningVisualisationsConclusionsReferencesIntroductionWhile touring the New Zealand South Island with friends in January 2019, one of our stops was the The University of Canterbury Mt John Observatory. Since it this area is a dark sky reserve, with a clear night and a new moon the midnight sky was lit up with stars and the milky way.</description>
     </item>
     
     <item>
