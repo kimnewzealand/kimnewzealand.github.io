@@ -3,13 +3,18 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://kimnewzealand.github.io/2019/02/21/celestial-maps/</loc>
-    <lastmod>2019-02-21T00:00:00+00:00</lastmod>
+    <loc>https://kimnewzealand.github.io/2019/03/04/learning/</loc>
+    <lastmod>2019-03-04T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://kimnewzealand.github.io/2019/02/02/why-blog/</loc>
-    <lastmod>2019-02-02T00:00:00+00:00</lastmod>
+    <loc>https://kimnewzealand.github.io/2019/03/02/why-blog/</loc>
+    <lastmod>2019-03-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kimnewzealand.github.io/2019/02/21/celestial-maps/</loc>
+    <lastmod>2019-02-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -135,8 +140,14 @@
   </url>
   
   <url>
+    <loc>https://kimnewzealand.github.io/tags/juggling/</loc>
+    <lastmod>2019-03-02T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://kimnewzealand.github.io/</loc>
-    <lastmod>2019-02-21T00:00:00+00:00</lastmod>
+    <lastmod>2019-03-04T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -160,7 +171,7 @@
   
   <url>
     <loc>https://kimnewzealand.github.io/post/</loc>
-    <lastmod>2019-02-21T00:00:00+00:00</lastmod>
+    <lastmod>2019-03-04T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -172,7 +183,7 @@
   
   <url>
     <loc>https://kimnewzealand.github.io/tags/r/</loc>
-    <lastmod>2019-02-21T00:00:00+00:00</lastmod>
+    <lastmod>2019-03-04T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -208,6 +219,12 @@
   <url>
     <loc>https://kimnewzealand.github.io/tags/tutorial/</loc>
     <lastmod>2018-07-19T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://kimnewzealand.github.io/tags/viz/</loc>
+    <lastmod>2019-03-04T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

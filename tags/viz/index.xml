@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Viz on Kim Fitter</title>
+    <link>https://kimnewzealand.github.io/tags/viz/</link>
+    <description>Recent content in Viz on Kim Fitter</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)</copyright>
+    <lastBuildDate>Mon, 04 Mar 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://kimnewzealand.github.io/tags/viz/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Interactive learning roadmap - Part 1</title>
+      <link>https://kimnewzealand.github.io/2019/03/04/learning/</link>
+      <pubDate>Mon, 04 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://kimnewzealand.github.io/2019/03/04/learning/</guid>
+      <description>IntroductionExploratory Data AnalysisConclusionsReferencesIntroductionRecently one of the problems I was trying to solve required matrix algebra.
+This falls under the umbrella of need to know R basics so I realised I needed a way to track my R skills, recognise gaps and ultimately create a reference cheat-sheet or even an R package.</description>
+    </item>
+    
+  </channel>
+</rss>
