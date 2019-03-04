@@ -19,7 +19,8 @@
       
       <guid>https://kimnewzealand.github.io/2019/03/04/learning/</guid>
       <description>IntroductionExploratory Data AnalysisConclusionsReferencesIntroductionRecently one of the problems I was trying to solve required matrix algebra.
-This falls under the umbrella of need to know R basics so I realised I needed a way to track my R skills, recognise gaps and ultimately create a reference cheat-sheet or even an R package.</description>
+This falls under the umbrella of need to know R basics so I realised I needed a way to track and refresh my R skills, recognise gaps and ultimately create a reference cheat-sheet.
+Learning R is a bit of a journey over time so here goes Part 1 of an interactive visualisation project using tidyverse and ggplot compatible1 packages.</description>
     </item>
     
     <item>
