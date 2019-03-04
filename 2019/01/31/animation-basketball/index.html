@@ -240,15 +240,21 @@
 <h2>Introduction</h2>
 <p>I went to my first basketball game on 27 January 2019 to watch the <a href="https://www.nzbreakers.basketball/">Skycity Breakers</a> versus Brisbane Bullets. The final <a href="http://nbl.com.au/games/898779?_ga=2.33645729.1003495050.1548880153-1800185312.1548880153">score</a> was Breakers 109-96 Bullets.</p>
 <p>Since it was a close game I wondered if the type of shots attempted got closer to the hoop under pressure near the end of time, assuming that shorter range shots have a better success rate ?</p>
+<div class="figure">
+<img src="https://media.giphy.com/media/KknMp1SwKBfNK/giphy.gif" />
+
+</div>
 <p>This is an analysis of basketball data and experimentation with the updated gganimate R package.</p>
 <pre class="r"><code>library(tidyverse)</code></pre>
-<pre><code>## -- Attaching packages --------------------------------------------------------- tidyverse 1.2.1 --</code></pre>
+<pre><code>## -- Attaching packages ----------------------------------------------- tidyverse 1.2.1 --</code></pre>
 <pre><code>## v ggplot2 3.1.0     v purrr   0.2.5
-## v tibble  1.4.2     v dplyr   0.7.6
-## v tidyr   0.8.1     v stringr 1.3.1
+## v tibble  2.0.1     v dplyr   0.7.6
+## v tidyr   0.8.1     v stringr 1.4.0
 ## v readr   1.1.1     v forcats 0.3.0</code></pre>
 <pre><code>## Warning: package &#39;ggplot2&#39; was built under R version 3.5.2</code></pre>
-<pre><code>## -- Conflicts ------------------------------------------------------------ tidyverse_conflicts() --
+<pre><code>## Warning: package &#39;tibble&#39; was built under R version 3.5.2</code></pre>
+<pre><code>## Warning: package &#39;stringr&#39; was built under R version 3.5.2</code></pre>
+<pre><code>## -- Conflicts -------------------------------------------------- tidyverse_conflicts() --
 ## x dplyr::filter() masks stats::filter()
 ## x dplyr::lag()    masks stats::lag()</code></pre>
 <pre class="r"><code>library(gganimate)</code></pre>
@@ -289,7 +295,7 @@ skimr::skim(shots)</code></pre>
 ##  n obs: 81371 
 ##  n variables: 17 
 ## 
-## -- Variable type:character -----------------------------------------------------------------------
+## -- Variable type:character -------------------------------------------------------------
 ##  variable missing complete     n min max empty n_unique
 ##    League       0    81371 81371   3   6     0        4
 ##  opponent       0    81371 81371   6  27     0       43
@@ -299,7 +305,7 @@ skimr::skim(shots)</code></pre>
 ##   SubType   26532    54839 81371   4   8     0        5
 ##      Team       0    81371 81371   6  27     0       43
 ## 
-## -- Variable type:integer -------------------------------------------------------------------------
+## -- Variable type:integer ---------------------------------------------------------------
 ##       variable missing complete     n      mean       sd     p0    p25
 ##         Game #       0    81371 81371  26814.76 65402.84      1     33
 ##           Home       0    81371 81371      0.5      0.5       0      0
@@ -319,7 +325,7 @@ skimr::skim(shots)</code></pre>
 ##       0      1      1 &lt;U+2587&gt;&lt;U+2581&gt;&lt;U+2581&gt;&lt;U+2581&gt;&lt;U+2581&gt;&lt;U+2581&gt;&lt;U+2581&gt;&lt;U+2586&gt;
 ##      84     92    133 &lt;U+2581&gt;&lt;U+2581&gt;&lt;U+2581&gt;&lt;U+2583&gt;&lt;U+2587&gt;&lt;U+2586&gt;&lt;U+2581&gt;&lt;U+2581&gt;
 ## 
-## -- Variable type:numeric -------------------------------------------------------------------------
+## -- Variable type:numeric ---------------------------------------------------------------
 ##  variable missing complete     n  mean    sd p0   p25   p50   p75  p100
 ##         X       0    81371 81371 14.54  9.02  0  6.93 10.95 22.08  50  
 ##         Y       0    81371 81371 50.38 22.84  0 37.88 50    62.8  108.5
@@ -515,7 +521,7 @@ anim</code></pre>
 <h2>Conclusions</h2>
 <p>In this post I described how I created an animation of basketball shots data using R.</p>
 <p>It was also good to try out the updated version of <a href="https://cran.r-project.org/web/packages/gganimate/index.html">gganimate</a> and new functions after the listening to the <a href="https://user2018.r-project.org/scientific/">Grammar of animation keynote at useR2018</a>. I had to update from version 0.1.1 to 1.0.0 due to the package revisions and install the <a href="https://cran.r-project.org/web/packages/gifski/index.html">gifski</a> R package for the animations to work.</p>
-<p>On workflow note, I use blogs as one way to improve the efficiency of my end to end workflow. I try to explore a variety of subject matter with the objective of getting something published within a self imposed deadline. Over and above improving and practingmy coding and writing skills, I believe this is also good debugging experience. In this example my initial animations were not as expected, the shot spots were moving around ie persisting between states. I discovered that the <a href="https://ggplot2.tidyverse.org/reference/aes_group_order.html">group</a> aesthetic was key from rereading the package’s <a href="https://cran.r-project.org/web/packages/gganimate/vignettes/gganimate.html">vignettes</a>.</p>
+<p>On workflow note, I use blogs as one way to improve the efficiency of my end to end workflow. I try to explore a variety of subject matter with the objective of getting something published within a self imposed deadline. Over and above improving and practing my coding and writing skills, I believe this is also good debugging experience. In this example my initial animations were not as expected, the shot spots were moving around ie persisting between states. I discovered that the <a href="https://ggplot2.tidyverse.org/reference/aes_group_order.html">group</a> aesthetic was key from rereading the package’s <a href="https://cran.r-project.org/web/packages/gganimate/vignettes/gganimate.html">vignettes</a>.</p>
 </div>
 <div id="references" class="section level2">
 <h2>References</h2>
@@ -547,13 +553,13 @@ anim</code></pre>
   <div class="pure-u-10-24">
     
     <nav class="next">
-      <a href="https://kimnewzealand.github.io/2019/02/21/celestial-maps/">Celestial Maps</a>
+      <a href="https://kimnewzealand.github.io/2019/02/02/why-blog/">Why blog?</a>
     </nav>
     
   </div>
   <div class="pure-u-1-24" style="text-align: right;">
     
-    <a href="https://kimnewzealand.github.io/2019/02/21/celestial-maps/"><i class="fa fa-chevron-right"></i></a>
+    <a href="https://kimnewzealand.github.io/2019/02/02/why-blog/"><i class="fa fa-chevron-right"></i></a>
     
   </div>
 </div>
