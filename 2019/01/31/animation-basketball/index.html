@@ -427,7 +427,7 @@ shotsBreakers  %&gt;%
       filter(Player ==&quot;T. Abercrombie&quot;) %&gt;% 
       ggplot()  +
       geom_point(aes(X,Y,color=Result),size=5) +
-      scale_color_manual(values=c(&quot;lightgreen&quot;,&quot;lightgrey&quot;)) +       
+      scale_color_manual(values=c(&quot;forestgreen&quot;,&quot;lightgrey&quot;)) +       
       # Add player number
       geom_text(aes(x=X,y=Y,label=PlayerNo),color=&#39;black&#39;)+
       # Remove gridlines
@@ -436,40 +436,44 @@ shotsBreakers  %&gt;%
 <p><img src="https://kimnewzealand.github.io/post/BreakersAnalysis_files/figure-html/first%20plot-1.png" width="672" /></p>
 <p>In order to plot the court layout I first looked at this <a href="https://thedatagame.com.au/2015/09/27/how-to-create-nba-shot-charts-in-r/">blog</a> which plotted the points on an image. I preferred to plot the court layout using ggplot so that I could have some flexibility and ability to the scale of the data available. So I adapted the code found in this <a href="https://gist.github.com/edkupfer/6354964">GitHub</a> link. I only needed the half court, then rotate the court and then scale to match the Breakers data. This was to avoid manipulating the Breakers X,Y point data which could potentially introduce errors.</p>
 <pre class="r"><code># Half court adapted from full court https://gist.github.com/edkupfer/6354964 code 
-halfcourt &lt;- ggplot(data=data.frame(x=1,y=1),aes(x,y))+
+(halfcourt &lt;- ggplot(data=data.frame(x=1,y=1),aes(x,y))+
    ###outside box:
-geom_path(data=data.frame(x=c(0,0,50,50,0)*2,y=c(0,47,47,0,0)))+
+geom_polygon(data=data.frame(x=c(0,0,50,50,0)*2,y=c(0,47,47,0,0)),fill= &quot;burlywood2&quot;,colour=&quot;white&quot;)+
    ###solid FT semicircle above FT line:
-geom_path(data=data.frame(x=c(-6000:(-1)/1000,1:6000/1000)*2+50,y=-c(28-sqrt(6^2-c(-6000:(-1)/1000,1:6000/1000)^2))+47),aes(x=x,y=y))+
+geom_path(data=data.frame(x=c(-6000:(-1)/1000,1:6000/1000)*2+50,y=-c(28-sqrt(6^2-c(-6000:(-1)/1000,1:6000/1000)^2))+47),aes(x=x,y=y),colour=&quot;white&quot;)+
    ###dashed FT semicircle below FT line:
-geom_path(data=data.frame(x=c(-6000:(-1)/1000,1:6000/1000)*2+50,y=-c(28+sqrt(6^2-c(-6000:(-1)/1000,1:6000/1000)^2))+47),aes(x=x,y=y),linetype=&#39;dashed&#39;)+
+geom_path(data=data.frame(x=c(-6000:(-1)/1000,1:6000/1000)*2+50,y=-c(28+sqrt(6^2-c(-6000:(-1)/1000,1:6000/1000)^2))+47),aes(x=x,y=y),linetype=&#39;dashed&#39;,colour=&quot;white&quot;)+
    ###key:
-geom_path(data=data.frame(x=-c(-8,-8,8,8,-8)*2+50,y=-c(47,28,28,47,47)+47))+
+geom_polygon(data=data.frame(x=-c(-8,-8,8,8,-8)*2+50,y=-c(47,28,28,47,47)+47),fill= &quot;burlywood3&quot;,colour=&quot;white&quot;)+
    ###box inside the key:
-geom_path(data=data.frame(x=c(-6,-6,6,6,-6)*2+50,y=-c(47,28,28,47,47)+47))+
+geom_polygon(data=data.frame(x=c(-6,-6,6,6,-6)*2+50,y=-c(47,28,28,47,47)+47),fill= &quot;burlywood3&quot;,colour=&quot;white&quot;)+
    ###restricted area semicircle:
-geom_path(data=data.frame(x=c(-4000:(-1)/1000,1:4000/1000)*2+50,y=-c(41.25-sqrt(4^2-c(-4000:(-1)/1000,1:4000/1000)^2))+47),aes(x=x,y=y))+
+geom_path(data=data.frame(x=c(-4000:(-1)/1000,1:4000/1000)*2+50,y=-c(41.25-sqrt(4^2-c(-4000:(-1)/1000,1:4000/1000)^2))+47),aes(x=x,y=y),colour=&quot;white&quot;)+
    ###rim:
-geom_path(data=data.frame(x=c(-750:(-1)/1000,1:750/1000,750:1/1000,-1:-750/1000)*2+50,y=-c(c(41.75+sqrt(0.75^2-c(-750:(-1)/1000,1:750/1000)^2)),c(41.75-sqrt(0.75^2-c(750:1/1000,-1:-750/1000)^2)))+47),aes(x=x,y=y))+
+geom_path(data=data.frame(x=c(-750:(-1)/1000,1:750/1000,750:1/1000,-1:-750/1000)*2+50,y=-c(c(41.75+sqrt(0.75^2-c(-750:(-1)/1000,1:750/1000)^2)),c(41.75-sqrt(0.75^2-c(750:1/1000,-1:-750/1000)^2)))+47),aes(x=x,y=y),colour=&quot;white&quot;)+
    ###backboard:
-geom_path(data=data.frame(x=c(-3,3)*2+50,y=-c(43,43)+47),lineend=&#39;butt&#39;)+
+geom_path(data=data.frame(x=c(-3,3)*2+50,y=-c(43,43)+47),lineend=&#39;butt&#39;,colour=&quot;white&quot;)+
    ###three-point line:
-geom_path(data=data.frame(x=c(-22,-22,-22000:(-1)/1000,1:22000/1000,22,22)*2+50,y=-c(47,47-169/12,41.75-sqrt(23.75^2-c(-22000:(-1)/1000,1:22000/1000)^2),47-169/12,47)+47),aes(x=x,y=y))+
+geom_path(data=data.frame(x=c(-22,-22,-22000:(-1)/1000,1:22000/1000,22,22)*2+50,y=-c(47,47-169/12,41.75-sqrt(23.75^2-c(-22000:(-1)/1000,1:22000/1000)^2),47-169/12,47)+47),aes(x=x,y=y),colour=&quot;white&quot;)+
 # rotate the half court using coord_flip
-coord_flip()</code></pre>
+coord_flip())</code></pre>
+<p><img src="https://kimnewzealand.github.io/post/BreakersAnalysis_files/figure-html/create%20half%20court-1.png" width="672" /></p>
 <p>Now we will plot the shots onto the half court split by player.</p>
 <pre class="r"><code># Plot on half court split by player using facet_wrap
-ACBplot &lt;- halfcourt +
+(ACBplot &lt;- halfcourt +
             # We swap the X and Y coordinates to plot correctly on the coord_flipped halfcourt
-      geom_point(data=shotsBreakers,aes(Y,X,color=Result),size=5) +       
+      geom_point(data=shotsBreakers,
+                 aes(Y,X,color=Result),
+                 size=3) +       
       # Add player number
-      geom_text(data=shotsBreakers,aes(x=Y,y=X,label=PlayerNo),color=&#39;black&#39;)+
-      scale_color_manual(values=c(&quot;lightgreen&quot;,&quot;lightgrey&quot;)) +
+      geom_text(data=shotsBreakers,
+                aes(x=Y,y=X,
+                    label=PlayerNo),color=&#39;black&#39;)+
+      scale_color_manual(values=c(&quot;forestgreen&quot;,&quot;lightgrey&quot;)) +
       # Remove all plot details with theme_void
       theme_void() +
       ggtitle(&quot;Total Shots for Breakers 2016 ACB Season&quot;)+
-      facet_wrap(~Player)
-ACBplot</code></pre>
+      facet_wrap(~Player))</code></pre>
 <p><img src="https://kimnewzealand.github.io/post/BreakersAnalysis_files/figure-html/shots%20on%20%20half%20court-1.png" width="672" /></p>
 <pre class="r"><code># Save plot for blog
 # ggsave(&quot;ACBplot.jpg&quot;,ACBplot )</code></pre>
@@ -493,18 +497,22 @@ shotsBreakers %&gt;%
 <p>Initially I thought to use the <a href="https://gganimate.com/reference/transition_reveal">transition_reveal</a> R function to gradually show the shooting spots. I thought a transition would show up the difference better between <code>Quarters</code> minimising the persistence between states as this could convey movement of the spots. By adding a group aesthetic to override the default grouping and then transitioning on the same variable, this ensured no persistence or movement between states.</p>
 <pre class="r"><code>allseason &lt;-  halfcourt  +
       # We swap the X and Y coordinates to plot correctly on the coord_flipped halfcourt
-      geom_point(data=shotsBreakers ,aes(Y,X,color=Result,group=Quarter),size=3)  +
-      scale_color_manual(values=c(&quot;green&quot;,&quot;lightgrey&quot;))+
+      geom_point(data=shotsBreakers , 
+                 aes(Y,X,
+                     color=Result,
+                     group=Quarter),
+                 size=2)  +
+      scale_color_manual(values=c(&quot;forestgreen&quot;,&quot;lightgrey&quot;))+
       # Remove all plot details with theme_void
       theme_void()
 # Let&#39;s view the total shots split by variable Quarter using facet_wrap
 ACBbyfacet &lt;- allseason +
-      facet_wrap(~Quarter)
+      facet_wrap(~Quarter) +
+      ggtitle(&quot;Total Shots Made/Missed by Quarter&quot;)
 ACBbyfacet</code></pre>
 <p><img src="https://kimnewzealand.github.io/post/BreakersAnalysis_files/figure-html/allseason-1.png" width="672" /></p>
 <pre class="r"><code># Save plot for blog
-ggsave(&quot;ACBbyfacet.jpg&quot;,ACBbyfacet )</code></pre>
-<pre><code>## Saving 7 x 5 in image</code></pre>
+# ggsave(&quot;ACBbyfacet.jpg&quot;,ACBbyfacet )</code></pre>
 <pre class="r"><code># Animate using the new gganimate function transition_states
 anim &lt;- allseason +
       labs(title = &quot;Game quarter: {closest_state}&quot;)+ 
