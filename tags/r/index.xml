@@ -7,10 +7,21 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)</copyright>
-    <lastBuildDate>Mon, 04 Mar 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 07 Mar 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://kimnewzealand.github.io/tags/r/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Interactive learning roadmap - Part 2</title>
+      <link>https://kimnewzealand.github.io/2019/03/07/learning/</link>
+      <pubDate>Thu, 07 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://kimnewzealand.github.io/2019/03/07/learning/</guid>
+      <description>IntroductionExploratory Data AnalysisConclusionsReferencesIntroductionLearning R is a bit of a journey over time so here goes Part 2 of an interactive visualisation project using tidyverse and ggplot compatible1 packages.
+From the fundamentals of data visualisation book,
+Data visualization is part art and part science. The challenge is to get the art right without getting the science wrong and vice versa</description>
+    </item>
     
     <item>
       <title>Interactive learning roadmap - Part 1</title>
