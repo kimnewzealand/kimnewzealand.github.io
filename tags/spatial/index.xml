@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Spatial on Kim Fitter</title>
-    <link>/tags/spatial/</link>
+    <link>https://kimnewzealand.github.io/tags/spatial/</link>
     <description>Recent content in Spatial on Kim Fitter</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)</copyright>
     <lastBuildDate>Fri, 06 Apr 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/spatial/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://kimnewzealand.github.io/tags/spatial/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Excel to Interactive Census Map</title>
-      <link>/2018/04/06/excel-to-map/</link>
+      <link>https://kimnewzealand.github.io/2018/04/06/excel-to-map/</link>
       <pubDate>Fri, 06 Apr 2018 00:00:00 +0000</pubDate>
       
-      <guid>/2018/04/06/excel-to-map/</guid>
+      <guid>https://kimnewzealand.github.io/2018/04/06/excel-to-map/</guid>
       <description>I have been experimenting with spatial data and looking at ways to combine data objects to get different views and perspectives. This post has the following objectives:
 Import and load data direct to R without manually saving files to a local directory, so that the end to end process is reproducible.Use vectors to efficiently clean the Excel sheet, reducing manual steps where possible so that the process could be leveraged to clean other Excel sheets in the Census data.</description>
     </item>
