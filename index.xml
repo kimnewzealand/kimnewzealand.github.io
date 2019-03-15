@@ -2,22 +2,37 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Kim Fitter</title>
-    <link>https://kimnewzealand.github.io/</link>
+    <link>/</link>
     <description>Recent content on Kim Fitter</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)</copyright>
-    <lastBuildDate>Wed, 13 Mar 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 15 Mar 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://kimnewzealand.github.io/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>Changing Favicon in the Blackburn Theme</title>
+      <link>/2019/03/15/changing-logo/</link>
+      <pubDate>Fri, 15 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/2019/03/15/changing-logo/</guid>
+      <description>Personalised logosThe new Data Visualisation Society has created personalised logos, see the behind the scenes post.
+Here is the key to the logo:
+There is also a timezone overlay:
+## My personalised badge
+My badge looks like this:
+Purple I have a background in project management and I am involved in community group organisation represented by the purple triangle.
+Green I am fairly comfortable in data analysis and cleaning as I spend most of my time using R represented by the green triangle.</description>
+    </item>
+    
+    <item>
       <title>Interactive Learning Roadmap - Part 2</title>
-      <link>https://kimnewzealand.github.io/2019/03/13/learning2/</link>
+      <link>/2019/03/13/learning2/</link>
       <pubDate>Wed, 13 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://kimnewzealand.github.io/2019/03/13/learning2/</guid>
+      <guid>/2019/03/13/learning2/</guid>
       <description>IntroductionDataFundamentals of Data VisualisationFinal VisualisationsConclusionsReferencesIntroductionThis post creates and reviews at visualisation objects considering the fundamentals of data visualisation book;
 Data visualization is part art and part science. The challenge is to get the art right without getting the science wrong and vice versa
 Learning R is a bit of a journey over time so here goes Part 2 of an interactive visualisation project using tidyverse and ggplot compatible1 packages.</description>
@@ -25,10 +40,10 @@
     
     <item>
       <title>Why Blog?</title>
-      <link>https://kimnewzealand.github.io/2019/03/02/why-blog/</link>
+      <link>/2019/03/02/why-blog/</link>
       <pubDate>Sat, 02 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://kimnewzealand.github.io/2019/03/02/why-blog/</guid>
+      <guid>/2019/03/02/why-blog/</guid>
       <description>One of the things to reconcile with working in a field is that what interests you and what you need to create or provide as a service commercially is not always the same thing.
 If doing only one then it’s like throwing one ball - it is quite doable but monotonous.
 Personal projectsPublishing personal side projects as blogs is great practice and ongoing personal learning. I use these to improve the efficiency of my end to end workflow and also to try out different tools, packages and functionality.</description>
@@ -36,39 +51,39 @@ If doing only one then it’s like throwing one ball - it is quite doable but mo
     
     <item>
       <title>Celestial Maps</title>
-      <link>https://kimnewzealand.github.io/2019/02/21/celestial-maps/</link>
+      <link>/2019/02/21/celestial-maps/</link>
       <pubDate>Thu, 21 Feb 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://kimnewzealand.github.io/2019/02/21/celestial-maps/</guid>
+      <guid>/2019/02/21/celestial-maps/</guid>
       <description>IntroductionImport DataData SummaryExploratory Data AnalysisData CleaningVisualisationsConclusionsReferencesIntroductionWhile touring the New Zealand South Island with friends in January 2019, one of our stops was the The University of Canterbury Mt John Observatory. Since it this area is a dark sky reserve, with a clear night and a new moon the midnight sky was lit up with stars and the milky way.</description>
     </item>
     
     <item>
       <title>Animation of Basketball Shots</title>
-      <link>https://kimnewzealand.github.io/2019/01/31/animation-basketball/</link>
+      <link>/2019/01/31/animation-basketball/</link>
       <pubDate>Thu, 31 Jan 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://kimnewzealand.github.io/2019/01/31/animation-basketball/</guid>
+      <guid>/2019/01/31/animation-basketball/</guid>
       <description>IntroductionData OverviewLoad DataData CleaningExploratory Data AnalysisAnimationConclusionsReferencesIntroductionI went to my first basketball game on 27 January 2019 to watch the Skycity Breakers versus Brisbane Bullets. The final score was Breakers 109-96 Bullets.
 Since it was a close game I wondered if the type of shots attempted got closer to the hoop under pressure near the end of time, assuming that shorter range shots have a better success rate ?</description>
     </item>
     
     <item>
       <title>Who Would Have Thought The Slug Was The Bug</title>
-      <link>https://kimnewzealand.github.io/2018/12/12/structure-blogdown/</link>
+      <link>/2018/12/12/structure-blogdown/</link>
       <pubDate>Wed, 12 Dec 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://kimnewzealand.github.io/2018/12/12/structure-blogdown/</guid>
+      <guid>/2018/12/12/structure-blogdown/</guid>
       <description>This post is of the the folder structure of a blogdown website, to get a basic understanding of how it works and to also remind myself next time I face a similar publishing issue!
 Publishing issue I have been updating my blogdown website with posts, and then I hit an issue. The about link would not update. I tried multiple amendments and multiple commits to no avail. I then re-created the whole website and reinstalled the theme.</description>
     </item>
     
     <item>
       <title>LiDAR Analysis of Kaikoura NZ</title>
-      <link>https://kimnewzealand.github.io/2018/12/07/lidar-kaikoura/</link>
+      <link>/2018/12/07/lidar-kaikoura/</link>
       <pubDate>Fri, 07 Dec 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://kimnewzealand.github.io/2018/12/07/lidar-kaikoura/</guid>
+      <guid>/2018/12/07/lidar-kaikoura/</guid>
       <description>IntroductionData OverviewLoad DataData ManipulationData ExplorationData VisualisationConclusionsIntroductionThe Kaikoura earthquake happened just after midnight on 14 November 2016.
 After reading this article Astonishing Nasa photos show Kaikoura land raised by earthquake I thought it would interesting to look at what open data is available to view the land changes from the article.
 This analysis has the following objectives:</description>
@@ -76,10 +91,10 @@ This analysis has the following objectives:</description>
     
     <item>
       <title>Auckland Bike Counter Analysis</title>
-      <link>https://kimnewzealand.github.io/2018/10/15/bike-counter/</link>
+      <link>/2018/10/15/bike-counter/</link>
       <pubDate>Mon, 15 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://kimnewzealand.github.io/2018/10/15/bike-counter/</guid>
+      <guid>/2018/10/15/bike-counter/</guid>
       <description>IntroductionDataData CleaningVisualisationsConclusionsIntroductionThe motivations for cycling around town can be for fitness, economic or environmental reasons. However in Auckland the weather and the 53 odd volcanoes could be deterrents to would-be cyclists.
 Auckland Transport (AT) publishes daily and monthly bike count data from counters around Auckland now available under CC BY 4.0 license.
 Kia ora, us again!</description>
@@ -87,10 +102,10 @@ Kia ora, us again!</description>
     
     <item>
       <title>Changing Theme with Blogdown</title>
-      <link>https://kimnewzealand.github.io/2018/08/15/changing-theme-with-blogdown/</link>
+      <link>/2018/08/15/changing-theme-with-blogdown/</link>
       <pubDate>Wed, 15 Aug 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://kimnewzealand.github.io/2018/08/15/changing-theme-with-blogdown/</guid>
+      <guid>/2018/08/15/changing-theme-with-blogdown/</guid>
       <description>This blog was using the creative portfolio theme until the number of posts grew. The tiled effect became busy and the website required a different website format including an archive list.
 I have changed the theme to Blackburn following this post by Mike Treglia.
 So far so good&amp;hellip;.</description>
@@ -98,20 +113,20 @@ So far so good&amp;hellip;.</description>
     
     <item>
       <title>Credit Risk Modeling and Scorecard Example</title>
-      <link>https://kimnewzealand.github.io/2018/08/15/credit-risk-modeling/</link>
+      <link>/2018/08/15/credit-risk-modeling/</link>
       <pubDate>Wed, 15 Aug 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://kimnewzealand.github.io/2018/08/15/credit-risk-modeling/</guid>
+      <guid>/2018/08/15/credit-risk-modeling/</guid>
       <description>IntroductionLoad the dataSummary of dataClean DataExploratory Data AnalysisFeature EngineeringTrainingCreate ScorecardConclusionsIntroductionCredit Risk modeling predicts whether a customer or applicant may or may not default on a loan. These models include predictor variables that are categorical or numeric. One of the outputs in the modeling process is a credit scorecard with attributes to allocate scores.
 The objectives of this post are as follow:</description>
     </item>
     
     <item>
       <title>Tutorial on Pivot Tables and other Excel things you can also do in R - Witch Trials data</title>
-      <link>https://kimnewzealand.github.io/2018/07/19/excel-r-tutorial/</link>
+      <link>/2018/07/19/excel-r-tutorial/</link>
       <pubDate>Thu, 19 Jul 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://kimnewzealand.github.io/2018/07/19/excel-r-tutorial/</guid>
+      <guid>/2018/07/19/excel-r-tutorial/</guid>
       <description>IntroductionThis tutorial was inspired by the R Curious tutorial at useR! 2018, and follows on thematically from the R Curious workshop notes as an extension.
 It is aimed at those with a background in Excel, who would also like to use R for data analysis. This tutorial compares the things you would normally do in Excel, but with an equivalent function in R.
 This introductory level tutorial assumes you have already installed R and R studio and had a brief introduction to the R basics and R Markdown.</description>
@@ -119,50 +134,50 @@ This introductory level tutorial assumes you have already installed R and R stud
     
     <item>
       <title>Summer of Tech Event and Intern Analysis</title>
-      <link>https://kimnewzealand.github.io/2018/06/29/sot-analysis/</link>
+      <link>/2018/06/29/sot-analysis/</link>
       <pubDate>Fri, 29 Jun 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://kimnewzealand.github.io/2018/06/29/sot-analysis/</guid>
+      <guid>/2018/06/29/sot-analysis/</guid>
       <description>IntroductionDataClean DataSuccess FactorsSpecific Events Resulting in InternshipsSocial ImpactConclusionIntroductionWe were looking for a real data from a non-profit organisation for the R-Ladies Auckland Dataviz meetup. We were approached by Summer of Tech(SoT) who volunteered their data for the group to explore.
 SoT is a non-profit organisation that connects employers with students and graduates for paid work experience and graduate jobs.</description>
     </item>
     
     <item>
       <title>Name Entity Recognition using Python spaCy in R</title>
-      <link>https://kimnewzealand.github.io/2018/05/23/name-entity-recognition/</link>
+      <link>/2018/05/23/name-entity-recognition/</link>
       <pubDate>Wed, 23 May 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://kimnewzealand.github.io/2018/05/23/name-entity-recognition/</guid>
+      <guid>/2018/05/23/name-entity-recognition/</guid>
       <description>Recently I have been working on an Natural Language Processing (NLP) client project. This field appears to extensively use Python packages so I used the opportunity to go on an NLP journey in Python, starting with a Jupyter notebook. The Python packages included here are the research tool NLTK, gensim then the more recent spaCy.
 The purpose of this post is the next step in the journey to produce a pipeline for the NLP areas of text mining and Named Entity Recognition (NER) using the Python spaCy NLP Toolkit, in R.</description>
     </item>
     
     <item>
       <title>Crepes made with Git</title>
-      <link>https://kimnewzealand.github.io/2018/05/19/crepes-made-with-git/</link>
+      <link>/2018/05/19/crepes-made-with-git/</link>
       <pubDate>Sat, 19 May 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://kimnewzealand.github.io/2018/05/19/crepes-made-with-git/</guid>
+      <guid>/2018/05/19/crepes-made-with-git/</guid>
       <description>Version control of code seems similar to creating, updating and sharing recipes. Since we were trying out crepe recipes at home, I decided to use this personal connection to work through a crepes made with git example to validate my understanding of Git from the command line.
 Inspired by Reflections on 4 months of GitHub: my advice to beginners by Suzan Baert, I also started a personal Git cheatsheet, which will be incrementally updated with gems from future projects.</description>
     </item>
     
     <item>
       <title>Excel to Interactive Census Map</title>
-      <link>https://kimnewzealand.github.io/2018/04/06/excel-to-map/</link>
+      <link>/2018/04/06/excel-to-map/</link>
       <pubDate>Fri, 06 Apr 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://kimnewzealand.github.io/2018/04/06/excel-to-map/</guid>
+      <guid>/2018/04/06/excel-to-map/</guid>
       <description>I have been experimenting with spatial data and looking at ways to combine data objects to get different views and perspectives. This post has the following objectives:
 Import and load data direct to R without manually saving files to a local directory, so that the end to end process is reproducible.Use vectors to efficiently clean the Excel sheet, reducing manual steps where possible so that the process could be leveraged to clean other Excel sheets in the Census data.</description>
     </item>
     
     <item>
       <title>Simple Blockchain Example in R</title>
-      <link>https://kimnewzealand.github.io/2018/01/30/simple-blockchain/</link>
+      <link>/2018/01/30/simple-blockchain/</link>
       <pubDate>Tue, 30 Jan 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://kimnewzealand.github.io/2018/01/30/simple-blockchain/</guid>
+      <guid>/2018/01/30/simple-blockchain/</guid>
       <description>This R markdown post was inspired by the R-bloggers post Building your own blockchain in R.
 Blockchain technology, types such as bitcoin and ethereum and its associated terminology are ubiquitous in the media at the moment.
 The objective here is to learn how a generic blockchain works and understand some of the terminology through implementing a simple example. This generic example could then extended to various types of blockchains such as distributed ledgers, smart contracts or cryptocurrencies with network servers and appropriate privacy and security settings.</description>
@@ -170,30 +185,30 @@ The objective here is to learn how a generic blockchain works and understand som
     
     <item>
       <title>Hello Blog</title>
-      <link>https://kimnewzealand.github.io/2018/01/02/hello-blog/</link>
+      <link>/2018/01/02/hello-blog/</link>
       <pubDate>Tue, 02 Jan 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://kimnewzealand.github.io/2018/01/02/hello-blog/</guid>
+      <guid>/2018/01/02/hello-blog/</guid>
       <description>Welcome to my personal blog and portfolio of my data science journey.
 Until now I have been creating and publishing R code to github and HTML to RPubs. I also have a Wordpress professional website to reach out to both technical and non-technical audiences with summaries of projects. I realised I needed another more personalised medium to publish the detailed code and HTML from projects so I created this blog.</description>
     </item>
     
     <item>
       <title>Creating A Website In Hugo Creative Portfolio Theme</title>
-      <link>https://kimnewzealand.github.io/2018/01/01/creating-a-website-in-blogdown-and-hugo/</link>
+      <link>/2018/01/01/creating-a-website-in-blogdown-and-hugo/</link>
       <pubDate>Mon, 01 Jan 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://kimnewzealand.github.io/2018/01/01/creating-a-website-in-blogdown-and-hugo/</guid>
+      <guid>/2018/01/01/creating-a-website-in-blogdown-and-hugo/</guid>
       <description>There are a many tutorials and the great bookdown blogdown: Creating Websites with R Markdown with detailed steps on how to create a website using blogdown and Hugo.
 I used the fantastic tutorial by Tyler Clavelle to create this blog. This website uses the blogdown R package and static site generator Hugo. I chose to use the Hugo creative portfolio theme, with side bar and tiles layout. I use Windows and GitHub repo to deploy the website.</description>
     </item>
     
     <item>
       <title>About me</title>
-      <link>https://kimnewzealand.github.io/about/</link>
+      <link>/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://kimnewzealand.github.io/about/</guid>
+      <guid>/about/</guid>
       <description>Background I have a background in Actuarial Science and have worked in analyst roles and project delivery in Credit Risk and Finance.
 I discovered data science as a magical field that combines my statistics and analytical skills; my project and multitasking experience; a curiosity of numbers and patterns; love of learning new tools and concepts whilst working with a variety of people and teams.
 Current Work I now work as an independent through Validly and am available for remote data science projects.</description>

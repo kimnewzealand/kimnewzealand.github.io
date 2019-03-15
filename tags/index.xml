@@ -2,193 +2,193 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Kim Fitter</title>
-    <link>https://kimnewzealand.github.io/tags/</link>
+    <link>/tags/</link>
     <description>Recent content in Tags on Kim Fitter</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)</copyright>
     <lastBuildDate>Thu, 31 Jan 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://kimnewzealand.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Animation</title>
-      <link>https://kimnewzealand.github.io/tags/animation/</link>
+      <link>/tags/animation/</link>
       <pubDate>Thu, 31 Jan 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://kimnewzealand.github.io/tags/animation/</guid>
+      <guid>/tags/animation/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Blockchain</title>
-      <link>https://kimnewzealand.github.io/tags/blockchain/</link>
+      <link>/tags/blockchain/</link>
       <pubDate>Tue, 30 Jan 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://kimnewzealand.github.io/tags/blockchain/</guid>
+      <guid>/tags/blockchain/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Blogdown</title>
-      <link>https://kimnewzealand.github.io/tags/blogdown/</link>
-      <pubDate>Wed, 12 Dec 2018 00:00:00 +0000</pubDate>
+      <link>/tags/blogdown/</link>
+      <pubDate>Fri, 15 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://kimnewzealand.github.io/tags/blogdown/</guid>
+      <guid>/tags/blogdown/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Creditrisk</title>
-      <link>https://kimnewzealand.github.io/tags/creditrisk/</link>
+      <link>/tags/creditrisk/</link>
       <pubDate>Wed, 15 Aug 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://kimnewzealand.github.io/tags/creditrisk/</guid>
+      <guid>/tags/creditrisk/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Eda</title>
-      <link>https://kimnewzealand.github.io/tags/eda/</link>
+      <link>/tags/eda/</link>
       <pubDate>Fri, 07 Dec 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://kimnewzealand.github.io/tags/eda/</guid>
+      <guid>/tags/eda/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Excel</title>
-      <link>https://kimnewzealand.github.io/tags/excel/</link>
+      <link>/tags/excel/</link>
       <pubDate>Thu, 19 Jul 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://kimnewzealand.github.io/tags/excel/</guid>
+      <guid>/tags/excel/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Geoviz</title>
-      <link>https://kimnewzealand.github.io/tags/geoviz/</link>
+      <link>/tags/geoviz/</link>
       <pubDate>Thu, 21 Feb 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://kimnewzealand.github.io/tags/geoviz/</guid>
+      <guid>/tags/geoviz/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Gis</title>
-      <link>https://kimnewzealand.github.io/tags/gis/</link>
+      <link>/tags/gis/</link>
       <pubDate>Fri, 07 Dec 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://kimnewzealand.github.io/tags/gis/</guid>
+      <guid>/tags/gis/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Git</title>
-      <link>https://kimnewzealand.github.io/tags/git/</link>
+      <link>/tags/git/</link>
       <pubDate>Sat, 19 May 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://kimnewzealand.github.io/tags/git/</guid>
+      <guid>/tags/git/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Juggling</title>
-      <link>https://kimnewzealand.github.io/tags/juggling/</link>
+      <link>/tags/juggling/</link>
       <pubDate>Sat, 02 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://kimnewzealand.github.io/tags/juggling/</guid>
+      <guid>/tags/juggling/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Modeling</title>
-      <link>https://kimnewzealand.github.io/tags/modeling/</link>
+      <link>/tags/modeling/</link>
       <pubDate>Mon, 15 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://kimnewzealand.github.io/tags/modeling/</guid>
+      <guid>/tags/modeling/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Networks</title>
-      <link>https://kimnewzealand.github.io/tags/networks/</link>
+      <link>/tags/networks/</link>
       <pubDate>Fri, 29 Jun 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://kimnewzealand.github.io/tags/networks/</guid>
+      <guid>/tags/networks/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Nlp</title>
-      <link>https://kimnewzealand.github.io/tags/nlp/</link>
+      <link>/tags/nlp/</link>
       <pubDate>Wed, 23 May 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://kimnewzealand.github.io/tags/nlp/</guid>
+      <guid>/tags/nlp/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Python</title>
-      <link>https://kimnewzealand.github.io/tags/python/</link>
+      <link>/tags/python/</link>
       <pubDate>Wed, 23 May 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://kimnewzealand.github.io/tags/python/</guid>
+      <guid>/tags/python/</guid>
       <description></description>
     </item>
     
     <item>
       <title>R</title>
-      <link>https://kimnewzealand.github.io/tags/r/</link>
-      <pubDate>Wed, 13 Mar 2019 00:00:00 +0000</pubDate>
+      <link>/tags/r/</link>
+      <pubDate>Fri, 15 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://kimnewzealand.github.io/tags/r/</guid>
+      <guid>/tags/r/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Sankey</title>
-      <link>https://kimnewzealand.github.io/tags/sankey/</link>
+      <link>/tags/sankey/</link>
       <pubDate>Fri, 29 Jun 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://kimnewzealand.github.io/tags/sankey/</guid>
+      <guid>/tags/sankey/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Spatial</title>
-      <link>https://kimnewzealand.github.io/tags/spatial/</link>
+      <link>/tags/spatial/</link>
       <pubDate>Fri, 06 Apr 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://kimnewzealand.github.io/tags/spatial/</guid>
+      <guid>/tags/spatial/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Timeseries</title>
-      <link>https://kimnewzealand.github.io/tags/timeseries/</link>
+      <link>/tags/timeseries/</link>
       <pubDate>Mon, 15 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://kimnewzealand.github.io/tags/timeseries/</guid>
+      <guid>/tags/timeseries/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Tutorial</title>
-      <link>https://kimnewzealand.github.io/tags/tutorial/</link>
+      <link>/tags/tutorial/</link>
       <pubDate>Thu, 19 Jul 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://kimnewzealand.github.io/tags/tutorial/</guid>
+      <guid>/tags/tutorial/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Viz</title>
-      <link>https://kimnewzealand.github.io/tags/viz/</link>
+      <link>/tags/viz/</link>
       <pubDate>Wed, 13 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://kimnewzealand.github.io/tags/viz/</guid>
+      <guid>/tags/viz/</guid>
       <description></description>
     </item>
     
