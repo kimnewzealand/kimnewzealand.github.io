@@ -556,7 +556,7 @@ lnodes &lt;- data.frame(label = c(&quot;Start&quot;, &quot;Beginner&quot;, &quot
                      shape = c( &quot;square&quot;, &quot;dot&quot;,&quot;dot&quot;,&quot;dot&quot;), 
                      value= c(5,1,3,5),
                      title = &quot;Skill Experience&quot;,  
-                     # color the non start dots as light grey as this is the non highlight colour
+                     # Color the non start dots as light grey as this is the non highlight colour
                      color=c(&quot;red&quot;, &quot;lightgrey&quot;, &quot;lightgrey&quot;, &quot;lightgrey&quot;),
                      id = 1:4)
 # Use the visNetwork function again with value ie the experience as the size of the node
@@ -568,7 +568,7 @@ visNetwork(nodes %&gt;%
            edges,
            main =(&quot;Interactive Learning Journey Roadmap with R&quot;),
            submain= (&quot;Use mouse to zoom&quot;)) %&gt;% 
-           # Now that we have a legend we can updat the submain as the start should be intuitive
+           # Now that we have a legend we can update the submain as the start should be intuitive
            # submain=&quot;Click on the square to start the journey&quot;) 
       visGroups(groupname = group)  %&gt;% 
       # The direction of the edges is meaningful so for this directed network we will include arrows
@@ -578,7 +578,7 @@ visNetwork(nodes %&gt;%
                 useGroups=FALSE,
                 position=&quot;right&quot;,
                 main=&quot;Skill Experience Categories&quot;) %&gt;% 
-      # Add a grouping drop down menuand highlight the nodes on selection
+      # Add a grouping drop down menu and highlight the nodes on selection
       visOptions(selectedBy = &quot;group&quot;,
              highlightNearest = TRUE, 
              nodesIdSelection = FALSE) %&gt;%
