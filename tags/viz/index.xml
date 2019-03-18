@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Viz on Kim Fitter</title>
-    <link>https://kimnewzealand.github.io/tags/viz/</link>
+    <link>/tags/viz/</link>
     <description>Recent content in Viz on Kim Fitter</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)</copyright>
     <lastBuildDate>Wed, 13 Mar 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://kimnewzealand.github.io/tags/viz/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/viz/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Interactive Learning Roadmap - Part 2</title>
-      <link>https://kimnewzealand.github.io/2019/03/13/learning2/</link>
+      <link>/2019/03/13/learning2/</link>
       <pubDate>Wed, 13 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://kimnewzealand.github.io/2019/03/13/learning2/</guid>
+      <guid>/2019/03/13/learning2/</guid>
       <description>IntroductionDataFundamentals of Data VisualisationFinal VisualisationsConclusionsReferencesIntroductionThis post creates and reviews at visualisation objects considering the fundamentals of data visualisation book;
 Data visualization is part art and part science. The challenge is to get the art right without getting the science wrong and vice versa
 Learning R is a bit of a journey over time so here goes Part 2 of an interactive visualisation project using tidyverse and ggplot compatible1 packages.</description>

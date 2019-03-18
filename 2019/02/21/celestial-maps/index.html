@@ -21,13 +21,13 @@
   <!--<![endif]-->
 
   <!--[if lte IE 8]>
-  <link rel="stylesheet" href="https://kimnewzealand.github.io/css/side-menu-old-ie.css">
+  <link rel="stylesheet" href="/css/side-menu-old-ie.css">
   <![endif]-->
   <!--[if gt IE 8]><!-->
-  <link rel="stylesheet" href="https://kimnewzealand.github.io/css/side-menu.css">
+  <link rel="stylesheet" href="/css/side-menu.css">
   <!--<![endif]-->
 
-  <link rel="stylesheet" href="https://kimnewzealand.github.io/css/blackburn.css">
+  <link rel="stylesheet" href="/css/blackburn.css">
 
   
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -48,7 +48,7 @@
   <script>hljs.initHighlightingOnLoad();</script>
   
 
-  <link rel="shortcut icon" href="https://kimnewzealand.github.io/img/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
 
   
   
@@ -67,7 +67,7 @@
 <div id="menu">
 
   
-  <a class="pure-menu-heading brand" href="https://kimnewzealand.github.io/">Kim Fitter</a>
+  <a class="pure-menu-heading brand" href="/">Kim Fitter</a>
 
 
   <div class="pure-menu">
@@ -75,13 +75,13 @@
       
       
         <li class="pure-menu-item">
-          <a class="pure-menu-link" href="https://kimnewzealand.github.io/"><i class='fa fa-home fa-fw'></i>Home</a>
+          <a class="pure-menu-link" href="/"><i class='fa fa-home fa-fw'></i>Home</a>
       
         </li>
       
       
         <li class="pure-menu-item">
-          <a class="pure-menu-link" href="https://kimnewzealand.github.io/about/"><i class='fa fa-user fa-fw'></i>About</a>
+          <a class="pure-menu-link" href="/about/"><i class='fa fa-user fa-fw'></i>About</a>
       
         </li>
       
@@ -216,9 +216,9 @@
   <div>
     <i class="fa fa-tags fa-fw"></i>
     
-      <a class="post-taxonomy-tag" href="https://kimnewzealand.github.io/tags/r">R</a>&nbsp;&#47;
+      <a class="post-taxonomy-tag" href="/tags/r">R</a>&nbsp;&#47;
     
-      <a class="post-taxonomy-tag" href="https://kimnewzealand.github.io/tags/geoviz">Geoviz</a>
+      <a class="post-taxonomy-tag" href="/tags/geoviz">Geoviz</a>
     
   </div>
   
@@ -403,7 +403,7 @@ ggplot() +
                    nudge_y=-1,
                    colour=&quot;yellow&quot;,
                    size=4)</code></pre>
-<p><img src="https://kimnewzealand.github.io/post/celestialmaps_files/figure-html/earth%20plot-1.png" width="672" /></p>
+<p><img src="/post/celestialmaps_files/figure-html/earth%20plot-1.png" width="672" /></p>
 <div id="milky-way-plot" class="section level3">
 <h3>Milky way plot</h3>
 <p>Use ggplot to plot the <code>milky_sf</code> object which is a sfc_MULTIPOLYGON, sfc.</p>
@@ -412,7 +412,7 @@ milky_sf  %&gt;%
       ggplot()+
       geom_sf()+
       theme_nightsky()</code></pre>
-<p><img src="https://kimnewzealand.github.io/post/celestialmaps_files/figure-html/milky%20plot-1.png" width="672" /></p>
+<p><img src="/post/celestialmaps_files/figure-html/milky%20plot-1.png" width="672" /></p>
 <p>This plot has a few horizontal lines ?!? The polygons may be crossing -180 to 180 longitude.</p>
 </div>
 <div id="stars-plot" class="section level3">
@@ -437,7 +437,7 @@ stars_bright_sf %&gt;%
       theme_nightsky()+
       # In this case add a legend to see the constellations and new magnitudes
       theme(legend.position=&quot;right&quot;)</code></pre>
-<p><img src="https://kimnewzealand.github.io/post/celestialmaps_files/figure-html/stars%20plot-1.png" width="672" /></p>
+<p><img src="/post/celestialmaps_files/figure-html/stars%20plot-1.png" width="672" /></p>
 </div>
 <div id="constellation-lines-plot" class="section level3">
 <h3>Constellation lines plot</h3>
@@ -447,7 +447,7 @@ constellation_lines_sf %&gt;%
       ggplot()+
       geom_sf(colour=&quot;white&quot;)+
       theme_nightsky()</code></pre>
-<p><img src="https://kimnewzealand.github.io/post/celestialmaps_files/figure-html/constellation%20lines%20plot-1.png" width="672" /></p>
+<p><img src="/post/celestialmaps_files/figure-html/constellation%20lines%20plot-1.png" width="672" /></p>
 <p>Again there are horizontal lines. We will look to clean the data to resolve the dateline issue in the next section.</p>
 </div>
 </div>
@@ -463,7 +463,7 @@ constellation_lines_sf %&gt;%
       ggplot()+
       geom_sf()+
       theme_nightsky()</code></pre>
-<p><img src="https://kimnewzealand.github.io/post/celestialmaps_files/figure-html/virgo%20plot%20extent-1.png" width="672" /></p>
+<p><img src="/post/celestialmaps_files/figure-html/virgo%20plot%20extent-1.png" width="672" /></p>
 <pre class="r"><code># Try to remove the lines by setting extent
  constellation_lines_sf %&gt;%  
       filter(id==&quot;Vir&quot;) %&gt;% 
@@ -472,7 +472,7 @@ constellation_lines_sf %&gt;%
       # Set the extent of the map using coord_sf
       coord_sf(xlim = c(-180,170),expand=FALSE)+
       theme_nightsky()</code></pre>
-<p><img src="https://kimnewzealand.github.io/post/celestialmaps_files/figure-html/virgo%20plot%20extent-2.png" width="672" /></p>
+<p><img src="/post/celestialmaps_files/figure-html/virgo%20plot%20extent-2.png" width="672" /></p>
 <p>Although the extent has been reduced, there is still a horizontal line.</p>
 </div>
 <div id="crop-the-data-sets" class="section level3">
@@ -515,7 +515,7 @@ constellation_lines_sf_p %&gt;%
       ggplot()+
       geom_sf(colour=&quot;white&quot;) +
       theme_nightsky()</code></pre>
-<p><img src="https://kimnewzealand.github.io/post/celestialmaps_files/figure-html/makes%20points-1.png" width="672" /></p>
+<p><img src="/post/celestialmaps_files/figure-html/makes%20points-1.png" width="672" /></p>
 <pre class="r"><code># Crop points then convert back to a MULTILINESTRING for one id Vir and visualise
 constellation_lines_sf_p%&gt;% 
       filter(id==&quot;Vir&quot;) %&gt;% 
@@ -530,7 +530,7 @@ constellation_lines_sf_p%&gt;%
       geom_sf()+
       theme_nightsky()</code></pre>
 <pre><code>## although coordinates are longitude/latitude, st_intersection assumes that they are planar</code></pre>
-<p><img src="https://kimnewzealand.github.io/post/celestialmaps_files/figure-html/crop%20data-1.png" width="672" /></p>
+<p><img src="/post/celestialmaps_files/figure-html/crop%20data-1.png" width="672" /></p>
 <pre class="r"><code># Create a linestring function based on this example
 to_linestring &lt;- function(x)  st_cast(x,&quot;LINESTRING&quot;) %&gt;% 
       st_combine() %&gt;%  .[[1]]
@@ -559,7 +559,7 @@ constellation_lines_sf_new %&gt;%
       ggplot()+
       geom_sf()+
       theme_nightsky()</code></pre>
-<p><img src="https://kimnewzealand.github.io/post/celestialmaps_files/figure-html/crop%20data-2.png" width="672" /></p>
+<p><img src="/post/celestialmaps_files/figure-html/crop%20data-2.png" width="672" /></p>
 <p>The Virgo constellation has been cropped and now doesn’t have the horizontal line. However some other constellations still have the lines.</p>
 <p>This data cleaning method has a couple of downsides.It removes data creating data quality issues, for example if the globe is rotated then there would be lines missing and it is time intensive manual process.</p>
 <p>Let’s look for a different approach.</p>
@@ -638,7 +638,7 @@ milkyhorizlines_sf %&gt;%
     ggplot()+
       geom_sf()+
       theme_nightsky()</code></pre>
-<p><img src="https://kimnewzealand.github.io/post/celestialmaps_files/figure-html/milky%20horiz%20lines%20analysis-1.png" width="672" /></p>
+<p><img src="/post/celestialmaps_files/figure-html/milky%20horiz%20lines%20analysis-1.png" width="672" /></p>
 <p>Potentially the <code>milkyhorizlines_sf</code> could be plotted over in black to hide the lines. However this would work for lines however it may not work with polygons if they are filled.</p>
 </div>
 <div id="wrap-date-line" class="section level3">
@@ -650,7 +650,7 @@ milkyhorizlines_sf %&gt;%
       ggplot()+
       geom_sf()+
       theme_nightsky()</code></pre>
-<p><img src="https://kimnewzealand.github.io/post/celestialmaps_files/figure-html/wrap_dateline%20con%20lines-1.png" width="672" /></p>
+<p><img src="/post/celestialmaps_files/figure-html/wrap_dateline%20con%20lines-1.png" width="672" /></p>
 <p>This appears to work for the <code>constellation lines</code> so we will use a transformed object in the final plot for <code>constellation_lines</code>.</p>
 <pre class="r"><code># Transform the  constellation_lines_sf
 constellation_lines_sf_trans &lt;- constellation_lines_sf %&gt;%  
@@ -664,7 +664,7 @@ milky_sf  %&gt;%
       ggplot()+
       geom_sf()+
       theme_nightsky()</code></pre>
-<p><img src="https://kimnewzealand.github.io/post/celestialmaps_files/figure-html/wrap_dateline%20milky-1.png" width="672" /></p>
+<p><img src="/post/celestialmaps_files/figure-html/wrap_dateline%20milky-1.png" width="672" /></p>
 <p>This appears to work for the <code>milky_sf</code> so we will use a transformed object in the final plot.</p>
 <pre class="r"><code># Transform milky_sf with st_wrap_dateline
 milky_sf_trans &lt;- milky_sf %&gt;% 
@@ -686,7 +686,7 @@ ggplot() +
      # Fill the milky way - inversely plot the discrete polygon values from light grey in the center
       scale_fill_grey()+
       theme_nightsky()</code></pre>
-<p><img src="https://kimnewzealand.github.io/post/celestialmaps_files/figure-html/transform%20milk-1.png" width="672" /></p>
+<p><img src="/post/celestialmaps_files/figure-html/transform%20milk-1.png" width="672" /></p>
 </div>
 <div id="reprojecting-the-crs" class="section level3">
 <h3>Reprojecting the CRS</h3>
@@ -763,7 +763,7 @@ st_crs(milky_sf_trans)</code></pre>
       scale_fill_grey()+
       theme_nightsky()+
       ggtitle(&quot;The 10 Brightest Stars&quot;) )</code></pre>
-<p><img src="https://kimnewzealand.github.io/post/celestialmaps_files/figure-html/star%20plot-1.png" width="672" /></p>
+<p><img src="/post/celestialmaps_files/figure-html/star%20plot-1.png" width="672" /></p>
 <pre class="r"><code># Now add the labels with star names
 (starplot1_labels &lt;- starplot1 +
       ggsflabel::geom_sf_text_repel(data= stars_bright_sf,
@@ -771,7 +771,7 @@ st_crs(milky_sf_trans)</code></pre>
                         nudge_x = -2, 
                    colour=&quot;white&quot;,
                    size=2.5))</code></pre>
-<p><img src="https://kimnewzealand.github.io/post/celestialmaps_files/figure-html/star%20plot-2.png" width="672" /></p>
+<p><img src="/post/celestialmaps_files/figure-html/star%20plot-2.png" width="672" /></p>
 <pre class="r"><code># Save ggplot for blog post
 # ggsave(&quot;starplot1_labels.jpg&quot;,starplot1_labels)</code></pre>
 </div>
@@ -803,7 +803,7 @@ starplot2+
                         nudge_x = -1, 
                    colour=&quot;lightblue&quot;,
                    size=2)</code></pre>
-<p><img src="https://kimnewzealand.github.io/post/celestialmaps_files/figure-html/starplot2-1.png" width="672" /></p>
+<p><img src="/post/celestialmaps_files/figure-html/starplot2-1.png" width="672" /></p>
 </div>
 <div id="conclusions" class="section level2">
 <h2>Conclusions</h2>
@@ -844,13 +844,13 @@ starplot2+
 <div class="prev-next-post pure-g">
   <div class="pure-u-1-24" style="text-align: left;">
     
-    <a href="https://kimnewzealand.github.io/2019/01/31/animation-basketball/"><i class="fa fa-chevron-left"></i></a>
+    <a href="/2019/01/31/animation-basketball/"><i class="fa fa-chevron-left"></i></a>
     
   </div>
   <div class="pure-u-10-24">
     
     <nav class="prev">
-      <a href="https://kimnewzealand.github.io/2019/01/31/animation-basketball/">Animation of Basketball Shots</a>
+      <a href="/2019/01/31/animation-basketball/">Animation of Basketball Shots</a>
     </nav>
     
   </div>
@@ -860,13 +860,13 @@ starplot2+
   <div class="pure-u-10-24">
     
     <nav class="next">
-      <a href="https://kimnewzealand.github.io/2019/03/02/why-blog/">Why Blog?</a>
+      <a href="/2019/03/02/why-blog/">Why Blog?</a>
     </nav>
     
   </div>
   <div class="pure-u-1-24" style="text-align: right;">
     
-    <a href="https://kimnewzealand.github.io/2019/03/02/why-blog/"><i class="fa fa-chevron-right"></i></a>
+    <a href="/2019/03/02/why-blog/"><i class="fa fa-chevron-right"></i></a>
     
   </div>
 </div>
@@ -879,7 +879,7 @@ starplot2+
 
 </div>
 </div>
-<script src="https://kimnewzealand.github.io/js/ui.js"></script>
+<script src="/js/ui.js"></script>
 
 
 <script>

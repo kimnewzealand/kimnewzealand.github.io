@@ -3,242 +3,238 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://kimnewzealand.github.io/2019/03/15/changing-logo/</loc>
+    <loc>/2019/03/15/changing-logo/</loc>
     <lastmod>2019-03-15T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://kimnewzealand.github.io/2019/03/13/learning2/</loc>
+    <loc>/2019/03/13/learning2/</loc>
     <lastmod>2019-03-13T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://kimnewzealand.github.io/2019/03/02/why-blog/</loc>
+    <loc>/2019/03/02/why-blog/</loc>
     <lastmod>2019-03-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://kimnewzealand.github.io/2019/02/21/celestial-maps/</loc>
+    <loc>/2019/02/21/celestial-maps/</loc>
     <lastmod>2019-02-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://kimnewzealand.github.io/2019/01/31/animation-basketball/</loc>
+    <loc>/2019/01/31/animation-basketball/</loc>
     <lastmod>2019-01-31T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://kimnewzealand.github.io/2018/12/12/structure-blogdown/</loc>
+    <loc>/2018/12/12/structure-blogdown/</loc>
     <lastmod>2018-12-12T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://kimnewzealand.github.io/2018/12/07/lidar-kaikoura/</loc>
+    <loc>/2018/12/07/lidar-kaikoura/</loc>
     <lastmod>2018-12-07T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://kimnewzealand.github.io/2018/10/15/bike-counter/</loc>
+    <loc>/2018/10/15/bike-counter/</loc>
     <lastmod>2018-10-15T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://kimnewzealand.github.io/2018/08/15/changing-theme-with-blogdown/</loc>
+    <loc>/2018/08/15/changing-theme-with-blogdown/</loc>
     <lastmod>2018-08-15T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://kimnewzealand.github.io/2018/08/15/credit-risk-modeling/</loc>
+    <loc>/2018/08/15/credit-risk-modeling/</loc>
     <lastmod>2018-08-15T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://kimnewzealand.github.io/2018/07/19/excel-r-tutorial/</loc>
+    <loc>/2018/07/19/excel-r-tutorial/</loc>
     <lastmod>2018-07-19T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://kimnewzealand.github.io/2018/06/29/sot-analysis/</loc>
+    <loc>/2018/06/29/sot-analysis/</loc>
     <lastmod>2018-06-29T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://kimnewzealand.github.io/2018/05/23/name-entity-recognition/</loc>
+    <loc>/2018/05/23/name-entity-recognition/</loc>
     <lastmod>2018-05-23T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://kimnewzealand.github.io/2018/05/19/crepes-made-with-git/</loc>
+    <loc>/2018/05/19/crepes-made-with-git/</loc>
     <lastmod>2018-05-19T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://kimnewzealand.github.io/2018/04/06/excel-to-map/</loc>
+    <loc>/2018/04/06/excel-to-map/</loc>
     <lastmod>2018-04-06T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://kimnewzealand.github.io/2018/01/30/simple-blockchain/</loc>
+    <loc>/2018/01/30/simple-blockchain/</loc>
     <lastmod>2018-01-30T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://kimnewzealand.github.io/2018/01/02/hello-blog/</loc>
+    <loc>/2018/01/02/hello-blog/</loc>
     <lastmod>2018-01-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://kimnewzealand.github.io/2018/01/01/creating-a-website-in-blogdown-and-hugo/</loc>
+    <loc>/2018/01/01/creating-a-website-in-blogdown-and-hugo/</loc>
     <lastmod>2018-01-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://kimnewzealand.github.io/about/</loc>
+    <loc>/about/</loc>
   </url>
   
   <url>
-    <loc>https://kimnewzealand.github.io/about/</loc>
-  </url>
-  
-  <url>
-    <loc>https://kimnewzealand.github.io/tags/animation/</loc>
+    <loc>/tags/animation/</loc>
     <lastmod>2019-01-31T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://kimnewzealand.github.io/tags/blockchain/</loc>
+    <loc>/tags/blockchain/</loc>
     <lastmod>2018-01-30T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://kimnewzealand.github.io/tags/blogdown/</loc>
+    <loc>/tags/blogdown/</loc>
     <lastmod>2019-03-15T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://kimnewzealand.github.io/tags/creditrisk/</loc>
+    <loc>/tags/creditrisk/</loc>
     <lastmod>2018-08-15T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://kimnewzealand.github.io/tags/eda/</loc>
+    <loc>/tags/eda/</loc>
     <lastmod>2018-12-07T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://kimnewzealand.github.io/tags/excel/</loc>
+    <loc>/tags/excel/</loc>
     <lastmod>2018-07-19T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://kimnewzealand.github.io/tags/geoviz/</loc>
+    <loc>/tags/geoviz/</loc>
     <lastmod>2019-02-21T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://kimnewzealand.github.io/tags/gis/</loc>
+    <loc>/tags/gis/</loc>
     <lastmod>2018-12-07T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://kimnewzealand.github.io/tags/git/</loc>
+    <loc>/tags/git/</loc>
     <lastmod>2018-05-19T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://kimnewzealand.github.io/tags/juggling/</loc>
+    <loc>/tags/juggling/</loc>
     <lastmod>2019-03-02T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://kimnewzealand.github.io/</loc>
+    <loc>/</loc>
     <lastmod>2019-03-15T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://kimnewzealand.github.io/tags/modeling/</loc>
+    <loc>/tags/modeling/</loc>
     <lastmod>2018-10-15T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://kimnewzealand.github.io/tags/networks/</loc>
+    <loc>/tags/networks/</loc>
     <lastmod>2018-06-29T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://kimnewzealand.github.io/tags/nlp/</loc>
+    <loc>/tags/nlp/</loc>
     <lastmod>2018-05-23T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://kimnewzealand.github.io/post/</loc>
+    <loc>/post/</loc>
     <lastmod>2019-03-15T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://kimnewzealand.github.io/tags/python/</loc>
+    <loc>/tags/python/</loc>
     <lastmod>2018-05-23T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://kimnewzealand.github.io/tags/r/</loc>
+    <loc>/tags/r/</loc>
     <lastmod>2019-03-15T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://kimnewzealand.github.io/tags/sankey/</loc>
+    <loc>/tags/sankey/</loc>
     <lastmod>2018-06-29T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://kimnewzealand.github.io/tags/spatial/</loc>
+    <loc>/tags/spatial/</loc>
     <lastmod>2018-04-06T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://kimnewzealand.github.io/tags/</loc>
+    <loc>/tags/</loc>
     <lastmod>2019-01-31T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://kimnewzealand.github.io/tags/timeseries/</loc>
+    <loc>/tags/timeseries/</loc>
     <lastmod>2018-10-15T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://kimnewzealand.github.io/topics/</loc>
+    <loc>/topics/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://kimnewzealand.github.io/tags/tutorial/</loc>
+    <loc>/tags/tutorial/</loc>
     <lastmod>2018-07-19T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://kimnewzealand.github.io/tags/viz/</loc>
+    <loc>/tags/viz/</loc>
     <lastmod>2019-03-13T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
