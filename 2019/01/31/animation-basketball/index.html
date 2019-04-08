@@ -21,13 +21,13 @@
   <!--<![endif]-->
 
   <!--[if lte IE 8]>
-  <link rel="stylesheet" href="https://kimnewzealand.github.io/css/side-menu-old-ie.css">
+  <link rel="stylesheet" href="/css/side-menu-old-ie.css">
   <![endif]-->
   <!--[if gt IE 8]><!-->
-  <link rel="stylesheet" href="https://kimnewzealand.github.io/css/side-menu.css">
+  <link rel="stylesheet" href="/css/side-menu.css">
   <!--<![endif]-->
 
-  <link rel="stylesheet" href="https://kimnewzealand.github.io/css/blackburn.css">
+  <link rel="stylesheet" href="/css/blackburn.css">
 
   
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -48,7 +48,7 @@
   <script>hljs.initHighlightingOnLoad();</script>
   
 
-  <link rel="shortcut icon" href="https://kimnewzealand.github.io/img/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
 
   
   
@@ -67,7 +67,7 @@
 <div id="menu">
 
   
-  <a class="pure-menu-heading brand" href="https://kimnewzealand.github.io/">Kim Fitter</a>
+  <a class="pure-menu-heading brand" href="/">Kim Fitter</a>
 
 
   <div class="pure-menu">
@@ -75,13 +75,13 @@
       
       
         <li class="pure-menu-item">
-          <a class="pure-menu-link" href="https://kimnewzealand.github.io/"><i class='fa fa-home fa-fw'></i>Home</a>
+          <a class="pure-menu-link" href="/"><i class='fa fa-home fa-fw'></i>Home</a>
       
         </li>
       
       
         <li class="pure-menu-item">
-          <a class="pure-menu-link" href="https://kimnewzealand.github.io/about/"><i class='fa fa-user fa-fw'></i>About</a>
+          <a class="pure-menu-link" href="/about/"><i class='fa fa-user fa-fw'></i>About</a>
       
         </li>
       
@@ -216,9 +216,9 @@
   <div>
     <i class="fa fa-tags fa-fw"></i>
     
-      <a class="post-taxonomy-tag" href="https://kimnewzealand.github.io/tags/r">R</a>&nbsp;&#47;
+      <a class="post-taxonomy-tag" href="/tags/r">R</a>&nbsp;&#47;
     
-      <a class="post-taxonomy-tag" href="https://kimnewzealand.github.io/tags/animation">Animation</a>
+      <a class="post-taxonomy-tag" href="/tags/animation">Animation</a>
     
   </div>
   
@@ -433,7 +433,7 @@ shotsBreakers  %&gt;%
       # Remove gridlines
       theme_classic() +
       ggtitle(&quot;Shots by T. Abercrombie for 2016 ACB Season Breakers Season&quot;)</code></pre>
-<p><img src="https://kimnewzealand.github.io/post/BreakersAnalysis_files/figure-html/first%20plot-1.png" width="672" /></p>
+<p><img src="/post/BreakersAnalysis_files/figure-html/first%20plot-1.png" width="672" /></p>
 <p>In order to plot the court layout I first looked at this <a href="https://thedatagame.com.au/2015/09/27/how-to-create-nba-shot-charts-in-r/">blog</a> which plotted the points on an image. I preferred to plot the court layout using ggplot so that I could have some flexibility and ability to the scale of the data available. So I adapted the code found in this <a href="https://gist.github.com/edkupfer/6354964">GitHub</a> link. I only needed the half court, then rotate the court and then scale to match the Breakers data. This was to avoid manipulating the Breakers X,Y point data which could potentially introduce errors.</p>
 <pre class="r"><code># Half court adapted from full court https://gist.github.com/edkupfer/6354964 code 
 (halfcourt &lt;- ggplot(data=data.frame(x=1,y=1),aes(x,y))+
@@ -457,7 +457,7 @@ geom_path(data=data.frame(x=c(-3,3)*2+50,y=-c(43,43)+47),lineend=&#39;butt&#39;,
 geom_path(data=data.frame(x=c(-22,-22,-22000:(-1)/1000,1:22000/1000,22,22)*2+50,y=-c(47,47-169/12,41.75-sqrt(23.75^2-c(-22000:(-1)/1000,1:22000/1000)^2),47-169/12,47)+47),aes(x=x,y=y),colour=&quot;white&quot;)+
 # rotate the half court using coord_flip
 coord_flip())</code></pre>
-<p><img src="https://kimnewzealand.github.io/post/BreakersAnalysis_files/figure-html/create%20half%20court-1.png" width="672" /></p>
+<p><img src="/post/BreakersAnalysis_files/figure-html/create%20half%20court-1.png" width="672" /></p>
 <p>Now we will plot the shots onto the half court split by player.</p>
 <pre class="r"><code># Plot on half court split by player using facet_wrap
 (ACBplot &lt;- halfcourt +
@@ -474,7 +474,7 @@ coord_flip())</code></pre>
       theme_void() +
       ggtitle(&quot;Total Shots for Breakers 2016 ACB Season&quot;)+
       facet_wrap(~Player))</code></pre>
-<p><img src="https://kimnewzealand.github.io/post/BreakersAnalysis_files/figure-html/shots%20on%20%20half%20court-1.png" width="672" /></p>
+<p><img src="/post/BreakersAnalysis_files/figure-html/shots%20on%20%20half%20court-1.png" width="672" /></p>
 <pre class="r"><code># Save plot for blog
 # ggsave(&quot;ACBplot.jpg&quot;,ACBplot )</code></pre>
 <p>We can cross check these plots against this <a href="https://spatialjam.com/shot-machine">shot machine</a> filtering by 2016 ACB Season and Team New Zealand.</p>
@@ -510,7 +510,7 @@ ACBbyfacet &lt;- allseason +
       facet_wrap(~Quarter) +
       ggtitle(&quot;Total Shots Made/Missed by Quarter&quot;)
 ACBbyfacet</code></pre>
-<p><img src="https://kimnewzealand.github.io/post/BreakersAnalysis_files/figure-html/allseason-1.png" width="672" /></p>
+<p><img src="/post/BreakersAnalysis_files/figure-html/allseason-1.png" width="672" /></p>
 <pre class="r"><code># Save plot for blog
 # ggsave(&quot;ACBbyfacet.jpg&quot;,ACBbyfacet )</code></pre>
 <pre class="r"><code># Animate using the new gganimate function transition_states
@@ -520,7 +520,7 @@ anim &lt;- allseason +
       enter_appear() + 
       exit_fade(alpha=0)
 anim</code></pre>
-<p><img src="https://kimnewzealand.github.io/post/BreakersAnalysis_files/figure-html/animation-1.gif" /><!-- --></p>
+<p><img src="/post/BreakersAnalysis_files/figure-html/animation-1.gif" /><!-- --></p>
 <pre class="r"><code># Save animation for blog
 # anim_save(&quot;anim.gif&quot;,anim)</code></pre>
 <p>It does appear from these high level plots and animation that the players shoot closer to the hoop in quarter 4. Is this because they are under time and opposition defense pressure individually or is it part of a team game strategy?</p>
@@ -545,13 +545,13 @@ anim</code></pre>
 <div class="prev-next-post pure-g">
   <div class="pure-u-1-24" style="text-align: left;">
     
-    <a href="https://kimnewzealand.github.io/2018/12/12/structure-blogdown/"><i class="fa fa-chevron-left"></i></a>
+    <a href="/2018/12/12/structure-blogdown/"><i class="fa fa-chevron-left"></i></a>
     
   </div>
   <div class="pure-u-10-24">
     
     <nav class="prev">
-      <a href="https://kimnewzealand.github.io/2018/12/12/structure-blogdown/">Who Would Have Thought The Slug Was The Bug</a>
+      <a href="/2018/12/12/structure-blogdown/">Who Would Have Thought The Slug Was The Bug</a>
     </nav>
     
   </div>
@@ -561,13 +561,13 @@ anim</code></pre>
   <div class="pure-u-10-24">
     
     <nav class="next">
-      <a href="https://kimnewzealand.github.io/2019/02/21/celestial-maps/">Celestial Maps</a>
+      <a href="/2019/02/21/celestial-maps/">Celestial Maps</a>
     </nav>
     
   </div>
   <div class="pure-u-1-24" style="text-align: right;">
     
-    <a href="https://kimnewzealand.github.io/2019/02/21/celestial-maps/"><i class="fa fa-chevron-right"></i></a>
+    <a href="/2019/02/21/celestial-maps/"><i class="fa fa-chevron-right"></i></a>
     
   </div>
 </div>
@@ -580,7 +580,7 @@ anim</code></pre>
 
 </div>
 </div>
-<script src="https://kimnewzealand.github.io/js/ui.js"></script>
+<script src="/js/ui.js"></script>
 
 
 <script>

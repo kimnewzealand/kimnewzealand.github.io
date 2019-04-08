@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Animation on Kim Fitter</title>
-    <link>https://kimnewzealand.github.io/tags/animation/</link>
+    <link>/tags/animation/</link>
     <description>Recent content in Animation on Kim Fitter</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)</copyright>
     <lastBuildDate>Thu, 31 Jan 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://kimnewzealand.github.io/tags/animation/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/animation/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Animation of Basketball Shots</title>
-      <link>https://kimnewzealand.github.io/2019/01/31/animation-basketball/</link>
+      <link>/2019/01/31/animation-basketball/</link>
       <pubDate>Thu, 31 Jan 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://kimnewzealand.github.io/2019/01/31/animation-basketball/</guid>
+      <guid>/2019/01/31/animation-basketball/</guid>
       <description>IntroductionData OverviewLoad DataData CleaningExploratory Data AnalysisAnimationConclusionsReferencesIntroductionI went to my first basketball game on 27 January 2019 to watch the Skycity Breakers versus Brisbane Bullets. The final score was Breakers 109-96 Bullets.
 Since it was a close game I wondered if the type of shots attempted got closer to the hoop under pressure near the end of time, assuming that shorter range shots have a better success rate ?</description>
     </item>

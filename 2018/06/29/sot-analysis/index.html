@@ -21,13 +21,13 @@
   <!--<![endif]-->
 
   <!--[if lte IE 8]>
-  <link rel="stylesheet" href="https://kimnewzealand.github.io/css/side-menu-old-ie.css">
+  <link rel="stylesheet" href="/css/side-menu-old-ie.css">
   <![endif]-->
   <!--[if gt IE 8]><!-->
-  <link rel="stylesheet" href="https://kimnewzealand.github.io/css/side-menu.css">
+  <link rel="stylesheet" href="/css/side-menu.css">
   <!--<![endif]-->
 
-  <link rel="stylesheet" href="https://kimnewzealand.github.io/css/blackburn.css">
+  <link rel="stylesheet" href="/css/blackburn.css">
 
   
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -48,7 +48,7 @@
   <script>hljs.initHighlightingOnLoad();</script>
   
 
-  <link rel="shortcut icon" href="https://kimnewzealand.github.io/img/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
 
   
   
@@ -67,7 +67,7 @@
 <div id="menu">
 
   
-  <a class="pure-menu-heading brand" href="https://kimnewzealand.github.io/">Kim Fitter</a>
+  <a class="pure-menu-heading brand" href="/">Kim Fitter</a>
 
 
   <div class="pure-menu">
@@ -75,13 +75,13 @@
       
       
         <li class="pure-menu-item">
-          <a class="pure-menu-link" href="https://kimnewzealand.github.io/"><i class='fa fa-home fa-fw'></i>Home</a>
+          <a class="pure-menu-link" href="/"><i class='fa fa-home fa-fw'></i>Home</a>
       
         </li>
       
       
         <li class="pure-menu-item">
-          <a class="pure-menu-link" href="https://kimnewzealand.github.io/about/"><i class='fa fa-user fa-fw'></i>About</a>
+          <a class="pure-menu-link" href="/about/"><i class='fa fa-user fa-fw'></i>About</a>
       
         </li>
       
@@ -219,15 +219,15 @@
   <div>
     <i class="fa fa-tags fa-fw"></i>
     
-      <a class="post-taxonomy-tag" href="https://kimnewzealand.github.io/tags/r">R</a>&nbsp;&#47;
+      <a class="post-taxonomy-tag" href="/tags/r">R</a>&nbsp;&#47;
     
-      <a class="post-taxonomy-tag" href="https://kimnewzealand.github.io/tags/eda">EDA</a>&nbsp;&#47;
+      <a class="post-taxonomy-tag" href="/tags/eda">EDA</a>&nbsp;&#47;
     
-      <a class="post-taxonomy-tag" href="https://kimnewzealand.github.io/tags/networks">networks</a>&nbsp;&#47;
+      <a class="post-taxonomy-tag" href="/tags/networks">networks</a>&nbsp;&#47;
     
-      <a class="post-taxonomy-tag" href="https://kimnewzealand.github.io/tags/sankey">sankey</a>&nbsp;&#47;
+      <a class="post-taxonomy-tag" href="/tags/sankey">sankey</a>&nbsp;&#47;
     
-      <a class="post-taxonomy-tag" href="https://kimnewzealand.github.io/tags/modeling">modeling</a>
+      <a class="post-taxonomy-tag" href="/tags/modeling">modeling</a>
     
   </div>
   
@@ -235,12 +235,12 @@
 
 </div>
 
-  <script src="https://kimnewzealand.github.io/rmarkdown-libs/kePrint/kePrint.js"></script>
-<script src="https://kimnewzealand.github.io/rmarkdown-libs/htmlwidgets/htmlwidgets.js"></script>
-<script src="https://kimnewzealand.github.io/rmarkdown-libs/d3/d3.min.js"></script>
-<script src="https://kimnewzealand.github.io/rmarkdown-libs/sankey/sankey.js"></script>
-<script src="https://kimnewzealand.github.io/rmarkdown-libs/sankeyNetwork-binding/sankeyNetwork.js"></script>
-<script src="https://kimnewzealand.github.io/rmarkdown-libs/forceNetwork-binding/forceNetwork.js"></script>
+  <script src="/rmarkdown-libs/kePrint/kePrint.js"></script>
+<script src="/rmarkdown-libs/htmlwidgets/htmlwidgets.js"></script>
+<script src="/rmarkdown-libs/d3/d3.min.js"></script>
+<script src="/rmarkdown-libs/sankey/sankey.js"></script>
+<script src="/rmarkdown-libs/sankeyNetwork-binding/sankeyNetwork.js"></script>
+<script src="/rmarkdown-libs/forceNetwork-binding/forceNetwork.js"></script>
 
 
 <ul>
@@ -642,7 +642,7 @@ g &lt;- ggplot() +
 # install.ImageMagick()
 # ani.options(convert=shortPathName(&quot;C:\\Program Files\\ImageMagick-7.0.8-Q16\\magick.exe&quot;))
 gganimate(g) </code></pre>
-<p><img src="https://kimnewzealand.github.io/post/SoT_dataviz_files/figure-html/maps-1.png" width="672" /><img src="https://kimnewzealand.github.io/post/SoT_dataviz_files/figure-html/maps-2.png" width="672" /><img src="https://kimnewzealand.github.io/post/SoT_dataviz_files/figure-html/maps-3.png" width="672" /></p>
+<p><img src="/post/SoT_dataviz_files/figure-html/maps-1.png" width="672" /><img src="/post/SoT_dataviz_files/figure-html/maps-2.png" width="672" /><img src="/post/SoT_dataviz_files/figure-html/maps-3.png" width="672" /></p>
 <pre class="r"><code># Save as a gif
 # gganimate(g,&quot;mapinterns.gif&quot;)      </code></pre>
 <p>The two main Institution feeders to internships appear to be Victoria University of Wellington and Auckland University, the former resulting in half of internships. The region as the largest feeder of interns to other regions is Christchurch.</p>
@@ -685,7 +685,7 @@ eventcountbystudent_wide  %&gt;%
       ggtitle(&quot;Distribution of Registered Events Count and Internship&quot;) +
       xlab(&quot;Internship&quot;) +
       ylab(&quot;Count of registered events (All Regions)&quot;)</code></pre>
-<p><img src="https://kimnewzealand.github.io/post/SoT_dataviz_files/figure-html/violin%20plot-1.png" width="672" /></p>
+<p><img src="/post/SoT_dataviz_files/figure-html/violin%20plot-1.png" width="672" /></p>
 <p>Overall, it appears from the quantile box that successful interns registered to attend more events. However there are some outliers of unsuccessful students who registered for a very large number events, the maximum number is <strong>47</strong> by one student. The greater spread at the bottom of the unsuccessful students indicates more unsuccessful students registered for fewer events than the successful interns.</p>
 <p><strong>Registration count by student region</strong></p>
 <p>Next we will break down and plot the total registered events by the region in which the student studies.</p>
@@ -705,7 +705,7 @@ eventcountbystudent_wide    %&gt;%
       theme(axis.text.x=element_blank()) +
       scale_color_manual(values=c(&quot;green&quot;, &quot;blue&quot;))+
       facet_wrap(~Student.region)      </code></pre>
-<p><img src="https://kimnewzealand.github.io/post/SoT_dataviz_files/figure-html/count%20by%20region-1.png" width="672" /></p>
+<p><img src="/post/SoT_dataviz_files/figure-html/count%20by%20region-1.png" width="672" /></p>
 <p>Students from outside the major centres are very low in numbers in registering and relatively unsuccessful in interships.</p>
 <p><strong>Decision Tree</strong></p>
 <p>Instead of trying to visualise all the events, we can use a model to visualise as a decision tree what possible combination of events successful interns attended in 2017. We will use the <a href="https://cran.r-project.org/web/packages/rpart/index.html">rpart</a> R package to create a classification model and the <a href="https://cran.r-project.org/web/packages/rattle/index.html">rattle</a> R package which has a nice function, fancyRpartPlot, to plot the tree below. Here I also used this <a href="http://blog.revolutionanalytics.com/2013/06/plotting-classification-and-regression-trees-with-plotrpart.html">blog</a>.</p>
@@ -729,7 +729,7 @@ eventnamebystudent_wide$internship &lt;- as.factor(eventnamebystudent_wide$inter
 # Create a model using rpart
 model &lt;- rpart::rpart(internship~.,data=eventnamebystudent_wide[,-c(1,3)], cp=0.001 ) # default cp is 0.01, decresing this value creates a deeper tree
 rattle::fancyRpartPlot(model, sub = &quot;Decision tree of events that result in successful (green) 2017 internships&quot;,palettes=c(&quot;Greys&quot;, &quot;Greens&quot;))</code></pre>
-<p><img src="https://kimnewzealand.github.io/post/SoT_dataviz_files/figure-html/rpart-1.png" width="672" /></p>
+<p><img src="/post/SoT_dataviz_files/figure-html/rpart-1.png" width="672" /></p>
 <p>From this tree we can see the <strong>43</strong> successful interns who applied directly as a percentage of the total pool of applicants <strong>1424</strong> or <strong>0.03</strong> on the far right green branch.</p>
 <p>The remaining branches relate to <strong>170</strong> students who registered for events and their success in green. Note only the top branches are shown.</p>
 </div>
@@ -748,7 +748,7 @@ intern_eth %&gt;%
       coord_flip() +
       labs(title = &quot;Intern Breakdown by Intern Ethnicity\n&quot;, x = &quot;\nEthnicity&quot;, y = &quot;Percentage\n&quot;)+ 
       guides(fill=FALSE)</code></pre>
-<p><img src="https://kimnewzealand.github.io/post/SoT_dataviz_files/figure-html/ethnicity%20freq-1.png" width="672" /></p>
+<p><img src="/post/SoT_dataviz_files/figure-html/ethnicity%20freq-1.png" width="672" /></p>
 <p><strong>46</strong> % of interns were pakeha however there is a large <strong>23</strong> % of undisclosed ethnicities.</p>
 <pre class="r"><code># Plot the intern gender data as a frequency plot
 intern_gender &lt;- intern %&gt;% 
@@ -762,7 +762,7 @@ intern_gender %&gt;%
       coord_flip() +
       labs(title = &quot;Intern Breakdown by Intern Gender\n&quot;, x = &quot;\nGender&quot;, y = &quot;Percentage\n&quot;)+ 
       guides(fill=FALSE)</code></pre>
-<p><img src="https://kimnewzealand.github.io/post/SoT_dataviz_files/figure-html/gender%20freq-1.png" width="672" /></p>
+<p><img src="/post/SoT_dataviz_files/figure-html/gender%20freq-1.png" width="672" /></p>
 <p><strong>39</strong> % of interns were female and <strong>59</strong> % were male in 2017.</p>
 </div>
 <div id="conclusion" class="section level3">
@@ -808,13 +808,13 @@ intern_gender %&gt;%
 <div class="prev-next-post pure-g">
   <div class="pure-u-1-24" style="text-align: left;">
     
-    <a href="https://kimnewzealand.github.io/2018/05/23/name-entity-recognition/"><i class="fa fa-chevron-left"></i></a>
+    <a href="/2018/05/23/name-entity-recognition/"><i class="fa fa-chevron-left"></i></a>
     
   </div>
   <div class="pure-u-10-24">
     
     <nav class="prev">
-      <a href="https://kimnewzealand.github.io/2018/05/23/name-entity-recognition/">Name Entity Recognition using Python spaCy in R</a>
+      <a href="/2018/05/23/name-entity-recognition/">Name Entity Recognition using Python spaCy in R</a>
     </nav>
     
   </div>
@@ -824,13 +824,13 @@ intern_gender %&gt;%
   <div class="pure-u-10-24">
     
     <nav class="next">
-      <a href="https://kimnewzealand.github.io/2018/07/19/excel-r-tutorial/">Tutorial on Pivot Tables and other Excel things you can also do in R - Witch Trials data</a>
+      <a href="/2018/07/19/excel-r-tutorial/">Tutorial on Pivot Tables and other Excel things you can also do in R - Witch Trials data</a>
     </nav>
     
   </div>
   <div class="pure-u-1-24" style="text-align: right;">
     
-    <a href="https://kimnewzealand.github.io/2018/07/19/excel-r-tutorial/"><i class="fa fa-chevron-right"></i></a>
+    <a href="/2018/07/19/excel-r-tutorial/"><i class="fa fa-chevron-right"></i></a>
     
   </div>
 </div>
@@ -843,7 +843,7 @@ intern_gender %&gt;%
 
 </div>
 </div>
-<script src="https://kimnewzealand.github.io/js/ui.js"></script>
+<script src="/js/ui.js"></script>
 
 
 <script>
