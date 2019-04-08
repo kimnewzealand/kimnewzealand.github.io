@@ -7,10 +7,21 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)</copyright>
-    <lastBuildDate>Wed, 13 Mar 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 08 Apr 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/viz/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Spatial Bike Network Analysis in Auckland</title>
+      <link>/2019/04/08/bike-network/</link>
+      <pubDate>Mon, 08 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/2019/04/08/bike-network/</guid>
+      <description>IntroductionData SummaryExploratory Data AnalysisData CleaningData VisualisationConclusionsReferencesIntroductionThe Geocomputation with R book has a great example of transport analysis in Bristol.
+I decided this is a chance to get to know Open Street Map (OSM) and its data better given the flurry of bike route construction.
+This is a bicycle network analysis of Auckland using open source spatial and bike counter data for 2018.</description>
+    </item>
     
     <item>
       <title>Interactive Learning Roadmap - Part 2</title>
@@ -31,18 +42,6 @@
       <guid>/2019/03/04/learning/</guid>
       <description>IntroductionDataExploratory Data AnalysisFirst RoadmapConclusionsReferencesIntroductionRecently one of the problems I was trying to solve required matrix algebra.
 This falls under the umbrella of need to know R basics so I realised I needed a way to track and refresh my R skills, recognise gaps and ultimately create a reference cheat-sheet.</description>
-    </item>
-    
-    <item>
-      <title>Spatial Bike Network Analysis in Auckland</title>
-      <link>/2019/03/04/bike-network/</link>
-      <pubDate>Mon, 04 Mar 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/2019/03/04/bike-network/</guid>
-      <description>IntroductionData SummaryExploratory Data AnalysisData CleaningData VisualisationConclusionsReferencesIntroductionThe Geocomputation with R book has a great example of transport analysis in Bristol.
-I decided this is a chance to get to know Open Street Map (OSM) and its data better given the flurry of bike route construction.
-This is a bicycle network analysis
-</description>
     </item>
     
   </channel>
