@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Timeseries on Kim Fitter</title>
-    <link>/tags/timeseries/</link>
+    <link>https://kimnewzealand.github.io/tags/timeseries/</link>
     <description>Recent content in Timeseries on Kim Fitter</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)</copyright>
     <lastBuildDate>Mon, 15 Oct 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/timeseries/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://kimnewzealand.github.io/tags/timeseries/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Auckland Bike Counter Analysis</title>
-      <link>/2018/10/15/bike-counter/</link>
+      <link>https://kimnewzealand.github.io/2018/10/15/bike-counter/</link>
       <pubDate>Mon, 15 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>/2018/10/15/bike-counter/</guid>
+      <guid>https://kimnewzealand.github.io/2018/10/15/bike-counter/</guid>
       <description>IntroductionDataData CleaningVisualisationsConclusionsIntroductionThe motivations for cycling around town can be for fitness, economic or environmental reasons. However in Auckland the weather and the 53 odd volcanoes could be deterrents to would-be cyclists.
 Auckland Transport (AT) publishes daily and monthly bike count data from counters around Auckland now available under CC BY 4.0 license.
 Kia ora, us again!</description>
