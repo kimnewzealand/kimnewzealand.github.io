@@ -2,22 +2,33 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Viz on Kim Fitter</title>
-    <link>https://kimnewzealand.github.io/tags/viz/</link>
+    <link>/tags/viz/</link>
     <description>Recent content in Viz on Kim Fitter</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)</copyright>
-    <lastBuildDate>Thu, 02 May 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 05 Jun 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://kimnewzealand.github.io/tags/viz/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/viz/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>Which Countries have Large Scale Fishing Vessels?</title>
+      <link>/2019/06/05/vessel-analysis/</link>
+      <pubDate>Wed, 05 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/2019/06/05/vessel-analysis/</guid>
+      <description>IntroductionDataData SummaryExploratory Data AnalysisData CleaningData VisualisationConclusionsReferencesIntroductionI was inspired to analyse and visualise global fishing open data by the story produced by Jon Olav Eikenes.
+This is also a sequel to my previous shark analysis post Is Swimming with Sharks Dangerous?, digging further into the reduction in shark numbers due to commercial fishing.
+# Load packageslibrary(tidyverse)library(sf)library(rnaturalearth)library(biscale)library(cowplot)DataWe will use the Global Fishing Watch Vessel Identity open data available with the Vessels metadata available under the Creative Commons Attribution-ShareAlike 4.</description>
+    </item>
+    
+    <item>
       <title>Is Swimming with Sharks Dangerous?</title>
-      <link>https://kimnewzealand.github.io/2019/05/02/sharks-analysis/</link>
+      <link>/2019/05/02/sharks-analysis/</link>
       <pubDate>Thu, 02 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://kimnewzealand.github.io/2019/05/02/sharks-analysis/</guid>
+      <guid>/2019/05/02/sharks-analysis/</guid>
       <description>IntroductionDataData SummaryExploratory Data AnalysisData CleaningData VisualisationConclusionsReferencesIntroductionWe recently went swimming with sharks with a Marine Biologist. We asked the question “Is swimming with sharks dangerous?” in the dive brief about how to swim with sharks.
 This is a spatial analysis of historical shark attacks.
 # Load packageslibrary(tidyverse)library(sf)library(rnaturalearth)DataWe will use the International Shark Attack File (ISAF) global shark attack csv dataset from 1580 until July 26, 2018.</description>
@@ -25,10 +36,10 @@ This is a spatial analysis of historical shark attacks.
     
     <item>
       <title>Spatial Bike Network Analysis in Auckland</title>
-      <link>https://kimnewzealand.github.io/2019/04/08/bike-network/</link>
+      <link>/2019/04/08/bike-network/</link>
       <pubDate>Mon, 08 Apr 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://kimnewzealand.github.io/2019/04/08/bike-network/</guid>
+      <guid>/2019/04/08/bike-network/</guid>
       <description>IntroductionData SummaryExploratory Data AnalysisData CleaningData VisualisationConclusionsReferencesIntroductionThe Geocomputation with R book has a great example of transport analysis in Bristol.
 I decided this is a chance to get to know Open Street Map (OSM) and its data better given the flurry of bike route construction.
 This is a bicycle network analysis of Auckland using open source spatial and bike counter data for 2018.</description>
@@ -36,10 +47,10 @@ This is a bicycle network analysis of Auckland using open source spatial and bi
     
     <item>
       <title>Interactive Learning Roadmap - Part 2</title>
-      <link>https://kimnewzealand.github.io/2019/03/13/learning2/</link>
+      <link>/2019/03/13/learning2/</link>
       <pubDate>Wed, 13 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://kimnewzealand.github.io/2019/03/13/learning2/</guid>
+      <guid>/2019/03/13/learning2/</guid>
       <description>IntroductionDataFundamentals of Data VisualisationFinal VisualisationsConclusionsReferencesIntroductionThis post creates and reviews at visualisation objects considering the fundamentals of data visualisation book;
 Data visualization is part art and part science. The challenge is to get the art right without getting the science wrong and vice versa
 Learning R is a bit of a journey over time so here goes Part 2 of an interactive visualisation project using tidyverse and ggplot compatible1 packages.</description>
@@ -47,10 +58,10 @@ This is a bicycle network analysis of Auckland using open source spatial and bi
     
     <item>
       <title>Interactive Learning Roadmap - Part 1</title>
-      <link>https://kimnewzealand.github.io/2019/03/04/learning/</link>
+      <link>/2019/03/04/learning/</link>
       <pubDate>Mon, 04 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://kimnewzealand.github.io/2019/03/04/learning/</guid>
+      <guid>/2019/03/04/learning/</guid>
       <description>IntroductionDataExploratory Data AnalysisFirst RoadmapConclusionsReferencesIntroductionRecently one of the problems I was trying to solve required matrix algebra.
 This falls under the umbrella of need to know R basics so I realised I needed a way to track and refresh my R skills, recognise gaps and ultimately create a reference cheat-sheet.</description>
     </item>

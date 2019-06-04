@@ -21,13 +21,13 @@
   <!--<![endif]-->
 
   <!--[if lte IE 8]>
-  <link rel="stylesheet" href="https://kimnewzealand.github.io/css/side-menu-old-ie.css">
+  <link rel="stylesheet" href="/css/side-menu-old-ie.css">
   <![endif]-->
   <!--[if gt IE 8]><!-->
-  <link rel="stylesheet" href="https://kimnewzealand.github.io/css/side-menu.css">
+  <link rel="stylesheet" href="/css/side-menu.css">
   <!--<![endif]-->
 
-  <link rel="stylesheet" href="https://kimnewzealand.github.io/css/blackburn.css">
+  <link rel="stylesheet" href="/css/blackburn.css">
 
   
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -48,7 +48,7 @@
   <script>hljs.initHighlightingOnLoad();</script>
   
 
-  <link rel="shortcut icon" href="https://kimnewzealand.github.io/img/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
 
   
   
@@ -67,7 +67,7 @@
 <div id="menu">
 
   
-  <a class="pure-menu-heading brand" href="https://kimnewzealand.github.io/">Kim Fitter</a>
+  <a class="pure-menu-heading brand" href="/">Kim Fitter</a>
 
 
   <div class="pure-menu">
@@ -75,13 +75,13 @@
       
       
         <li class="pure-menu-item">
-          <a class="pure-menu-link" href="https://kimnewzealand.github.io/"><i class='fa fa-home fa-fw'></i>Home</a>
+          <a class="pure-menu-link" href="/"><i class='fa fa-home fa-fw'></i>Home</a>
       
         </li>
       
       
         <li class="pure-menu-item">
-          <a class="pure-menu-link" href="https://kimnewzealand.github.io/about/"><i class='fa fa-user fa-fw'></i>About</a>
+          <a class="pure-menu-link" href="/about/"><i class='fa fa-user fa-fw'></i>About</a>
       
         </li>
       
@@ -216,9 +216,9 @@
   <div>
     <i class="fa fa-tags fa-fw"></i>
     
-      <a class="post-taxonomy-tag" href="https://kimnewzealand.github.io/tags/r">R</a>&nbsp;&#47;
+      <a class="post-taxonomy-tag" href="/tags/r">R</a>&nbsp;&#47;
     
-      <a class="post-taxonomy-tag" href="https://kimnewzealand.github.io/tags/viz">Viz</a>
+      <a class="post-taxonomy-tag" href="/tags/viz">Viz</a>
     
   </div>
   
@@ -226,18 +226,18 @@
 
 </div>
 
-  <script src="https://kimnewzealand.github.io/rmarkdown-libs/kePrint/kePrint.js"></script>
-<script src="https://kimnewzealand.github.io/rmarkdown-libs/htmlwidgets/htmlwidgets.js"></script>
-<script src="https://kimnewzealand.github.io/rmarkdown-libs/jquery/jquery.min.js"></script>
-<link href="https://kimnewzealand.github.io/rmarkdown-libs/leaflet/leaflet.css" rel="stylesheet" />
-<script src="https://kimnewzealand.github.io/rmarkdown-libs/leaflet/leaflet.js"></script>
-<link href="https://kimnewzealand.github.io/rmarkdown-libs/leafletfix/leafletfix.css" rel="stylesheet" />
-<script src="https://kimnewzealand.github.io/rmarkdown-libs/Proj4Leaflet/proj4-compressed.js"></script>
-<script src="https://kimnewzealand.github.io/rmarkdown-libs/Proj4Leaflet/proj4leaflet.js"></script>
-<link href="https://kimnewzealand.github.io/rmarkdown-libs/rstudio_leaflet/rstudio_leaflet.css" rel="stylesheet" />
-<script src="https://kimnewzealand.github.io/rmarkdown-libs/leaflet-binding/leaflet.js"></script>
-<script src="https://kimnewzealand.github.io/rmarkdown-libs/leaflet-providers/leaflet-providers.js"></script>
-<script src="https://kimnewzealand.github.io/rmarkdown-libs/leaflet-providers-plugin/leaflet-providers-plugin.js"></script>
+  <script src="/rmarkdown-libs/kePrint/kePrint.js"></script>
+<script src="/rmarkdown-libs/htmlwidgets/htmlwidgets.js"></script>
+<script src="/rmarkdown-libs/jquery/jquery.min.js"></script>
+<link href="/rmarkdown-libs/leaflet/leaflet.css" rel="stylesheet" />
+<script src="/rmarkdown-libs/leaflet/leaflet.js"></script>
+<link href="/rmarkdown-libs/leafletfix/leafletfix.css" rel="stylesheet" />
+<script src="/rmarkdown-libs/Proj4Leaflet/proj4-compressed.js"></script>
+<script src="/rmarkdown-libs/Proj4Leaflet/proj4leaflet.js"></script>
+<link href="/rmarkdown-libs/rstudio_leaflet/rstudio_leaflet.css" rel="stylesheet" />
+<script src="/rmarkdown-libs/leaflet-binding/leaflet.js"></script>
+<script src="/rmarkdown-libs/leaflet-providers/leaflet-providers.js"></script>
+<script src="/rmarkdown-libs/leaflet-providers-plugin/leaflet-providers-plugin.js"></script>
 
 
 <ul>
@@ -625,13 +625,13 @@ glimpse(bikes_monthly)</code></pre>
 ggplot()+
       geom_sf(data=bikes_lines,colour=&quot;darkorange&quot;)+
       geom_sf(data=auckland_region,fill=NA)</code></pre>
-<p><img src="https://kimnewzealand.github.io/post/spatialnetwork_files/figure-html/ggplot%20bikes-1.png" width="672" /></p>
+<p><img src="/post/spatialnetwork_files/figure-html/ggplot%20bikes-1.png" width="672" /></p>
 <p>It appears that there may be ferry routes included in the data. We will remove these in the cleaning steps.</p>
 <pre class="r"><code># Creat a ggplot map of the highways_lines dataset
 ggplot()+
       geom_sf(data=highways_lines,colour=&quot;darkorange&quot;)+
       geom_sf(data=auckland_region,fill=NA)</code></pre>
-<p><img src="https://kimnewzealand.github.io/post/spatialnetwork_files/figure-html/ggplot%20highways-1.png" width="672" /></p>
+<p><img src="/post/spatialnetwork_files/figure-html/ggplot%20highways-1.png" width="672" /></p>
 <p><strong>Auckland Cycle Network Data</strong></p>
 <p>Now plot the <code>acn_lines</code> in purple.</p>
 <pre class="r"><code># Creat a ggplot map of the acn_lines dataset, converting the SpatialDataFrame to an sf object 
@@ -640,7 +640,7 @@ acn_lines_sf&lt;- acn_lines  %&gt;%
 ggplot()+
       geom_sf(data=acn_lines_sf,colour=&quot;purple&quot;)+
       geom_sf(data=auckland_region,fill=NA)</code></pre>
-<p><img src="https://kimnewzealand.github.io/post/spatialnetwork_files/figure-html/ggplot%20acn_lines-1.png" width="672" /></p>
+<p><img src="/post/spatialnetwork_files/figure-html/ggplot%20acn_lines-1.png" width="672" /></p>
 <p>The <code>acn_lines</code> data looks to cover the broader Auckland region, we may need to filter to get the routes close to the city.</p>
 <p>Now use the <a href="https://cran.r-project.org/web/packages/stplanr/index.html">stplanr</a> R package to create spatial networks. We will use the <code>acn_lines</code> object as this is imported with class SpatialLinesDataFrame. Then visualise network centrality and plot the <a href="https://igraph.org/r/doc/betweenness.html">edge betweenness</a>.</p>
 <pre class="r"><code># Creat a composite object with slots, where the s argument is a SpatialLinesDataFrame
@@ -662,7 +662,7 @@ class(acn_lines_sln@g)</code></pre>
 plot(acn_lines_sln@sl,
      lwd = e / 10,
      col = &quot;purple&quot;)</code></pre>
-<p><img src="https://kimnewzealand.github.io/post/spatialnetwork_files/figure-html/plot%20%20SpatialLinesNetwork-1.png" width="672" /></p>
+<p><img src="/post/spatialnetwork_files/figure-html/plot%20%20SpatialLinesNetwork-1.png" width="672" /></p>
 <p>This is a very brief look at potential nodes in the network.</p>
 </div>
 <div id="data-cleaning" class="section level2">
@@ -729,7 +729,7 @@ ggplot(bikes_2018,aes(Month,counts)) +
       theme(axis.title.x=element_blank(),
         axis.text.x=element_blank(),
         axis.ticks.x=element_blank())</code></pre>
-<p><img src="https://kimnewzealand.github.io/post/spatialnetwork_files/figure-html/monthly%20bike%20counter%20plot-1.png" width="672" /></p>
+<p><img src="/post/spatialnetwork_files/figure-html/monthly%20bike%20counter%20plot-1.png" width="672" /></p>
 <p>The popular routes have seasonality with numbers dipping in the winter months. The less popular routes have flat, low numbers.</p>
 <pre class="r"><code># Total the counts by street for 2018
 bikes_2018_sum &lt;- bikes_2018 %&gt;% 
@@ -9676,7 +9676,7 @@ tm_network</code></pre>
 ttm()</code></pre>
 <pre><code>## tmap mode set to plotting</code></pre>
 <pre class="r"><code>last_map()</code></pre>
-<p><img src="https://kimnewzealand.github.io/post/spatialnetwork_files/figure-html/osm%20network%20leaflet-1.png" width="672" /></p>
+<p><img src="/post/spatialnetwork_files/figure-html/osm%20network%20leaflet-1.png" width="672" /></p>
 <pre class="r"><code>#tmap_save(tm_network,&quot;tm_network.jpg&quot;)</code></pre>
 <p>The <a href="https://www.greaterauckland.org.nz/2018/12/03/ian-mckinnon-cycleway-opened/">Ian McKinnon Cycleway</a> is a link between the Northwestern Cycleway and Grafton Gully Cycleway. It opened in December 2018 and without a full year of bike counters, it is not included in the map.</p>
 <p><strong>Total Bike Counters in AT Network 2018</strong></p>
@@ -9701,7 +9701,7 @@ tm_acn_network</code></pre>
 ttm()</code></pre>
 <pre><code>## tmap mode set to plotting</code></pre>
 <pre class="r"><code>last_map()</code></pre>
-<p><img src="https://kimnewzealand.github.io/post/spatialnetwork_files/figure-html/acn%20total%20leaflet-1.png" width="672" /></p>
+<p><img src="/post/spatialnetwork_files/figure-html/acn%20total%20leaflet-1.png" width="672" /></p>
 </div>
 <div id="conclusions" class="section level2">
 <h2>Conclusions</h2>
@@ -10283,13 +10283,13 @@ blogdown, bookdown, evaluate, highr, knitr, mime, rmarkdown, xfun
 <div class="prev-next-post pure-g">
   <div class="pure-u-1-24" style="text-align: left;">
     
-    <a href="https://kimnewzealand.github.io/2019/03/15/changing-logo/"><i class="fa fa-chevron-left"></i></a>
+    <a href="/2019/03/15/changing-logo/"><i class="fa fa-chevron-left"></i></a>
     
   </div>
   <div class="pure-u-10-24">
     
     <nav class="prev">
-      <a href="https://kimnewzealand.github.io/2019/03/15/changing-logo/">Changing Favicon in the Blackburn Theme</a>
+      <a href="/2019/03/15/changing-logo/">Changing Favicon in the Blackburn Theme</a>
     </nav>
     
   </div>
@@ -10299,13 +10299,13 @@ blogdown, bookdown, evaluate, highr, knitr, mime, rmarkdown, xfun
   <div class="pure-u-10-24">
     
     <nav class="next">
-      <a href="https://kimnewzealand.github.io/2019/05/02/sharks-analysis/">Is Swimming with Sharks Dangerous?</a>
+      <a href="/2019/05/02/sharks-analysis/">Is Swimming with Sharks Dangerous?</a>
     </nav>
     
   </div>
   <div class="pure-u-1-24" style="text-align: right;">
     
-    <a href="https://kimnewzealand.github.io/2019/05/02/sharks-analysis/"><i class="fa fa-chevron-right"></i></a>
+    <a href="/2019/05/02/sharks-analysis/"><i class="fa fa-chevron-right"></i></a>
     
   </div>
 </div>
@@ -10318,7 +10318,7 @@ blogdown, bookdown, evaluate, highr, knitr, mime, rmarkdown, xfun
 
 </div>
 </div>
-<script src="https://kimnewzealand.github.io/js/ui.js"></script>
+<script src="/js/ui.js"></script>
 
 
 <script>

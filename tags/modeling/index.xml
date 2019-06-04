@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Modeling on Kim Fitter</title>
-    <link>https://kimnewzealand.github.io/tags/modeling/</link>
+    <link>/tags/modeling/</link>
     <description>Recent content in Modeling on Kim Fitter</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)</copyright>
     <lastBuildDate>Mon, 15 Oct 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://kimnewzealand.github.io/tags/modeling/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/modeling/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Auckland Bike Counter Analysis</title>
-      <link>https://kimnewzealand.github.io/2018/10/15/bike-counter/</link>
+      <link>/2018/10/15/bike-counter/</link>
       <pubDate>Mon, 15 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://kimnewzealand.github.io/2018/10/15/bike-counter/</guid>
+      <guid>/2018/10/15/bike-counter/</guid>
       <description>IntroductionDataData CleaningVisualisationsConclusionsIntroductionThe motivations for cycling around town can be for fitness, economic or environmental reasons. However in Auckland the weather and the 53 odd volcanoes could be deterrents to would-be cyclists.
 Auckland Transport (AT) publishes daily and monthly bike count data from counters around Auckland now available under CC BY 4.0 license.
 Kia ora, us again!</description>
@@ -25,20 +25,20 @@ Kia ora, us again!</description>
     
     <item>
       <title>Credit Risk Modeling and Scorecard Example</title>
-      <link>https://kimnewzealand.github.io/2018/08/15/credit-risk-modeling/</link>
+      <link>/2018/08/15/credit-risk-modeling/</link>
       <pubDate>Wed, 15 Aug 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://kimnewzealand.github.io/2018/08/15/credit-risk-modeling/</guid>
+      <guid>/2018/08/15/credit-risk-modeling/</guid>
       <description>IntroductionLoad the dataSummary of dataClean DataExploratory Data AnalysisFeature EngineeringTrainingCreate ScorecardConclusionsIntroductionCredit Risk modeling predicts whether a customer or applicant may or may not default on a loan. These models include predictor variables that are categorical or numeric. One of the outputs in the modeling process is a credit scorecard with attributes to allocate scores.
 The objectives of this post are as follow:</description>
     </item>
     
     <item>
       <title>Summer of Tech Event and Intern Analysis</title>
-      <link>https://kimnewzealand.github.io/2018/06/29/sot-analysis/</link>
+      <link>/2018/06/29/sot-analysis/</link>
       <pubDate>Fri, 29 Jun 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://kimnewzealand.github.io/2018/06/29/sot-analysis/</guid>
+      <guid>/2018/06/29/sot-analysis/</guid>
       <description>IntroductionDataClean DataSuccess FactorsSpecific Events Resulting in InternshipsSocial ImpactConclusionIntroductionWe were looking for a real data from a non-profit organisation for the R-Ladies Auckland Dataviz meetup. We were approached by Summer of Tech(SoT) who volunteered their data for the group to explore.
 SoT is a non-profit organisation that connects employers with students and graduates for paid work experience and graduate jobs.</description>
     </item>
