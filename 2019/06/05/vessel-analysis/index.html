@@ -492,11 +492,7 @@ vessels_world_sum %&gt;%
                                 st_drop_geometry(),
                            by= c(&quot;flag&quot;=&quot;iso_a3&quot;)) %&gt;% 
       mutate(tonnage_per_mil=(tonnage_sum/pop_est)*1000000) %&gt;% 
-      mutate(gdp_per_mil=(gdp_md_est)/1000000) 
-tonnage_prop %&gt;%
-      ggplot()+
-      geom_sf(aes(fill = tonnage_per_mil),colour=NA)</code></pre>
-<p><img src="/post/vesselsanalysis_files/figure-html/chloropeth%20tonnage%20per%20cap-1.png" width="672" /></p>
+      mutate(gdp_per_mil=(gdp_md_est)/1000000) </code></pre>
 </div>
 <div id="data-visualisation" class="section level2">
 <h2>Data Visualisation</h2>
