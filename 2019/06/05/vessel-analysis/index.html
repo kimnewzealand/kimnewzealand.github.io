@@ -239,7 +239,7 @@
 <div id="introduction" class="section level2">
 <h2>Introduction</h2>
 <p>I was inspired to analyse and visualise <a href="https://globalfishingwatch.org/datasets-and-code/">global fishing open data</a> by the story produced by <a href="https://jonolave.github.io/global-fishing/">Jon Olav Eikenes</a>.</p>
-<p>This is also a sequel to my previous shark analysis post <a href="https://kimnewzealand.github.io/2019/05/02/sharks-analysis/">Is Swimming with Sharks Dangerous?</a>, digging further into the reduction in shark numbers due to commercial fishing.</p>
+<p>This is also a sequel to my previous shark analysis post <a href="https://kimnewzealand.github.io/2019/05/02/sharks-analysis/">Is Swimming with Sharks Dangerous?</a>, digging further into the potential reduction in shark numbers due to commercial fishing.</p>
 <pre class="r"><code># Load packages
 library(tidyverse)
 library(sf)
@@ -441,8 +441,18 @@ vessels_world_sum &lt;- vessels_world %&gt;%
 <div id="exploratory-data-analysis" class="section level2">
 <h2>Exploratory Data Analysis</h2>
 <p>Since the data are <code>sf</code> objects, we can use <a href="https://cran.r-project.org/web/packages/ggplot2">ggplot2</a> to create quick initial plots.</p>
-<p><strong>Vessels data</strong></p>
-<p>Let’s first take a look at the vessels data using ggplot2, first as a barchart.</p>
+<p><strong>Vessel counts</strong></p>
+<p>Since we have two categorical variables and frequency counts we can view the vessel counts as a heatmap. I am using cyan and blue colours as a watery theme.</p>
+<pre class="r"><code># First create a frequency table
+vessels_table &lt;- as.data.frame(table(vessels$flag,vessels$geartype))
+# Use ggplot to plot the heatmap with geom_tile.
+ggplot(vessels_table %&gt;% filter(Freq&gt;500), aes(Var1,Var2)) + 
+      geom_tile(aes(fill = Freq), colour = &quot;black&quot;) + scale_fill_gradient(low = &quot;cyan&quot;, high = &quot;steelblue&quot;) +
+      labs(x=&quot;Country Flag&quot;,y=&quot;Vessel Gear Type&quot;)</code></pre>
+<p><img src="/post/vesselsanalysis_files/figure-html/heatmap-1.png" width="672" /></p>
+<p>Here we see that China, Norway, USA and Iceland have the largest number of fishing vessels for the time period, with trawlers as the second largest category.</p>
+<p><strong>Vessel tonnage total</strong></p>
+<p>Now take a look at the vessels total tonnage data using ggplot2, first as a barchart.</p>
 <pre class="r"><code># Sort the tonnage_sum
 vessels_world_sum %&gt;% 
       arrange(desc(tonnage_sum))</code></pre>
@@ -469,29 +479,13 @@ vessels_world_sum %&gt;%
 ## # ... with 755 more rows</code></pre>
 <pre class="r"><code># Create a barchart using geom_col
 vessels_world_sum %&gt;%
-      filter(tonnage_sum&gt;10000) %&gt;% 
+      # Filter the data as there are too many countries to view on a barchart
+      filter(tonnage_sum&gt;100000) %&gt;% 
       ggplot()+
       geom_col(aes(flag,tonnage_sum))+
       coord_flip()</code></pre>
 <p><img src="/post/vesselsanalysis_files/figure-html/barchart%20by%20flag-1.png" width="672" /></p>
-<p>Since we have two categorical variables and frequency counts we can view the vessel counts as a heatmap.</p>
-<pre class="r"><code># First create a frequency table
-vessels_table &lt;- as.data.frame(table(vessels$flag,vessels$geartype))
-# Use ggplot to plot the heatmap with geom_tile.
-ggplot(vessels_table %&gt;% filter(Freq&gt;500), aes(Var1,Var2)) + 
-      geom_tile(aes(fill = Freq), colour = &quot;black&quot;) + scale_fill_gradient(low = &quot;cyan&quot;, high = &quot;steelblue&quot;) +
-      labs(x=&quot;Country Flag&quot;,y=&quot;Vessel Gear Type&quot;)</code></pre>
-<p><img src="/post/vesselsanalysis_files/figure-html/heatmap-1.png" width="672" /></p>
-<p>Here we see that China, Norway, USA and Iceland have the largest number of fishing vessels for the time period, with trawlers as the second largest category.</p>
-<p>Now we will create a univariate chloropleth map with the raw amounts.</p>
-<pre class="r"><code># Check the max of tonnage_sum 
-max(vessels_world_sum$tonnage_sum)</code></pre>
-<pre><code>## [1] 1941954</code></pre>
-<pre class="r"><code># Create a chloropeth map with ggplot to view the sum of the tonnage by country
-ggplot(data=vessels_world_sum)+
-      geom_sf(aes(fill = tonnage_sum)) </code></pre>
-<p><img src="/post/vesselsanalysis_files/figure-html/ggplot%20map-1.png" width="672" /></p>
-<p>Using the raw counts distorts the data as larger countries will typically have a larger number of fishing vessels. Now we will normalise the tonnage data and map the chloroplast as a proportion, with the total tonnage per capita as this variable is available from the world dataset from Natural Earth. GDP is already per capita but we will change to per million.</p>
+<p>Using raw values distorts the data as larger countries will typically have a larger number of fishing vessels. Now we will normalise the tonnage data to map a chloropleth as a proportion, with the total tonnage per capita. GDP is already per capita available from the world dataset from Natural Earth, but we will also change to per million.</p>
 <pre class="r"><code>tonnage_prop &lt;- left_join(vessels_world_sum, 
                           world %&gt;%
                                 select(iso_a3, admin, pop_est, gdp_md_est) %&gt;%  
@@ -503,7 +497,6 @@ tonnage_prop %&gt;%
       ggplot()+
       geom_sf(aes(fill = tonnage_per_mil),colour=NA)</code></pre>
 <p><img src="/post/vesselsanalysis_files/figure-html/chloropeth%20tonnage%20per%20cap-1.png" width="672" /></p>
-<p>These plots uses the default colour palette. We will change this palette in the final dataviz.</p>
 </div>
 <div id="data-visualisation" class="section level2">
 <h2>Data Visualisation</h2>
@@ -540,7 +533,7 @@ cowplot::ggdraw() +
 <div id="conclusions" class="section level2">
 <h2>Conclusions</h2>
 <p>China, Great Britain, France, Spain and the USA appear to be big fishers. These big fishing developed countries are represented by the darker colour combination on the scale. Surprisingly, lower income countries such as Greenland, Botswana and Libya also have large fishing vessels fleets.</p>
-<p>This is an initial view of big fisher countries who have the propensity to consume and sell fish. It doesn’t however show in which waters they are actively fishing or what fish life are being caught. It could be useful to obtain shark numbers to see how many are being affected by fishing activities.</p>
+<p>This is an initial view of big fisher countries who have the propensity to consume and or sell fish. It doesn’t however show in which waters they are actively fishing or what fish life are being caught. It could be useful to obtain shark numbers to see how many are being affected by fishing activities.</p>
 </div>
 <div id="references" class="section level2">
 <h2>References</h2>
