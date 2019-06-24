@@ -21,13 +21,13 @@
   <!--<![endif]-->
 
   <!--[if lte IE 8]>
-  <link rel="stylesheet" href="/css/side-menu-old-ie.css">
+  <link rel="stylesheet" href="https://kimnewzealand.github.io/css/side-menu-old-ie.css">
   <![endif]-->
   <!--[if gt IE 8]><!-->
-  <link rel="stylesheet" href="/css/side-menu.css">
+  <link rel="stylesheet" href="https://kimnewzealand.github.io/css/side-menu.css">
   <!--<![endif]-->
 
-  <link rel="stylesheet" href="/css/blackburn.css">
+  <link rel="stylesheet" href="https://kimnewzealand.github.io/css/blackburn.css">
 
   
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -48,7 +48,7 @@
   <script>hljs.initHighlightingOnLoad();</script>
   
 
-  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="https://kimnewzealand.github.io/img/favicon.ico" type="image/x-icon" />
 
   
   
@@ -67,7 +67,7 @@
 <div id="menu">
 
   
-  <a class="pure-menu-heading brand" href="/">Kim Fitter</a>
+  <a class="pure-menu-heading brand" href="https://kimnewzealand.github.io/">Kim Fitter</a>
 
 
   <div class="pure-menu">
@@ -75,13 +75,13 @@
       
       
         <li class="pure-menu-item">
-          <a class="pure-menu-link" href="/"><i class='fa fa-home fa-fw'></i>Home</a>
+          <a class="pure-menu-link" href="https://kimnewzealand.github.io/"><i class='fa fa-home fa-fw'></i>Home</a>
       
         </li>
       
       
         <li class="pure-menu-item">
-          <a class="pure-menu-link" href="/about/"><i class='fa fa-user fa-fw'></i>About</a>
+          <a class="pure-menu-link" href="https://kimnewzealand.github.io/about/"><i class='fa fa-user fa-fw'></i>About</a>
       
         </li>
       
@@ -216,9 +216,9 @@
   <div>
     <i class="fa fa-tags fa-fw"></i>
     
-      <a class="post-taxonomy-tag" href="/tags/r">R</a>&nbsp;&#47;
+      <a class="post-taxonomy-tag" href="https://kimnewzealand.github.io/tags/r">R</a>&nbsp;&#47;
     
-      <a class="post-taxonomy-tag" href="/tags/viz">Viz</a>
+      <a class="post-taxonomy-tag" href="https://kimnewzealand.github.io/tags/viz">Viz</a>
     
   </div>
   
@@ -449,7 +449,7 @@ vessels_table &lt;- as.data.frame(table(vessels$flag,vessels$geartype))
 ggplot(vessels_table %&gt;% filter(Freq&gt;500), aes(Var1,Var2)) + 
       geom_tile(aes(fill = Freq), colour = &quot;black&quot;) + scale_fill_gradient(low = &quot;cyan&quot;, high = &quot;steelblue&quot;) +
       labs(x=&quot;Country Flag&quot;,y=&quot;Vessel Gear Type&quot;)</code></pre>
-<p><img src="/post/vesselsanalysis_files/figure-html/heatmap-1.png" width="672" /></p>
+<p><img src="https://kimnewzealand.github.io/post/vesselsanalysis_files/figure-html/heatmap-1.png" width="672" /></p>
 <p>Here we see that China, Norway, USA and Iceland have the largest number of fishing vessels for the time period, with trawlers as the second largest category.</p>
 <p><strong>Vessel tonnage total</strong></p>
 <p>Now take a look at the vessels total tonnage data using ggplot2, first as a barchart.</p>
@@ -484,7 +484,7 @@ vessels_world_sum %&gt;%
       ggplot()+
       geom_col(aes(flag,tonnage_sum))+
       coord_flip()</code></pre>
-<p><img src="/post/vesselsanalysis_files/figure-html/barchart%20by%20flag-1.png" width="672" /></p>
+<p><img src="https://kimnewzealand.github.io/post/vesselsanalysis_files/figure-html/barchart%20by%20flag-1.png" width="672" /></p>
 <p>Using raw values distorts the data as larger countries will typically have a larger number of fishing vessels. Now we will normalise the tonnage data to map a chloropleth as a proportion, with the total tonnage per capita. GDP is already per capita available from the world dataset from Natural Earth, but we will also change to per million.</p>
 <pre class="r"><code>tonnage_prop &lt;- left_join(vessels_world_sum, 
                           world %&gt;%
@@ -522,7 +522,7 @@ map &lt;- ggplot() +
 cowplot::ggdraw() +
   draw_plot(map, 0, 0, 1, 1) +
   draw_plot(legend, 0.1, .1, 0.2, 0.2)</code></pre>
-<p><img src="/post/vesselsanalysis_files/figure-html/bivariate%20data-1.png" width="672" /></p>
+<p><img src="https://kimnewzealand.github.io/post/vesselsanalysis_files/figure-html/bivariate%20data-1.png" width="672" /></p>
 <pre class="r"><code># Save ggplot for blogpost
 # ggsave(filename = &quot;vesselsmap.jpg&quot;) # default to last plot displayed</code></pre>
 </div>
@@ -742,13 +742,13 @@ thankr::shoulders() %&gt;%
 <div class="prev-next-post pure-g">
   <div class="pure-u-1-24" style="text-align: left;">
     
-    <a href="/2019/05/16/fishing-analysis/"><i class="fa fa-chevron-left"></i></a>
+    <a href="https://kimnewzealand.github.io/2019/05/02/sharks-analysis/"><i class="fa fa-chevron-left"></i></a>
     
   </div>
   <div class="pure-u-10-24">
     
     <nav class="prev">
-      <a href="/2019/05/16/fishing-analysis/">Global Fishing Watch</a>
+      <a href="https://kimnewzealand.github.io/2019/05/02/sharks-analysis/">Is Swimming with Sharks Dangerous?</a>
     </nav>
     
   </div>
@@ -771,7 +771,7 @@ thankr::shoulders() %&gt;%
 
 </div>
 </div>
-<script src="/js/ui.js"></script>
+<script src="https://kimnewzealand.github.io/js/ui.js"></script>
 
 
 <script>
