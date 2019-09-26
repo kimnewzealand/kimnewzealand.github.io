@@ -7,10 +7,21 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)</copyright>
-    <lastBuildDate>Wed, 05 Jun 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 22 Sep 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://kimnewzealand.github.io/tags/r/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Should You Swim in Ruepehu Crater Lake?</title>
+      <link>https://kimnewzealand.github.io/2019/09/22/crater-lake/</link>
+      <pubDate>Sun, 22 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://kimnewzealand.github.io/2019/09/22/crater-lake/</guid>
+      <description>IntroductionDataExploratory Data AnalysisData CleaningData VisualisationConclusionsReferencesIntroductionMount Ruepehu on the North Island is skied in winter and walked in summer.
+This analysis looks at whether we should swim in the crater lake at the top of the mountain.
+DataWe can access volcano field time series temperature observation results data from GeoNet.</description>
+    </item>
     
     <item>
       <title>Which Countries have Large Scale Fishing Vessels?</title>
