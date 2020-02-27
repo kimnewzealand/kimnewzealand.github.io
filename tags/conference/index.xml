@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Conference on Kim Fitter</title>
+    <link>https://kimnewzealand.github.io/tags/conference/</link>
+    <description>Recent content in Conference on Kim Fitter</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)</copyright>
+    
+	<atom:link href="https://kimnewzealand.github.io/tags/conference/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>The first satRdays conference in New Zealand</title>
+      <link>https://kimnewzealand.github.io/1/01/01/satrdays-nz/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://kimnewzealand.github.io/1/01/01/satrdays-nz/</guid>
+      <description>27 February 2020
+The first satrdays conference was held in Auckland, New Zealand on 22 February 2020. We had an amazing day pulled together by a great group of volunteers and we hope that we can hold this event annually, and perhaps in cities around New Zealand.
+blogdown::shortcode(&amp;quot;tweet&amp;quot;, &amp;quot;1231039366438387713&amp;quot;)Awesome organisers and volunteers.
+Thanks team !!
+Jonathan Ng, Wai Loon Tham, @Kim_Fitter @MeganGuidry_@hackity_pat @snowflaksmasher Izzy Johnson, @earowang @selinthefirst @am_innocenter#rstats #satRdays #satRday pic.</description>
+    </item>
+    
+  </channel>
+</rss>

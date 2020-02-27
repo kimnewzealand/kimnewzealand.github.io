@@ -264,5 +264,18 @@ I used the fantastic tutorial by Tyler Clavelle to create this blog. This websit
       <description>Which country has the most interest in Rugby ?code{white-space: pre;}pre:not([class]) {background-color: white;}if (window.hljs) {hljs.configure({languages: []});hljs.initHighlightingOnLoad();if (document.readyState &amp;&amp; document.readyState === &#34;complete&#34;) {window.setTimeout(function() { hljs.initHighlighting(); }, 0);}}h1 {font-size: 34px;}h1.title {font-size: 38px;}h2 {font-size: 30px;}h3 {font-size: 24px;}h4 {font-size: 18px;}h5 {font-size: 16px;}h6 {font-size: 12px;}.</description>
     </item>
     
+    <item>
+      <title>The first satRdays conference in New Zealand</title>
+      <link>https://kimnewzealand.github.io/1/01/01/satrdays-nz/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://kimnewzealand.github.io/1/01/01/satrdays-nz/</guid>
+      <description>27 February 2020
+The first satrdays conference was held in Auckland, New Zealand on 22 February 2020. We had an amazing day pulled together by a great group of volunteers and we hope that we can hold this event annually, and perhaps in cities around New Zealand.
+blogdown::shortcode(&amp;quot;tweet&amp;quot;, &amp;quot;1231039366438387713&amp;quot;)Awesome organisers and volunteers.
+Thanks team !!
+Jonathan Ng, Wai Loon Tham, @Kim_Fitter @MeganGuidry_@hackity_pat @snowflaksmasher Izzy Johnson, @earowang @selinthefirst @am_innocenter#rstats #satRdays #satRday pic.</description>
+    </item>
+    
   </channel>
 </rss>

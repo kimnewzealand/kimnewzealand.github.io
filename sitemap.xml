@@ -144,6 +144,11 @@
   </url>
   
   <url>
+    <loc>https://kimnewzealand.github.io/tags/conference/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://kimnewzealand.github.io/tags/creditrisk/</loc>
     <lastmod>2018-08-15T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -243,6 +248,10 @@
     <loc>https://kimnewzealand.github.io/tags/</loc>
     <lastmod>2019-01-31T00:00:00+00:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://kimnewzealand.github.io/1/01/01/satrdays-nz/</loc>
   </url>
   
   <url>

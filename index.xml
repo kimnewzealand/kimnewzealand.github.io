@@ -275,5 +275,18 @@ I studied Actuarial Science and previously worked in analyst roles and project d
 I discovered data science as a magical field that combines my statistics and analytical skills; my project and multitasking experience; a curiosity of numbers and patterns; love of learning new tools and concepts whilst working with a variety of people and teams.</description>
     </item>
     
+    <item>
+      <title>The first satRdays conference in New Zealand</title>
+      <link>https://kimnewzealand.github.io/1/01/01/satrdays-nz/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://kimnewzealand.github.io/1/01/01/satrdays-nz/</guid>
+      <description>27 February 2020
+The first satrdays conference was held in Auckland, New Zealand on 22 February 2020. We had an amazing day pulled together by a great group of volunteers and we hope that we can hold this event annually, and perhaps in cities around New Zealand.
+blogdown::shortcode(&amp;quot;tweet&amp;quot;, &amp;quot;1231039366438387713&amp;quot;)Awesome organisers and volunteers.
+Thanks team !!
+Jonathan Ng, Wai Loon Tham, @Kim_Fitter @MeganGuidry_@hackity_pat @snowflaksmasher Izzy Johnson, @earowang @selinthefirst @am_innocenter#rstats #satRdays #satRday pic.</description>
+    </item>
+    
   </channel>
 </rss>
