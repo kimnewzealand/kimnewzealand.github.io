@@ -1,26 +1,0 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Creditrisk on Kim Fitter</title>
-    <link>https://kimnewzealand.github.io/tags/creditrisk/</link>
-    <description>Recent content in Creditrisk on Kim Fitter</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <copyright>Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)</copyright>
-    <lastBuildDate>Wed, 15 Aug 2018 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://kimnewzealand.github.io/tags/creditrisk/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title>Credit Risk Modeling and Scorecard Example</title>
-      <link>https://kimnewzealand.github.io/2018/08/15/credit-risk-modeling/</link>
-      <pubDate>Wed, 15 Aug 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://kimnewzealand.github.io/2018/08/15/credit-risk-modeling/</guid>
-      <description>IntroductionLoad the dataSummary of dataClean DataExploratory Data AnalysisFeature EngineeringTrainingCreate ScorecardConclusionsIntroductionCredit Risk modeling predicts whether a customer or applicant may or may not default on a loan. These models include predictor variables that are categorical or numeric. One of the outputs in the modeling process is a credit scorecard with attributes to allocate scores.
-The objectives of this post are as follow:</description>
-    </item>
-    
-  </channel>
-</rss>
