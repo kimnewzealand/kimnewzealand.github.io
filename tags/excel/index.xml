@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Excel on Kim Fitter</title>
+    <link>https://kimnewzealand.github.io/tags/excel/</link>
+    <description>Recent content in Excel on Kim Fitter</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)</copyright>
+    <lastBuildDate>Thu, 19 Jul 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://kimnewzealand.github.io/tags/excel/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Tutorial on Pivot Tables and other Excel things you can also do in R - Witch Trials data</title>
+      <link>https://kimnewzealand.github.io/2018/07/19/excel-r-tutorial/</link>
+      <pubDate>Thu, 19 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://kimnewzealand.github.io/2018/07/19/excel-r-tutorial/</guid>
+      <description>IntroductionThis tutorial was inspired by the R Curious tutorial at useR! 2018, and follows on thematically from the R Curious workshop notes as an extension.
+It is aimed at those with a background in Excel, who would also like to use R for data analysis. This tutorial compares the things you would normally do in Excel, but with an equivalent function in R.
+This introductory level tutorial assumes you have already installed R and R studio and had a brief introduction to the R basics and R Markdown.</description>
+    </item>
+    
+    <item>
+      <title>Excel to Interactive Census Map</title>
+      <link>https://kimnewzealand.github.io/2018/04/06/excel-to-map/</link>
+      <pubDate>Fri, 06 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://kimnewzealand.github.io/2018/04/06/excel-to-map/</guid>
+      <description>I have been experimenting with spatial data and looking at ways to combine data objects to get different views and perspectives. This post has the following objectives:
+Import and load data direct to R without manually saving files to a local directory, so that the end to end process is reproducible.Use vectors to efficiently clean the Excel sheet, reducing manual steps where possible so that the process could be leveraged to clean other Excel sheets in the Census data.</description>
+    </item>
+    
+  </channel>
+</rss>

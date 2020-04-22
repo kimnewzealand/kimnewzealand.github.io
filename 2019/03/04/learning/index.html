@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.31.1" />
+
+  <title>Interactive Learning Roadmap - Part 1 &middot; Kim Fitter</title>
+
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/pure-min.css">
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-old-ie-min.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-min.css">
+  <!--<![endif]-->
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://kimnewzealand.github.io/css/side-menu-old-ie.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://kimnewzealand.github.io/css/side-menu.css">
+  <!--<![endif]-->
+
+  <link rel="stylesheet" href="https://kimnewzealand.github.io/css/blackburn.css">
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+ 
+  
+
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/androidstudio.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+
+  <link rel="shortcut icon" href="https://kimnewzealand.github.io/img/favicon.ico" type="image/x-icon" />
+
+  
+  
+
+</head>
+
+
+<body>
+<div id="layout">
+
+  
+<a href="#menu" id="menuLink" class="menu-link">
+  
+  <span></span>
+</a>
+<div id="menu">
+
+  
+  <a class="pure-menu-heading brand" href="https://kimnewzealand.github.io/">Kim Fitter</a>
+
+
+  <div class="pure-menu">
+    <ul class="pure-menu-list">
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://kimnewzealand.github.io/"><i class='fa fa-home fa-fw'></i>Home</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://kimnewzealand.github.io/about/"><i class='fa fa-user fa-fw'></i>About</a>
+      
+        </li>
+      
+    </ul>
+  </div>
+
+  <div class="pure-menu social">
+  <ul class="pure-menu-list">
+
+
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://twitter.com/kim_fitter" target="_blank"><i class="fa fa-twitter-square fa-fw"></i>Twitter</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://github.com/kimnewzealand" target="_blank"><i class="fa fa-github-square fa-fw"></i>GitHub</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </ul>
+</div>
+
+
+  <div>
+  <div class="small-print">
+    <small>Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)</small>
+  </div>
+  <div class="small-print">
+    <small>Built with&nbsp;<a href="https://gohugo.io/" target="_blank">Hugo</a></small>
+    <small>Theme&nbsp;<a href="https://github.com/yoshiharuyamashita/blackburn" target="_blank">Blackburn</a></small>
+  </div>
+</div>
+
+</div>
+
+
+  <div id="main">
+
+
+<div class="header">
+  <h1>Interactive Learning Roadmap - Part 1</h1>
+  <h2></h2>
+</div>
+<div class="content">
+
+  <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>04 Mar 2019</time>
+  </div>
+
+  
+
+  
+
+  
+  
+  
+  <div>
+    <i class="fa fa-tags fa-fw"></i>
+    
+      <a class="post-taxonomy-tag" href="https://kimnewzealand.github.io/tags/r">R</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="https://kimnewzealand.github.io/tags/viz">Viz</a>
+    
+  </div>
+  
+  
+
+</div>
+
+  <script src="https://kimnewzealand.github.io/rmarkdown-libs/htmlwidgets/htmlwidgets.js"></script>
+<script src="https://kimnewzealand.github.io/rmarkdown-libs/d3/d3.min.js"></script>
+<script src="https://kimnewzealand.github.io/rmarkdown-libs/d3-lasso/d3-lasso.min.js"></script>
+<link href="https://kimnewzealand.github.io/rmarkdown-libs/ggiraph/styles.css" rel="stylesheet" />
+<script src="https://kimnewzealand.github.io/rmarkdown-libs/ggiraph/ggiraph_utils.js"></script>
+<script src="https://kimnewzealand.github.io/rmarkdown-libs/ggiraph/ggiraph_over_effect.js"></script>
+<script src="https://kimnewzealand.github.io/rmarkdown-libs/ggiraph/ggiraph_zoom.js"></script>
+<script src="https://kimnewzealand.github.io/rmarkdown-libs/ggiraph/ggiraph_tooltip.js"></script>
+<script src="https://kimnewzealand.github.io/rmarkdown-libs/ggiraph/ggiraph_selector.js"></script>
+<script src="https://kimnewzealand.github.io/rmarkdown-libs/ggiraph-binding/ggiraph.js"></script>
+<script src="https://kimnewzealand.github.io/rmarkdown-libs/svg_1/scripts_svg_1.js"></script>
+<script src="https://kimnewzealand.github.io/rmarkdown-libs/svg_2/scripts_svg_2.js"></script>
+<script src="https://kimnewzealand.github.io/rmarkdown-libs/svg_3/scripts_svg_3.js"></script>
+<script src="https://kimnewzealand.github.io/rmarkdown-libs/svg_4/scripts_svg_4.js"></script>
+
+
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#data">Data</a></li>
+<li><a href="#exploratory-data-analysis">Exploratory Data Analysis</a></li>
+<li><a href="#first-roadmap">First Roadmap</a></li>
+<li><a href="#conclusions">Conclusions</a></li>
+<li><a href="#references">References</a></li>
+</ul>
+<div id="introduction" class="section level2">
+<h2>Introduction</h2>
+<p>Recently one of the problems I was trying to solve required matrix algebra.</p>
+<div class="figure">
+<img src="https://media.giphy.com/media/l2Ject9fem5QZOyTC/giphy.gif" style="width:100.0%" />
+
+</div>
+<p>This falls under the umbrella of need to know R basics so I realised I needed a way to track and refresh my R skills, recognise gaps and ultimately create a reference cheat-sheet.</p>
+<p>Learning R is a bit of a journey over time so here goes <strong>Part 1</strong> of an interactive visualisation project using tidyverse and ggplot compatible<sup>1</sup> packages.</p>
+<pre class="r"><code># install.packages(&quot;tidyverse&quot;)
+library(tidyverse)
+library(ggiraph)
+# devtools::install_github(&quot;ricardo-bion/ggradar&quot;, 
+#                          dependencies=TRUE)
+library(ggradar)
+# install.packages(&quot;ggiraphExtra&quot;)
+library(ggiraphExtra)</code></pre>
+</div>
+<div id="data" class="section level2">
+<h2>Data</h2>
+<p>One of the things every Intro to R course book or course does is provides you with data. However some real life projects need you to create the data, and all projects require you to have some level of understanding of the data so I would argue that when possible create or architect the data yourself.</p>
+<p>Also for me, learning works best when the data is personal and relevant. In this project I’ll create dataframes with a self assessment of my own R skills, levels of experience and perceived complexity, tips and dates. I will start with a scale of 1-6 for the numeric data, as it is even.</p>
+<pre class="r"><code># Create dataframes
+setupR &lt;- data.frame(skill=c(&quot;Install RStudio&quot;, &quot;Install R&quot;,&quot;Install R packages&quot;,&quot;Load Packages&quot;, &quot;Update RStudio&quot;,&quot;Update R&quot;, &quot;Update R packages&quot;,&quot;Basic debugging&quot;,&quot;Browser debugging&quot;),
+                     experience=c(6,6,6,6,6,3,6,5,1),
+                     complexity=c(1,1,1,1,1,1,2,1,3),
+                     tip=c(&quot;&quot;,&quot;&quot;,&quot;CRAN install.packages(), GitHub devtools, Jan-19 remotes &quot;,&quot;&quot;,&quot;Nov-18 RStudio packages tab&quot;, &quot;&quot;,&quot;&quot;, &quot;Apr-17 Misspelling and punctuation&quot;,&quot;&quot;),
+                     date=c(&quot;Apr-17&quot;, &quot;Apr-17&quot;, &quot;Apr-17&quot;, &quot;Apr-17&quot;, &quot;Apr-17&quot;, &quot;Apr-17&quot;, &quot;Nov-18&quot;, &quot;Apr-17&quot;, &quot;&quot;),
+                     stringsAsFactors = FALSE)
+
+objectsR &lt;- data.frame(skill=c(&quot;Object assignment&quot;,&quot;Classes&quot;, &quot;Scaler&quot;,&quot;Vectors&quot;,&quot;Factors&quot;,&quot;Matrices&quot;, &quot;Arrays&quot;, &quot;Dataframes&quot;, &quot;Lists&quot;,&quot;Environments&quot;,&quot;Tibbles&quot;),
+                       experience=c(4,5,5,5,3,5,4,4,3,3,3),
+                       complexity=c(3,1,1,1,1,1,1,1,3,3,3),
+                       tip=c( &quot;&quot;,&quot;lubridate for dates&quot;, &quot;&quot;,&quot;c(), a:b, seq(), rep()&quot;,&quot;forcats&quot;, &quot;Feb-19 Use for dataframe manipulation&quot;,&quot;&quot;,&quot;data.frame(name = c(),... )&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;), 
+                       date=c(&quot;Apr-17&quot;,&quot;Apr-17&quot;,&quot;Apr-17&quot;, &quot;Apr-17&quot;, &quot;Apr-17&quot;, &quot;Apr-17&quot;, &quot;Apr-17&quot;, &quot;Apr-17&quot;, &quot;Apr-17&quot;,&quot;Sep-17&quot;,&quot;Jan-18&quot;),
+                       stringsAsFactors = FALSE)
+
+functionsR &lt;- data.frame(skill=c(&quot;Create a function&quot;, &quot;Vector functions&quot;),
+                        experience=c(5,4),
+                        complexity=c(1,1),
+                        tip=c(&quot;function (x) { }&quot;,&quot;sum(), mean(), sd(), summary(), length(), unique(), table()&quot;),
+                        date=c(&quot;Apr-17&quot;,&quot;Apr-17&quot;),
+                        stringsAsFactors = FALSE)
+
+importR &lt;- data.frame(skill=c( &quot;txt&quot;, &quot;csv&quot;, &quot;Excel&quot;),
+                      experience=c(5,5,5),
+                      complexity=c(2,2,2),
+                      tip=c(&quot;read.table()&quot; ,&quot;readxl read_csv()&quot;,&quot;readxl read_xls&quot;),
+                      date=c(&quot;Apr-17&quot;,&quot;Jun-17&quot;,&quot;Jun-17&quot;),
+                      stringsAsFactors = FALSE)
+
+exportR &lt;- data.frame(skill=c( &quot;txt&quot;, &quot;csv&quot;, &quot;Excel&quot;),
+                      experience=c(5,5,5),
+                      complexity=c(2,2,2),
+                      tip=c(&quot;write.table()&quot; ,&quot;readxl write_csv()&quot;,&quot;readxl write_xls&quot;),
+                      date=c(&quot;Apr-17&quot;,&quot;Jun-17&quot;,&quot;Jun-17&quot;),
+                      stringsAsFactors = FALSE)
+
+datamungingR &lt;- data.frame(skill=c(&quot;Numerical Indexing&quot;, &quot;Logical Indexing&quot;,&quot;Subset&quot;,&quot;Sorting&quot;,&quot;Combine&quot;,&quot;Summarise&quot;,&quot;Recoding&quot;,&quot;Reshape&quot;,&quot;Regex&quot;),
+                           experience=c(5,5,3,5,4,4,3,2,2),
+                           complexity=c(2,2,2,2,2,3,3,5,5),
+                           tip=c(&quot;[row,column], [[list]]&quot;,&quot;operators, &amp; (and), | (or), %in%, is.na(), which()&quot;,&quot;dplyr select()&quot;,&quot;order(decreasing = TRUE)&quot;,&quot;merge(x,y,by=,all=)&quot;,&quot;aggregate(), dplyr group_by() summarise(n=n())&quot;,&quot;&quot;,&quot;tidyr gather() spread()&quot;,&quot;stringr&quot;),
+                           date=c(&quot;Apr-17&quot;, &quot;Apr-17&quot;,&quot;Apr-17&quot;, &quot;Apr-17&quot;, &quot;Apr-17&quot;,&quot;Apr-17&quot;,&quot;Jun-17&quot;,&quot;Jun-17&quot;,&quot;Jun-17&quot;),
+                           stringsAsFactors = FALSE)
+
+vizR &lt;- data.frame(skill=c( &quot;Base plots&quot;, &quot;ggplot syntax&quot;,&quot;ggplot2 themes&quot;, &quot;Interactive&quot;),
+                   experience=c(1,3,3,3),
+                   complexity=c(1,1,3,5),
+                   tip=c(&quot;&quot;,&quot;ggplot2&quot;,&quot;theme_*, Own theme gist&quot;, &quot;ggiraph&quot;),
+                   date=c(&quot;Apr-17&quot;,&quot;Apr-17&quot;,&quot;Jun-17&quot;,&quot;Feb-17&quot;),
+                   stringsAsFactors = FALSE)</code></pre>
+<p>Take a look at the structure of the first data frame <code>setupR</code> using glimpse from the <a href="https://cran.r-project.org/web/packages/tibble/index.html">tibble</a>.</p>
+<pre class="r"><code># Summary of setupR dataframe
+glimpse(setupR)</code></pre>
+<pre><code>## Observations: 9
+## Variables: 5
+## $ skill      &lt;chr&gt; &quot;Install RStudio&quot;, &quot;Install R&quot;, &quot;Install R packages...
+## $ experience &lt;dbl&gt; 6, 6, 6, 6, 6, 3, 6, 5, 1
+## $ complexity &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 2, 1, 3
+## $ tip        &lt;chr&gt; &quot;&quot;, &quot;&quot;, &quot;CRAN install.packages(), GitHub devtools, ...
+## $ date       &lt;chr&gt; &quot;Apr-17&quot;, &quot;Apr-17&quot;, &quot;Apr-17&quot;, &quot;Apr-17&quot;, &quot;Apr-17&quot;, &quot;...</code></pre>
+<p>This data should be useful for visualisations as the variables have multiple classes. The numeric <code>experience</code> and <code>complexity</code> variables can be used for sizes and coordinates. The <code>date</code> variable can be used to view progress over time (once converted to a date format), and the character <code>skill</code> and <code>tip</code> variables for categories or labels.</p>
+<p>With these dataframes as baseline, in order to add new skills create a function to do this, instead of manually updating the dataframes.</p>
+<pre class="r"><code># Use readline function to create a prompt to store values in scaler variables, then combine with a vector which can be appended to the dataframe
+addskill &lt;- function(df) {
+      newname &lt;- readline(prompt=&quot;Enter skill name: &quot;)
+      newexperience &lt;- readline(prompt=&quot;Enter experience (1-5): &quot;)
+      newcomplexity &lt;- readline(prompt=&quot;Enter experience (1-5): &quot;)
+      newtip &lt;- readline(prompt=&quot;Enter tip: &quot;)
+      newdate &lt;- readline(prompt=&quot;Enter date (MMM-YY): &quot;)
+
+      # Create a vector
+      newskill &lt;- c(skill=newname,
+                    experience=newexperience,
+                    complexity=newcomplexity,
+                    tip=newtip,
+                    date=newdate)
+      newskill &lt;- as.data.frame(newskill) %&gt;% 
+            t()     
+
+      rbind(df,newskill)
+}
+# Use the addskill function
+# functionsR &lt;- addskill(functionsR)
+# functionsR$experience &lt;- as.numeric(functionsR$experience)</code></pre>
+<p>If the datasets have been updated we may need to save them to a file (or database).</p>
+<pre class="r"><code># Use write.csv to save dataframes to a flat file
+# write_csv(setupR,&quot;setupR.csv&quot;)
+# write_csv(importR,&quot;importR.csv&quot;)
+# write_csv(functionsR,&quot;functionsR.csv&quot;)
+# write_csv(objectsR,&quot;objectsR.csv&quot;)
+# write_csv(datamungingR,&quot;datamungingR.csv&quot;)
+# write_csv(vizR,&quot;vizR.csv&quot;)</code></pre>
+</div>
+<div id="exploratory-data-analysis" class="section level2">
+<h2>Exploratory Data Analysis</h2>
+<p>Let’s take a look at some different types of viz of the data.</p>
+<div id="barchart" class="section level3">
+<h3>Barchart</h3>
+<p>Use <a href="https://davidgohel.github.io/ggiraph/index.html">ggiraph</a><sup>1</sup> to create an interactive barchart of the <code>setupR</code> dataframe. Use interactive labels to show the tips.</p>
+<pre class="r"><code># Create a ggplot object firstg for the setupR dataframe
+firstg &lt;- ggplot(data=setupR,
+                 # Set the experience as the bar category but keep the ordering as in the dataframe
+                 aes(factor(skill, level=skill, ordered=FALSE), experience, fill=experience)) +
+      coord_flip()+
+      # Use viridis colour palette with plasma as this has a range from blue to yelllow and clearly distinguishes the categories
+      scale_fill_viridis_c(option=&quot;plasma&quot;)+
+      ggtitle(&quot;R Setup - Self-Assessment of Experience  (1-6)&quot;) +
+      xlab(&quot;&quot;)+
+      ylab(&quot;Experience level&quot;) +
+      theme_minimal()
+# Use ggiraph function to plot an interactive bar chart with the tips as tooltips
+ggiraph(code = print(firstg +
+                           geom_bar_interactive(aes(tooltip = paste0(&quot;Tip: &quot;,tip)),
+                                                   show.legend = FALSE,
+                                                   size=3,
+                                                   stat=&quot;identity&quot;) ),
+        hover_css = &quot;cursor:pointer;font:arial;&quot;)</code></pre>
+<div id="htmlwidget-1" style="width:672px;height:480px;" class="ggiraph html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1">{"x":{"html":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" id=\"svg_1\" viewBox=\"0 0 432.00 360.00\">\n  <g>\n    <defs>\n      <clipPath id=\"cl1_0\">\n        <rect x=\"0.00\" y=\"360.00\" width=\"0.00\" height=\"72.00\"/>\n      <\/clipPath>\n    <\/defs>\n    <rect x=\"0.00\" y=\"0.00\" width=\"432.00\" height=\"360.00\" id=\"1\" clip-path=\"url(#cl1_0)\" fill=\"#FFFFFF\" fill-opacity=\"1\" stroke-width=\"0.75\" stroke=\"#FFFFFF\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <defs>\n      <clipPath id=\"cl1_1\">\n        <rect x=\"0.00\" y=\"0.00\" width=\"432.00\" height=\"360.00\"/>\n      <\/clipPath>\n    <\/defs>\n    <defs>\n      <clipPath id=\"cl1_2\">\n        <rect x=\"102.61\" y=\"22.80\" width=\"323.91\" height=\"304.67\"/>\n      <\/clipPath>\n    <\/defs>\n    <polyline points=\"166.41,327.47 166.41,22.80\" id=\"2\" clip-path=\"url(#cl1_2)\" fill=\"none\" stroke-width=\"0.533489\" stroke=\"#EBEBEB\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"butt\"/>\n    <polyline points=\"264.56,327.47 264.56,22.80\" id=\"3\" clip-path=\"url(#cl1_2)\" fill=\"none\" stroke-width=\"0.533489\" stroke=\"#EBEBEB\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"butt\"/>\n    <polyline points=\"362.72,327.47 362.72,22.80\" id=\"4\" clip-path=\"url(#cl1_2)\" fill=\"none\" stroke-width=\"0.533489\" stroke=\"#EBEBEB\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"butt\"/>\n    <polyline points=\"102.61,307.60 426.52,307.60\" id=\"5\" clip-path=\"url(#cl1_2)\" fill=\"none\" stroke-width=\"1.06698\" stroke=\"#EBEBEB\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"butt\"/>\n    <polyline points=\"102.61,274.49 426.52,274.49\" id=\"6\" clip-path=\"url(#cl1_2)\" fill=\"none\" stroke-width=\"1.06698\" stroke=\"#EBEBEB\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"butt\"/>\n    <polyline points=\"102.61,241.37 426.52,241.37\" id=\"7\" clip-path=\"url(#cl1_2)\" fill=\"none\" stroke-width=\"1.06698\" stroke=\"#EBEBEB\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"butt\"/>\n    <polyline points=\"102.61,208.25 426.52,208.25\" id=\"8\" clip-path=\"url(#cl1_2)\" fill=\"none\" stroke-width=\"1.06698\" stroke=\"#EBEBEB\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"butt\"/>\n    <polyline points=\"102.61,175.14 426.52,175.14\" id=\"9\" clip-path=\"url(#cl1_2)\" fill=\"none\" stroke-width=\"1.06698\" stroke=\"#EBEBEB\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"butt\"/>\n    <polyline points=\"102.61,142.02 426.52,142.02\" id=\"10\" clip-path=\"url(#cl1_2)\" fill=\"none\" stroke-width=\"1.06698\" stroke=\"#EBEBEB\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"butt\"/>\n    <polyline points=\"102.61,108.91 426.52,108.91\" id=\"11\" clip-path=\"url(#cl1_2)\" fill=\"none\" stroke-width=\"1.06698\" stroke=\"#EBEBEB\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"butt\"/>\n    <polyline points=\"102.61,75.79 426.52,75.79\" id=\"12\" clip-path=\"url(#cl1_2)\" fill=\"none\" stroke-width=\"1.06698\" stroke=\"#EBEBEB\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"butt\"/>\n    <polyline points=\"102.61,42.67 426.52,42.67\" id=\"13\" clip-path=\"url(#cl1_2)\" fill=\"none\" stroke-width=\"1.06698\" stroke=\"#EBEBEB\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"butt\"/>\n    <polyline points=\"117.33,327.47 117.33,22.80\" id=\"14\" clip-path=\"url(#cl1_2)\" fill=\"none\" stroke-width=\"1.06698\" stroke=\"#EBEBEB\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"butt\"/>\n    <polyline points=\"215.49,327.47 215.49,22.80\" id=\"15\" clip-path=\"url(#cl1_2)\" fill=\"none\" stroke-width=\"1.06698\" stroke=\"#EBEBEB\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"butt\"/>\n    <polyline points=\"313.64,327.47 313.64,22.80\" id=\"16\" clip-path=\"url(#cl1_2)\" fill=\"none\" stroke-width=\"1.06698\" stroke=\"#EBEBEB\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"butt\"/>\n    <polyline points=\"411.80,327.47 411.80,22.80\" id=\"17\" clip-path=\"url(#cl1_2)\" fill=\"none\" stroke-width=\"1.06698\" stroke=\"#EBEBEB\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"butt\"/>\n    <rect x=\"117.33\" y=\"292.70\" width=\"294.47\" height=\"29.80\" id=\"18\" clip-path=\"url(#cl1_2)\" fill=\"#F0F921\" fill-opacity=\"1\" stroke=\"none\"/>\n    <rect x=\"117.33\" y=\"259.59\" width=\"294.47\" height=\"29.80\" id=\"19\" clip-path=\"url(#cl1_2)\" fill=\"#F0F921\" fill-opacity=\"1\" stroke=\"none\"/>\n    <rect x=\"117.33\" y=\"226.47\" width=\"294.47\" height=\"29.80\" id=\"20\" clip-path=\"url(#cl1_2)\" fill=\"#F0F921\" fill-opacity=\"1\" stroke=\"none\"/>\n    <rect x=\"117.33\" y=\"193.35\" width=\"294.47\" height=\"29.80\" id=\"21\" clip-path=\"url(#cl1_2)\" fill=\"#F0F921\" fill-opacity=\"1\" stroke=\"none\"/>\n    <rect x=\"117.33\" y=\"160.24\" width=\"294.47\" height=\"29.80\" id=\"22\" clip-path=\"url(#cl1_2)\" fill=\"#F0F921\" fill-opacity=\"1\" stroke=\"none\"/>\n    <rect x=\"117.33\" y=\"127.12\" width=\"147.23\" height=\"29.80\" id=\"23\" clip-path=\"url(#cl1_2)\" fill=\"#B12A90\" fill-opacity=\"1\" stroke=\"none\"/>\n    <rect x=\"117.33\" y=\"94.00\" width=\"294.47\" height=\"29.80\" id=\"24\" clip-path=\"url(#cl1_2)\" fill=\"#F0F921\" fill-opacity=\"1\" stroke=\"none\"/>\n    <rect x=\"117.33\" y=\"60.89\" width=\"245.39\" height=\"29.80\" id=\"25\" clip-path=\"url(#cl1_2)\" fill=\"#FCA636\" fill-opacity=\"1\" stroke=\"none\"/>\n    <rect x=\"117.33\" y=\"27.77\" width=\"49.08\" height=\"29.80\" id=\"26\" clip-path=\"url(#cl1_2)\" fill=\"#0D0887\" fill-opacity=\"1\" stroke=\"none\"/>\n    <defs>\n      <clipPath id=\"cl1_3\">\n        <rect x=\"0.00\" y=\"0.00\" width=\"432.00\" height=\"360.00\"/>\n      <\/clipPath>\n    <\/defs>\n    <g clip-path=\"url(#cl1_3)\">\n      <text x=\"39.64\" y=\"310.82\" id=\"27\" font-size=\"6.60pt\" fill=\"#4D4D4D\" fill-opacity=\"1\" font-family=\"Arial\">Install RStudio<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl1_3)\">\n      <text x=\"65.16\" y=\"277.71\" id=\"28\" font-size=\"6.60pt\" fill=\"#4D4D4D\" fill-opacity=\"1\" font-family=\"Arial\">Install R<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl1_3)\">\n      <text x=\"24.14\" y=\"244.59\" id=\"29\" font-size=\"6.60pt\" fill=\"#4D4D4D\" fill-opacity=\"1\" font-family=\"Arial\">Install R packages<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl1_3)\">\n      <text x=\"35.63\" y=\"211.47\" id=\"30\" font-size=\"6.60pt\" fill=\"#4D4D4D\" fill-opacity=\"1\" font-family=\"Arial\">Load Packages<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl1_3)\">\n      <text x=\"34.13\" y=\"178.36\" id=\"31\" font-size=\"6.60pt\" fill=\"#4D4D4D\" fill-opacity=\"1\" font-family=\"Arial\">Update RStudio<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl1_3)\">\n      <text x=\"59.65\" y=\"145.24\" id=\"32\" font-size=\"6.60pt\" fill=\"#4D4D4D\" fill-opacity=\"1\" font-family=\"Arial\">Update R<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl1_3)\">\n      <text x=\"18.63\" y=\"112.12\" id=\"33\" font-size=\"6.60pt\" fill=\"#4D4D4D\" fill-opacity=\"1\" font-family=\"Arial\">Update R packages<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl1_3)\">\n      <text x=\"31.12\" y=\"79.01\" id=\"34\" font-size=\"6.60pt\" fill=\"#4D4D4D\" fill-opacity=\"1\" font-family=\"Arial\">Basic debugging<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl1_3)\">\n      <text x=\"20.12\" y=\"45.89\" id=\"35\" font-size=\"6.60pt\" fill=\"#4D4D4D\" fill-opacity=\"1\" font-family=\"Arial\">Browser debugging<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl1_3)\">\n      <text x=\"114.83\" y=\"338.84\" id=\"36\" font-size=\"6.60pt\" fill=\"#4D4D4D\" fill-opacity=\"1\" font-family=\"Arial\">0<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl1_3)\">\n      <text x=\"212.98\" y=\"338.84\" id=\"37\" font-size=\"6.60pt\" fill=\"#4D4D4D\" fill-opacity=\"1\" font-family=\"Arial\">2<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl1_3)\">\n      <text x=\"311.14\" y=\"338.84\" id=\"38\" font-size=\"6.60pt\" fill=\"#4D4D4D\" fill-opacity=\"1\" font-family=\"Arial\">4<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl1_3)\">\n      <text x=\"409.29\" y=\"338.84\" id=\"39\" font-size=\"6.60pt\" fill=\"#4D4D4D\" fill-opacity=\"1\" font-family=\"Arial\">6<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl1_3)\">\n      <text x=\"224.21\" y=\"351.99\" id=\"40\" font-size=\"8.25pt\" font-family=\"Arial\">Experience level<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl1_3)\">\n      <text x=\"102.61\" y=\"14.79\" id=\"41\" font-size=\"9.90pt\" font-family=\"Arial\">R Setup - Self-Assessment of Experience  (1-6)<\/text>\n    <\/g>\n  <\/g>\n<\/svg>\n","css":".tooltip_svg_1 {position:absolute;pointer-events:none;z-index:999;padding:5px;background:black;color:white;border-radius:2px 2px 2px 2px;}\n.hover_svg_1{cursor:pointer;font:arial;}\n.clicked_svg_1{cursor:pointer;font:arial;}","ui_html":"<div class='ggiraph-toolbar'><div class='ggiraph-toolbar-block shinyonly'><a class='ggiraph-toolbar-icon neutral' title='lasso selection' href='javascript:lasso_on(\"svg_1\", true, \"array_selected_svg_1\", \"clicked_svg_1\");'><svg width='15pt' height='15pt' viewBox='0 0 230 230'><g><ellipse ry='65.5' rx='86.5' cy='94' cx='115.5' stroke-width='20' fill='transparent'/><ellipse ry='11.500001' rx='10.5' cy='153' cx='91.5' stroke-width='20' fill='transparent'/><line y2='210.5' x2='105' y1='164.5' x1='96' stroke-width='20'/><\/g><\/svg><\/a><a class='ggiraph-toolbar-icon drop' title='lasso anti-selection' href='javascript:lasso_on(\"svg_1\", false, \"array_selected_svg_1\", \"clicked_svg_1\");'><svg width='15pt' height='15pt' viewBox='0 0 230 230'><g><ellipse ry='65.5' rx='86.5' cy='94' cx='115.5' stroke-width='20' fill='transparent'/><ellipse ry='11.500001' rx='10.5' cy='153' cx='91.5' stroke-width='20' fill='transparent'/><line y2='210.5' x2='105' y1='164.5' x1='96' stroke-width='20'/><\/g><\/svg><\/a><\/div><\/div>","uid":"svg_1","width":"75%","funname":"init_prop_svg_1","sel_array_name":"array_selected_svg_1","selected_class":"clicked_svg_1","tooltip_opacity":0.9,"tooltip_offx":10,"tooltip_offy":0,"zoom_max":1,"selection_type":"multiple"},"evals":[],"jsHooks":[]}</script>
+<p>A bar chart may be a good choice for one dataframe but it doesn’t have the flexibility for more groupings or time other than perhaps using facets.</p>
+</div>
+<div id="radar-chart" class="section level3">
+<h3>Radar chart</h3>
+<p>Use <a href="https://cran.r-project.org/web/packages/ggiraphExtra/">ggiraphextra</a> to plot a radar chart. To manipulate the data into the format required as input, use the <a href="https://cran.r-project.org/web/packages/tidyr/index.html">tidyr</a> R package.</p>
+<pre class="r"><code># Use tidyr R package gather and spread to manipulate the data
+groupdata &lt;- setupR %&gt;% 
+   gather(key = group, value = value, 2:ncol(setupR)) %&gt;% 
+   spread(key = names(setupR)[1], value = &quot;value&quot;) %&gt;% 
+      # Extract one feature of the skillset, the experience, to plot the radar line
+      filter(group==&quot;experience&quot;) %&gt;% 
+      # Convert to numeric using dplyr mutate_at
+      mutate_at(vars(-group) ,as.numeric)%&gt;% 
+      # Rescale using dplyr mutate_at
+      mutate_at(vars(-group) ,funs(./6)) </code></pre>
+<pre><code>## Warning: funs() is soft deprecated as of dplyr 0.8.0
+## please use list() instead
+## 
+## # Before:
+## funs(name = f(.)
+## 
+## # After: 
+## list(name = ~f(.))
+## This warning is displayed once per session.</code></pre>
+<pre class="r"><code># Now plot radar chart
+radar &lt;- ggRadar(data=groupdata,
+        #https://stackoverflow.com/questions/43644799/r-ggradar-differences-in-behavior-with-interactive-turned-on-or-off
+            interactive=FALSE,
+             # Data has been rescaled already in tidying
+            rescale=FALSE,
+            colour=&quot;blue&quot;) + 
+      ggtitle(&quot;R Setup - Self-Assessment of Experience  (%)&quot;) +
+      # Use ggplot theme_bw to remove greys
+      theme_bw()+
+      # Wrap the label text to fit plot area
+      scale_x_discrete(labels = function(x) str_wrap(x, width = 10)) +
+      # Make x axis labels smaller to fit area and blank out y axis as the circles are intuitive enough
+      theme(axis.text.x = element_text(size = 6),
+            axis.text.y=element_blank(),
+            axis.ticks.y = element_blank())+ 
+      # Remove black panale border
+      theme(panel.border = element_rect(colour = &quot;white&quot;))
+ggiraph(code = print(radar))</code></pre>
+<div id="htmlwidget-2" style="width:672px;height:480px;" class="ggiraph html-widget"></div>
+<script type="application/json" data-for="htmlwidget-2">{"x":{"html":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" id=\"svg_2\" viewBox=\"0 0 432.00 360.00\">\n  <g>\n    <defs>\n      <clipPath id=\"cl2_0\">\n        <rect x=\"0.00\" y=\"360.00\" width=\"0.00\" height=\"72.00\"/>\n      <\/clipPath>\n    <\/defs>\n    <rect x=\"0.00\" y=\"0.00\" width=\"432.00\" height=\"360.00\" id=\"1\" clip-path=\"url(#cl2_0)\" fill=\"#FFFFFF\" fill-opacity=\"1\" stroke-width=\"0.75\" stroke=\"#FFFFFF\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <defs>\n      <clipPath id=\"cl2_1\">\n        <rect x=\"0.00\" y=\"0.00\" width=\"432.00\" height=\"360.00\"/>\n      <\/clipPath>\n    <\/defs>\n    <defs>\n      <clipPath id=\"cl2_2\">\n        <rect x=\"47.02\" y=\"0.00\" width=\"337.95\" height=\"360.00\"/>\n      <\/clipPath>\n    <\/defs>\n    <rect x=\"47.02\" y=\"0.00\" width=\"337.95\" height=\"360.00\" id=\"2\" clip-path=\"url(#cl2_2)\" fill=\"#FFFFFF\" fill-opacity=\"1\" stroke-width=\"1.06698\" stroke=\"#FFFFFF\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <defs>\n      <clipPath id=\"cl2_3\">\n        <rect x=\"0.00\" y=\"0.00\" width=\"432.00\" height=\"360.00\"/>\n      <\/clipPath>\n    <\/defs>\n    <defs>\n      <clipPath id=\"cl2_4\">\n        <rect x=\"68.39\" y=\"22.80\" width=\"311.11\" height=\"311.11\"/>\n      <\/clipPath>\n    <\/defs>\n    <rect x=\"68.39\" y=\"22.80\" width=\"311.11\" height=\"311.11\" id=\"3\" clip-path=\"url(#cl2_4)\" fill=\"#FFFFFF\" fill-opacity=\"1\" stroke=\"none\"/>\n    <polyline points=\"223.94,178.36 271.83,46.80\" id=\"4\" clip-path=\"url(#cl2_4)\" fill=\"none\" stroke-width=\"1.06698\" stroke=\"#EBEBEB\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"butt\"/>\n    <polyline points=\"223.94,178.36 345.19,108.36\" id=\"5\" clip-path=\"url(#cl2_4)\" fill=\"none\" stroke-width=\"1.06698\" stroke=\"#EBEBEB\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"butt\"/>\n    <polyline points=\"223.94,178.36 361.82,202.67\" id=\"6\" clip-path=\"url(#cl2_4)\" fill=\"none\" stroke-width=\"1.06698\" stroke=\"#EBEBEB\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"butt\"/>\n    <polyline points=\"223.94,178.36 313.93,285.60\" id=\"7\" clip-path=\"url(#cl2_4)\" fill=\"none\" stroke-width=\"1.06698\" stroke=\"#EBEBEB\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"butt\"/>\n    <polyline points=\"223.94,178.36 223.94,318.36\" id=\"8\" clip-path=\"url(#cl2_4)\" fill=\"none\" stroke-width=\"1.06698\" stroke=\"#EBEBEB\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"butt\"/>\n    <polyline points=\"223.94,178.36 133.95,285.60\" id=\"9\" clip-path=\"url(#cl2_4)\" fill=\"none\" stroke-width=\"1.06698\" stroke=\"#EBEBEB\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"butt\"/>\n    <polyline points=\"223.94,178.36 86.07,202.67\" id=\"10\" clip-path=\"url(#cl2_4)\" fill=\"none\" stroke-width=\"1.06698\" stroke=\"#EBEBEB\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"butt\"/>\n    <polyline points=\"223.94,178.36 102.70,108.36\" id=\"11\" clip-path=\"url(#cl2_4)\" fill=\"none\" stroke-width=\"1.06698\" stroke=\"#EBEBEB\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"butt\"/>\n    <polyline points=\"223.94,178.36 176.06,46.80\" id=\"12\" clip-path=\"url(#cl2_4)\" fill=\"none\" stroke-width=\"1.06698\" stroke=\"#EBEBEB\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"butt\"/>\n    <polyline points=\"223.94,173.38 224.26,173.39 224.57,173.42 224.88,173.47 225.19,173.54 225.50,173.63 225.79,173.74 226.08,173.86 226.36,174.01 226.63,174.17 226.89,174.35 227.14,174.54 227.38,174.75 227.60,174.98 227.81,175.22 228.00,175.47 228.17,175.73 228.33,176.01 228.47,176.29 228.59,176.58 228.70,176.88 228.78,177.18 228.84,177.49 228.89,177.81 228.91,178.12 228.92,178.44 228.90,178.75 228.87,179.07 228.82,179.38 228.74,179.68 228.65,179.99 228.53,180.28 228.40,180.57 228.25,180.85 228.09,181.11 227.90,181.37 227.70,181.62 227.49,181.85 227.26,182.07 227.02,182.27 226.77,182.46 226.50,182.63 226.22,182.78 225.94,182.92 225.65,183.03 225.35,183.13 225.04,183.21 224.73,183.27 224.42,183.31 224.10,183.33 223.78,183.33 223.47,183.31 223.16,183.27 222.85,183.21 222.54,183.13 222.24,183.03 221.95,182.92 221.66,182.78 221.39,182.63 221.12,182.46 220.87,182.27 220.62,182.07 220.40,181.85 220.18,181.62 219.98,181.37 219.80,181.11 219.63,180.85 219.48,180.57 219.35,180.28 219.24,179.99 219.15,179.68 219.07,179.38 219.02,179.07 218.98,178.75 218.97,178.44 218.97,178.12 219.00,177.81 219.04,177.49 219.11,177.18 219.19,176.88 219.29,176.58 219.41,176.29 219.56,176.01 219.71,175.73 219.89,175.47 220.08,175.22 220.29,174.98 220.51,174.75 220.74,174.54 220.99,174.35 221.25,174.17 221.52,174.01 221.80,173.86 222.09,173.74 222.39,173.63 222.69,173.54 223.00,173.47 223.31,173.42 223.63,173.39 223.94,173.38\" id=\"13\" clip-path=\"url(#cl2_4)\" fill=\"none\" stroke-width=\"1.06698\" stroke=\"#EBEBEB\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"butt\"/>\n    <polyline points=\"223.94,143.51 226.15,143.58 228.35,143.79 230.54,144.14 232.69,144.63 234.82,145.25 236.89,146.01 238.92,146.90 240.88,147.91 242.78,149.04 244.60,150.30 246.34,151.67 247.99,153.14 249.54,154.72 250.99,156.39 252.33,158.15 253.55,159.99 254.66,161.90 255.64,163.88 256.49,165.92 257.22,168.01 257.80,170.14 258.26,172.31 258.57,174.50 258.75,176.70 258.78,178.91 258.68,181.12 258.43,183.32 258.05,185.49 257.53,187.64 256.87,189.75 256.08,191.82 255.16,193.83 254.12,195.78 252.95,197.66 251.67,199.46 250.28,201.18 248.78,202.80 247.18,204.33 245.48,205.75 243.70,207.06 241.84,208.25 239.91,209.33 237.91,210.28 235.86,211.10 233.76,211.79 231.62,212.35 229.45,212.76 227.26,213.04 225.05,213.18 222.84,213.18 220.63,213.04 218.44,212.76 216.27,212.35 214.13,211.79 212.03,211.10 209.97,210.28 207.98,209.33 206.04,208.25 204.18,207.06 202.40,205.75 200.71,204.33 199.11,202.80 197.61,201.18 196.22,199.46 194.93,197.66 193.77,195.78 192.72,193.83 191.80,191.82 191.02,189.75 190.36,187.64 189.84,185.49 189.45,183.32 189.21,181.12 189.10,178.91 189.14,176.70 189.31,174.50 189.63,172.31 190.08,170.14 190.67,168.01 191.39,165.92 192.25,163.88 193.23,161.90 194.33,159.99 195.56,158.15 196.90,156.39 198.35,154.72 199.90,153.14 201.55,151.67 203.28,150.30 205.10,149.04 207.00,147.91 208.97,146.90 210.99,146.01 213.07,145.25 215.19,144.63 217.35,144.14 219.53,143.79 221.73,143.58 223.94,143.51\" id=\"14\" clip-path=\"url(#cl2_4)\" fill=\"none\" stroke-width=\"1.06698\" stroke=\"#EBEBEB\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"butt\"/>\n    <polyline points=\"223.94,113.65 228.05,113.78 232.13,114.17 236.19,114.82 240.19,115.72 244.13,116.88 247.99,118.28 251.76,119.93 255.40,121.81 258.93,123.92 262.31,126.25 265.54,128.79 268.60,131.52 271.48,134.45 274.17,137.55 276.65,140.82 278.93,144.24 280.98,147.80 282.81,151.48 284.39,155.26 285.74,159.14 286.83,163.10 287.67,167.12 288.25,171.18 288.58,175.28 288.65,179.38 288.45,183.49 287.99,187.57 287.28,191.61 286.31,195.60 285.09,199.52 283.63,203.36 281.92,207.09 279.98,210.71 277.82,214.20 275.44,217.55 272.85,220.73 270.06,223.75 267.09,226.58 263.94,229.22 260.64,231.66 257.18,233.88 253.60,235.87 249.89,237.64 246.08,239.17 242.17,240.45 238.20,241.48 234.17,242.26 230.09,242.77 226.00,243.04 221.89,243.04 217.79,242.77 213.72,242.26 209.69,241.48 205.71,240.45 201.81,239.17 198.00,237.64 194.29,235.87 190.70,233.88 187.25,231.66 183.94,229.22 180.80,226.58 177.82,223.75 175.04,220.73 172.45,217.55 170.07,214.20 167.90,210.71 165.96,207.09 164.26,203.36 162.79,199.52 161.57,195.60 160.60,191.61 159.89,187.57 159.44,183.49 159.24,179.38 159.31,175.28 159.63,171.18 160.22,167.12 161.06,163.10 162.15,159.14 163.49,155.26 165.08,151.48 166.90,147.80 168.96,144.24 171.23,140.82 173.72,137.55 176.41,134.45 179.29,131.52 182.35,128.79 185.58,126.25 188.96,123.92 192.48,121.81 196.13,119.93 199.89,118.28 203.75,116.88 207.69,115.72 211.70,114.82 215.75,114.17 219.84,113.78 223.94,113.65\" id=\"15\" clip-path=\"url(#cl2_4)\" fill=\"none\" stroke-width=\"1.06698\" stroke=\"#EBEBEB\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"butt\"/>\n    <polyline points=\"223.94,83.78 229.94,83.97 235.92,84.54 241.84,85.49 247.70,86.81 253.45,88.50 259.09,90.55 264.59,92.96 269.93,95.71 275.08,98.79 280.02,102.20 284.74,105.91 289.21,109.91 293.42,114.19 297.35,118.72 300.98,123.50 304.31,128.49 307.31,133.69 309.97,139.07 312.29,144.60 314.25,150.28 315.85,156.06 317.08,161.93 317.94,167.87 318.41,173.86 318.51,179.86 318.22,185.85 317.56,191.82 316.52,197.73 315.10,203.56 313.32,209.29 311.18,214.90 308.68,220.36 305.85,225.65 302.68,230.75 299.20,235.63 295.42,240.29 291.35,244.70 287.00,248.84 282.41,252.70 277.57,256.26 272.53,259.50 267.28,262.42 261.86,265.00 256.29,267.23 250.59,269.10 244.78,270.61 238.89,271.75 232.93,272.51 226.94,272.89 220.94,272.89 214.95,272.51 209.00,271.75 203.11,270.61 197.30,269.10 191.60,267.23 186.02,265.00 180.61,262.42 175.36,259.50 170.31,256.26 165.48,252.70 160.88,248.84 156.54,244.70 152.47,240.29 148.68,235.63 145.20,230.75 142.04,225.65 139.20,220.36 136.71,214.90 134.57,209.29 132.79,203.56 131.37,197.73 130.33,191.82 129.66,185.85 129.38,179.86 129.47,173.86 129.95,167.87 130.80,161.93 132.03,156.06 133.63,150.28 135.59,144.60 137.91,139.07 140.58,133.69 143.58,128.49 146.90,123.50 150.54,118.72 154.47,114.19 158.68,109.91 163.15,105.91 167.87,102.20 172.81,98.79 177.96,95.71 183.29,92.96 188.79,90.55 194.43,88.50 200.19,86.81 206.04,85.49 211.97,84.54 217.94,83.97 223.94,83.78\" id=\"16\" clip-path=\"url(#cl2_4)\" fill=\"none\" stroke-width=\"1.06698\" stroke=\"#EBEBEB\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"butt\"/>\n    <polyline points=\"223.94,53.91 231.84,54.16 239.70,54.91 247.49,56.16 255.20,57.90 262.77,60.13 270.19,62.83 277.43,65.99 284.45,69.61 291.22,73.67 297.73,78.15 303.93,83.03 309.82,88.29 315.36,93.92 320.53,99.89 325.31,106.17 329.69,112.75 333.63,119.59 337.14,126.66 340.19,133.95 342.77,141.41 344.88,149.02 346.50,156.75 347.62,164.56 348.25,172.44 348.37,180.33 348.00,188.22 347.12,196.07 345.75,203.84 343.89,211.52 341.54,219.06 338.72,226.44 335.44,233.62 331.71,240.58 327.55,247.29 322.97,253.72 317.99,259.85 312.63,265.65 306.92,271.10 300.87,276.18 294.51,280.86 287.87,285.13 280.97,288.97 273.84,292.36 266.51,295.30 259.00,297.76 251.36,299.74 243.61,301.24 235.77,302.24 227.89,302.74 219.99,302.74 212.11,302.24 204.28,301.24 196.53,299.74 188.88,297.76 181.38,295.30 174.05,292.36 166.92,288.97 160.02,285.13 153.38,280.86 147.02,276.18 140.97,271.10 135.25,265.65 129.89,259.85 124.92,253.72 120.33,247.29 116.17,240.58 112.44,233.62 109.16,226.44 106.34,219.06 104.00,211.52 102.14,203.84 100.77,196.07 99.89,188.22 99.51,180.33 99.64,172.44 100.27,164.56 101.39,156.75 103.01,149.02 105.11,141.41 107.69,133.95 110.74,126.66 114.25,119.59 118.20,112.75 122.57,106.17 127.36,99.89 132.53,93.92 138.07,88.29 143.95,83.03 150.16,78.15 156.66,73.67 163.44,69.61 170.46,65.99 177.69,62.83 185.11,60.13 192.69,57.90 200.39,56.16 208.19,54.91 216.05,54.16 223.94,53.91\" id=\"17\" clip-path=\"url(#cl2_4)\" fill=\"none\" stroke-width=\"1.06698\" stroke=\"#EBEBEB\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"butt\"/>\n    <polyline points=\"223.94,38.36 232.82,38.64 241.67,39.48 250.44,40.89 259.10,42.85 267.63,45.35 275.98,48.39 284.11,51.95 292.01,56.02 299.63,60.58 306.95,65.62 313.93,71.11 320.55,77.04 326.79,83.37 332.60,90.08 337.98,97.15 342.90,104.55 347.35,112.24 351.29,120.20 354.72,128.39 357.63,136.79 360.00,145.35 361.82,154.05 363.08,162.84 363.78,171.70 363.92,180.58 363.50,189.45 362.52,198.28 360.97,207.03 358.88,215.66 356.24,224.15 353.07,232.45 349.38,240.53 345.19,248.36 340.50,255.91 335.35,263.14 329.75,270.04 323.72,276.56 317.29,282.69 310.48,288.40 303.33,293.67 295.86,298.47 288.09,302.79 280.07,306.61 271.83,309.91 263.39,312.69 254.79,314.92 246.06,316.60 237.25,317.72 228.38,318.29 219.50,318.29 210.64,317.72 201.82,316.60 193.10,314.92 184.50,312.69 176.06,309.91 167.81,306.61 159.79,302.79 152.03,298.47 144.55,293.67 137.40,288.40 130.60,282.69 124.17,276.56 118.14,270.04 112.54,263.14 107.38,255.91 102.70,248.36 98.50,240.53 94.81,232.45 91.64,224.15 89.01,215.66 86.91,207.03 85.37,198.28 84.38,189.45 83.96,180.58 84.10,171.70 84.81,162.84 86.07,154.05 87.89,145.35 90.26,136.79 93.16,128.39 96.60,120.20 100.54,112.24 104.98,104.55 109.90,97.15 115.28,90.08 121.10,83.37 127.33,77.04 133.95,71.11 140.94,65.62 148.25,60.58 155.88,56.02 163.77,51.95 171.91,48.39 180.26,45.35 188.78,42.85 197.45,40.89 206.22,39.48 215.06,38.64 223.94,38.36\" id=\"18\" clip-path=\"url(#cl2_4)\" fill=\"none\" stroke-width=\"1.06698\" stroke=\"#EBEBEB\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"butt\"/>\n    <polygon points=\"257.99,84.81 223.94,178.36 346.50,199.97 303.93,273.69 223.94,302.80 143.95,273.69 174.92,187.00 116.17,116.14 181.38,61.42\" id=\"19\" clip-path=\"url(#cl2_4)\" fill=\"#0000FF\" fill-opacity=\"0.3\" stroke-width=\"1.06698\" stroke=\"#0000FF\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"257.99\" cy=\"84.81\" r=\"2.67pt\" id=\"20\" clip-path=\"url(#cl2_4)\" fill=\"#0000FF\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#0000FF\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"223.94\" cy=\"178.36\" r=\"2.67pt\" id=\"21\" clip-path=\"url(#cl2_4)\" fill=\"#0000FF\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#0000FF\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"346.50\" cy=\"199.97\" r=\"2.67pt\" id=\"22\" clip-path=\"url(#cl2_4)\" fill=\"#0000FF\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#0000FF\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"303.93\" cy=\"273.69\" r=\"2.67pt\" id=\"23\" clip-path=\"url(#cl2_4)\" fill=\"#0000FF\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#0000FF\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"223.94\" cy=\"302.80\" r=\"2.67pt\" id=\"24\" clip-path=\"url(#cl2_4)\" fill=\"#0000FF\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#0000FF\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"143.95\" cy=\"273.69\" r=\"2.67pt\" id=\"25\" clip-path=\"url(#cl2_4)\" fill=\"#0000FF\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#0000FF\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"174.92\" cy=\"187.00\" r=\"2.67pt\" id=\"26\" clip-path=\"url(#cl2_4)\" fill=\"#0000FF\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#0000FF\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"116.17\" cy=\"116.14\" r=\"2.67pt\" id=\"27\" clip-path=\"url(#cl2_4)\" fill=\"#0000FF\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#0000FF\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"181.38\" cy=\"61.42\" r=\"2.67pt\" id=\"28\" clip-path=\"url(#cl2_4)\" fill=\"#0000FF\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#0000FF\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <g clip-path=\"url(#cl2_4)\">\n      <text x=\"264.49\" y=\"45.71\" id=\"29\" font-size=\"4.50pt\" fill=\"#4D4D4D\" fill-opacity=\"1\" font-family=\"Arial\">Basic<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl2_4)\">\n      <text x=\"257.81\" y=\"52.19\" id=\"30\" font-size=\"4.50pt\" fill=\"#4D4D4D\" fill-opacity=\"1\" font-family=\"Arial\">debugging<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl2_4)\">\n      <text x=\"334.18\" y=\"107.27\" id=\"31\" font-size=\"4.50pt\" fill=\"#4D4D4D\" fill-opacity=\"1\" font-family=\"Arial\">Browser<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl2_4)\">\n      <text x=\"331.17\" y=\"113.75\" id=\"32\" font-size=\"4.50pt\" fill=\"#4D4D4D\" fill-opacity=\"1\" font-family=\"Arial\">debugging<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl2_4)\">\n      <text x=\"350.98\" y=\"204.82\" id=\"33\" font-size=\"4.50pt\" fill=\"#4D4D4D\" fill-opacity=\"1\" font-family=\"Arial\">Install R<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl2_4)\">\n      <text x=\"303.10\" y=\"284.51\" id=\"34\" font-size=\"4.50pt\" fill=\"#4D4D4D\" fill-opacity=\"1\" font-family=\"Arial\">Install R<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl2_4)\">\n      <text x=\"301.09\" y=\"290.99\" id=\"35\" font-size=\"4.50pt\" fill=\"#4D4D4D\" fill-opacity=\"1\" font-family=\"Arial\">packages<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl2_4)\">\n      <text x=\"216.11\" y=\"317.26\" id=\"36\" font-size=\"4.50pt\" fill=\"#4D4D4D\" fill-opacity=\"1\" font-family=\"Arial\">Install<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl2_4)\">\n      <text x=\"213.27\" y=\"323.74\" id=\"37\" font-size=\"4.50pt\" fill=\"#4D4D4D\" fill-opacity=\"1\" font-family=\"Arial\">RStudio<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl2_4)\">\n      <text x=\"127.28\" y=\"284.51\" id=\"38\" font-size=\"4.50pt\" fill=\"#4D4D4D\" fill-opacity=\"1\" font-family=\"Arial\">Load<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl2_4)\">\n      <text x=\"120.78\" y=\"290.99\" id=\"39\" font-size=\"4.50pt\" fill=\"#4D4D4D\" fill-opacity=\"1\" font-family=\"Arial\">Packages<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl2_4)\">\n      <text x=\"73.40\" y=\"204.82\" id=\"40\" font-size=\"4.50pt\" fill=\"#4D4D4D\" fill-opacity=\"1\" font-family=\"Arial\">Update R<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl2_4)\">\n      <text x=\"90.03\" y=\"107.27\" id=\"41\" font-size=\"4.50pt\" fill=\"#4D4D4D\" fill-opacity=\"1\" font-family=\"Arial\">Update R<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl2_4)\">\n      <text x=\"89.86\" y=\"113.75\" id=\"42\" font-size=\"4.50pt\" fill=\"#4D4D4D\" fill-opacity=\"1\" font-family=\"Arial\">packages<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl2_4)\">\n      <text x=\"166.39\" y=\"45.71\" id=\"43\" font-size=\"4.50pt\" fill=\"#4D4D4D\" fill-opacity=\"1\" font-family=\"Arial\">Update<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl2_4)\">\n      <text x=\"165.39\" y=\"52.19\" id=\"44\" font-size=\"4.50pt\" fill=\"#4D4D4D\" fill-opacity=\"1\" font-family=\"Arial\">RStudio<\/text>\n    <\/g>\n    <rect x=\"68.39\" y=\"22.80\" width=\"311.11\" height=\"311.11\" id=\"45\" clip-path=\"url(#cl2_4)\" fill=\"none\" stroke-width=\"1.06698\" stroke=\"#FFFFFF\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <defs>\n      <clipPath id=\"cl2_5\">\n        <rect x=\"0.00\" y=\"0.00\" width=\"432.00\" height=\"360.00\"/>\n      <\/clipPath>\n    <\/defs>\n    <g clip-path=\"url(#cl2_5)\">\n      <text x=\"68.39\" y=\"14.79\" id=\"46\" font-size=\"9.90pt\" font-family=\"Arial\">R Setup - Self-Assessment of Experience  (%)<\/text>\n    <\/g>\n  <\/g>\n<\/svg>\n","css":".tooltip_svg_2 {position:absolute;pointer-events:none;z-index:999;padding:5px;background:black;color:white;border-radius:2px 2px 2px 2px;}\n.hover_svg_2{fill:orange;stroke:gray;}\n.clicked_svg_2{fill:orange;stroke:gray;}","ui_html":"<div class='ggiraph-toolbar'><div class='ggiraph-toolbar-block shinyonly'><a class='ggiraph-toolbar-icon neutral' title='lasso selection' href='javascript:lasso_on(\"svg_2\", true, \"array_selected_svg_2\", \"clicked_svg_2\");'><svg width='15pt' height='15pt' viewBox='0 0 230 230'><g><ellipse ry='65.5' rx='86.5' cy='94' cx='115.5' stroke-width='20' fill='transparent'/><ellipse ry='11.500001' rx='10.5' cy='153' cx='91.5' stroke-width='20' fill='transparent'/><line y2='210.5' x2='105' y1='164.5' x1='96' stroke-width='20'/><\/g><\/svg><\/a><a class='ggiraph-toolbar-icon drop' title='lasso anti-selection' href='javascript:lasso_on(\"svg_2\", false, \"array_selected_svg_2\", \"clicked_svg_2\");'><svg width='15pt' height='15pt' viewBox='0 0 230 230'><g><ellipse ry='65.5' rx='86.5' cy='94' cx='115.5' stroke-width='20' fill='transparent'/><ellipse ry='11.500001' rx='10.5' cy='153' cx='91.5' stroke-width='20' fill='transparent'/><line y2='210.5' x2='105' y1='164.5' x1='96' stroke-width='20'/><\/g><\/svg><\/a><\/div><\/div>","uid":"svg_2","width":"75%","funname":"init_prop_svg_2","sel_array_name":"array_selected_svg_2","selected_class":"clicked_svg_2","tooltip_opacity":0.9,"tooltip_offx":10,"tooltip_offy":0,"zoom_max":1,"selection_type":"multiple"},"evals":[],"jsHooks":[]}</script>
+<p>Radar charts are popoular to chart experience and skills levels. However there are at least 7 datasets grouping different types of skills. Even at 7 overlayed groups, a radar chart may be too complex for this project.</p>
+</div>
+<div id="line-roadmap" class="section level3">
+<h3>Line roadmap</h3>
+<p>Now let’s look at line roadmap.</p>
+<pre class="r"><code># Create a line road plot function
+plotroad &lt;- function(df,colourplot,xstart) {
+      # Unit test steps start
+      # rm(df)
+      # rm(dftoplot)
+      # df &lt;- setupR
+      # colourplot=&quot;blue&quot;
+      # xstart&lt;- 4
+      # Unit test steps end
+      n_road &lt;- dim(df)[1]
+      x &lt;- as.numeric(seq(xstart,n_road+xstart-1))
+      y &lt;- df$complexity
+      dftoplot &lt;- cbind(df,x,y)
+      thetitle &lt;- deparse(substitute(df))
+      ggplot(data=dftoplot,aes(x,y))+
+            ggrepel::geom_text_repel(mapping=aes(label=skill,angle=90),
+                                     colour=colourplot,
+                                     fontface=&#39;bold&#39;,
+                                     nudge_y = 2,
+                                     segment.color = &#39;grey50&#39;)+
+            geom_line(data= dftoplot,aes(x,y), 
+                     # colour=colourplot,
+                     size=2,
+                      arrow=arrow(type=&quot;closed&quot;)) +
+            geom_point_interactive(aes(x, y, size=experience,
+                                       tooltip=paste0(&quot;Tip: &quot;,tip)),
+                                   colour=colourplot,
+                                   #shape=1, Possibly change the shape later
+                                   show.legend = TRUE)+ 
+            scale_size_continuous(range = c(1,10))+
+            # Add the dataframe name as the title
+            
+            ggtitle(paste0(&quot;Learning roadmap of &quot;,thetitle))+
+            # Set theme for ggplot
+            scale_x_discrete()+
+            scale_y_discrete()+
+            theme_void() +
+            theme(plot.title= element_text(family=&#39;&#39;, 
+                             face=&#39;bold&#39;, 
+                             colour=colourplot, 
+                             size=15))+
+            ylim(c(0,max(y)+3))
+}
+# View the first ggplot object to  check colour scheme &amp; layout
+(g1 &lt;- plotroad(setupR,&quot;blue&quot;, 1))</code></pre>
+<pre><code>## Scale for &#39;y&#39; is already present. Adding another scale for &#39;y&#39;, which
+## will replace the existing scale.</code></pre>
+<p><img src="https://kimnewzealand.github.io/post/learningrroadmap_files/figure-html/new%20road%20plot%20function-1.png" width="672" /></p>
+<pre class="r"><code># Use ggiraph to plot an interactive bar chart with the tips as tooltips, let&#39;s first create the rest of the ggplot objects for each of the other roads
+g2 &lt;- plotroad(objectsR,&quot;red&quot;,4)</code></pre>
+<pre><code>## Scale for &#39;y&#39; is already present. Adding another scale for &#39;y&#39;, which
+## will replace the existing scale.</code></pre>
+<pre class="r"><code>g3 &lt;- plotroad(importR,&quot;hotpink&quot;,4)</code></pre>
+<pre><code>## Scale for &#39;y&#39; is already present. Adding another scale for &#39;y&#39;, which
+## will replace the existing scale.</code></pre>
+<pre class="r"><code>g4 &lt;- plotroad(functionsR,&quot;darkgreen&quot;,2)</code></pre>
+<pre><code>## Scale for &#39;y&#39; is already present. Adding another scale for &#39;y&#39;, which
+## will replace the existing scale.</code></pre>
+<pre class="r"><code>g5 &lt;- plotroad(datamungingR,&quot;lightblue&quot;,10)</code></pre>
+<pre><code>## Scale for &#39;y&#39; is already present. Adding another scale for &#39;y&#39;, which
+## will replace the existing scale.</code></pre>
+<pre class="r"><code>g6 &lt;- plotroad(vizR,&quot;green&quot;,12)</code></pre>
+<pre><code>## Scale for &#39;y&#39; is already present. Adding another scale for &#39;y&#39;, which
+## will replace the existing scale.</code></pre>
+<pre class="r"><code># Create an interactive ggplot object
+ggiraph(code = print(g1),tooltip_extra_css = &quot;background-color:gray;color:white;font-style:italic;padding:10px;border-radius:5px;fill:white;r:10pt;&quot;)</code></pre>
+<div id="htmlwidget-3" style="width:672px;height:480px;" class="ggiraph html-widget"></div>
+<script type="application/json" data-for="htmlwidget-3">{"x":{"html":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" id=\"svg_3\" viewBox=\"0 0 432.00 360.00\">\n  <g>\n    <defs>\n      <clipPath id=\"cl3_0\">\n        <rect x=\"0.00\" y=\"360.00\" width=\"0.00\" height=\"72.00\"/>\n      <\/clipPath>\n    <\/defs>\n    <rect x=\"0.00\" y=\"0.00\" width=\"432.00\" height=\"360.00\" id=\"1\" clip-path=\"url(#cl3_0)\" fill=\"#FFFFFF\" fill-opacity=\"1\" stroke-width=\"0.75\" stroke=\"#FFFFFF\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <defs>\n      <clipPath id=\"cl3_1\">\n        <rect x=\"0.00\" y=\"0.00\" width=\"432.00\" height=\"360.00\"/>\n      <\/clipPath>\n    <\/defs>\n    <defs>\n      <clipPath id=\"cl3_2\">\n        <rect x=\"0.00\" y=\"18.75\" width=\"372.52\" height=\"341.25\"/>\n      <\/clipPath>\n    <\/defs>\n    <line x1=\"24.29\" y1=\"229.67\" x2=\"24.29\" y2=\"292.78\" id=\"2\" clip-path=\"url(#cl3_2)\" stroke-width=\"1.06698\" stroke=\"#7F7F7F\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\" fill=\"#FFFFFF\" fill-opacity=\"1\"/>\n    <g clip-path=\"url(#cl3_2)\">\n      <text transform=\"translate(28.23,227.87) rotate(-90)\" id=\"3\" font-size=\"8.28pt\" font-weight=\"bold\" fill=\"#0000FF\" fill-opacity=\"1\" font-family=\"Arial\">Install RStudio<\/text>\n    <\/g>\n    <line x1=\"64.79\" y1=\"212.57\" x2=\"64.79\" y2=\"292.78\" id=\"4\" clip-path=\"url(#cl3_2)\" stroke-width=\"1.06698\" stroke=\"#7F7F7F\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\" fill=\"#FFFFFF\" fill-opacity=\"1\"/>\n    <g clip-path=\"url(#cl3_2)\">\n      <text transform=\"translate(68.72,210.77) rotate(-90)\" id=\"5\" font-size=\"8.28pt\" font-weight=\"bold\" fill=\"#0000FF\" fill-opacity=\"1\" font-family=\"Arial\">Install R<\/text>\n    <\/g>\n    <line x1=\"105.28\" y1=\"239.17\" x2=\"105.28\" y2=\"292.78\" id=\"6\" clip-path=\"url(#cl3_2)\" stroke-width=\"1.06698\" stroke=\"#7F7F7F\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\" fill=\"#FFFFFF\" fill-opacity=\"1\"/>\n    <g clip-path=\"url(#cl3_2)\">\n      <text transform=\"translate(109.21,237.37) rotate(-90)\" id=\"7\" font-size=\"8.28pt\" font-weight=\"bold\" fill=\"#0000FF\" fill-opacity=\"1\" font-family=\"Arial\">Install R packages<\/text>\n    <\/g>\n    <line x1=\"145.77\" y1=\"231.22\" x2=\"145.77\" y2=\"292.78\" id=\"8\" clip-path=\"url(#cl3_2)\" stroke-width=\"1.06698\" stroke=\"#7F7F7F\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\" fill=\"#FFFFFF\" fill-opacity=\"1\"/>\n    <g clip-path=\"url(#cl3_2)\">\n      <text transform=\"translate(149.70,229.42) rotate(-90)\" id=\"9\" font-size=\"8.28pt\" font-weight=\"bold\" fill=\"#0000FF\" fill-opacity=\"1\" font-family=\"Arial\">Load Packages<\/text>\n    <\/g>\n    <line x1=\"186.26\" y1=\"232.42\" x2=\"186.26\" y2=\"292.78\" id=\"10\" clip-path=\"url(#cl3_2)\" stroke-width=\"1.06698\" stroke=\"#7F7F7F\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\" fill=\"#FFFFFF\" fill-opacity=\"1\"/>\n    <g clip-path=\"url(#cl3_2)\">\n      <text transform=\"translate(190.20,230.62) rotate(-90)\" id=\"11\" font-size=\"8.28pt\" font-weight=\"bold\" fill=\"#0000FF\" fill-opacity=\"1\" font-family=\"Arial\">Update RStudio<\/text>\n    <\/g>\n    <line x1=\"226.75\" y1=\"215.31\" x2=\"226.75\" y2=\"292.78\" id=\"12\" clip-path=\"url(#cl3_2)\" stroke-width=\"1.06698\" stroke=\"#7F7F7F\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\" fill=\"#FFFFFF\" fill-opacity=\"1\"/>\n    <g clip-path=\"url(#cl3_2)\">\n      <text transform=\"translate(230.69,213.51) rotate(-90)\" id=\"13\" font-size=\"8.28pt\" font-weight=\"bold\" fill=\"#0000FF\" fill-opacity=\"1\" font-family=\"Arial\">Update R<\/text>\n    <\/g>\n    <line x1=\"267.24\" y1=\"190.21\" x2=\"267.24\" y2=\"241.08\" id=\"14\" clip-path=\"url(#cl3_2)\" stroke-width=\"1.06698\" stroke=\"#7F7F7F\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\" fill=\"#FFFFFF\" fill-opacity=\"1\"/>\n    <g clip-path=\"url(#cl3_2)\">\n      <text transform=\"translate(271.18,188.41) rotate(-90)\" id=\"15\" font-size=\"8.28pt\" font-weight=\"bold\" fill=\"#0000FF\" fill-opacity=\"1\" font-family=\"Arial\">Update R packages<\/text>\n    <\/g>\n    <line x1=\"307.73\" y1=\"235.48\" x2=\"307.73\" y2=\"292.78\" id=\"16\" clip-path=\"url(#cl3_2)\" stroke-width=\"1.06698\" stroke=\"#7F7F7F\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\" fill=\"#FFFFFF\" fill-opacity=\"1\"/>\n    <g clip-path=\"url(#cl3_2)\">\n      <text transform=\"translate(311.67,233.68) rotate(-90)\" id=\"17\" font-size=\"8.28pt\" font-weight=\"bold\" fill=\"#0000FF\" fill-opacity=\"1\" font-family=\"Arial\">Basic debugging<\/text>\n    <\/g>\n    <line x1=\"348.22\" y1=\"139.40\" x2=\"348.22\" y2=\"189.37\" id=\"18\" clip-path=\"url(#cl3_2)\" stroke-width=\"1.06698\" stroke=\"#7F7F7F\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\" fill=\"#FFFFFF\" fill-opacity=\"1\"/>\n    <g clip-path=\"url(#cl3_2)\">\n      <text transform=\"translate(352.16,137.60) rotate(-90)\" id=\"19\" font-size=\"8.28pt\" font-weight=\"bold\" fill=\"#0000FF\" fill-opacity=\"1\" font-family=\"Arial\">Browser debugging<\/text>\n    <\/g>\n    <polyline points=\"24.29,292.78 64.79,292.78 105.28,292.78 145.77,292.78 186.26,292.78 226.75,292.78 267.24,241.08 307.73,292.78 348.22,189.37\" id=\"20\" clip-path=\"url(#cl3_2)\" fill=\"none\" stroke-width=\"4.26791\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"butt\"/>\n    <polygon points=\"350.92,207.17 348.22,189.37 334.16,200.61\" id=\"21\" clip-path=\"url(#cl3_2)\" fill=\"#000000\" fill-opacity=\"1\" stroke-width=\"4.26791\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"butt\"/>\n    <circle cx=\"24.29\" cy=\"292.78\" r=\"8.27pt\" id=\"22\" clip-path=\"url(#cl3_2)\" fill=\"#0000FF\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#0000FF\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"64.79\" cy=\"292.78\" r=\"8.27pt\" id=\"23\" clip-path=\"url(#cl3_2)\" fill=\"#0000FF\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#0000FF\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"105.28\" cy=\"292.78\" r=\"8.27pt\" id=\"24\" clip-path=\"url(#cl3_2)\" fill=\"#0000FF\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#0000FF\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"145.77\" cy=\"292.78\" r=\"8.27pt\" id=\"25\" clip-path=\"url(#cl3_2)\" fill=\"#0000FF\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#0000FF\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"186.26\" cy=\"292.78\" r=\"8.27pt\" id=\"26\" clip-path=\"url(#cl3_2)\" fill=\"#0000FF\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#0000FF\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"226.75\" cy=\"292.78\" r=\"5.62pt\" id=\"27\" clip-path=\"url(#cl3_2)\" fill=\"#0000FF\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#0000FF\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"267.24\" cy=\"241.08\" r=\"8.27pt\" id=\"28\" clip-path=\"url(#cl3_2)\" fill=\"#0000FF\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#0000FF\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"307.73\" cy=\"292.78\" r=\"7.51pt\" id=\"29\" clip-path=\"url(#cl3_2)\" fill=\"#0000FF\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#0000FF\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"348.22\" cy=\"189.37\" r=\"1.07pt\" id=\"30\" clip-path=\"url(#cl3_2)\" fill=\"#0000FF\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#0000FF\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <defs>\n      <clipPath id=\"cl3_3\">\n        <rect x=\"0.00\" y=\"0.00\" width=\"432.00\" height=\"360.00\"/>\n      <\/clipPath>\n    <\/defs>\n    <g clip-path=\"url(#cl3_3)\">\n      <text x=\"378.19\" y=\"125.51\" id=\"31\" font-size=\"8.25pt\" font-family=\"Arial\">experience<\/text>\n    <\/g>\n    <circle cx=\"392.36\" cy=\"140.89\" r=\"1.07pt\" id=\"32\" clip-path=\"url(#cl3_3)\" fill=\"#0000FF\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#0000FF\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"392.36\" cy=\"158.17\" r=\"4.29pt\" id=\"33\" clip-path=\"url(#cl3_3)\" fill=\"#0000FF\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#0000FF\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"392.36\" cy=\"176.30\" r=\"5.62pt\" id=\"34\" clip-path=\"url(#cl3_3)\" fill=\"#0000FF\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#0000FF\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"392.36\" cy=\"197.08\" r=\"6.64pt\" id=\"35\" clip-path=\"url(#cl3_3)\" fill=\"#0000FF\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#0000FF\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"392.36\" cy=\"221.21\" r=\"7.51pt\" id=\"36\" clip-path=\"url(#cl3_3)\" fill=\"#0000FF\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#0000FF\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"392.36\" cy=\"248.20\" r=\"8.27pt\" id=\"37\" clip-path=\"url(#cl3_3)\" fill=\"#0000FF\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#0000FF\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <g clip-path=\"url(#cl3_3)\">\n      <text x=\"412.01\" y=\"144.11\" id=\"38\" font-size=\"6.60pt\" font-family=\"Arial\">1<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl3_3)\">\n      <text x=\"412.01\" y=\"161.39\" id=\"39\" font-size=\"6.60pt\" font-family=\"Arial\">2<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl3_3)\">\n      <text x=\"412.01\" y=\"179.52\" id=\"40\" font-size=\"6.60pt\" font-family=\"Arial\">3<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl3_3)\">\n      <text x=\"412.01\" y=\"200.30\" id=\"41\" font-size=\"6.60pt\" font-family=\"Arial\">4<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl3_3)\">\n      <text x=\"412.01\" y=\"224.42\" id=\"42\" font-size=\"6.60pt\" font-family=\"Arial\">5<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl3_3)\">\n      <text x=\"412.01\" y=\"251.42\" id=\"43\" font-size=\"6.60pt\" font-family=\"Arial\">6<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl3_3)\">\n      <text x=\"0.00\" y=\"16.21\" id=\"44\" font-size=\"11.25pt\" font-weight=\"bold\" fill=\"#0000FF\" fill-opacity=\"1\" font-family=\"Arial\">Learning roadmap of setupR<\/text>\n    <\/g>\n  <\/g>\n<\/svg>\n","css":".tooltip_svg_3 {position:absolute;pointer-events:none;z-index:999;background-color:gray;color:white;font-style:italic;padding:10px;border-radius:5px;fill:white;r:10pt;}\n.hover_svg_3{fill:orange;stroke:gray;}\n.clicked_svg_3{fill:orange;stroke:gray;}","ui_html":"<div class='ggiraph-toolbar'><div class='ggiraph-toolbar-block shinyonly'><a class='ggiraph-toolbar-icon neutral' title='lasso selection' href='javascript:lasso_on(\"svg_3\", true, \"array_selected_svg_3\", \"clicked_svg_3\");'><svg width='15pt' height='15pt' viewBox='0 0 230 230'><g><ellipse ry='65.5' rx='86.5' cy='94' cx='115.5' stroke-width='20' fill='transparent'/><ellipse ry='11.500001' rx='10.5' cy='153' cx='91.5' stroke-width='20' fill='transparent'/><line y2='210.5' x2='105' y1='164.5' x1='96' stroke-width='20'/><\/g><\/svg><\/a><a class='ggiraph-toolbar-icon drop' title='lasso anti-selection' href='javascript:lasso_on(\"svg_3\", false, \"array_selected_svg_3\", \"clicked_svg_3\");'><svg width='15pt' height='15pt' viewBox='0 0 230 230'><g><ellipse ry='65.5' rx='86.5' cy='94' cx='115.5' stroke-width='20' fill='transparent'/><ellipse ry='11.500001' rx='10.5' cy='153' cx='91.5' stroke-width='20' fill='transparent'/><line y2='210.5' x2='105' y1='164.5' x1='96' stroke-width='20'/><\/g><\/svg><\/a><\/div><\/div>","uid":"svg_3","width":"75%","funname":"init_prop_svg_3","sel_array_name":"array_selected_svg_3","selected_class":"clicked_svg_3","tooltip_opacity":0.9,"tooltip_offx":10,"tooltip_offy":0,"zoom_max":1,"selection_type":"multiple"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<div id="first-roadmap" class="section level2">
+<h2>First Roadmap</h2>
+<p>Based on the plots above, I am currently thinking of road map layout, starting at the bottom left and progressing upwards to reflect progression with the tooltips as quick tips. Lines can also be joined or spliced together, whereas bar shapes have limited malleability. Perhaps <code>date</code> becomes a facet to show progress over time? and geospatial concepts can be used to create the roadmap?</p>
+<p>Now let’s combine lines into a single plot with <a href="https://cran.r-project.org/web/packages/gridExtra/index.html">gridExtra</a> R package.</p>
+<pre class="r"><code># Try out  gridExtra to layout ggplot objects
+ggiraph(code = print(gridExtra::grid.arrange(g1,g2,g3,g4,g5,g6, nrow = 6)),tooltip_extra_css = &quot;background-color:gray;color:white;font-style:italic;padding:10px;border-radius:5px;fill:white;r:10pt;&quot;)</code></pre>
+<pre><code>## TableGrob (6 x 1) &quot;arrange&quot;: 6 grobs
+##   z     cells    name           grob
+## 1 1 (1-1,1-1) arrange gtable[layout]
+## 2 2 (2-2,1-1) arrange gtable[layout]
+## 3 3 (3-3,1-1) arrange gtable[layout]
+## 4 4 (4-4,1-1) arrange gtable[layout]
+## 5 5 (5-5,1-1) arrange gtable[layout]
+## 6 6 (6-6,1-1) arrange gtable[layout]</code></pre>
+<div id="htmlwidget-4" style="width:672px;height:480px;" class="ggiraph html-widget"></div>
+<script type="application/json" data-for="htmlwidget-4">{"x":{"html":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" id=\"svg_4\" viewBox=\"0 0 432.00 360.00\">\n  <g>\n    <defs>\n      <clipPath id=\"cl4_0\">\n        <rect x=\"0.00\" y=\"360.00\" width=\"0.00\" height=\"72.00\"/>\n      <\/clipPath>\n    <\/defs>\n    <rect x=\"0.00\" y=\"0.00\" width=\"432.00\" height=\"360.00\" id=\"1\" clip-path=\"url(#cl4_0)\" fill=\"#FFFFFF\" fill-opacity=\"1\" stroke-width=\"0.75\" stroke=\"#FFFFFF\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <defs>\n      <clipPath id=\"cl4_1\">\n        <rect x=\"0.00\" y=\"0.00\" width=\"432.00\" height=\"360.00\"/>\n      <\/clipPath>\n    <\/defs>\n    <defs>\n      <clipPath id=\"cl4_2\">\n        <rect x=\"0.00\" y=\"18.75\" width=\"372.52\" height=\"41.25\"/>\n      <\/clipPath>\n    <\/defs>\n    <g clip-path=\"url(#cl4_2)\">\n      <text transform=\"translate(28.23,99.35) rotate(-90)\" id=\"2\" font-size=\"8.28pt\" font-weight=\"bold\" fill=\"#0000FF\" fill-opacity=\"1\" font-family=\"Arial\">Install RStudio<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl4_2)\">\n      <text transform=\"translate(68.72,65.13) rotate(-90)\" id=\"3\" font-size=\"8.28pt\" font-weight=\"bold\" fill=\"#0000FF\" fill-opacity=\"1\" font-family=\"Arial\">Install R<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl4_2)\">\n      <text transform=\"translate(109.21,118.33) rotate(-90)\" id=\"4\" font-size=\"8.28pt\" font-weight=\"bold\" fill=\"#0000FF\" fill-opacity=\"1\" font-family=\"Arial\">Install R packages<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl4_2)\">\n      <text transform=\"translate(149.71,102.44) rotate(-90)\" id=\"5\" font-size=\"8.28pt\" font-weight=\"bold\" fill=\"#0000FF\" fill-opacity=\"1\" font-family=\"Arial\">Load Packages<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl4_2)\">\n      <text transform=\"translate(190.20,104.84) rotate(-90)\" id=\"6\" font-size=\"8.28pt\" font-weight=\"bold\" fill=\"#0000FF\" fill-opacity=\"1\" font-family=\"Arial\">Update RStudio<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl4_2)\">\n      <text transform=\"translate(230.69,70.63) rotate(-90)\" id=\"7\" font-size=\"8.28pt\" font-weight=\"bold\" fill=\"#0000FF\" fill-opacity=\"1\" font-family=\"Arial\">Update R<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl4_2)\">\n      <text transform=\"translate(271.18,123.83) rotate(-90)\" id=\"8\" font-size=\"8.28pt\" font-weight=\"bold\" fill=\"#0000FF\" fill-opacity=\"1\" font-family=\"Arial\">Update R packages<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl4_2)\">\n      <text transform=\"translate(311.67,110.96) rotate(-90)\" id=\"9\" font-size=\"8.28pt\" font-weight=\"bold\" fill=\"#0000FF\" fill-opacity=\"1\" font-family=\"Arial\">Basic debugging<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl4_2)\">\n      <text transform=\"translate(352.16,125.63) rotate(-90)\" id=\"10\" font-size=\"8.28pt\" font-weight=\"bold\" fill=\"#0000FF\" fill-opacity=\"1\" font-family=\"Arial\">Browser debugging<\/text>\n    <\/g>\n    <polyline points=\"24.29,51.87 64.79,51.87 105.28,51.87 145.77,51.87 186.26,51.87 226.75,51.87 267.24,45.62 307.73,51.87 348.22,39.37\" id=\"11\" clip-path=\"url(#cl4_2)\" fill=\"none\" stroke-width=\"4.26791\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"butt\"/>\n    <polygon points=\"335.98,52.57 348.22,39.37 330.67,35.37\" id=\"12\" clip-path=\"url(#cl4_2)\" fill=\"#000000\" fill-opacity=\"1\" stroke-width=\"4.26791\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"butt\"/>\n    <circle cx=\"24.29\" cy=\"51.87\" r=\"8.27pt\" id=\"13\" clip-path=\"url(#cl4_2)\" fill=\"#0000FF\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#0000FF\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"64.79\" cy=\"51.87\" r=\"8.27pt\" id=\"14\" clip-path=\"url(#cl4_2)\" fill=\"#0000FF\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#0000FF\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"105.28\" cy=\"51.87\" r=\"8.27pt\" id=\"15\" clip-path=\"url(#cl4_2)\" fill=\"#0000FF\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#0000FF\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"145.77\" cy=\"51.87\" r=\"8.27pt\" id=\"16\" clip-path=\"url(#cl4_2)\" fill=\"#0000FF\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#0000FF\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"186.26\" cy=\"51.87\" r=\"8.27pt\" id=\"17\" clip-path=\"url(#cl4_2)\" fill=\"#0000FF\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#0000FF\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"226.75\" cy=\"51.87\" r=\"5.62pt\" id=\"18\" clip-path=\"url(#cl4_2)\" fill=\"#0000FF\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#0000FF\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"267.24\" cy=\"45.62\" r=\"8.27pt\" id=\"19\" clip-path=\"url(#cl4_2)\" fill=\"#0000FF\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#0000FF\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"307.73\" cy=\"51.87\" r=\"7.51pt\" id=\"20\" clip-path=\"url(#cl4_2)\" fill=\"#0000FF\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#0000FF\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"348.22\" cy=\"39.37\" r=\"1.07pt\" id=\"21\" clip-path=\"url(#cl4_2)\" fill=\"#0000FF\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#0000FF\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <defs>\n      <clipPath id=\"cl4_3\">\n        <rect x=\"0.00\" y=\"0.00\" width=\"432.00\" height=\"360.00\"/>\n      <\/clipPath>\n    <\/defs>\n    <circle cx=\"392.36\" cy=\"8.17\" r=\"4.29pt\" id=\"22\" clip-path=\"url(#cl4_3)\" fill=\"#0000FF\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#0000FF\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"392.36\" cy=\"26.30\" r=\"5.62pt\" id=\"23\" clip-path=\"url(#cl4_3)\" fill=\"#0000FF\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#0000FF\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"392.36\" cy=\"47.08\" r=\"6.64pt\" id=\"24\" clip-path=\"url(#cl4_3)\" fill=\"#0000FF\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#0000FF\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"392.36\" cy=\"71.21\" r=\"7.51pt\" id=\"25\" clip-path=\"url(#cl4_3)\" fill=\"#0000FF\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#0000FF\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"392.36\" cy=\"98.20\" r=\"8.27pt\" id=\"26\" clip-path=\"url(#cl4_3)\" fill=\"#0000FF\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#0000FF\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <g clip-path=\"url(#cl4_3)\">\n      <text x=\"412.01\" y=\"11.39\" id=\"27\" font-size=\"6.60pt\" font-family=\"Arial\">2<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl4_3)\">\n      <text x=\"412.01\" y=\"29.52\" id=\"28\" font-size=\"6.60pt\" font-family=\"Arial\">3<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl4_3)\">\n      <text x=\"412.01\" y=\"50.30\" id=\"29\" font-size=\"6.60pt\" font-family=\"Arial\">4<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl4_3)\">\n      <text x=\"412.01\" y=\"74.42\" id=\"30\" font-size=\"6.60pt\" font-family=\"Arial\">5<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl4_3)\">\n      <text x=\"412.01\" y=\"101.42\" id=\"31\" font-size=\"6.60pt\" font-family=\"Arial\">6<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl4_3)\">\n      <text x=\"0.00\" y=\"16.21\" id=\"32\" font-size=\"11.25pt\" font-weight=\"bold\" fill=\"#0000FF\" fill-opacity=\"1\" font-family=\"Arial\">Learning roadmap of setupR<\/text>\n    <\/g>\n    <defs>\n      <clipPath id=\"cl4_4\">\n        <rect x=\"0.00\" y=\"78.75\" width=\"372.52\" height=\"41.25\"/>\n      <\/clipPath>\n    <\/defs>\n    <g clip-path=\"url(#cl4_4)\">\n      <text transform=\"translate(23.89,180.76) rotate(-90)\" id=\"33\" font-size=\"8.28pt\" font-weight=\"bold\" fill=\"#FF0000\" fill-opacity=\"1\" font-family=\"Arial\">Object assignment<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl4_4)\">\n      <text transform=\"translate(57.16,123.93) rotate(-90)\" id=\"34\" font-size=\"8.28pt\" font-weight=\"bold\" fill=\"#FF0000\" fill-opacity=\"1\" font-family=\"Arial\">Classes<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl4_4)\">\n      <text transform=\"translate(90.42,115.37) rotate(-90)\" id=\"35\" font-size=\"8.28pt\" font-weight=\"bold\" fill=\"#FF0000\" fill-opacity=\"1\" font-family=\"Arial\">Scaler<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl4_4)\">\n      <text transform=\"translate(123.68,122.70) rotate(-90)\" id=\"36\" font-size=\"8.28pt\" font-weight=\"bold\" fill=\"#FF0000\" fill-opacity=\"1\" font-family=\"Arial\">Vectors<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl4_4)\">\n      <text transform=\"translate(156.94,122.08) rotate(-90)\" id=\"37\" font-size=\"8.28pt\" font-weight=\"bold\" fill=\"#FF0000\" fill-opacity=\"1\" font-family=\"Arial\">Factors<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl4_4)\">\n      <text transform=\"translate(190.20,126.98) rotate(-90)\" id=\"38\" font-size=\"8.28pt\" font-weight=\"bold\" fill=\"#FF0000\" fill-opacity=\"1\" font-family=\"Arial\">Matrices<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl4_4)\">\n      <text transform=\"translate(223.46,117.20) rotate(-90)\" id=\"39\" font-size=\"8.28pt\" font-weight=\"bold\" fill=\"#FF0000\" fill-opacity=\"1\" font-family=\"Arial\">Arrays<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl4_4)\">\n      <text transform=\"translate(248.91,116.40) rotate(-90)\" id=\"40\" font-size=\"8.28pt\" font-weight=\"bold\" fill=\"#FF0000\" fill-opacity=\"1\" font-family=\"Arial\">Dataframes<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl4_4)\">\n      <text transform=\"translate(290.00,108.02) rotate(-90)\" id=\"41\" font-size=\"8.28pt\" font-weight=\"bold\" fill=\"#FF0000\" fill-opacity=\"1\" font-family=\"Arial\">Lists<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl4_4)\">\n      <text transform=\"translate(323.24,155.69) rotate(-90)\" id=\"42\" font-size=\"8.28pt\" font-weight=\"bold\" fill=\"#FF0000\" fill-opacity=\"1\" font-family=\"Arial\">Environments<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl4_4)\">\n      <text transform=\"translate(348.89,116.40) rotate(-90)\" id=\"43\" font-size=\"8.28pt\" font-weight=\"bold\" fill=\"#FF0000\" fill-opacity=\"1\" font-family=\"Arial\">Tibbles<\/text>\n    <\/g>\n    <polyline points=\"19.96,99.37 53.22,111.87 86.48,111.87 119.74,111.87 153.00,111.87 186.26,111.87 219.52,111.87 252.78,111.87 286.04,99.37 319.30,99.37 352.56,99.37\" id=\"44\" clip-path=\"url(#cl4_4)\" fill=\"none\" stroke-width=\"4.26791\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"butt\"/>\n    <polygon points=\"336.97,108.37 352.56,99.37 336.97,90.37\" id=\"45\" clip-path=\"url(#cl4_4)\" fill=\"#000000\" fill-opacity=\"1\" stroke-width=\"4.26791\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"butt\"/>\n    <circle cx=\"19.96\" cy=\"99.37\" r=\"6.16pt\" id=\"46\" clip-path=\"url(#cl4_4)\" fill=\"#FF0000\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#FF0000\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"53.22\" cy=\"111.87\" r=\"8.27pt\" id=\"47\" clip-path=\"url(#cl4_4)\" fill=\"#FF0000\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#FF0000\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"86.48\" cy=\"111.87\" r=\"8.27pt\" id=\"48\" clip-path=\"url(#cl4_4)\" fill=\"#FF0000\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#FF0000\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"119.74\" cy=\"111.87\" r=\"8.27pt\" id=\"49\" clip-path=\"url(#cl4_4)\" fill=\"#FF0000\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#FF0000\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"153.00\" cy=\"111.87\" r=\"1.07pt\" id=\"50\" clip-path=\"url(#cl4_4)\" fill=\"#FF0000\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#FF0000\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"186.26\" cy=\"111.87\" r=\"8.27pt\" id=\"51\" clip-path=\"url(#cl4_4)\" fill=\"#FF0000\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#FF0000\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"219.52\" cy=\"111.87\" r=\"6.16pt\" id=\"52\" clip-path=\"url(#cl4_4)\" fill=\"#FF0000\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#FF0000\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"252.78\" cy=\"111.87\" r=\"6.16pt\" id=\"53\" clip-path=\"url(#cl4_4)\" fill=\"#FF0000\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#FF0000\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"286.04\" cy=\"99.37\" r=\"1.07pt\" id=\"54\" clip-path=\"url(#cl4_4)\" fill=\"#FF0000\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#FF0000\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"319.30\" cy=\"99.37\" r=\"1.07pt\" id=\"55\" clip-path=\"url(#cl4_4)\" fill=\"#FF0000\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#FF0000\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"352.56\" cy=\"99.37\" r=\"1.07pt\" id=\"56\" clip-path=\"url(#cl4_4)\" fill=\"#FF0000\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#FF0000\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <defs>\n      <clipPath id=\"cl4_5\">\n        <rect x=\"0.00\" y=\"0.00\" width=\"432.00\" height=\"360.00\"/>\n      <\/clipPath>\n    <\/defs>\n    <g clip-path=\"url(#cl4_5)\">\n      <text x=\"378.19\" y=\"46.22\" id=\"57\" font-size=\"8.25pt\" font-family=\"Arial\">experience<\/text>\n    <\/g>\n    <circle cx=\"392.36\" cy=\"61.60\" r=\"1.07pt\" id=\"58\" clip-path=\"url(#cl4_5)\" fill=\"#FF0000\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#FF0000\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"392.36\" cy=\"78.88\" r=\"4.67pt\" id=\"59\" clip-path=\"url(#cl4_5)\" fill=\"#FF0000\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#FF0000\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"392.36\" cy=\"97.96\" r=\"6.16pt\" id=\"60\" clip-path=\"url(#cl4_5)\" fill=\"#FF0000\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#FF0000\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"392.36\" cy=\"120.86\" r=\"7.30pt\" id=\"61\" clip-path=\"url(#cl4_5)\" fill=\"#FF0000\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#FF0000\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"392.36\" cy=\"147.50\" r=\"8.27pt\" id=\"62\" clip-path=\"url(#cl4_5)\" fill=\"#FF0000\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#FF0000\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <g clip-path=\"url(#cl4_5)\">\n      <text x=\"412.01\" y=\"64.82\" id=\"63\" font-size=\"6.60pt\" font-family=\"Arial\">3.0<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl4_5)\">\n      <text x=\"412.01\" y=\"82.10\" id=\"64\" font-size=\"6.60pt\" font-family=\"Arial\">3.5<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl4_5)\">\n      <text x=\"412.01\" y=\"101.18\" id=\"65\" font-size=\"6.60pt\" font-family=\"Arial\">4.0<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl4_5)\">\n      <text x=\"412.01\" y=\"124.08\" id=\"66\" font-size=\"6.60pt\" font-family=\"Arial\">4.5<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl4_5)\">\n      <text x=\"412.01\" y=\"150.72\" id=\"67\" font-size=\"6.60pt\" font-family=\"Arial\">5.0<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl4_5)\">\n      <text x=\"0.00\" y=\"76.21\" id=\"68\" font-size=\"11.25pt\" font-weight=\"bold\" fill=\"#FF0000\" fill-opacity=\"1\" font-family=\"Arial\">Learning roadmap of objectsR<\/text>\n    <\/g>\n    <defs>\n      <clipPath id=\"cl4_6\">\n        <rect x=\"0.00\" y=\"138.75\" width=\"372.52\" height=\"41.25\"/>\n      <\/clipPath>\n    <\/defs>\n    <g clip-path=\"url(#cl4_6)\">\n      <text transform=\"translate(73.78,155.79) rotate(-90)\" id=\"69\" font-size=\"8.28pt\" font-weight=\"bold\" fill=\"#FF69B4\" fill-opacity=\"1\" font-family=\"Arial\">txt<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl4_6)\">\n      <text transform=\"translate(190.20,160.70) rotate(-90)\" id=\"70\" font-size=\"8.28pt\" font-weight=\"bold\" fill=\"#FF69B4\" fill-opacity=\"1\" font-family=\"Arial\">csv<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl4_6)\">\n      <text transform=\"translate(306.61,171.09) rotate(-90)\" id=\"71\" font-size=\"8.28pt\" font-weight=\"bold\" fill=\"#FF69B4\" fill-opacity=\"1\" font-family=\"Arial\">Excel<\/text>\n    <\/g>\n    <polyline points=\"69.85,163.12 186.26,163.12 302.67,163.12\" id=\"72\" clip-path=\"url(#cl4_6)\" fill=\"none\" stroke-width=\"4.26791\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"butt\"/>\n    <polygon points=\"287.08,172.12 302.67,163.12 287.08,154.12\" id=\"73\" clip-path=\"url(#cl4_6)\" fill=\"#000000\" fill-opacity=\"1\" stroke-width=\"4.26791\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"butt\"/>\n    <circle cx=\"69.85\" cy=\"163.12\" r=\"6.16pt\" id=\"74\" clip-path=\"url(#cl4_6)\" fill=\"#FF69B4\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#FF69B4\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"186.26\" cy=\"163.12\" r=\"6.16pt\" id=\"75\" clip-path=\"url(#cl4_6)\" fill=\"#FF69B4\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#FF69B4\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"302.67\" cy=\"163.12\" r=\"6.16pt\" id=\"76\" clip-path=\"url(#cl4_6)\" fill=\"#FF69B4\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#FF69B4\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <defs>\n      <clipPath id=\"cl4_7\">\n        <rect x=\"0.00\" y=\"0.00\" width=\"432.00\" height=\"360.00\"/>\n      <\/clipPath>\n    <\/defs>\n    <g clip-path=\"url(#cl4_7)\">\n      <text x=\"378.19\" y=\"150.13\" id=\"77\" font-size=\"8.25pt\" font-family=\"Arial\">experience<\/text>\n    <\/g>\n    <circle cx=\"388.62\" cy=\"167.32\" r=\"6.16pt\" id=\"78\" clip-path=\"url(#cl4_7)\" fill=\"#FF69B4\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#FF69B4\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <g clip-path=\"url(#cl4_7)\">\n      <text x=\"404.54\" y=\"170.53\" id=\"79\" font-size=\"6.60pt\" font-family=\"Arial\">5<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl4_7)\">\n      <text x=\"0.00\" y=\"136.21\" id=\"80\" font-size=\"11.25pt\" font-weight=\"bold\" fill=\"#FF69B4\" fill-opacity=\"1\" font-family=\"Arial\">Learning roadmap of importR<\/text>\n    <\/g>\n    <defs>\n      <clipPath id=\"cl4_8\">\n        <rect x=\"0.00\" y=\"198.75\" width=\"372.52\" height=\"41.25\"/>\n      <\/clipPath>\n    <\/defs>\n    <g clip-path=\"url(#cl4_8)\">\n      <text transform=\"translate(105.53,292.19) rotate(-90)\" id=\"81\" font-size=\"8.28pt\" font-weight=\"bold\" fill=\"#006400\" fill-opacity=\"1\" font-family=\"Arial\">Create a function<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl4_8)\">\n      <text transform=\"translate(274.86,289.13) rotate(-90)\" id=\"82\" font-size=\"8.28pt\" font-weight=\"bold\" fill=\"#006400\" fill-opacity=\"1\" font-family=\"Arial\">Vector functions<\/text>\n    <\/g>\n    <polyline points=\"101.60,228.75 270.92,228.75\" id=\"83\" clip-path=\"url(#cl4_8)\" fill=\"none\" stroke-width=\"4.26791\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"butt\"/>\n    <polygon points=\"255.33,237.75 270.92,228.75 255.33,219.75\" id=\"84\" clip-path=\"url(#cl4_8)\" fill=\"#000000\" fill-opacity=\"1\" stroke-width=\"4.26791\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"butt\"/>\n    <circle cx=\"101.60\" cy=\"228.75\" r=\"8.27pt\" id=\"85\" clip-path=\"url(#cl4_8)\" fill=\"#006400\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#006400\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"270.92\" cy=\"228.75\" r=\"1.07pt\" id=\"86\" clip-path=\"url(#cl4_8)\" fill=\"#006400\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#006400\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <defs>\n      <clipPath id=\"cl4_9\">\n        <rect x=\"0.00\" y=\"0.00\" width=\"432.00\" height=\"360.00\"/>\n      <\/clipPath>\n    <\/defs>\n    <g clip-path=\"url(#cl4_9)\">\n      <text x=\"378.19\" y=\"166.22\" id=\"87\" font-size=\"8.25pt\" font-family=\"Arial\">experience<\/text>\n    <\/g>\n    <circle cx=\"392.36\" cy=\"181.60\" r=\"1.07pt\" id=\"88\" clip-path=\"url(#cl4_9)\" fill=\"#006400\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#006400\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"392.36\" cy=\"198.88\" r=\"4.67pt\" id=\"89\" clip-path=\"url(#cl4_9)\" fill=\"#006400\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#006400\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"392.36\" cy=\"217.96\" r=\"6.16pt\" id=\"90\" clip-path=\"url(#cl4_9)\" fill=\"#006400\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#006400\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"392.36\" cy=\"240.86\" r=\"7.30pt\" id=\"91\" clip-path=\"url(#cl4_9)\" fill=\"#006400\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#006400\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"392.36\" cy=\"267.50\" r=\"8.27pt\" id=\"92\" clip-path=\"url(#cl4_9)\" fill=\"#006400\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#006400\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <g clip-path=\"url(#cl4_9)\">\n      <text x=\"412.01\" y=\"184.82\" id=\"93\" font-size=\"6.60pt\" font-family=\"Arial\">4.00<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl4_9)\">\n      <text x=\"412.01\" y=\"202.10\" id=\"94\" font-size=\"6.60pt\" font-family=\"Arial\">4.25<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl4_9)\">\n      <text x=\"412.01\" y=\"221.18\" id=\"95\" font-size=\"6.60pt\" font-family=\"Arial\">4.50<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl4_9)\">\n      <text x=\"412.01\" y=\"244.08\" id=\"96\" font-size=\"6.60pt\" font-family=\"Arial\">4.75<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl4_9)\">\n      <text x=\"412.01\" y=\"270.72\" id=\"97\" font-size=\"6.60pt\" font-family=\"Arial\">5.00<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl4_9)\">\n      <text x=\"0.00\" y=\"196.21\" id=\"98\" font-size=\"11.25pt\" font-weight=\"bold\" fill=\"#006400\" fill-opacity=\"1\" font-family=\"Arial\">Learning roadmap of functionsR<\/text>\n    <\/g>\n    <defs>\n      <clipPath id=\"cl4_10\">\n        <rect x=\"0.00\" y=\"258.75\" width=\"372.52\" height=\"41.25\"/>\n      <\/clipPath>\n    <\/defs>\n    <g clip-path=\"url(#cl4_10)\">\n      <text transform=\"translate(28.23,363.82) rotate(-90)\" id=\"99\" font-size=\"8.28pt\" font-weight=\"bold\" fill=\"#ADD8E6\" fill-opacity=\"1\" font-family=\"Arial\">Numerical Indexing<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl4_10)\">\n      <text transform=\"translate(68.72,349.13) rotate(-90)\" id=\"100\" font-size=\"8.28pt\" font-weight=\"bold\" fill=\"#ADD8E6\" fill-opacity=\"1\" font-family=\"Arial\">Logical Indexing<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl4_10)\">\n      <text transform=\"translate(109.21,299.02) rotate(-90)\" id=\"101\" font-size=\"8.28pt\" font-weight=\"bold\" fill=\"#ADD8E6\" fill-opacity=\"1\" font-family=\"Arial\">Subset<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl4_10)\">\n      <text transform=\"translate(149.71,300.84) rotate(-90)\" id=\"102\" font-size=\"8.28pt\" font-weight=\"bold\" fill=\"#ADD8E6\" fill-opacity=\"1\" font-family=\"Arial\">Sorting<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl4_10)\">\n      <text transform=\"translate(189.98,309.40) rotate(-90)\" id=\"103\" font-size=\"8.28pt\" font-weight=\"bold\" fill=\"#ADD8E6\" fill-opacity=\"1\" font-family=\"Arial\">Combine<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl4_10)\">\n      <text transform=\"translate(230.69,321.65) rotate(-90)\" id=\"104\" font-size=\"8.28pt\" font-weight=\"bold\" fill=\"#ADD8E6\" fill-opacity=\"1\" font-family=\"Arial\">Summarise<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl4_10)\">\n      <text transform=\"translate(271.16,312.46) rotate(-90)\" id=\"105\" font-size=\"8.28pt\" font-weight=\"bold\" fill=\"#ADD8E6\" fill-opacity=\"1\" font-family=\"Arial\">Recoding<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl4_10)\">\n      <text transform=\"translate(303.91,296.40) rotate(-90)\" id=\"106\" font-size=\"8.28pt\" font-weight=\"bold\" fill=\"#ADD8E6\" fill-opacity=\"1\" font-family=\"Arial\">Reshape<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl4_10)\">\n      <text transform=\"translate(352.16,296.40) rotate(-90)\" id=\"107\" font-size=\"8.28pt\" font-weight=\"bold\" fill=\"#ADD8E6\" fill-opacity=\"1\" font-family=\"Arial\">Regex<\/text>\n    <\/g>\n    <polyline points=\"24.29,288.75 64.79,288.75 105.28,288.75 145.77,288.75 186.26,288.75 226.75,284.06 267.24,284.06 307.73,274.68 348.22,274.68\" id=\"108\" clip-path=\"url(#cl4_10)\" fill=\"none\" stroke-width=\"4.26791\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"butt\"/>\n    <polygon points=\"332.63,283.68 348.22,274.68 332.63,265.68\" id=\"109\" clip-path=\"url(#cl4_10)\" fill=\"#000000\" fill-opacity=\"1\" stroke-width=\"4.26791\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"butt\"/>\n    <circle cx=\"24.29\" cy=\"288.75\" r=\"8.27pt\" id=\"110\" clip-path=\"url(#cl4_10)\" fill=\"#ADD8E6\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#ADD8E6\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"64.79\" cy=\"288.75\" r=\"8.27pt\" id=\"111\" clip-path=\"url(#cl4_10)\" fill=\"#ADD8E6\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#ADD8E6\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"105.28\" cy=\"288.75\" r=\"5.22pt\" id=\"112\" clip-path=\"url(#cl4_10)\" fill=\"#ADD8E6\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#ADD8E6\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"145.77\" cy=\"288.75\" r=\"8.27pt\" id=\"113\" clip-path=\"url(#cl4_10)\" fill=\"#ADD8E6\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#ADD8E6\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"186.26\" cy=\"288.75\" r=\"6.95pt\" id=\"114\" clip-path=\"url(#cl4_10)\" fill=\"#ADD8E6\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#ADD8E6\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"226.75\" cy=\"284.06\" r=\"6.95pt\" id=\"115\" clip-path=\"url(#cl4_10)\" fill=\"#ADD8E6\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#ADD8E6\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"267.24\" cy=\"284.06\" r=\"5.22pt\" id=\"116\" clip-path=\"url(#cl4_10)\" fill=\"#ADD8E6\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#ADD8E6\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"307.73\" cy=\"274.68\" r=\"1.07pt\" id=\"117\" clip-path=\"url(#cl4_10)\" fill=\"#ADD8E6\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#ADD8E6\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"348.22\" cy=\"274.68\" r=\"1.07pt\" id=\"118\" clip-path=\"url(#cl4_10)\" fill=\"#ADD8E6\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#ADD8E6\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <defs>\n      <clipPath id=\"cl4_11\">\n        <rect x=\"0.00\" y=\"0.00\" width=\"432.00\" height=\"360.00\"/>\n      <\/clipPath>\n    <\/defs>\n    <g clip-path=\"url(#cl4_11)\">\n      <text x=\"378.19\" y=\"237.14\" id=\"119\" font-size=\"8.25pt\" font-family=\"Arial\">experience<\/text>\n    <\/g>\n    <circle cx=\"392.36\" cy=\"252.53\" r=\"1.07pt\" id=\"120\" clip-path=\"url(#cl4_11)\" fill=\"#ADD8E6\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#ADD8E6\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"392.36\" cy=\"269.95\" r=\"5.22pt\" id=\"121\" clip-path=\"url(#cl4_11)\" fill=\"#ADD8E6\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#ADD8E6\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"392.36\" cy=\"290.56\" r=\"6.95pt\" id=\"122\" clip-path=\"url(#cl4_11)\" fill=\"#ADD8E6\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#ADD8E6\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"392.36\" cy=\"316.57\" r=\"8.27pt\" id=\"123\" clip-path=\"url(#cl4_11)\" fill=\"#ADD8E6\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#ADD8E6\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <g clip-path=\"url(#cl4_11)\">\n      <text x=\"412.01\" y=\"255.75\" id=\"124\" font-size=\"6.60pt\" font-family=\"Arial\">2<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl4_11)\">\n      <text x=\"412.01\" y=\"273.17\" id=\"125\" font-size=\"6.60pt\" font-family=\"Arial\">3<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl4_11)\">\n      <text x=\"412.01\" y=\"293.78\" id=\"126\" font-size=\"6.60pt\" font-family=\"Arial\">4<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl4_11)\">\n      <text x=\"412.01\" y=\"319.79\" id=\"127\" font-size=\"6.60pt\" font-family=\"Arial\">5<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl4_11)\">\n      <text x=\"0.00\" y=\"256.21\" id=\"128\" font-size=\"11.25pt\" font-weight=\"bold\" fill=\"#ADD8E6\" fill-opacity=\"1\" font-family=\"Arial\">Learning roadmap of datamungingR<\/text>\n    <\/g>\n    <defs>\n      <clipPath id=\"cl4_12\">\n        <rect x=\"0.00\" y=\"318.75\" width=\"372.52\" height=\"41.25\"/>\n      <\/clipPath>\n    <\/defs>\n    <g clip-path=\"url(#cl4_12)\">\n      <text transform=\"translate(57.17,377.97) rotate(-90)\" id=\"129\" font-size=\"8.28pt\" font-weight=\"bold\" fill=\"#00FF00\" fill-opacity=\"1\" font-family=\"Arial\">Base plots<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl4_12)\">\n      <text transform=\"translate(145.85,393.85) rotate(-90)\" id=\"130\" font-size=\"8.28pt\" font-weight=\"bold\" fill=\"#00FF00\" fill-opacity=\"1\" font-family=\"Arial\">ggplot syntax<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl4_12)\">\n      <text transform=\"translate(234.54,403.63) rotate(-90)\" id=\"131\" font-size=\"8.28pt\" font-weight=\"bold\" fill=\"#00FF00\" fill-opacity=\"1\" font-family=\"Arial\">ggplot2 themes<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl4_12)\">\n      <text transform=\"translate(323.24,356.40) rotate(-90)\" id=\"132\" font-size=\"8.28pt\" font-weight=\"bold\" fill=\"#00FF00\" fill-opacity=\"1\" font-family=\"Arial\">Interactive<\/text>\n    <\/g>\n    <polyline points=\"53.22,353.44 141.91,353.44 230.61,344.06 319.30,334.68\" id=\"133\" clip-path=\"url(#cl4_12)\" fill=\"none\" stroke-width=\"4.26791\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"butt\"/>\n    <polygon points=\"304.74,345.27 319.30,334.68 302.85,327.37\" id=\"134\" clip-path=\"url(#cl4_12)\" fill=\"#000000\" fill-opacity=\"1\" stroke-width=\"4.26791\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"butt\"/>\n    <circle cx=\"53.22\" cy=\"353.44\" r=\"1.07pt\" id=\"135\" clip-path=\"url(#cl4_12)\" fill=\"#00FF00\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#00FF00\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"141.91\" cy=\"353.44\" r=\"8.27pt\" id=\"136\" clip-path=\"url(#cl4_12)\" fill=\"#00FF00\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#00FF00\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"230.61\" cy=\"344.06\" r=\"8.27pt\" id=\"137\" clip-path=\"url(#cl4_12)\" fill=\"#00FF00\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#00FF00\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"319.30\" cy=\"334.68\" r=\"8.27pt\" id=\"138\" clip-path=\"url(#cl4_12)\" fill=\"#00FF00\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#00FF00\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <defs>\n      <clipPath id=\"cl4_13\">\n        <rect x=\"0.00\" y=\"0.00\" width=\"432.00\" height=\"360.00\"/>\n      <\/clipPath>\n    <\/defs>\n    <g clip-path=\"url(#cl4_13)\">\n      <text x=\"378.19\" y=\"286.22\" id=\"139\" font-size=\"8.25pt\" font-family=\"Arial\">experience<\/text>\n    <\/g>\n    <circle cx=\"392.36\" cy=\"301.60\" r=\"1.07pt\" id=\"140\" clip-path=\"url(#cl4_13)\" fill=\"#00FF00\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#00FF00\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"392.36\" cy=\"318.88\" r=\"4.67pt\" id=\"141\" clip-path=\"url(#cl4_13)\" fill=\"#00FF00\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#00FF00\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"392.36\" cy=\"337.96\" r=\"6.16pt\" id=\"142\" clip-path=\"url(#cl4_13)\" fill=\"#00FF00\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#00FF00\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"392.36\" cy=\"360.86\" r=\"7.30pt\" id=\"143\" clip-path=\"url(#cl4_13)\" fill=\"#00FF00\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#00FF00\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <g clip-path=\"url(#cl4_13)\">\n      <text x=\"412.01\" y=\"304.82\" id=\"144\" font-size=\"6.60pt\" font-family=\"Arial\">1.0<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl4_13)\">\n      <text x=\"412.01\" y=\"322.10\" id=\"145\" font-size=\"6.60pt\" font-family=\"Arial\">1.5<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl4_13)\">\n      <text x=\"412.01\" y=\"341.18\" id=\"146\" font-size=\"6.60pt\" font-family=\"Arial\">2.0<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl4_13)\">\n      <text x=\"412.01\" y=\"364.08\" id=\"147\" font-size=\"6.60pt\" font-family=\"Arial\">2.5<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl4_13)\">\n      <text x=\"0.00\" y=\"316.21\" id=\"148\" font-size=\"11.25pt\" font-weight=\"bold\" fill=\"#00FF00\" fill-opacity=\"1\" font-family=\"Arial\">Learning roadmap of vizR<\/text>\n    <\/g>\n  <\/g>\n<\/svg>\n","css":".tooltip_svg_4 {position:absolute;pointer-events:none;z-index:999;background-color:gray;color:white;font-style:italic;padding:10px;border-radius:5px;fill:white;r:10pt;}\n.hover_svg_4{fill:orange;stroke:gray;}\n.clicked_svg_4{fill:orange;stroke:gray;}","ui_html":"<div class='ggiraph-toolbar'><div class='ggiraph-toolbar-block shinyonly'><a class='ggiraph-toolbar-icon neutral' title='lasso selection' href='javascript:lasso_on(\"svg_4\", true, \"array_selected_svg_4\", \"clicked_svg_4\");'><svg width='15pt' height='15pt' viewBox='0 0 230 230'><g><ellipse ry='65.5' rx='86.5' cy='94' cx='115.5' stroke-width='20' fill='transparent'/><ellipse ry='11.500001' rx='10.5' cy='153' cx='91.5' stroke-width='20' fill='transparent'/><line y2='210.5' x2='105' y1='164.5' x1='96' stroke-width='20'/><\/g><\/svg><\/a><a class='ggiraph-toolbar-icon drop' title='lasso anti-selection' href='javascript:lasso_on(\"svg_4\", false, \"array_selected_svg_4\", \"clicked_svg_4\");'><svg width='15pt' height='15pt' viewBox='0 0 230 230'><g><ellipse ry='65.5' rx='86.5' cy='94' cx='115.5' stroke-width='20' fill='transparent'/><ellipse ry='11.500001' rx='10.5' cy='153' cx='91.5' stroke-width='20' fill='transparent'/><line y2='210.5' x2='105' y1='164.5' x1='96' stroke-width='20'/><\/g><\/svg><\/a><\/div><\/div>","uid":"svg_4","width":"75%","funname":"init_prop_svg_4","sel_array_name":"array_selected_svg_4","selected_class":"clicked_svg_4","tooltip_opacity":0.9,"tooltip_offx":10,"tooltip_offy":0,"zoom_max":1,"selection_type":"multiple"},"evals":[],"jsHooks":[]}</script>
+<p>This output is quite busy and not currently malleable. It seems as though the ggplot objects can be plotted side by side, but what about layering and joining the ggplot objects to show the journey?</p>
+</div>
+<div id="conclusions" class="section level2">
+<h2>Conclusions</h2>
+<p>I have created some data for this project and done some initial data analysis. Through this process, I also reviewed and refreshed some of the fundamentals of the R language and practised some “data architecture”.</p>
+<p>Based on the exploratory start to this project, the data appears is usable with the different classes and can be manipulated depending on the requirements of a vis function. The next step is to think more about the interactive roadmap using the <a href="https://serialmentor.com/dataviz/">fundamentals of data visualisation</a>, see <a href="https://kimnewzealand.github.io/2019/03/13/learning2/"><strong>Part 2</strong></a> for the follow up post.</p>
+</div>
+<div id="references" class="section level2">
+<h2>References</h2>
+<ul>
+<li>I really enjoyed reviewing this fun <a href="https://bookdown.org/ndphillips/YaRrr/">YaRrr! The Pirates Guide to R</a> book as an R refresher and for the data creation.<br />
+</li>
+<li>A metro line style <a href="http://nirvacana.com/thoughts/2013/07/08/becoming-a-data-scientist/">data scientist roadmap</a> as inspiration for the layout.</li>
+</ul>
+<p><sup>1</sup> The reason for this compatibility is to focus on and use a single syntax in this roadmap. The tidyverse is based on tidy data principles and ggplot on the grammar of graphics. The final output for this project could then become a framework for separate learning roadmaps for package wrappers for libraries with different syntax (such as plotly) or different languages (such as Python or D3).</p>
+</div>
+
+
+  
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+    <a href="https://kimnewzealand.github.io/2019/03/02/why-blog/"><i class="fa fa-chevron-left"></i></a>
+    
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="https://kimnewzealand.github.io/2019/03/02/why-blog/">Why Blog?</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="next">
+      <a href="https://kimnewzealand.github.io/2019/03/13/learning2/">Interactive Learning Roadmap - Part 2</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+    <a href="https://kimnewzealand.github.io/2019/03/13/learning2/"><i class="fa fa-chevron-right"></i></a>
+    
+  </div>
+</div>
+
+
+
+  
+
+</div>
+
+</div>
+</div>
+<script src="https://kimnewzealand.github.io/js/ui.js"></script>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-114904130-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+
+
+</body>
+</html>
+

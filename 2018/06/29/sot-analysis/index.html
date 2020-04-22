@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.31.1" />
+
+  <title>Summer of Tech Event and Intern Analysis &middot; Kim Fitter</title>
+
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/pure-min.css">
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-old-ie-min.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-min.css">
+  <!--<![endif]-->
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://kimnewzealand.github.io/css/side-menu-old-ie.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://kimnewzealand.github.io/css/side-menu.css">
+  <!--<![endif]-->
+
+  <link rel="stylesheet" href="https://kimnewzealand.github.io/css/blackburn.css">
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+ 
+  
+
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/androidstudio.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+
+  <link rel="shortcut icon" href="https://kimnewzealand.github.io/img/favicon.ico" type="image/x-icon" />
+
+  
+  
+
+</head>
+
+
+<body>
+<div id="layout">
+
+  
+<a href="#menu" id="menuLink" class="menu-link">
+  
+  <span></span>
+</a>
+<div id="menu">
+
+  
+  <a class="pure-menu-heading brand" href="https://kimnewzealand.github.io/">Kim Fitter</a>
+
+
+  <div class="pure-menu">
+    <ul class="pure-menu-list">
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://kimnewzealand.github.io/"><i class='fa fa-home fa-fw'></i>Home</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://kimnewzealand.github.io/about/"><i class='fa fa-user fa-fw'></i>About</a>
+      
+        </li>
+      
+    </ul>
+  </div>
+
+  <div class="pure-menu social">
+  <ul class="pure-menu-list">
+
+
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://twitter.com/kim_fitter" target="_blank"><i class="fa fa-twitter-square fa-fw"></i>Twitter</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://github.com/kimnewzealand" target="_blank"><i class="fa fa-github-square fa-fw"></i>GitHub</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </ul>
+</div>
+
+
+  <div>
+  <div class="small-print">
+    <small>Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)</small>
+  </div>
+  <div class="small-print">
+    <small>Built with&nbsp;<a href="https://gohugo.io/" target="_blank">Hugo</a></small>
+    <small>Theme&nbsp;<a href="https://github.com/yoshiharuyamashita/blackburn" target="_blank">Blackburn</a></small>
+  </div>
+</div>
+
+</div>
+
+
+  <div id="main">
+
+
+<div class="header">
+  <h1>Summer of Tech Event and Intern Analysis</h1>
+  <h2></h2>
+</div>
+<div class="content">
+
+  <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>29 Jun 2018</time>
+  </div>
+
+  
+
+  
+  
+  
+  
+
+  
+  
+  
+  <div>
+    <i class="fa fa-tags fa-fw"></i>
+    
+      <a class="post-taxonomy-tag" href="https://kimnewzealand.github.io/tags/r">R</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="https://kimnewzealand.github.io/tags/eda">EDA</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="https://kimnewzealand.github.io/tags/networks">networks</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="https://kimnewzealand.github.io/tags/sankey">sankey</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="https://kimnewzealand.github.io/tags/modeling">modeling</a>
+    
+  </div>
+  
+  
+
+</div>
+
+  <script src="https://kimnewzealand.github.io/rmarkdown-libs/kePrint/kePrint.js"></script>
+<script src="https://kimnewzealand.github.io/rmarkdown-libs/htmlwidgets/htmlwidgets.js"></script>
+<script src="https://kimnewzealand.github.io/rmarkdown-libs/d3/d3.min.js"></script>
+<script src="https://kimnewzealand.github.io/rmarkdown-libs/sankey/sankey.js"></script>
+<script src="https://kimnewzealand.github.io/rmarkdown-libs/sankeyNetwork-binding/sankeyNetwork.js"></script>
+<script src="https://kimnewzealand.github.io/rmarkdown-libs/forceNetwork-binding/forceNetwork.js"></script>
+
+
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#data">Data</a></li>
+<li><a href="#clean-data">Clean Data</a></li>
+<li><a href="#success-factors">Success Factors</a></li>
+<li><a href="#specific-events-resulting-in-internships">Specific Events Resulting in Internships</a></li>
+<li><a href="#social-impact">Social Impact</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ul>
+<div id="introduction" class="section level2">
+<h2>Introduction</h2>
+<p>We were looking for a real data from a non-profit organisation for the R-Ladies Auckland Dataviz <a href="https://www.meetup.com/rladies-auckland/events/251632320/">meetup</a>. We were approached by <a href="https://summeroftech.co.nz/">Summer of Tech(SoT)</a> who volunteered their data for the group to explore.</p>
+<p>SoT is a non-profit organisation that connects employers with students and graduates for paid work experience and graduate jobs. Students create a profile to register interest in a number of available summer interships. The students then attend skills and recruitment events, and SoT facilitates the whole process to job offers and securing these internships.</p>
+<p>The specific questions that SoT have are as follows:</p>
+<ol style="list-style-type: decimal">
+<li>What are the success factors for getting hired? These are the measurable factors over and above being intrinsically awesome.</li>
+<li>There is a lot of effort placed in running a large number of events, which specific events are better and result in internships?</li>
+<li>In order to understand the social impact, where and how are the under-represented groups fairing?</li>
+<li>What data and variables are missing and would be useful to collect?</li>
+</ol>
+<p>The objectives of this post are to:</p>
+<ul>
+<li>Perform an initial exploratory data analysis. This will form a basis for further analysis with additional data provided and feedback gathered.<br />
+</li>
+<li>Provide insights to SoT’s questions (note these insights are not recommendations or predictions).</li>
+<li>Use the opportunity to experiment with new R visualisation packages and functions in networkD3 with real data.</li>
+</ul>
+<p>The interviewing and hiring process can be subjective and often based on timing and personality fit. Data can tell some of the story but it is also worth considering the individual cases, and any specialist skills, with the analysis.</p>
+<div id="section" class="section level3">
+<h3></h3>
+<hr />
+<p><strong>LOAD PACKAGES</strong></p>
+<pre class="r"><code>library(tidyverse)
+library(DataExplorer)
+library(skimr)
+library(networkD3)
+library(maps)
+library(ggmap)
+library(gganimate)
+library(animation)</code></pre>
+</div>
+<div id="data" class="section level3">
+<h3>Data</h3>
+<p>The Summer of Tech data is available in the R-Ladies github <a href="https://github.com/R-LadiesAKL/sotdata">link</a>.</p>
+<p>The following datasets have been made available by Summer of Tech for the R-Ladies dataviz meetup:</p>
+<ul>
+<li>“2017 event detail report.csv” includes event name and type, location (by city), start/finish time and date, event numbers</li>
+<li>“2017 interns per employer.csv” includes the number of interns each employer hired in 2017<br />
+</li>
+<li>“Event attendances data Dec 2017.csv” includes event name and type, and student details</li>
+<li>“Institution to region mapper.csv” includes institutions and corresponding region<br />
+</li>
+<li>“Intern data Dec 2017.csv” includes student details and internship details</li>
+</ul>
+<pre class="r"><code># Import the &quot;2017 event detail report.csv&quot; 
+eventdetail &lt;- read_csv(&quot;https://raw.githubusercontent.com/R-LadiesAKL/sotdata/master/2017%20event%20detail%20report.csv&quot;)
+# Import the &quot;Event attendances data Dec 2017.csv&quot;
+event &lt;- read_csv(&quot;https://raw.githubusercontent.com/R-LadiesAKL/sotdata/master/Event%20attendances%20data%20Dec%202017.csv&quot;)
+# Import the intern data &quot;Intern data Dec 2017.csv&quot;
+intern &lt;- read_csv(&quot;https://raw.githubusercontent.com/R-LadiesAKL/sotdata/master/Intern%20data%20Dec%202017.csv&quot;)
+#  Only select the first 214 rows, the rest are N/A
+intern &lt;- intern[1:214,]
+# Import the &quot;Institution to region mapper.csv&quot;
+mapper &lt;- read_csv(&quot;https://raw.githubusercontent.com/R-LadiesAKL/sotdata/master/Institution%20to%20region%20mapper.csv&quot;)
+# Import the &quot;2017 interns per employer.csv&quot;
+internemployer &lt;- read_csv(&quot;https://raw.githubusercontent.com/R-LadiesAKL/sotdata/master/2017%20interns%20per%20employer.csv&quot;)</code></pre>
+<pre class="r"><code>#  We will use the make.names base R function to make syntactically valid names of the column variables for further analysis and output in R Markdown. For these names, it adds a &quot;.&quot; to the spaces in the names
+names(eventdetail) &lt;- make.names(names(eventdetail))
+#  Make Syntactically Valid Names of the eventdetail 
+names(event) &lt;- make.names(names(event))
+#  Make Syntactically Valid Names of the intern
+names(intern) &lt;- make.names(names(intern))</code></pre>
+<p><strong>Summarise the data in numbers:</strong></p>
+<ul>
+<li><p>From the event attendances data, there are <strong>1381</strong> students from <strong>34</strong> institutions, studying <strong>886</strong> different qualifications, who express interest in the events.</p></li>
+<li><p>From the event detail data, there are <strong>4529</strong> registrations for events with <strong>3206</strong> attendances <strong>109</strong> events.</p></li>
+<li><p>There are <strong>213</strong> unique interships of total <strong>214</strong> internships of students in <strong>6</strong> programmes from <strong>18</strong> institutions.</p></li>
+<li><p>There are <strong>20</strong> different internships role types.</p></li>
+</ul>
+</div>
+<div id="clean-data" class="section level3">
+<h3>Clean Data</h3>
+<p>We will first clean the data.</p>
+<p><strong>Duplicates</strong></p>
+<p>From the summary statistics there appears to be a student who has two internships? Let’s view and remove the duplicate token.</p>
+<pre class="r"><code>#  Check which internship with the duplicated token ID
+intern %&gt;% 
+      filter(token==intern$token[duplicated(intern$token)]) %&gt;% 
+      kableExtra::kable() %&gt;%
+      kableExtra::kable_styling()</code></pre>
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+token
+</th>
+<th style="text-align:left;">
+Programme
+</th>
+<th style="text-align:left;">
+Region
+</th>
+<th style="text-align:left;">
+internship.type
+</th>
+<th style="text-align:left;">
+Intern.ethnicity
+</th>
+<th style="text-align:left;">
+Intern.gender
+</th>
+<th style="text-align:left;">
+Institution
+</th>
+<th style="text-align:right;">
+Year.of.study
+</th>
+<th style="text-align:left;">
+Final.year
+</th>
+<th style="text-align:left;">
+Offer.Created.at
+</th>
+<th style="text-align:right;">
+Rate.value
+</th>
+<th style="text-align:left;">
+Rate.period
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+8f4d30d4577a4b7424b4cc75524bc793
+</td>
+<td style="text-align:left;">
+SoTJobs (Biz)
+</td>
+<td style="text-align:left;">
+Wellington
+</td>
+<td style="text-align:left;">
+hr
+</td>
+<td style="text-align:left;">
+pakeha
+</td>
+<td style="text-align:left;">
+female
+</td>
+<td style="text-align:left;">
+Wellington Institute of Technology (Weltec)
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+2017-10-02 08:40:39 +1300
+</td>
+<td style="text-align:right;">
+20.2
+</td>
+<td style="text-align:left;">
+hour
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+8f4d30d4577a4b7424b4cc75524bc793
+</td>
+<td style="text-align:left;">
+Summer of Biz
+</td>
+<td style="text-align:left;">
+Wellington
+</td>
+<td style="text-align:left;">
+hr
+</td>
+<td style="text-align:left;">
+pakeha
+</td>
+<td style="text-align:left;">
+female
+</td>
+<td style="text-align:left;">
+Wellington Institute of Technology (Weltec)
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+2017-10-03 17:17:58 +1300
+</td>
+<td style="text-align:right;">
+41000.0
+</td>
+<td style="text-align:left;">
+year
+</td>
+</tr>
+</tbody>
+</table>
+<pre class="r"><code># Remove the duplicate token by identifying the row number with the duplicate and then using dplyr&#39;s slice function
+intern &lt;- intern %&gt;% 
+      slice(-which(duplicated(intern$token)))</code></pre>
+<p>There is one event that also appears in the event detail called Health and Safety with no registered attendees which may be a duplicate of another Health and Safety event.</p>
+<p><strong>Add successful intern flag</strong></p>
+<p>Add a variable to the intern data to identify successful internship students after joining with the event data.</p>
+<pre class="r"><code># Add a variable to the intern data to identify successful internship students after merged with the event data
+intern &lt;- intern %&gt;% 
+      mutate(internship=&quot;Successful&quot;)</code></pre>
+<p><strong>Rename column variables</strong></p>
+<p>Let’s rename some of the column variables to be able to track which dataset set they came from.</p>
+<pre class="r"><code># Rename column variables
+intern &lt;- intern %&gt;% 
+      # Rename the intern Region to intern.region
+      rename_at(vars(&#39;Region&#39;), ~ &#39;Intern.region&#39;) %&gt;% 
+      # Rename the intern institution to intern.institution
+      rename_at(vars(&#39;Institution&#39;), ~ &#39;Intern.institution&#39;) %&gt;% 
+      # Rename the intern Year of study to Intern.year.of.study
+      rename_at(vars(&#39;Year.of.study&#39;), ~ &#39;Intern.year.of.study&#39;)
+event &lt;- event %&gt;% 
+       # Rename the Student token variable in event to token so that this is the same as the intern variable name.
+      rename_at(vars(&#39;Student.token&#39;), ~ &#39;token&#39;) %&gt;% 
+      # Rename the region institution to region.institution
+      rename_at(vars(&#39;Institution&#39;), ~ &#39;Event.institution&#39;) 
+eventdetail &lt;- eventdetail %&gt;% 
+       # Rename the eventdetail Name variable in event to Event.name 
+      rename_at(vars(&#39;Name&#39;), ~ &#39;Event.name&#39;) %&gt;% 
+       # Rename the eventdetail Name variable in event to Event.name 
+      rename_at(vars(&#39;Location&#39;), ~ &#39;Event.region&#39;)</code></pre>
+<p><strong>Mapper update</strong></p>
+<p>Add a missing institution,“Toi Ohomai Institute of Technology”, to the region-institution mapper.</p>
+<pre class="r"><code># Add a missing institution to the mapper
+mapper &lt;- rbind(mapper,c(&quot;Toi Ohomai Institute of Technology&quot;,&quot;Multiple&quot;))</code></pre>
+<p><strong>Join files</strong></p>
+<p>Next Join the intern and event files by the common identifier, the student ID, “token”.</p>
+<pre class="r"><code># Join the intern and event by the common token variable
+combine &lt;- full_join(intern,event,by=&quot;token&quot;)
+# Replace the internship NA&#39;s to no. This will include event attendance states including late withdrawals
+combine$internship &lt;- replace_na(combine$internship,&quot;Unsuccessful&quot;)
+# Since some students attend multiple events, let&#39;s create a flag for attended events
+combine &lt;- combine %&gt;% 
+      mutate(registered.for.events=ifelse(is.na(Event.region),&quot;no&quot;,&quot;yes&quot;))
+# Create a new student institution variable from the Event and intern institution variables
+combine &lt;- combine %&gt;% 
+      mutate(Institution=ifelse(is.na(Event.institution),Intern.institution, Event.institution))
+# Map instititution to the region using the mapper 
+combine &lt;- combine %&gt;% 
+      left_join(mapper,by=&quot;Institution&quot;) %&gt;% 
+      rename(Student.institution=Institution) %&gt;% 
+      rename(Student.region=Region)</code></pre>
+</div>
+<div id="success-factor---academic-institution" class="section level3">
+<h3>Success Factor - Academic Institution</h3>
+<p>Since we have a flow from one set of values to another i.e. flow from a factor to whether the student was successful or unsuccessful with an internship, we can use flow and network diagrams to visualise potential success factors.</p>
+<p>One potential factor is the region of study and if where the student studies is a success factor. This regional grouping consolidates the large number of <strong>34</strong> institutions for visualisation.</p>
+<p>The following diagrams are different representations of the total number of students from each region of study to successful or unsuccessful internships.</p>
+<p><strong>Sankey Diagram</strong></p>
+<p>I initially tried the Use the gvisSankey function from the <a href="https://cran.r-project.org/web/packages/googleVis/">googleVis</a> R package. The downside is that it creates a plot in a new browser tab and not easily embedded to R Markdown so not suitable for use here.</p>
+<p>Then I tried the <a href="https://cran.r-project.org/web/packages/networkD3/index.html">networkD3</a> R package to create a D3 JavaScript Sankey diagram. I used this <a href="#%20http://www.sthda.com/english/articles/33-social-network-analysis/137-interactive-network-visualization-using-r/">tutorial</a> for the networkD3 diagrams.</p>
+<p>After creating a summary of the data with the renamed Student.region and Intern.region variables, I included a check that the total number of intern tokens in original file is same as sum in this summary after the join.</p>
+<pre class="r"><code># Create a summary of the counts of Event institutions by unique interns
+regioninterncount &lt;- combine %&gt;%
+      distinct(Student.region,internship,token,Intern.region) %&gt;%
+      group_by(Student.region,internship,Intern.region) %&gt;%  
+      summarize(counts = n()) %&gt;%
+      ungroup() %&gt;%  
+      arrange(desc(counts)) %&gt;% 
+      mutate(internship.long=ifelse(internship==&quot;Unsuccessful&quot;,&quot;Unsuccessful&quot;,paste0(internship,&quot; intern in &quot;,Intern.region))) %&gt;% 
+      mutate(Student.region.long=paste0(&quot;Studies in &quot;,Student.region))
+# Check that the total intern tokens in original file is same as sum in this summary
+length(unique(intern$token))==
+regioninterncount %&gt;% filter(stringr::str_detect(internship.long ,&quot;Successful&quot;)) %&gt;% select(counts) %&gt;% sum()</code></pre>
+<p>[1] TRUE</p>
+<pre class="r"><code># Create the links and nodes for the Sankey and force network diagrams
+name_vec &lt;- c(unique(regioninterncount$Student.region.long), unique(regioninterncount$internship.long))
+name_vec &lt;- name_vec[!is.na(name_vec)]
+lengthid &lt;- length(name_vec)
+# Create the nodes, this set up requires the id to start at 0
+nodes &lt;- data.frame(name = name_vec,id=0:(lengthid-1),stringsAsFactors = FALSE)
+links &lt;- regioninterncount %&gt;%
+  left_join(nodes, by = c(&#39;Student.region.long&#39; = &#39;name&#39;)) %&gt;%
+  rename(origin_id = id) %&gt;%
+  left_join(nodes, by = c(&#39;internship.long&#39; = &#39;name&#39;)) %&gt;%
+  rename(dest_id = id) %&gt;% 
+      data.frame()</code></pre>
+<p>See below the interactive Sankey diagram:</p>
+<pre class="r"><code>s &lt;- sankeyNetwork(Links = links, Nodes = nodes, Source = &#39;origin_id&#39;, Target = &#39;dest_id&#39;, Value = &#39;counts&#39;, NodeID = &#39;name&#39;, 
+              # Format
+              fontSize = 14,
+              nodeWidth = 20)   
+# View Sankey s
+s</code></pre>
+<div id="htmlwidget-1" style="width:672px;height:480px;" class="sankeyNetwork html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1">{"x":{"links":{"source":[0,1,0,2,1,3,4,5,4,2,0,1,6,3,0,5,5,7,8,1,4,4,2,3,3,9],"target":[10,10,11,10,12,10,10,10,11,11,12,11,10,13,14,12,11,10,10,13,12,15,12,12,11,10],"value":[624,428,128,75,41,34,24,18,12,7,5,4,3,3,3,2,2,2,2,1,1,1,1,1,1,1]},"nodes":{"name":["Studies in Wellington","Studies in Auckland","Studies in Multiple","Studies in Waikato","Studies in Christchurch","Studies in Otago","Studies in Marlborough","Studies in Palmerston North","Studies in Tauranga","Studies in Whangarei","Unsuccessful","Successful intern in Wellington","Successful intern in Auckland","Successful intern in Tauranga","Successful intern in PalmerstonNorth","Successful intern in Christchurch"],"group":["Studies in Wellington","Studies in Auckland","Studies in Multiple","Studies in Waikato","Studies in Christchurch","Studies in Otago","Studies in Marlborough","Studies in Palmerston North","Studies in Tauranga","Studies in Whangarei","Unsuccessful","Successful intern in Wellington","Successful intern in Auckland","Successful intern in Tauranga","Successful intern in PalmerstonNorth","Successful intern in Christchurch"]},"options":{"NodeID":"name","NodeGroup":"name","LinkGroup":null,"colourScale":"d3.scaleOrdinal(d3.schemeCategory20);","fontSize":14,"fontFamily":null,"nodeWidth":20,"nodePadding":10,"units":"","margin":{"top":null,"right":null,"bottom":null,"left":null},"iterations":32,"sinksRight":true}},"evals":[],"jsHooks":[]}</script>
+<pre class="r"><code># Save as htmlwidget
+# htmlwidgets::saveWidget(s, &quot;sankeynet.html&quot;, selfcontained = TRUE)</code></pre>
+<p><strong>Force Directed Network</strong></p>
+<p>Let’s view this with an interactive and zoom-able force directed network graph using the forceNetwork function from the same <a href="https://cran.r-project.org/web/packages/networkD3/index.html">networkD3</a> R package.</p>
+<pre class="r"><code># Create and plot the forcenetwork with the links and nodes
+f &lt;- forceNetwork(Links = links, Nodes = nodes, Source = &#39;origin_id&#39;, Target = &#39;dest_id&#39;, NodeID = &#39;name&#39;, Group = &#39;id&#39;, 
+             # Customise the links
+             #Value = &#39;counts&#39;, 
+             zoom = TRUE,
+             #linkWidth = networkD3::JS(&quot;function(d) { return d.value/50; }&quot;),
+             charge=-1500,
+             # Format
+             #width = 600, 
+             #height = 400,
+             #legend=T,
+             fontFamily = &quot;arial&quot;,
+             opacity = 1, 
+             opacityNoHover = 0.5,
+             fontSize = 18) %&gt;% 
+      htmlwidgets::prependContent(htmltools::tags$h3(&quot;Institution Links to Successful and Unsuccessful Internships&quot;)) 
+# View the f network created
+f</code></pre>
+<h3>Institution Links to Successful and Unsuccessful Internships</h3>
+<div id="htmlwidget-2" style="width:672px;height:480px;" class="forceNetwork html-widget"></div>
+<script type="application/json" data-for="htmlwidget-2">{"x":{"links":{"source":[0,1,0,2,1,3,4,5,4,2,0,1,6,3,0,5,5,7,8,1,4,4,2,3,3,9],"target":[10,10,11,10,12,10,10,10,11,11,12,11,10,13,14,12,11,10,10,13,12,15,12,12,11,10],"colour":["#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666"]},"nodes":{"name":["Studies in Wellington","Studies in Auckland","Studies in Multiple","Studies in Waikato","Studies in Christchurch","Studies in Otago","Studies in Marlborough","Studies in Palmerston North","Studies in Tauranga","Studies in Whangarei","Unsuccessful","Successful intern in Wellington","Successful intern in Auckland","Successful intern in Tauranga","Successful intern in PalmerstonNorth","Successful intern in Christchurch"],"group":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]},"options":{"NodeID":"name","Group":"id","colourScale":"d3.scaleOrdinal(d3.schemeCategory20);","fontSize":18,"fontFamily":"arial","clickTextSize":45,"linkDistance":50,"linkWidth":"function(d) { return Math.sqrt(d.value); }","charge":-1500,"opacity":1,"zoom":true,"legend":false,"arrows":false,"nodesize":false,"radiusCalculation":" Math.sqrt(d.nodesize)+6","bounded":false,"opacityNoHover":0.5,"clickAction":null}},"evals":[],"jsHooks":[]}</script>
+<pre class="r"><code># Save as htmlwidget
+# htmlwidgets::saveWidget(f, &quot;forcenetwork.html&quot;, selfcontained = TRUE)</code></pre>
+<p><strong>Map</strong></p>
+<p>Since there is regional data let’s view the flow spatially using a map. In R Markdown the <a href="https://github.com/dgrtwo/gganimate">gganimate</a> R package’s object will show as a sequence of panes, however we can save this as a gif to view it as an animation.</p>
+<pre class="r"><code>regioninterncount$Intern.region[8] &lt;- &quot;Palmerston North&quot;
+# Geocode the region data using mutate_geocode from ggmap R package
+regioninterngeo &lt;- regioninterncount %&gt;% 
+      filter(internship==&quot;Successful&quot;) %&gt;% 
+      mutate_geocode(Student.region) %&gt;% 
+      rename(lat.s =lat) %&gt;% 
+      rename(lon.s=lon) %&gt;% 
+      mutate_geocode( Intern.region)
+# Get a simple NZ map for ggplot
+nzMap &lt;- borders(&quot;nz&quot;, colour=&quot;grey&quot;, fill=&quot;grey&quot;)
+# Extract the data of the students where there was a flow from region to region for the lines
+flowdata &lt;- regioninterngeo %&gt;% 
+      mutate(moved=ifelse(lon.s==lon,&quot;no&quot;,&quot;yes&quot;)) %&gt;% 
+      filter(moved==&quot;yes&quot;) %&gt;% 
+      # Remove the Multiple region from the Student.region
+      filter(Student.region!=&quot;Multiple&quot;)
+# Create a data.frame with the region cities and latitude and longitudes
+regioncodes &lt;- regioninterngeo %&gt;% 
+      select(Intern.region,lon,lat) %&gt;%  
+      rbind(c(&quot;Waikato&quot;,175.18940, -37.45580),c(&quot;Otago&quot; ,170.15476, -45.47907 )) %&gt;% 
+      distinct() %&gt;% 
+      drop_na() %&gt;% 
+      rename(region=Intern.region) %&gt;% 
+      mutate_at(vars(lon,lat),funs(as.numeric)) 
+
+# Plot the lables of the cities onto the nzMap using ggplot. We will ignore the student region multiple  in this map
+g &lt;- ggplot() + 
+      nzMap +
+      # Adjust the region labels
+      geom_text(data = regioncodes, aes(x = (lon+0.5), y = (lat+0.5), label= region)) +
+      # Plot the geocoded data with the counts of the interns
+      geom_point(data = regioninterngeo,
+                 aes(x = lon, y = lat, 
+                     color=Intern.region,
+                     size=counts,
+                     alpha=0.6))  +
+      # Add the arrows from the students institutions to the intern cities using the flowdata 
+      # and the geom_curve function
+      geom_curve(data=flowdata, 
+                 aes(x = lon.s, y = lat.s, xend = lon, yend = lat, 
+                     color=Intern.region, 
+                     frame=Intern.region,
+                 size=counts),
+                 curvature = 0.5, 
+                 lineend =&#39;square&#39;,
+                 arrow = arrow(length = unit(0.3,&quot;cm&quot;), type = &quot;open&quot;)) +
+      # Use the ggthemes package theme_map to remove the axes
+      ggthemes::theme_map()  +
+      # Remove specific aesthetics from the legend
+      guides(size=FALSE, alpha=FALSE) + 
+      # Rename the legend title
+      scale_color_brewer(palette=&quot;Set1&quot;) +
+      labs(color = &quot;Intern City&quot;)  +
+      # Reposition the legend over another theme
+      theme(
+              legend.position = &quot;bottom&quot;,
+              legend.direction = &quot;horizontal&quot;,
+              legend.justification = &quot;center&quot;)
+      
+# Animate having reinstalled the gganimate and animation R packages from GitHub and install ImageMagick to convert to gif. 
+# devtools::install_github(&quot;dgrtwo/gganimate&quot;) 
+# devtools::install_github(&quot;yihui/animation&quot;)
+# library(installr)
+# install.ImageMagick()
+# ani.options(convert=shortPathName(&quot;C:\\Program Files\\ImageMagick-7.0.8-Q16\\magick.exe&quot;))
+gganimate(g) </code></pre>
+<p><img src="https://kimnewzealand.github.io/post/SoT_dataviz_files/figure-html/maps-1.png" width="672" /><img src="https://kimnewzealand.github.io/post/SoT_dataviz_files/figure-html/maps-2.png" width="672" /><img src="https://kimnewzealand.github.io/post/SoT_dataviz_files/figure-html/maps-3.png" width="672" /></p>
+<pre class="r"><code># Save as a gif
+# gganimate(g,&quot;mapinterns.gif&quot;)      </code></pre>
+<p>The two main Institution feeders to internships appear to be Victoria University of Wellington and Auckland University, the former resulting in half of internships. The region as the largest feeder of interns to other regions is Christchurch.</p>
+</div>
+<div id="specific-events-resulting-in-internships" class="section level3">
+<h3>Specific Events Resulting in Internships</h3>
+<p>One of the challenges with this data is that a student may attend one or many events but may only obtain one internship. A successful internship is potentially a result of a combination of event attendances.</p>
+<p>The other challenge with the events is that there are <strong>109</strong> individual events which is quite difficult to visualise.</p>
+<p>In order to identify potential events resulting in internships, we will need to reshape the data given these challenges.</p>
+<p><strong>Event Counts by Student Token</strong></p>
+<p>In order to arrange the data such that there is one token id by row, to summarise this one to many relationship, I have summarised the event counts as a wide data set, with column variables by region. This dataframe also has the internship variable as “Successful” or “Unsuccessful”. We can then look at whether total event attendance is a factor.</p>
+<p>After creating the new dataframe, check that there are the same number of successful interns in this new dataset as the original intern data.</p>
+<pre class="r"><code># Create a new summary dataframe of the event counts by student.
+eventcountbystudent  &lt;- combine %&gt;%     
+      select(token,internship,registered.for.events,Event.region,Student.region) %&gt;% 
+      group_by(token,internship,registered.for.events,Event.region,Student.region) %&gt;% 
+      mutate(event.count=n()) %&gt;% 
+      distinct()  %&gt;% 
+      ungroup()
+# Now create a wide dataset with the spread function
+eventcountbystudent_wide &lt;- eventcountbystudent %&gt;% 
+      spread(Event.region,event.count) %&gt;% 
+      rename(DirectApp=&#39;&lt;NA&gt;&#39;)  %&gt;% 
+      # Replace the NAs with 0 for this plot
+      mutate_at(vars(Auckland,Wellington,Christchurch,Dunedin,Hamilton,DirectApp), funs(replace(., is.na(.), 0))) %&gt;% 
+      # Add a total events variable
+      mutate(TotEvents = Auckland+Wellington+Christchurch+Dunedin+Hamilton)
+# Check that there are the same number of successful interns as the original intern data
+table(eventcountbystudent_wide$internship)[1]==length(unique(intern$token))</code></pre>
+<pre><code>## Successful 
+##       TRUE</code></pre>
+<p><strong>Total registered events by student token</strong></p>
+<p>Of the <strong>213</strong> successful interns, <strong>43</strong> applied directly and did not attend any events. Let’s first take a look the balance who registered for events. The total event registration by internship success is plotted as a violin plot which is a mirrored density plot. A boxplot is layered on top to show the quantiles. We use registration as in indication of interest in interships, as actual attendance may be dependent on other external factors.</p>
+<pre class="r"><code># plot violin plot with boxploit layer
+eventcountbystudent_wide  %&gt;% 
+      ggplot() +
+      geom_violin(aes(internship,TotEvents),fill=&quot;purple&quot;) +
+      geom_boxplot(aes(internship,TotEvents),alpha=0.3) +
+      theme_bw() +
+      ggtitle(&quot;Distribution of Registered Events Count and Internship&quot;) +
+      xlab(&quot;Internship&quot;) +
+      ylab(&quot;Count of registered events (All Regions)&quot;)</code></pre>
+<p><img src="https://kimnewzealand.github.io/post/SoT_dataviz_files/figure-html/violin%20plot-1.png" width="672" /></p>
+<p>Overall, it appears from the quantile box that successful interns registered to attend more events. However there are some outliers of unsuccessful students who registered for a very large number events, the maximum number is <strong>47</strong> by one student. The greater spread at the bottom of the unsuccessful students indicates more unsuccessful students registered for fewer events than the successful interns.</p>
+<p><strong>Registration count by student region</strong></p>
+<p>Next we will break down and plot the total registered events by the region in which the student studies.</p>
+<p>This plot uses a jitter effect to add random variation to disperse the plotted points.</p>
+<pre class="r"><code># Rename the Multiple Student region to Multiple region Academy
+eventcountbystudent_wide    %&gt;%    
+# Replace the NAs with 0 for this plot
+      mutate_at(vars(Auckland,Wellington,Christchurch,Dunedin,Hamilton,DirectApp), funs(replace(., is.na(.), 0))) %&gt;% 
+      # Add a total events variable
+      mutate(TotEvents = Auckland+Wellington+Christchurch+Dunedin+Hamilton) %&gt;% 
+      mutate_at(vars(Student.region),funs(replace(.,.== &quot;Multiple&quot;,&quot;Multiple Region Academy&quot;))) %&gt;%  
+      ggplot() +
+      geom_jitter(aes(internship,TotEvents,colour=internship))+
+      xlab(&quot;Internship&quot;)+
+      ylab(&quot;Total number student registered events&quot;)+
+      ggtitle(&quot;Number of Student Registered Events by Student Region of Study&quot;) +
+      theme(axis.text.x=element_blank()) +
+      scale_color_manual(values=c(&quot;green&quot;, &quot;blue&quot;))+
+      facet_wrap(~Student.region)      </code></pre>
+<p><img src="https://kimnewzealand.github.io/post/SoT_dataviz_files/figure-html/count%20by%20region-1.png" width="672" /></p>
+<p>Students from outside the major centres are very low in numbers in registering and relatively unsuccessful in interships.</p>
+<p><strong>Decision Tree</strong></p>
+<p>Instead of trying to visualise all the events, we can use a model to visualise as a decision tree what possible combination of events successful interns attended in 2017. We will use the <a href="https://cran.r-project.org/web/packages/rpart/index.html">rpart</a> R package to create a classification model and the <a href="https://cran.r-project.org/web/packages/rattle/index.html">rattle</a> R package which has a nice function, fancyRpartPlot, to plot the tree below. Here I also used this <a href="http://blog.revolutionanalytics.com/2013/06/plotting-classification-and-regression-trees-with-plotrpart.html">blog</a>.</p>
+<p>This is a very simple model which is not intended as a prediction model with measures of accuracy. However the reshaped data with events classified with 0 or 1, which is also called one hot encoding, could be leveraged to build predictive models.</p>
+<pre class="r"><code># Create a new summary dataframe of the event names by student.
+eventnamebystudent_wide  &lt;- combine %&gt;%     
+      select(token,internship,Student.region,Event.name) %&gt;% 
+      mutate(count=1) %&gt;% 
+      distinct() %&gt;% 
+      spread(Event.name,count)  %&gt;% 
+      # Replace the NAs with 0 for this plot
+      mutate_if(is.numeric, funs(replace(., is.na(.), 0)))
+# Convert the internship values with 0 and 1 for the model
+eventnamebystudent_wide&lt;- eventnamebystudent_wide %&gt;% 
+      mutate_at(vars(internship),funs(replace(.,.== &quot;Successful&quot;,1))) %&gt;% 
+      mutate_at(vars(internship),funs(replace(.,.== &quot;Unsuccessful&quot;,0))) %&gt;% 
+# Rename the NA variable which are the Students who did not attend any events
+      rename(NoEvents=&#39;&lt;NA&gt;&#39;)
+eventnamebystudent_wide$Student.region &lt;- as.factor(eventnamebystudent_wide$Student.region )
+eventnamebystudent_wide$internship &lt;- as.factor(eventnamebystudent_wide$internship)
+# Create a model using rpart
+model &lt;- rpart::rpart(internship~.,data=eventnamebystudent_wide[,-c(1,3)], cp=0.001 ) # default cp is 0.01, decresing this value creates a deeper tree
+rattle::fancyRpartPlot(model, sub = &quot;Decision tree of events that result in successful (green) 2017 internships&quot;,palettes=c(&quot;Greys&quot;, &quot;Greens&quot;))</code></pre>
+<p><img src="https://kimnewzealand.github.io/post/SoT_dataviz_files/figure-html/rpart-1.png" width="672" /></p>
+<p>From this tree we can see the <strong>43</strong> successful interns who applied directly as a percentage of the total pool of applicants <strong>1424</strong> or <strong>0.03</strong> on the far right green branch.</p>
+<p>The remaining branches relate to <strong>170</strong> students who registered for events and their success in green. Note only the top branches are shown.</p>
+</div>
+<div id="social-impact" class="section level3">
+<h3>Social Impact</h3>
+<p>Let’s take a look at the percentage breakdown of intern ethnicity and gender of successful interns.</p>
+<pre class="r"><code># Plot the intern ethnicity data 
+intern_eth &lt;- intern %&gt;% 
+      select(Intern.ethnicity) %&gt;% 
+      table() %&gt;% 
+      prop.table() %&gt;% 
+      data.frame()  
+intern_eth %&gt;% 
+      ggplot( aes(., 100*Freq)) +
+      geom_col(fill=&quot;purple&quot;) +
+      coord_flip() +
+      labs(title = &quot;Intern Breakdown by Intern Ethnicity\n&quot;, x = &quot;\nEthnicity&quot;, y = &quot;Percentage\n&quot;)+ 
+      guides(fill=FALSE)</code></pre>
+<p><img src="https://kimnewzealand.github.io/post/SoT_dataviz_files/figure-html/ethnicity%20freq-1.png" width="672" /></p>
+<p><strong>46</strong> % of interns were pakeha however there is a large <strong>23</strong> % of undisclosed ethnicities.</p>
+<pre class="r"><code># Plot the intern gender data as a frequency plot
+intern_gender &lt;- intern %&gt;% 
+      select(Intern.gender) %&gt;% 
+      table() %&gt;% 
+      prop.table() %&gt;% 
+      data.frame(stringsAsFactors = FALSE)  
+intern_gender %&gt;% 
+      ggplot( aes(., 100*Freq)) +
+      geom_col(fill=&quot;purple&quot;) +
+      coord_flip() +
+      labs(title = &quot;Intern Breakdown by Intern Gender\n&quot;, x = &quot;\nGender&quot;, y = &quot;Percentage\n&quot;)+ 
+      guides(fill=FALSE)</code></pre>
+<p><img src="https://kimnewzealand.github.io/post/SoT_dataviz_files/figure-html/gender%20freq-1.png" width="672" /></p>
+<p><strong>39</strong> % of interns were female and <strong>59</strong> % were male in 2017.</p>
+</div>
+<div id="conclusion" class="section level3">
+<h3>Conclusion</h3>
+<p>Following this analysis see below preliminary insights to Summer of Tech’s questions:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Success factors</strong></li>
+</ol>
+<ul>
+<li>For the success factors in obtaining an internship we looked at variables which students can influence or change and not intrinsic factors such as demographics.</li>
+<li>The Institution that the student attends appears to be a factor.</li>
+<li>The more event registrations appears to overall increase chances of success, although this may be an indication of interest and drive of the student.</li>
+<li>From looking at event data, students from outside the major centres have a relatively low chance of success but could this be related to awareness with the low numbers registering?</li>
+<li>It would be useful to have the IT skills in the student profile applications and IT skills listed as required by the employers to determine if skills are success factors.</li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li><strong>Specific events resulting in internships</strong></li>
+</ol>
+<ul>
+<li>There is a very large number of events run relative to the number of successful interns.. It appears from a simple model that the top five events that resulted in 2017 interships are <strong>SoT&amp;Biz Guide to Offers, Meet &amp; Greet - WELLINGTON, Guide to 2017 Offers, Meet &amp; Greet ProTips - Alumni Panel, CV Clinics 1:1 feedback</strong>.</li>
+</ul>
+<ol start="3" style="list-style-type: decimal">
+<li><strong>Social Impact</strong></li>
+</ol>
+<ul>
+<li>There is demographic data for Intern ethnicity and Intern gender on the interns, but not currently on the students creating a profile or attending the events.</li>
+<li>It could be useful to obtain the gender and ethnicity demographic data for applicants over time to view trends and proportions of those who apply versus those who are successful for the social impact.</li>
+<li>Also the numbers for under-represented Intern ethnicities are very small or undisclosed for December 2017.</li>
+</ul>
+<ol start="4" style="list-style-type: decimal">
+<li><strong>Missing Data</strong></li>
+</ol>
+<ul>
+<li>Regarding the large undisclosed number in the intern ethnicities, is the ethnicity an optional field to fill in? Scottish/Phillipino is a unique combination! Perhaps make this field mandatory and drop down, and add a “prefer not to say” option.</li>
+<li>Additionally for the gender option, perhaps add a “prefer not to say” option.</li>
+<li>It could be useful to have an employer ID / token in the intern data to map and plot this with the other data variables.</li>
+</ul>
+</div>
+</div>
+
+
+  
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+    <a href="https://kimnewzealand.github.io/2018/05/23/name-entity-recognition/"><i class="fa fa-chevron-left"></i></a>
+    
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="https://kimnewzealand.github.io/2018/05/23/name-entity-recognition/">Name Entity Recognition using Python spaCy in R</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="next">
+      <a href="https://kimnewzealand.github.io/2018/07/19/excel-r-tutorial/">Tutorial on Pivot Tables and other Excel things you can also do in R - Witch Trials data</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+    <a href="https://kimnewzealand.github.io/2018/07/19/excel-r-tutorial/"><i class="fa fa-chevron-right"></i></a>
+    
+  </div>
+</div>
+
+
+
+  
+
+</div>
+
+</div>
+</div>
+<script src="https://kimnewzealand.github.io/js/ui.js"></script>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-114904130-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+
+
+</body>
+</html>
+

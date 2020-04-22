@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Python on Kim Fitter</title>
+    <link>https://kimnewzealand.github.io/tags/python/</link>
+    <description>Recent content in Python on Kim Fitter</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)</copyright>
+    <lastBuildDate>Wed, 23 May 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://kimnewzealand.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Name Entity Recognition using Python spaCy in R</title>
+      <link>https://kimnewzealand.github.io/2018/05/23/name-entity-recognition/</link>
+      <pubDate>Wed, 23 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://kimnewzealand.github.io/2018/05/23/name-entity-recognition/</guid>
+      <description>Recently I have been working on an Natural Language Processing (NLP) client project. This field appears to extensively use Python packages so I used the opportunity to go on an NLP journey in Python, starting with a Jupyter notebook. The Python packages included here are the research tool NLTK, gensim then the more recent spaCy.
+The purpose of this post is the next step in the journey to produce a pipeline for the NLP areas of text mining and Named Entity Recognition (NER) using the Python spaCy NLP Toolkit, in R.</description>
+    </item>
+    
+  </channel>
+</rss>
