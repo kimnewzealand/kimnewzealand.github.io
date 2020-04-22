@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Introduction to CSS spaces with Mondrian  </title>
+    <meta charset="UTF-8">
+    <link href="styles/main.css" rel="stylesheet" type="text/css" />
+  </head>
+  
+  <body>
+    <h2>22 April 2020</h1>
+
+    <a href=" https://en.wikipedia.org/wiki/Piet_Mondrian">Piet Mondrian</a> was a Dutch painter famous for his palette of primary colours.
+    <br>
+    <br>
+ <br>
+    <img src="https://www.color-hex.com/palettes/27086.png" alt="Mondrian palette" width="104" height="142">
+  
+    <br>
+
+<br>
+<br>
+The space of every HTML element has three important properties :
+
+<ul> 
+    <li>border</li>
+    <li>padding </li>
+    <li>margin</li>
+</ul>
+So let's explain spacing using the web styling language, CSS, using this palette.
+<br>
+<br>
+<br>
+<style>  .one {
+    font-family: Helvetica;
+    text-align: center;
+    background:#fff001;
+  }</style>
+  <div class='one'> This is an element with no border, no padding, no margin</div>
+  <br>
+  <br>
+ <style>.two {
+    font-family: Helvetica;
+    text-align: center;
+    background:#fff001;
+    border: 0.25em solid #ff0101;
+    }</style> 
+      <div class='two'> This is an element with <strong>border</strong>, no padding, no margin</div>
+      <br>
+      <br>
+<style>.three {
+    font-family: Helvetica;
+    text-align: center;
+    background:#fff001;
+    border: 0.25em solid #ff0101;
+    padding: 2em ;
+    }</style>
+ <div class='three'> This is an element with <strong>border</strong>, with <strong>padding</strong> but no margin</div>
+ <br>
+ <br>
+
+ <style>.container {
+        background: #0101fd;
+        display: flex;
+        flex-direction: column;
+        max-width: 30em;
+      }
+      .four {
+        font-family: Helvetica;
+        text-align: center;
+        background: #fff001;
+        border: 0.25em solid #ff0101;
+        padding: 2em ;
+        margin : 7em;
+        }</style>
+
+
+<div class='container' >
+
+  <div class='four'> This is an element with <strong>border</strong>, with <strong>padding</strong>, with <strong>margin</strong></div>
+
+</div>
+
+<br>
+ <br>
+ <br>
+ <br>
+View the code here:
+
+ <p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="css,result" data-user="kimnewzealand" data-slug-hash="OJybQMp" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Simple  Border Padding Margin with Mondrian">
+    <span>See the Pen <a href="https://codepen.io/kimnewzealand/pen/OJybQMp">
+    Simple  Border Padding Margin with Mondrian</a> by Kim Fitter (<a href="https://codepen.io/kimnewzealand">@kimnewzealand</a>)
+    on <a href="https://codepen.io">CodePen</a>.</span>
+  </p>
+  <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+
