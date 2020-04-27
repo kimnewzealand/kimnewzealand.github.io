@@ -219,7 +219,64 @@
   <li><a href="#elements">HTML Elements</a></li>
   <li><a href="#box-model">Box Model</a></li>
   <li><a href="#box-code">Show me the Box Model Code</a></li>
+  <li><a href="#css-selectors">CSS Selectors</a></li>
+  <li><a href="#css-layout">CSS Layout</a></li>
+  <li><a href="#painting-code">Show me the Painting Code</a></li>
+  <li><a href="#ref">References</a></li>
 </ul>
+
+<style>
+  .container_m {
+      background:#000;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 0.25em;
+      grid-template-rows: repeat(3, 1fr);
+      width:${margin};
+      max-width: 50em;
+      height: 100vh;
+      margin: 5em 5em 5em 5em;
+    
+    }
+  .one_m {
+    border: 2px solid #000;
+    background-color:#fff001;
+    grid-column: 1 ;
+    grid-row: 1 ;
+    }
+  .two_m { 
+    border: 2px solid #000;
+    background-color:#0101fd;
+    grid-column: 2 / 3;
+    grid-row: 1 / 3;
+    }
+  .three_m {
+    border: 2px solid #000;
+    background-color:#FFF;
+    grid-column: 3;
+    grid-row: 2 ;
+    }
+  .four_m {
+    border: 2px solid #000;
+    background-color:#ff0101;
+    grid-column: 3;
+    grid-row: 3;
+    }
+  .five_m {
+    border: 2px solid #000;
+    background-color:#AAA;
+    grid-column: 1 / 3;
+    grid-row: 3;
+    }
+  </style>
+   <!-- Create a container with 5 boxes -->
+   <div class='container_m' >
+        <div class='one_m'> </div>
+         <div class='two_m'> </div>
+         <div class='three_m'> </div>
+         <div class='four_m'> </div>
+         <div class='five_m'> </div>
+  </div>
 
 <div id="introduction" class="section level2">
 <h2>Introduction</h2>
@@ -235,22 +292,31 @@ We can use a Mondrian colour palette to explain what CSS does and what it looks 
 was a Dutch painter famous for his palette of primary colours and drawing lines around boxes.
 <br>
 <br>
-<img src="https://www.color-hex.com/palettes/27086.png" alt="Mondrian palette" width="104" height="142">
+<style>
+  .palette img {
+   width: 100%;
+   height: auto;
+}
+ </style>
+<div class="palette">
+<img src="https://www.color-hex.com/palettes/27086.png" alt="Mondrian palette">
+</div>
 
 <div id="elements" class="section level2"></div>
 <h2>HTML Elements</h2>
 
 The HTML elements are either <a href=" https://www.w3schools.com/html/html_blocks.asp">block or in-line elements</a>. 
 <br>
-<br>
-Block elements ( for example the section <i>div</i> ) fill up the available space and in-line elements ( for example the italic <i>i</i> ) just use up what is needed.
-
+<ul> 
+  <li><strong>Block</strong> elements ( for example the section <code>div</code>) fill up the available space.</li>
+  <li><strong>In-line</strong> elements ( for example the italic <code>i</code> ) just use up what is needed.</li>
+</ul>
 </div>
 
 <div id="box-model" class="section level2"></div>
 <h2>Box Model</h2>
 
-The spacing of every HTML block element has three CSS properties :
+The spacing of every HTML <strong>block</strong> element has three CSS properties :
 
 <ul> 
     <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/border">border</a></li>
@@ -332,4 +398,221 @@ View the code here: <br>
     on <a href="https://codepen.io">CodePen</a>.</span>
   </p>
   <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+
+<div id="css-selectors" class="section level2">
+  <br>
+<h2>CSS Selectors</h2>
+
+CSS is a language with <a hre="https://developer.mozilla.org/en-US/docs/Learn/CSS/First_steps/What_is_CSS" >rules</a>.
+<br><br>
+Here is a snippet of the code from the CodePen CSS stylesheet above, this is called a statement block:
+
+<pre>
+    h1 {
+        font-family: Helvetica;
+        font-size: 1.5em;
+        margin-top: 1em;
+    }
+</pre>
+
+<h3>What is a statement block?</h3>
+
+A statement block opens with a  <strong>selector</strong>, followed by a declaration in {}. <br>
+Inside the {} there are CSS properties and values with the format property:value.<br>
+This selects the HTML element that we are going to style. <br>
+<br>
+
+
+Our example uses <strong> type selector</strong> <code>h1</code>.
+<br><br>
+We can also use  <strong> class selector</strong>  such as <code>.one</code> which refers to
+ <code>class='one'</code> in the HTML.</div>
+<br>
+<pre>
+    .one {
+        font-family: Helvetica;
+        text-align: center;
+        background: #fff001;
+      }
+    </pre>
+
+Another less commonly used selector is called <strong> id selector</strong>, which is prefixed with a #, and more advanced <a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Selectors">selector groups worth noting.</a>
+
+
+<div id="css-layout" class="section level2">
+<h2>CSS Layout</h2>
+
+Now the positioning of the boxes on the page can be changed with layout techniques and CSS properties.
+
+<h3>Normal flow</h3>
+
+This is how our example would look without any CSS Layout.
+
+<blockquote>This is an element with no border, no padding, no margin<br>
+    This is an element with <strong>border</strong>, no padding, no margin<br>
+    This is an element with  <strong>border</strong>, with <strong>padding</strong> but no margin<br>
+    Element with  <strong>border</strong>, with <strong>padding</strong>, with <strong>margin</strong></blockquote>
+  
+
+Each line is a block element (using <code>div</code>) but the bolded words are in line 
+elements (using <code>strong</code>).
+
+<h3>The display property</h3>
+
+The <code>display</code> CSS property sets how an element is
+ <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/display">displayed</a> . 
+ <br><br>
+Some examples of display are :
+<br>
+ <br>
+<pre>
+  .one {
+      display: block;
+  }
+</pre>
+
+<style>
+  .one_block {
+    display:block;
+    font-family: Helvetica;
+    text-align: center;
+    background: #fff001;
+  }
+  .two_block {
+    display:block;
+    text-align: center;
+    border: 0.25em solid #ff0101;
+  }
+</style>
+<div>
+  <div class='one_block'>This is an element with <strong>background</strong></div>
+<div class='two_block'>This is an another element with border</div>
+</div>
+
+<br>
+<br>
+<br>
+<pre>
+  .one {
+      display: inline;
+  }
+  </pre>
+
+<style>
+  .one_inline {
+    display:inline;
+    font-family: Helvetica;
+    text-align: center;
+    background: #fff001;
+  }
+  .two_inline {
+    display:inline;
+    text-align: center;
+    border: 0.25em solid #ff0101;
+  }
+</style>
+  <div class='one_inline'>This is an element with <strong>background</strong></div>
+<div class='two_inline'>This is an another element with border</div>
+
+<br>
+<br>
+
+
+<br>
+
+Other display options are flexbox and grid.
+
+We can use the grid to layout the boxes to create a Mondrian painting.
+<ul>
+<li><a href="#painting-code">Show me the Painting Code</a></li>
+</ul>
+
+<h3>Floats</h3>
+
+We could float all the blocks to the right for example, with the float attribute.
+
+<pre>
+  .one {
+      float: right;
+  }
+  </pre>
+
+<style>
+  .one_float {
+    float:right;
+    font-family: Helvetica;
+    text-align: center;
+    background: #fff001;
+  }
+  .two_float {
+    border: 0.25em solid #ff0101;
+    text-align: center;
+  }
+
+</style>
+<div  >
+  <div class='one_float'>This is an element with <strong>background</strong></div>
+  <div class='two_float'>This is another element with border</div>
+</div>
+
+
+
+
+
+<h3>Positioning</h3>
+
+Position property can position blocks inside of blocks.
+
+<pre>
+.one {
+  position: sticky;
+  top: 2em;
+  left: 2em;
+
+}
+</pre>
+
+<style>
+
+  .one_pos {
+    position: sticky;
+    top: 2em;
+    left: 2em; 
+    text-align: center;
+    font-family: Helvetica;
+    background: #fff001;
+}
+.two_pos {
+  border: 0.25em solid #ff0101;
+  text-align: center;
+}
+</style>
+<div  >
+  <div class='one_pos'>This is an element with <strong>background that sticks as you scroll</strong></div>
+  <div class='two_pos'>This is another element with border</div>
+</div>
+
+<br>
+<br>
+
+<div id="painting-code" class="section level2"></div>
+<h2>Show me the Mondrian Painting Code</h2>
+
+View the code here: <br>
+
+<p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="css,result" data-user="kimnewzealand" data-slug-hash="WNQodKp" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Simple CSS Grid  Relative Units">
+  <span>See the Pen <a href="https://codepen.io/kimnewzealand/pen/WNQodKp">
+  Simple CSS Grid  Relative Units</a> by Kim Fitter (<a href="https://codepen.io/kimnewzealand">@kimnewzealand</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+
+<div id="ref" class="section level2"></div>
+<h2>References</h2>
+
+There are many other properties and styling techniques in CSS! See this <a href="https://developer.mozilla.org/en-US/docs/Web/CSS">reference guide</a> for more.
+
+</div>
+
+</div>
 
