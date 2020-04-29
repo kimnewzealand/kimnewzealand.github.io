@@ -215,16 +215,12 @@
 
 
 <ul>
-  <li><a href="#introduction">Introduction</a></li>
   <li><a href="#javascript">JavaScript and its relationship to HTML and CSS</a></li>
   <li><a href="#control">Control flow and loops, arrays and objects</a></li>
   <li><a href="#functions">Functions and why they are useful</a></li>
   <li><a href="#devtools">The DOM and DevTools</a></li>
 </ul>
 
-<div id="introduction" class="section level2">
-    <h2>Introduction</h2>
-</div>
 
 <div id="javascript" class="section level2">
     <h2>JavaScript and its relationship to HTML and CSS</h2>
@@ -248,7 +244,7 @@ The <strong>HTML</strong> language builds the house, the <strong>CSS</strong> la
 <div id="control" class="section level2">
     <h2>Control flow and loops, arrays and objects</h2>
     <p>Almost everything in JavaScript is an object. 
-<br>
+<br><br>
     JavaScript variables can contain single values.
 
     We can put the house name in a variable, which is an object.</p>
@@ -266,7 +262,8 @@ var name ="Blue house";
   var houses =["Blue house", "Yellow house","Green house"];
   </pre>
 
-If we wanted to use code to switch on the lights for the houses we could use a control flow.
+If we wanted to use code to switch on the lights for the houses we could use 
+a loop.
 
 
 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Control_flow_and_error_handling">Control flow</a> statements include if, for, while and are used for loops.
@@ -278,7 +275,7 @@ If we wanted to use code to switch on the lights for the houses we could use a c
 
     <p>Functions are like “building blocks” of coding.
       <br><br>
-      They allow the code inside the function to be called many times without having to rewrite the coed each time.</p>
+      They allow the code inside the function to be called many times without having to rewrite the code each time.</p>
  </div> 
 
  <div id="devtools" class="section level2">
@@ -290,13 +287,13 @@ If we wanted to use code to switch on the lights for the houses we could use a c
 
  Let's take a look at some HTML: 
  <br> <br>
- Each tag is a tree node (object).  <br>
- The tree nodes are the children that roll up to root nodes.<br>
+ Each tag is a tree node (object).  <br><br>
+ The tree nodes are the children that roll up to root nodes.<br><br>
  The text within the tags is a text node. These have no children, they are called leaves.
 </p>
 
  <pre>
- <!DOCTYPE HTML>
+  <!DOCTYPE HTML>
     <html>
       <head>
         <title>This is a simple HTML snippet</title>
@@ -307,7 +304,17 @@ If we wanted to use code to switch on the lights for the houses we could use a c
   </html>
  </pre>
 
- <a href="https://www.w3schools.com/whatis/img_htmltree.gif">The HTML DOM model</a>
+
+ <style>
+  .box img {
+   width: 100%;
+   height: auto;
+}
+ </style>
+<div class="box">
+<img src="https://www.w3schools.com/whatis/img_htmltree.gif" alt="HTML tree">
+</div>
+
 
  <p>We can use the developer tools in the browser ( called devtools) to access and  manipulate this DOM and its 
  elements with JavaScript </p>
