@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- This HTML was updated manually as academy practice -->.
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="generator" content="Hugo 0.31.1" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/pure-min.css">
+    <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-old-ie-min.css">
+  <![endif]-->
+    <!--[if gt IE 8]><!-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-min.css">
+    <!--<![endif]-->
+
+    <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://kimnewzealand.github.io/css/side-menu-old-ie.css">
+  <![endif]-->
+    <!--[if gt IE 8]><!-->
+    <link rel="stylesheet" href="https://kimnewzealand.github.io/css/side-menu.css">
+    <!--<![endif]-->
+
+    <link rel="stylesheet" href="https://kimnewzealand.github.io/css/blackburn.css">
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/androidstudio.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+    <link rel="shortcut icon" href="https://kimnewzealand.github.io/img/favicon.ico" type="image/x-icon" />
+
+</head>
+
+
+<body>
+    <div id="layout">
+        <a href="#menu" id="menuLink" class="menu-link">
+            <span></span>
+        </a>
+        <div id="menu">
+            <a class="pure-menu-heading brand" href="https://kimnewzealand.github.io/">Kim Fitter</a>
+            <div class="pure-menu">
+                <ul class="pure-menu-list">
+                    <li class="pure-menu-item">
+                        <a class="pure-menu-link" href="https://kimnewzealand.github.io/"><i
+                                class='fa fa-home fa-fw'></i>Home</a>
+                    </li>
+                    <li class="pure-menu-item">
+                        <a class="pure-menu-link" href="https://kimnewzealand.github.io/about/"><i
+                                class='fa fa-user fa-fw'></i>About</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="pure-menu social">
+                <ul class="pure-menu-list">
+                    <li class="pure-menu-item">
+                        <a class="pure-menu-link" href="https://twitter.com/kim_fitter" target="_blank"><i
+                                class="fa fa-twitter-square fa-fw"></i>Twitter</a>
+                    </li>
+                    <li class="pure-menu-item">
+                        <a class="pure-menu-link" href="https://github.com/kimnewzealand" target="_blank"><i
+                                class="fa fa-github-square fa-fw"></i>GitHub</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div>
+                <div class="small-print">
+                    <small>Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)</small>
+                </div>
+                <div class="small-print">
+                    <small>Built with&nbsp;<a href="https://gohugo.io/" target="_blank">Hugo</a></small>
+                    <small>Theme&nbsp;<a href="https://github.com/yoshiharuyamashita/blackburn"
+                            target="_blank">Blackburn</a></small>
+                </div>
+            </div>
+        </div>
+
+        <div id="main">
+            <div class="header">
+                <h1>How I Made my First Game - Minesweeper</h1>
+            </div>
+            <div class="content">
+                <div class="post-meta">
+                    <div>
+                        <i class="fa fa-calendar fa-fw"></i>
+                        <time>11 May 2020</time>
+                    </div>
+
+                    <div>
+                        <i class="fa fa-tags fa-fw"></i>
+                        <a class="post-taxonomy-tag"
+                            href="https://kimnewzealand.github.io/tags/tutorial">tutorial</a>&nbsp;&#47;
+                    </div>
+                </div>
+
+                <ul>
+                    <li><a href="#introduction">Introduction to the Challenge</a></li>
+                    <li><a href="#board">Setting up the Board</a></li>
+                    <li><a href="#learnings">Things I learnt in this challenge</a></li>
+
+
+                </ul>
+
+                <div id="introduction" class="section level2">
+                    <h2>Introduction to the Challenge</h2>
+                </div>
+                <p>Creating a <a href="https://en.wikipedia.org/wiki/Minesweeper_(video_game)">minesweeper</a> game
+                    was a challenge in Sprint 5 at Dev Academy.
+
+                    <blockquote>Minesweeper is a single-player puzzle video game. The objective of the game is to clear
+                        a rectangular board containing hidden "mines" or bombs without detonating any of them, with help
+                        from clues about the number of neighboring mines in each field. The game originates from the
+                        1960s, and has been written for many computing platforms in use today. It has many variations
+                        and offshoots.</blockquote>
+
+                    <style>
+                        .grid img {
+                            width: 100%;
+                            height: auto;
+                        }
+                    </style>
+                    <div class="grid">
+                        <img src="https://en.wikipedia.org/wiki/Minesweeper_(video_game)#/media/File:Commonly_Found_Minesweeper_Theme.png"
+                            alt="Wiki version of minesweeper">
+                    </div>
+
+
+                    This blog describes creating a version of the game using HTML, CSS and JavaScript.
+                </p>
+
+                <div id="" class="section level2">
+                    <h2>Setting up the Board</h2>
+                </div>
+
+                <p> The first thing to do is to create a board. I found this <a
+                        href="https://codepen.io/poopsplat/pen/XOBQEe">example by Matt Soria</a> and liked the
+                    styling as it looks like the grey blocked styled
+                    minesweeper game.</a>.
+                    <br><br>
+                    So in a new CSS file I added a body class to center text, determine font and background color using
+                    a
+                    new color function, relative padding and a the <a
+                        href="https://fonts.google.com/specimen/Space+Mono">Space mono font.</a>
+
+                    <pre>
+                        body {
+                            text-align: center;
+                            color: color(black);
+                            padding: 1em 1em 1em;
+                            background-color: color(gray-light);
+                            font-family: 'Space Mono', monospace;
+                          }
+            </pre>
+
+                    <br><br>
+                    Next for the board we need a new HTML file containing HTML div elements with ids for the
+                    <code>board</code>,
+                    <code>scoreboard</code>, <code>minecounter</code>,
+                    <code>reset</code> smiley face and <code>grid</code>.
+                    To keep this game relatively simple, I will not include drop down menus or player levels.
+                    <br><br>
+                    We need to wrap these elements in a darker gray to show the game board, so we can create a div with
+                    the class <code>top</code>, with a
+                    further class <code>wrap</code> that will position these div elements.
+
+                    Use inline-block? but it is a legacy option
+                    https://developer.mozilla.org/en-US/docs/Web/CSS/display. I am trying inline flex.
+
+                </p>
+
+                <style>
+                    .grid img {
+                        width: 100%;
+                        height: auto;
+                    }
+                </style>
+                <div class="grid">
+                    <img src="https://github.com/kimnewzealand/kimnewzealand.github.io/blob/master/img/minesweeperv1.png?raw=true"
+                        alt="First version of minesweeper">
+                </div>
+
+                <div id="learnings" class="section level2">
+                    <h2>Things I learnt in this Challenge</h2>
+                </div>
+                <p>
+                    <ul>
+                        <li><strong>The head and header tags are different.</strong> The head tag is not displayed
+                            but it is a container for metadata (data about the HTML) and is placed between the html tag
+                            and the body tag. The header tag is used within the body of the website, represents a
+                            container for introductory content .</li>
+                        <li><strong>There are variations of CSS such as SCSS</strong>. The styling sheet I tried in this
+                            project is <a
+                                ref="https://www.geeksforgeeks.org/what-is-the-difference-between-css-and-scss/">SCSS</a>
+                            which is Syntactically Awesome Style Sheet. A list of color properties and values can be
+                            reused using variables
+                            <pre>$colors: (
+                                white: #fff,
+                                gray-light: #efefef)</pre>
+                            and a function
+                            <pre> @function color($color-name) {
+                                @return map-get($colors, $color-name);</pre>
+                            and
+
+                            https://stackoverflow.com/questions/46400443/what-is-the-difference-between-css-and-scss
+                            }</li>
+                        <li><strong>Publish repos to the GitHUb pages</strong> for example a repo called minesweeper can
+                            be published in https://kimnewzealand.github.io/minesweeper/.</li>
+                    </ul>
+                </p>
