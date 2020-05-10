@@ -109,18 +109,31 @@
                 </div>
 
                 <ul>
+                    <li><a href="#tldr">TLDR just play the game</a></li>
                     <li><a href="#introduction">Introduction to the Challenge</a></li>
-                    <li><a href="#board">Setting up the Board</a></li>
+                    <li><a href="#rules">The rules</a></li>
+                    <li><a href="#board">Setting up the Design</a></li>
                     <li><a href="#learnings">Things I learnt in this challenge</a></li>
 
 
                 </ul>
 
+                <div id="tldr" class="section level2">
+                    <h2>TLDR just play the game</h2>
+                </div>
+                <p>
+                    If you know the game rules,then click <a
+                        href="https://kimnewzealand.github.io/minesweeper/">HERE</a> to play.
+                </p>
+
                 <div id="introduction" class="section level2">
                     <h2>Introduction to the Challenge</h2>
                 </div>
-                <p>Creating a <a href="https://en.wikipedia.org/wiki/Minesweeper_(video_game)">minesweeper</a> game
+                <p>
+                    Creating a <a href="https://en.wikipedia.org/wiki/Minesweeper_(video_game)">minesweeper</a> game
                     was a challenge in Sprint 5 at Dev Academy.
+
+                    So what is it?
 
                     <blockquote>Minesweeper is a single-player puzzle video game. The objective of the game is to clear
                         a rectangular board containing hidden "mines" or bombs without detonating any of them, with help
@@ -140,47 +153,120 @@
                     </div>
 
 
-                    This blog describes creating a version of the game using HTML, CSS and JavaScript.
+                    This blog describes creating my version of the game using HTML, CSS and JavaScript, yep, from
+                    scratch.
+
+
+                    <div id="rules" class="section level2">
+                        <h2>The Rules</h2>
+                    </div>
+                    <p> To keep this game relatively simple, there are no drop down menus or different player levels.
+                        <br><br>
+                        This game is going to be easy!
+
+                        <ul>
+                            <li>Easy = 9x9 grid, </li>
+                            <li>10 mines are randomly placed in cells and hidden on the grid, there is a mine counter on
+                                the top left,</li>
+                            <li>Click anywhere on the board to begin which will start the timer on the top right, </li>
+                            <li>Once clicked, if there isn't a mine, the cells will show coloured numbers with how many
+                                mines are adjacent to the cell,</li>
+                            <li>? Use "Shift + Click" to add flags to a cell if you think it's a mine. </li>
+                    </p>
+
+                    <h3>How do you win or lose?</h3>
+                    <ul>
+                        <li>You lose if you click on a cell with a mine</li>
+                        <li>You win if you click on all the cells without <i>sweeping</i> a mine.</li>
+                </p>
+
+
+
                 </p>
 
                 <div id="" class="section level2">
-                    <h2>Setting up the Board</h2>
+                    <h2>Setting up the Design</h2>
                 </div>
 
-                <p> The first thing to do is to create a board. I found this <a
-                        href="https://codepen.io/poopsplat/pen/XOBQEe">example by Matt Soria</a> and liked the
-                    styling as it looks like the grey blocked styled
-                    minesweeper game.</a>.
+                <p> There are a few variations of the game, so I Googled the different looks and game plays. I wanted
+                    to create game that looks like the old Windows screen. I found this <a
+                        href="https://nickarocho.github.io/minesweeper/">example by Nick Arocho</a> and this <a
+                        href="https://codepen.io/PicturElements/pen/qqJjqm">CodePen
+                        Minesweeper by
+                        PicturElements inspiration.
+
+                    </a>
                     <br><br>
-                    So in a new CSS file I added a body class to center text, determine font and background color using
-                    a
-                    new color function, relative padding and a the <a
-                        href="https://fonts.google.com/specimen/Space+Mono">Space mono font.</a>
+                    So in a new CSS file I added a body class to center a <a
+                        href="https://www.w3schools.com/cssref/css_websafe_fonts.asp">websafe</a> font, and a color
+                    function and relative padding.
+
 
                     <pre>
                         body {
+                            font-family: "Courier New", Courier, monospace;
                             text-align: center;
                             color: color(black);
-                            padding: 1em 1em 1em;
+                            padding: 1em 1em;
                             background-color: color(gray-light);
-                            font-family: 'Space Mono', monospace;
                           }
-            </pre>
+                    </pre>
 
                     <br><br>
                     Next for the board we need a new HTML file containing HTML div elements with ids for the
-                    <code>board</code>,
-                    <code>scoreboard</code>, <code>minecounter</code>,
-                    <code>reset</code> smiley face and <code>grid</code>.
-                    To keep this game relatively simple, I will not include drop down menus or player levels.
+                    <code>board</code>, <code>scoreboard</code>, <code>minecounter</code>, <code>timer</code> and <code>grid</code>. The  <code>reset</code> smiley face is a reset button. 
+
                     <br><br>
-                    We need to wrap these elements in a darker gray to show the game board, so we can create a div with
-                    the class <code>top</code>, with a
-                    further class <code>wrap</code> that will position these div elements.
+                    We need to wrap these counter, buttom and timer elements in a raised border, so we style
+                    the class <code>scoreboard</code>,
+                    <pre>
+                        .scoreboard {
+                            padding: 0.25em 0.25em;
+                            display:flex;  
+                            margin-bottom:21em;
+                            width:21em;
+                            justify-content:space-between;
+                            border: 0.4em ridge;
+                            border-color:color(gray-mid);
+                          }
+                    </pre>
 
-                    Use inline-block? but it is a legacy option
-                    https://developer.mozilla.org/en-US/docs/Web/CSS/display. I am trying inline flex.
 
+                    with a further class <code>wrap</code> that will position these div elements.The positioning
+                    property display:inline-block seems to be a legacy option so I used <a
+                        href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">flexbox.</a>
+
+
+                    <pre>
+                            .wrap {
+                                display: flex;
+                                justify-content: center;
+                                flex-wrap: wrap;
+                             }
+                    </pre>
+
+<pre>
+                    .counter {
+                        font-size: 24px;
+                        padding: 0.25em 0.25em;
+                        width: 1.5em;
+                        color: color(red); 
+                        background: color(black);
+                        text-align:center;
+                      }
+                    </pre>
+                    
+                    <pre>
+                    .reset {
+                        padding: 0.15em 0.15em;
+                        font-size: 24px; // make smiley face fill the button
+                        cursor: pointer;
+                        line-height: 1em;
+                        border-width: 0.2em;
+                        background-color: color(gray);
+                        border-color: lighten(color(gray), 20%) darken(color(gray), 20%) darken(color(gray), 20%) lighten(color(gray), 20%);
+                    </pre>
+                    This is the first draft of the game:
                 </p>
 
                 <style>
@@ -190,7 +276,7 @@
                     }
                 </style>
                 <div class="grid">
-                    <img src="https://github.com/kimnewzealand/kimnewzealand.github.io/blob/master/img/minesweeperv1.png?raw=true"
+                    <img src="https://github.com/kimnewzealand/kimnewzealand.github.io/blob/master/img/minesweeperv1.jpg?raw=true"
                         alt="First version of minesweeper">
                 </div>
 
@@ -199,7 +285,8 @@
                 </div>
                 <p>
                     <ul>
-                        <li><strong>The head and header tags are different.</strong> The head tag is not displayed
+                        <li><strong>The head and header HTML tags are <u>very</u> different.</strong> The head tag is
+                            not displayed
                             but it is a container for metadata (data about the HTML) and is placed between the html tag
                             and the body tag. The header tag is used within the body of the website, represents a
                             container for introductory content .</li>
@@ -208,17 +295,24 @@
                                 ref="https://www.geeksforgeeks.org/what-is-the-difference-between-css-and-scss/">SCSS</a>
                             which is Syntactically Awesome Style Sheet. A list of color properties and values can be
                             reused using variables
-                            <pre>$colors: (
-                                white: #fff,
-                                gray-light: #efefef)</pre>
+                            <pre>
+                                    $colors: (
+                                        white: #fff,
+                                        gray-light: #efefef)</pre>
                             and a function
-                            <pre> @function color($color-name) {
-                                @return map-get($colors, $color-name);</pre>
-                            and
+                            <pre>
+                                    @function color($color-name) {
+                                        @return map-get($colors, $color-name);</pre>
 
-                            https://stackoverflow.com/questions/46400443/what-is-the-difference-between-css-and-scss
+
+
                             }</li>
-                        <li><strong>Publish repos to the GitHUb pages</strong> for example a repo called minesweeper can
-                            be published in https://kimnewzealand.github.io/minesweeper/.</li>
+                        <li><strong>Publish repos to the GitHub pages</strong> for example a repo called
+                            <pre>minesweeper</pre> can
+                            be published to https://kimnewzealand.github.io/minesweeper/.</li>
+                        <li>Trying out the flex</li>
+                        <li><strong>Font families in CSS</strong> You can add comma separated font names. Start with the
+                            font you want, and end with a generic family, to let the
+                            browser pick a similar font in the generic family, if no other fonts are available:</li>
                     </ul>
                 </p>
