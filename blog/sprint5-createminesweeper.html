@@ -98,7 +98,7 @@
                 <div class="post-meta">
                     <div>
                         <i class="fa fa-calendar fa-fw"></i>
-                        <time>11 May 2020</time>
+                        <time>12 May 2020</time>
                     </div>
 
                     <div>
@@ -109,7 +109,7 @@
                 </div>
 
                 <ul>
-                    <li><a href="#tldr">TLDR just play the game</a></li>
+                    <li><a href="#tldr">TLDR just play the game, be warned it has sound</a></li>
                     <li><a href="#introduction">Introduction to the Challenge</a></li>
                     <li><a href="#rules">The rules</a></li>
                     <li><a href="#board">Setting up the Design</a></li>
@@ -153,25 +153,32 @@
                     </div>
 
 
-                    This blog describes creating my version of the game using HTML, CSS and JavaScript, yep, from
-                    scratch.
+                    <p>This blog describes creating my version of the game using HTML, CSS and JavaScript. This is fairly detailed and technical so if</p>
+
+                    <ul>
+                        <li><a href="#tldr">TLDR just play the game, be warned it has sound.</a></li>
+                    </ul>
+
+                    <p>Else go on to the next section.</p>
 
 
                     <div id="rules" class="section level2">
                         <h2>The Rules</h2>
                     </div>
                     <p> To keep this game relatively simple, there are no drop down menus or different player levels.
-                        <br><br>
+                    
                         This game is going to be easy!
+                    </p>
 
                         <ul>
-                            <li>Easy = 9x9 grid, </li>
-                            <li>10 mines are randomly placed in cells and hidden on the grid, there is a mine counter on
+                            <li>Easy = 3x3 grid, </li>
+                            <li>A number of mines are randomly placed in cells and hidden on the grid, there is a mine counter on
                                 the top left,</li>
                             <li>Click anywhere on the board to begin which will start the timer on the top right, </li>
-                            <li>Once clicked, if there isn't a mine, the cells will show coloured numbers with how many
+                            <li>Once a cell is clicked, if there isn't a mine, then the cells will show coloured numbers
+                                with how many
                                 mines are adjacent to the cell,</li>
-                            <li>? Use "Shift + Click" to add flags to a cell if you think it's a mine. </li>
+                            <li>Right to add flags to a cell if you think it's a mine. </li>
                     </p>
 
                     <h3>How do you win or lose?</h3>
@@ -188,64 +195,83 @@
                     <h2>Setting up the Design</h2>
                 </div>
 
-                <p> There are a few variations of the game, so I Googled the different looks and game plays. I wanted
+                <p> There are a few variations of the game, this is what the dev academy game looks like:</p>
+                
+                <div class="grid">
+                    <img src="https://github.com/kimnewzealand/kimnewzealand.github.io/blob/master/img/devminesweeper.jpg?raw=true"
+                        alt="Dev academy version of minesweeper">
+                </div>
+                
+                
+                
+                so I Googled the different looks and game plays. I wanted
                     to create game that looks like the old Windows screen. I found this <a
-                        href="https://nickarocho.github.io/minesweeper/">example by Nick Arocho</a> and this <a
-                        href="https://codepen.io/PicturElements/pen/qqJjqm">CodePen
-                        Minesweeper by
-                        PicturElements inspiration.
+                        href="https://nickarocho.github.io/minesweeper/">example by Nick Arocho</a> as inspiration for the design.
+                </p>
 
-                    </a>
-                    <br><br>
-                    So in a new CSS file I added a body class to center a <a
+
+                <h3>New HTML file</h3>
+
+                <p>
+                    For the board we need a new HTML file containing HTML div elements with ids for the
+                    <code>board</code>, <code>scoreboard</code>, <code>minecounter</code>, <code>timer</code> and
+                    <code>grid</code>. The <code>reset</code> smiley face is a reset button.
+                </p>
+
+                <h3>New CSS file</h3>
+
+                <p>
+                    In a new CSS file I added a body class to center a <a
                         href="https://www.w3schools.com/cssref/css_websafe_fonts.asp">websafe</a> font, and a color
                     function and relative padding.
+                </p>
+
+                <pre>
+                            body {
+                                font-family: "Courier New", Courier, monospace;
+                                text-align: center;
+                                padding: 1em 1em;
+                                background-color: color(gray-light);
+                              }
+                        </pre>
+
+                <p>
+                    With a further class <code>wrap</code> that will position these div elements.The positioning
+                    property display:inline-block seems to be a legacy option so I used <a
+                        href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">flexbox to center the board
+                        in the page.</a>
+                </p>
 
 
-                    <pre>
-                        body {
-                            font-family: "Courier New", Courier, monospace;
-                            text-align: center;
-                            color: color(black);
-                            padding: 1em 1em;
-                            background-color: color(gray-light);
-                          }
-                    </pre>
-
-                    <br><br>
-                    Next for the board we need a new HTML file containing HTML div elements with ids for the
-                    <code>board</code>, <code>scoreboard</code>, <code>minecounter</code>, <code>timer</code> and <code>grid</code>. The  <code>reset</code> smiley face is a reset button. 
-
-                    <br><br>
-                    We need to wrap these counter, buttom and timer elements in a raised border, so we style
-                    the class <code>scoreboard</code>,
-                    <pre>
+                <pre>
+                                    .wrap {
+                                        display: flex;
+                                        justify-content: center;
+                                     }
+                            </pre>
+                <p>
+                    We need to wrap these counter, button and timer elements in a raised border and with
+                    space-between
+                    in a flex container</a> so we
+                    style
+                    the class <code>scoreboard</code> as:
+                </p>
+                <pre>
                         .scoreboard {
-                            padding: 0.25em 0.25em;
-                            display:flex;  
-                            margin-bottom:21em;
                             width:21em;
-                            justify-content:space-between;
+                            padding: 0.25em 0.25em;
+                            display: flex;  
+                            justify-content: space-between;
                             border: 0.4em ridge;
                             border-color:color(gray-mid);
+                            margin-bottom:21em;
                           }
                     </pre>
 
 
-                    with a further class <code>wrap</code> that will position these div elements.The positioning
-                    property display:inline-block seems to be a legacy option so I used <a
-                        href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">flexbox.</a>
 
 
-                    <pre>
-                            .wrap {
-                                display: flex;
-                                justify-content: center;
-                                flex-wrap: wrap;
-                             }
-                    </pre>
-
-<pre>
+                <pre>
                     .counter {
                         font-size: 24px;
                         padding: 0.25em 0.25em;
@@ -255,8 +281,8 @@
                         text-align:center;
                       }
                     </pre>
-                    
-                    <pre>
+
+                <pre>
                     .reset {
                         padding: 0.15em 0.15em;
                         font-size: 24px; // make smiley face fill the button
@@ -266,6 +292,7 @@
                         background-color: color(gray);
                         border-color: lighten(color(gray), 20%) darken(color(gray), 20%) darken(color(gray), 20%) lighten(color(gray), 20%);
                     </pre>
+                <p>
                     This is the first draft of the game:
                 </p>
 
@@ -285,12 +312,15 @@
                 </div>
                 <p>
                     <ul>
-                        <li><strong>The head and header HTML tags are <u>very</u> different.</strong> The head tag is
+                        <li><strong>The head and header HTML tags are <u>very</u> different.</strong> The head tag
+                            is
                             not displayed
-                            but it is a container for metadata (data about the HTML) and is placed between the html tag
+                            but it is a container for metadata (data about the HTML) and is placed between the html
+                            tag
                             and the body tag. The header tag is used within the body of the website, represents a
                             container for introductory content .</li>
-                        <li><strong>There are variations of CSS such as SCSS</strong>. The styling sheet I tried in this
+                        <li><strong>There are variations of CSS such as SCSS</strong>. The styling sheet I tried in
+                            this
                             project is <a
                                 ref="https://www.geeksforgeeks.org/what-is-the-difference-between-css-and-scss/">SCSS</a>
                             which is Syntactically Awesome Style Sheet. A list of color properties and values can be
@@ -311,7 +341,8 @@
                             <pre>minesweeper</pre> can
                             be published to https://kimnewzealand.github.io/minesweeper/.</li>
                         <li>Trying out the flex</li>
-                        <li><strong>Font families in CSS</strong> You can add comma separated font names. Start with the
+                        <li><strong>Font families in CSS</strong> You can add comma separated font names. Start with
+                            the
                             font you want, and end with a generic family, to let the
                             browser pick a similar font in the generic family, if no other fonts are available:</li>
                     </ul>
