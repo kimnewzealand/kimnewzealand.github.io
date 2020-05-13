@@ -111,9 +111,9 @@
                 <ul>
                     <li><a href="#tldr">TLDR just play the game, be warned it has sound</a></li>
                     <li><a href="#introduction">Introduction to the Challenge</a></li>
-                    <li><a href="#rules">The rules</a></li>
+                    <li><a href="#rules">The Rules</a></li>
                     <li><a href="#board">Setting up the Design</a></li>
-                    <li><a href="#learnings">Things I learnt in this challenge</a></li>
+                    <li><a href="#learnings">Things I Learnt</a></li>
 
 
                 </ul>
@@ -132,7 +132,7 @@
                 <p>
                     Creating a <a href="https://en.wikipedia.org/wiki/Minesweeper_(video_game)">minesweeper</a> game
                     was a challenge in Sprint 5 at Dev Academy.
-
+                    <br><br>
                     So what is it?
 
                     <blockquote>Minesweeper is a single-player puzzle video game. The objective of the game is to clear
@@ -148,7 +148,7 @@
                         }
                     </style>
                     <div class="grid">
-                        <img src="https://en.wikipedia.org/wiki/Minesweeper_(video_game)#/media/File:Commonly_Found_Minesweeper_Theme.png"
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Minesweeper_Game_Most_Common_Setup.png/330px-Minesweeper_Game_Most_Common_Setup.png"
                             alt="Wiki version of minesweeper">
                     </div>
 
@@ -157,10 +157,10 @@
                         fairly detailed and technical so if</p>
 
                     <ul>
-                        <li><a href="#tldr">TLDR just play the game, be warned it has sound.</a></li>
+                        <li><a href="#tldr">TLDR just play the game, but be warned it has sound</a></li>
                     </ul>
 
-                    <p>Else go on to the next section.</p>
+                    <p>Else carry on to the rules.</p>
 
 
                     <div id="rules" class="section level2">
@@ -186,7 +186,7 @@
                     <h3>How do you win or lose?</h3>
 
                     <ul>
-                        <li>You lose if you click on a cell with a mine</li>
+                        <li>You lose if you click on a cell with a mine,</li>
                         <li>You win if you click on all the cells without <i>sweeping</i> a mine and flagging cells with
                             mines.</li>
                     </ul>
@@ -201,12 +201,12 @@
                         the dev academy challenge:</p>
 
                     <div class="grid">
-                        <img src="https://github.com/kimnewzealand/kimnewzealand.github.io/blob/master/img/devminesweeper.jpg?raw=true"
+                        <img src="https://raw.githubusercontent.com/kimnewzealand/kimnewzealand.github.io/master/img/devminesweeper.JPG"
                             alt="Dev academy version of minesweeper">
                     </div>
 
 
-                    <p>So I Googled the different looks and game plays. I wantedto create game that looks like the old
+                    <p>So I Googled the different looks and game plays. I wanted to create game that looks like the old
                         Windows screen. I found this <a href="https://nickarocho.github.io/minesweeper/">example by Nick
                             Arocho</a> as inspiration for the design.
                     </p>
@@ -270,7 +270,7 @@
                     </pre>
 
                     <p> The mine counter and timer are black boxes with no raised boarders, but the text is red. We will
-                        use the CSS class `counter` for both of these objects.</p>
+                        use the CSS class <code>counter</code> for both of these objects.</p>
 
 
                     <pre>
@@ -283,7 +283,7 @@
                                 background: black;
                             }
                     </pre>
-                    <p> The reset button however has class `reset` as a raised button look.</p>
+                    <p> The reset button however has class <code>reset</code> as a raised button look.</p>
                     <pre>
                             .reset {
                                 padding: 0.15em 0.15em;
@@ -297,7 +297,7 @@
                           
                     </pre>
                     <p>
-                        This is the first draft of the game:
+                        This is the first design layout of the game:
                     </p>
 
                     <style>
@@ -307,16 +307,21 @@
                         }
                     </style>
                     <div class="grid">
-                        <img src="https://github.com/kimnewzealand/kimnewzealand.github.io/blob/master/img/minesweeperv1.jpg?raw=true"
+                        <img src="https://raw.githubusercontent.com/kimnewzealand/kimnewzealand.github.io/master/img/minesweeperv1.JPG"
                             alt="First version of minesweeper">
                     </div>
 
                     <p>Code is also available in <a
                             href="https://codepen.io/kimnewzealand/project/editor/XVWbyk">CodePen.</a>
+
+
                     </p>
 
+                    <p>From here I used the JavaScript from the dev academy to make the <a
+                            href="https://kimnewzealand.github.io/minesweeper/">game.</a></p>
+
                     <div id="learnings" class="section level2">
-                        <h2>Things I learnt in this Challenge</h2>
+                        <h2>Things I Learnt</h2>
                     </div>
                     <p>
                         <ul>
@@ -334,28 +339,26 @@
                                 which is Syntactically Awesome Style Sheet. A list of color properties and values can be
                                 reused using variables
                                 <pre>
-                                    $colors: (
-                                        white: #fff,
-                                        gray-light: #efefef)
+                                $colors: (
+                                    white: #fff,
+                                    gray-light: #efefef)
                                 </pre>
                                 and a function
                                 <pre>
-                                    @function color($color-name) {
-                                        @return map-get($colors, $color-name);
-                                    }
+                                @function color($color-name) {
+                                     @return map-get($colors, $color-name);
+                                }
                                 </pre>
 
 
 
                                 }</li>
                             <li><strong>It is possible to publish repos to GitHub pages</strong> for example a repo
-                                called
-                                <pre>minesweeper</pre> can
-                                be published and viewed as a link in https://kimnewzealand.github.io/minesweeper/.</li>
+                                called <code>minesweeper</code> can be published and viewed as a link in
+                                https://kimnewzealand.github.io/minesweeper/.</li>
                             <li>Using the flexboard for positioning</li>
                             <li><strong>Font families in CSS</strong> You can add comma separated font names. Start with
-                                the
-                                font you want, and end with a generic family, to let the
+                                the font you want, and end with a generic family, to let the
                                 browser pick a similar font in the generic family, if no other fonts are available:</li>
                         </ul>
                     </p>
