@@ -1,0 +1,34 @@
+---
+title: "Job Trends in New Zealand"
+author: "Kim Fitter"
+date: 2026-02-13
+tags: ["Python", "trends"]
+description: "Analyzing job trends in New Zealand using pytrends"
+format:
+  html:
+    code-fold: false
+    toc: true
+---
+
+## Introduction
+
+This post explores job trends in New Zealand using the **pytrends** library. 
+
+[pytrends](https://pypi.org/project/pytrends/) is an unofficial API for Google Trends that allows you to programmatically access Google Trends data. 
+## Setup
+
+Let's start by importing the pytrends library and checking its version:
+
+```{python}
+from pytrends.request import TrendReq
+import importlib.metadata
+
+# Get the version
+version = importlib.metadata.version('pytrends')
+print(f"pytrends version: {version}")
+print("✅ pytrends library successfully imported!")
+print(f"✅ TrendReq class available: {TrendReq}")
+```
+
+## Data Analysis
+

@@ -1,0 +1,23 @@
+project:
+  type: website
+  output-dir: ../blog
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+    code-fold: false
+    code-tools: true
+    highlight-style: github
+    
+execute:
+  freeze: auto
+  echo: true
+  warning: true
+  error: false
+
+# Hugo-specific settings
+metadata-files:
+  - _metadata.yml
+

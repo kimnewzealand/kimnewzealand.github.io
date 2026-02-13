@@ -1,0 +1,12 @@
+{
+  "hash": "0481cfbdc778d8f5e373fa227b99244e",
+  "result": {
+    "engine": "jupyter",
+    "markdown": "---\ntitle: \"Job Trends in New Zealand\"\nauthor: \"Kim Fitter\"\ndate: 2026-02-13\ntags: [\"Python\", \"trends\"]\ndescription: \"Analyzing job trends in New Zealand using pytrends\"\nformat:\n  html:\n    code-fold: false\n    toc: true\n---\n\n## Introduction\n\nThis post explores job trends in New Zealand using the **pytrends** library. \n\n[pytrends](https://pypi.org/project/pytrends/) is an unofficial API for Google Trends that allows you to programmatically access Google Trends data. It provides a simple interface to:\n\n- Query search interest over time\n- Compare multiple search terms\n- Analyze regional interest\n- Discover related queries and topics\n- Track trending searches\n\nThis makes it an excellent tool for analyzing job market trends, as search volume for job-related terms can indicate hiring demand and career interest patterns.\n\n## Setup\n\nLet's start by importing the pytrends library and checking its version:\n\n::: {#18c2de72 .cell execution_count=1}\n``` {.python .cell-code}\nfrom pytrends.request import TrendReq\nimport importlib.metadata\n\n# Get the version\nversion = importlib.metadata.version('pytrends')\nprint(f\"pytrends version: {version}\")\nprint(\"✅ pytrends library successfully imported!\")\nprint(f\"✅ TrendReq class available: {TrendReq}\")\n```\n\n::: {.cell-output .cell-output-stdout}\n```\npytrends version: 4.9.2\n✅ pytrends library successfully imported!\n✅ TrendReq class available: <class 'pytrends.request.TrendReq'>\n```\n:::\n:::\n\n\n## Next Steps\n\nWith pytrends set up, future analyses could include:\n\n- Tracking search trends for specific job titles in New Zealand\n- Comparing interest in different tech skills over time\n- Analyzing regional variations in job search patterns\n- Identifying seasonal hiring trends\n\nStay tuned for more detailed analysis!\n\n",
+    "supporting": [
+      "job-trends-nz_files"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}
