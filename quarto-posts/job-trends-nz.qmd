@@ -1,9 +1,9 @@
 ---
-title: "Job Trends in New Zealand"
+title: "Data Job Trends in New Zealand"
 author: "Kim Fitter"
 date: 2026-02-13
 tags: ["Python", "trends"]
-description: "Analyzing job trends in New Zealand using pytrends"
+description: "Analyzing Data job trends in New Zealand using pytrends"
 format:
   html:
     code-fold: false
@@ -12,7 +12,7 @@ format:
 
 ## Introduction
 
-This post explores job trends in New Zealand using the **pytrends** library. 
+This post explores data job trends in New Zealand using the **pytrends** library. 
 
 [pytrends](https://pypi.org/project/pytrends/) is an unofficial API for Google Trends that allows you to programmatically access Google Trends data. 
 ## Setup
@@ -26,9 +26,67 @@ import importlib.metadata
 # Get the version
 version = importlib.metadata.version('pytrends')
 print(f"pytrends version: {version}")
-print("✅ pytrends library successfully imported!")
-print(f"✅ TrendReq class available: {TrendReq}")
 ```
 
 ## Data Analysis
 
+Let's analyze search trends for different data-related job roles in New Zealand:
+
+```{python}
+import matplotlib.pyplot as plt
+import pandas as pd
+from datetime import datetime, timedelta
+
+# Initialize pytrends
+pytrends = TrendReq(hl='en-NZ', tz=360)
+
+# Define the time period (last 2 years for better data)
+end_date = datetime.now()
+start_date = end_date - timedelta(days=365*2)
+timeframe = f'{start_date.strftime("%Y-%m-%d")} {end_date.strftime("%Y-%m-%d")}'
+
+# Search terms for data-related roles in NZ
+search_terms = ['data scientist jobs', 'data analyst jobs', 'data engineer jobs', 'analytics engineer jobs', 'ai engineer jobs']
+
+# Fetch interest over time
+print(f"Fetching Google Trends data for: {search_terms}")
+print(f"Time period: {timeframe}")
+pytrends.build_payload(kw_list=search_terms, timeframe=timeframe, geo='NZ')
+df = pytrends.interest_over_time()
+
+# Remove the 'isPartial' column if it exists
+if 'isPartial' in df.columns:
+    df = df.drop('isPartial', axis=1)
+
+print(f"Data shape: {df.shape}")
+print(f"Data range: {df.index.min()} to {df.index.max()}")
+
+# Filter out search terms with all zero values
+non_zero_columns = [col for col in df.columns if df[col].sum() > 0]
+df_filtered = df[non_zero_columns]
+
+print(f"\nSearch terms with data: {non_zero_columns}")
+print(f"Search terms filtered out (no data): {[term for term in search_terms if term not in non_zero_columns]}")
+
+# Create the plot
+plt.figure(figsize=(12, 6))
+for term in non_zero_columns:
+    plt.plot(df_filtered.index, df_filtered[term], label=term, linewidth=2, marker='o', markersize=4)
+
+plt.title('Search Trends for Data Roles in New Zealand (Last 2 Years)', fontsize=14, fontweight='bold')
+plt.xlabel('Date', fontsize=12)
+plt.ylabel('Search Interest', fontsize=12)
+plt.legend(loc='best', fontsize=10)
+plt.grid(True, alpha=0.3)
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()
+
+print("\n📊 Trend Summary:")
+print(f"Data collected from {start_date.strftime('%Y-%m-%d')} to {end_date.strftime('%Y-%m-%d')}")
+print(f"\nCurrent interest levels (0-100 scale):")
+if len(non_zero_columns) > 0:
+    print(df_filtered.tail(1).T)
+else:
+    print("No search data available for any of the terms in New Zealand.")
+```

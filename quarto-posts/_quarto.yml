@@ -4,12 +4,24 @@ project:
 
 format:
   html:
-    theme: cosmo
-    css: styles.css
-    toc: true
+    theme: none
+    template: template.html
+    minimal: true
+    css:
+      - https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/pure-min.css
+      - https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-min.css
+      - https://kimnewzealand.github.io/css/side-menu.css
+      - https://kimnewzealand.github.io/css/blackburn.css
+      - https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css
+      - https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/androidstudio.min.css
+      - quarto-custom.css
+    toc: false
     code-fold: false
-    code-tools: true
-    highlight-style: github
+    code-tools: false
+    code-copy: false
+    anchor-sections: false
+    highlight-style: none
+    html-math-method: plain
     
 execute:
   freeze: auto

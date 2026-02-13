@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="$lang$" xml:lang="$lang$">
+
+<head>
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="$author$" />
+  <meta name="dcterms.date" content="$date$" />
+  <meta name="description" content="$description$" />
+
+  <title>$title$</title>
+
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+
+  $for(css)$
+  <link rel="stylesheet" href="$css$">
+  $endfor$
+
+  $if(math)$
+  $math$
+  $endif$
+
+  $for(header-includes)$
+  $header-includes$
+  $endfor$
+
+</head>
+
+
+<body>
+
+<div id="main">
+
+  <div class="header">
+    <h1>$title$</h1>
+  </div>
+
+  <div class="content">
+
+    <div class="post-meta">
+
+      $if(date)$
+      <div>
+        <i class="fa fa-calendar fa-fw"></i>
+        <time>$date$</time>
+      </div>
+      $endif$
+
+      $if(tags)$
+      <div>
+        <i class="fa fa-tags fa-fw"></i>
+        $for(tags)$
+        <a class="post-taxonomy-tag" href="#">$tags$</a>&nbsp;&#47;
+        $endfor$
+      </div>
+      $endif$
+
+    </div>
+
+$body$
+
+  </div>
+
+</div>
+
+</body>
+
+</html>
+

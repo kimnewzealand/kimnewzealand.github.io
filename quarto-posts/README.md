@@ -8,13 +8,14 @@ This directory contains Quarto documents (`.qmd`) and Python scripts (`.py`) tha
 quarto-posts/
 ├── _quarto.yml                    # Quarto project configuration
 ├── _metadata.yml                  # Default metadata for all posts
+├── template.html                  # Custom Pandoc template for HTML output
+├── quarto-custom.css              # Custom CSS matching Blackburn theme
 ├── README.md                      # This file
-├── example-python-analysis.qmd    # Example .qmd file (TESTED ✅)
-├── example-python-script.py       # Example .py file with Quarto comments
-├── render-all.ps1                 # Render all posts
-├── render-single.ps1              # Render a single post
-├── preview.ps1                    # Live preview with auto-reload
-└── new-post.ps1                   # Create new posts from templates
+├── job-trends-nz.qmd              # Active blog post: Job Trends in NZ
+├── _freeze/                       # Cached execution results
+│   ├── job-trends-nz/             # Cache for job-trends-nz.qmd
+│   └── site_libs/                 # Shared library cache
+└── *.ps1                          # PowerShell automation scripts (optional)
 ```
 
 ## Creating a New Post
@@ -84,6 +85,119 @@ quarto render
 ### Preview while editing:
 ```bash
 quarto preview my-post.qmd
+```
+
+## Running Quarto Locally
+
+### Quick Start (Recommended)
+
+The simplest way to run Quarto is to use the full path to the executable:
+
+```powershell
+# In PowerShell, navigate to the quarto-posts directory
+cd quarto-posts
+
+# Render a single post
+& "C:\Program Files\Quarto\bin\quarto.exe" render job-trends-nz.qmd
+
+# Render all posts
+& "C:\Program Files\Quarto\bin\quarto.exe" render
+
+# Preview while editing
+& "C:\Program Files\Quarto\bin\quarto.exe" preview job-trends-nz.qmd
+```
+
+### Option 1: Using PowerShell Alias (Recommended)
+
+Add this to your PowerShell profile (`$PROFILE`) to create a shortcut:
+
+```powershell
+# Open your PowerShell profile
+notepad $PROFILE
+
+# Add this line to the file
+Set-Alias quarto "C:\Program Files\Quarto\bin\quarto.exe"
+
+# Save and reload PowerShell
+. $PROFILE
+```
+
+Then you can use Quarto normally:
+```powershell
+cd quarto-posts
+quarto render job-trends-nz.qmd
+```
+
+### Option 2: Using Git Bash
+
+From Git Bash, use the full path with the `call` operator:
+
+```bash
+# Navigate to quarto-posts directory
+cd quarto-posts
+
+# Render a post
+/c/Program\ Files/Quarto/bin/quarto.exe render job-trends-nz.qmd
+```
+
+Or create a bash alias in `~/.bashrc`:
+
+```bash
+# Add to ~/.bashrc
+alias quarto="/c/Program\ Files/Quarto/bin/quarto.exe"
+
+# Reload
+source ~/.bashrc
+
+# Now use it directly
+quarto render job-trends-nz.qmd
+```
+
+### Option 3: Add Quarto to System PATH (Permanent)
+
+To make Quarto available everywhere without the full path:
+
+1. **Open Environment Variables:**
+   - Press `Win + X` and select "System"
+   - Click "Advanced system settings"
+   - Click "Environment Variables"
+
+2. **Add Quarto to PATH:**
+   - Click "New" under "System variables"
+   - Variable name: `Path`
+   - Variable value: `C:\Program Files\Quarto\bin`
+   - Click OK and restart your terminal
+
+3. **Verify it works:**
+   ```powershell
+   quarto --version
+   ```
+
+### Troubleshooting
+
+**Problem: "quarto: command not found"**
+
+Solution 1: Use the full path
+```powershell
+& "C:\Program Files\Quarto\bin\quarto.exe" render job-trends-nz.qmd
+```
+
+Solution 2: Check if Quarto is installed
+```powershell
+Get-ChildItem "C:\Program Files\Quarto\bin\"
+```
+
+Solution 3: Reinstall Quarto
+```powershell
+winget uninstall Posit.Quarto
+winget install Posit.Quarto
+```
+
+**Problem: Python errors when rendering**
+
+Make sure all required Python packages are installed:
+```bash
+pip install pytrends matplotlib pandas numpy
 ```
 
 ## Output
