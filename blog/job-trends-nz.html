@@ -3,7 +3,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <meta name="author" content="Kim Fitter">
   <meta name="dcterms.date" content="13 Feb 2026">
-  <meta name="description" content="Analyzing Data job trends in New Zealand using pytrends">
+  <meta name="description" content="Analyzing Data job trends in New Zealand using pytrends library">
 
   <title>Data Job Trends in New Zealand</title>
 
@@ -61,37 +61,29 @@
     </div>
 
 <h2 id="introduction">Introduction</h2>
-<p>This post explores data job trends in New Zealand using the <strong>pytrends</strong> library.</p>
-<p><a href="https://pypi.org/project/pytrends/">pytrends</a> is an unofficial API for Google Trends that allows you to programmatically access Google Trends data. ## Setup</p>
-<p>Let’s start by importing the pytrends library and checking its version:</p>
-<div id="adcc6d98" class="cell" data-execution_count="1">
+<p>This post explores data job trends in New Zealand using the <strong>pytrends</strong> library and <a href="https://quarto.org/">Quarto</a>.</p>
+<p><a href="https://pypi.org/project/pytrends/">pytrends</a> is an unofficial API for Google Trends that allows you to programmatically access Google Trends data. This library is easy to use with no API key required however there are <a href="https://github.com/GeneralMills/pytrends">rate limiting</a> limitations.</p>
+<h2 id="setup">Setup</h2>
+<p>Let’s start by importing the libraries:</p>
+<div id="b5141b7b" class="cell" data-execution_count="1">
 <pre class="python cell-code"><code>from pytrends.request import TrendReq
-import importlib.metadata
-
-# Get the version
-version = importlib.metadata.version('pytrends')
-print(f"pytrends version: {version}")</code></pre>
-<div class="cell-output cell-output-stdout">
-<pre><code>pytrends version: 4.9.2</code></pre>
-</div>
+import matplotlib.pyplot as plt
+import pandas as pd
+from datetime import datetime, timedelta</code></pre>
 </div>
 <h2 id="data-analysis">Data Analysis</h2>
-<p>Let’s analyze search trends for different data-related job roles in New Zealand:</p>
-<div id="78f1284d" class="cell" data-execution_count="2">
-<pre class="python cell-code"><code>import matplotlib.pyplot as plt
-import pandas as pd
-from datetime import datetime, timedelta
-
-# Initialize pytrends
+<p>Next analyse search trends for different data related job roles in New Zealand:</p>
+<div id="abac7676" class="cell" data-execution_count="2">
+<pre class="python cell-code"><code># Initialize pytrends
 pytrends = TrendReq(hl='en-NZ', tz=360)
 
-# Define the time period (last 2 years for better data)
+# Define the time period (last 5 years)
 end_date = datetime.now()
-start_date = end_date - timedelta(days=365*2)
+start_date = end_date - timedelta(days=365*5)
 timeframe = f'{start_date.strftime("%Y-%m-%d")} {end_date.strftime("%Y-%m-%d")}'
 
-# Search terms for data-related roles in NZ
-search_terms = ['data scientist jobs', 'data analyst jobs', 'data engineer jobs', 'analytics engineer jobs', 'ai engineer jobs']
+# Search terms for data related roles in NZ
+search_terms = [ 'data engineer', 'analytics engineer', 'ai engineer', 'product engineer']
 
 # Fetch interest over time
 print(f"Fetching Google Trends data for: {search_terms}")
@@ -113,65 +105,93 @@ df_filtered = df[non_zero_columns]
 print(f"\nSearch terms with data: {non_zero_columns}")
 print(f"Search terms filtered out (no data): {[term for term in search_terms if term not in non_zero_columns]}")
 
-# Create the plot
-plt.figure(figsize=(12, 6))
-for term in non_zero_columns:
-    plt.plot(df_filtered.index, df_filtered[term], label=term, linewidth=2, marker='o', markersize=4)
-
-plt.title('Search Trends for Data Roles in New Zealand (Last 2 Years)', fontsize=14, fontweight='bold')
-plt.xlabel('Date', fontsize=12)
-plt.ylabel('Search Interest', fontsize=12)
-plt.legend(loc='best', fontsize=10)
-plt.grid(True, alpha=0.3)
-plt.xticks(rotation=45)
-plt.tight_layout()
-plt.show()
-
-print("\n📊 Trend Summary:")
-print(f"Data collected from {start_date.strftime('%Y-%m-%d')} to {end_date.strftime('%Y-%m-%d')}")
-print(f"\nCurrent interest levels (0-100 scale):")
-if len(non_zero_columns) &gt; 0:
-    print(df_filtered.tail(1).T)
-else:
-    print("No search data available for any of the terms in New Zealand.")</code></pre>
+# Define colorblind-friendly palette (ColorBrewer Dark2)
+# These colors are distinguishable for people with color blindness
+colors = ['#1b9e77', '#d95f02', '#7570b3', '#e7298a', '#66a61e']
+term_colors = {term: colors[i % len(colors)] for i, term in enumerate(non_zero_columns)}</code></pre>
 <div class="cell-output cell-output-stdout">
-<pre><code>Fetching Google Trends data for: ['data scientist jobs', 'data analyst jobs', 'data engineer jobs', 'analytics engineer jobs', 'ai engineer jobs']
-Time period: 2024-02-14 2026-02-13</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>C:\Users\ddobs\AppData\Local\Programs\Python\Python313\Lib\site-packages\pytrends\request.py:260: FutureWarning:
+<pre><code>Fetching Google Trends data for: ['data engineer', 'analytics engineer', 'ai engineer', 'product engineer']
+Time period: 2021-02-18 2026-02-17
+Data shape: (262, 4)
+Data range: 2021-02-14 00:00:00 to 2026-02-15 00:00:00
 
-Downcasting object dtype arrays on .fillna, .ffill, .bfill is deprecated and will change in a future version. Call result.infer_objects(copy=False) instead. To opt-in to the future behavior, set `pd.set_option('future.no_silent_downcasting', True)`
-</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Data shape: (105, 5)
-Data range: 2024-02-11 00:00:00 to 2026-02-08 00:00:00
-
-Search terms with data: ['data scientist jobs', 'data analyst jobs', 'data engineer jobs', 'analytics engineer jobs', 'ai engineer jobs']
+Search terms with data: ['data engineer', 'analytics engineer', 'ai engineer', 'product engineer']
 Search terms filtered out (no data): []</code></pre>
 </div>
+</div>
+<div id="1d26b30f" class="cell" data-execution_count="3">
+<pre class="python cell-code"><code># Create stacked bar chart over time with absolute values
+fig, ax = plt.subplots(figsize=(14, 7))
+
+# Create the stacked bar chart using raw filtered data (absolute values)
+df_filtered.plot(
+    kind='bar',
+    stacked=True,
+    ax=ax,
+    color=[term_colors[term] for term in non_zero_columns],
+    width=0.8,
+    edgecolor='white',
+    linewidth=0.5
+)
+
+ax.set_title('Search Trends for Data Roles in New Zealand - Absolute Interest Over Time (Last 5 Years)',
+             fontsize=14, fontweight='bold', pad=20)
+ax.set_xlabel('Date', fontsize=12)
+ax.set_ylabel('Search Interest (Google Trends Index)', fontsize=12)
+ax.legend(title='Job Role', bbox_to_anchor=(1.05, 1), loc='upper left', fontsize=10)
+ax.grid(True, alpha=0.3, axis='y')
+
+# Format x-axis to show fewer labels for readability
+n_ticks = 12  # Show approximately 12 date labels
+tick_positions = range(0, len(df_filtered), max(1, len(df_filtered) // n_ticks))
+ax.set_xticks(tick_positions)
+ax.set_xticklabels([df_filtered.index[i].strftime('%Y-%m') for i in tick_positions], rotation=45, ha='right')
+
+plt.tight_layout()
+plt.show()</code></pre>
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><img src="job-trends-nz_files/figure-html/cell-3-output-4.png" width="1143" height="566"></p>
+<p><img src="job-trends-nz_files/figure-html/cell-4-output-1.png" width="1333" height="662"></p>
 </figure>
 </div>
 </div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-📊 Trend Summary:
-Data collected from 2024-02-14 to 2026-02-13
+</div>
+<div id="c3bec76a" class="cell" data-execution_count="4">
+<pre class="python cell-code"><code># Create individual line charts for each job role
+fig, axes = plt.subplots(2, 2, figsize=(14, 10))
+axes = axes.flatten()
 
-Current interest levels (0-100 scale):
-date                     2026-02-08
-data scientist jobs               6
-data analyst jobs                24
-data engineer jobs                0
-analytics engineer jobs           0
-ai engineer jobs                  5</code></pre>
+for idx, term in enumerate(non_zero_columns[:4]):
+    ax = axes[idx]
+    ax.plot(df_filtered.index, df_filtered[term],
+            color=term_colors[term], linewidth=2.5, marker='o', markersize=4)
+    ax.fill_between(df_filtered.index, df_filtered[term], alpha=0.3, color=term_colors[term])
+
+    ax.set_title(f'{term.title()}', fontsize=12, fontweight='bold')
+    ax.set_xlabel('Date', fontsize=10)
+    ax.set_ylabel('Search Interest (Google Trends Index)', fontsize=10)
+    ax.grid(True, alpha=0.3)
+    ax.tick_params(axis='x', rotation=45)
+
+# Hide any unused subplots if fewer than 4 terms
+for idx in range(len(non_zero_columns), 4):
+    axes[idx].set_visible(False)
+
+fig.suptitle('Individual Search Trends for Data Roles in New Zealand (Last 5 Years)',
+             fontsize=14, fontweight='bold', y=1.00)
+plt.tight_layout()
+plt.show()</code></pre>
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img src="job-trends-nz_files/figure-html/cell-5-output-1.png" width="1334" height="964"></p>
+</figure>
 </div>
 </div>
+</div>
+<h2 id="conclusions">Conclusions</h2>
+<p>From the analysis we can see that there is a lot of interest in data and AI related job roles in New Zealand. The search interest for these roles has been increasing over the last 5 years. The is consistent demand for data engineer, and increasing interest in analytics engineer and ai engineer roles. There still isn’t uptake in the job role as product engineer in New Zealand.</p>
 
 
   </div>
