@@ -14,6 +14,8 @@ format:
 
 This post explores data job trends in New Zealand using the **pytrends** library and [Quarto](https://quarto.org/).
 
+It is also a simple experiment in the change of working to learn a new tool such as Quarto to create a Python data analysis report supported by coding agent tool, Augment.
+
 [pytrends](https://pypi.org/project/pytrends/) is an unofficial API for Google Trends that allows you to programmatically access Google Trends data. 
 This library is easy to use with no API key required however there are [rate limiting](https://github.com/GeneralMills/pytrends) limitations. 
 
@@ -133,4 +135,4 @@ plt.show()
 
 ## Conclusions
 
-From the analysis we can see that there is a lot of interest in data and AI related job roles in New Zealand. The search interest for these roles has been increasing over the last 5 years. The is consistent demand for data engineer, and increasing interest in analytics engineer and ai engineer roles. There still isn't uptake in the job role as product engineer in New Zealand.
+From the charts we can see that there is  interest in data and AI related job roles in New Zealand. The search interest for these roles overall has been increasing over the last 5 years. The is consistent demand for data engineer, and increasing interest in product engineer and ai engineer roles. There still doesn't appear to be comparable uptake in the job role as analytics engineer in New Zealand.

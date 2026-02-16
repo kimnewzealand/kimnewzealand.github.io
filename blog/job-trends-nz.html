@@ -62,10 +62,11 @@
 
 <h2 id="introduction">Introduction</h2>
 <p>This post explores data job trends in New Zealand using the <strong>pytrends</strong> library and <a href="https://quarto.org/">Quarto</a>.</p>
+<p>It is also a simple experiment in the change of working to learn a new tool such as Quarto to create a Python data analysis report supported by coding agent tool, Augment.</p>
 <p><a href="https://pypi.org/project/pytrends/">pytrends</a> is an unofficial API for Google Trends that allows you to programmatically access Google Trends data. This library is easy to use with no API key required however there are <a href="https://github.com/GeneralMills/pytrends">rate limiting</a> limitations.</p>
 <h2 id="setup">Setup</h2>
 <p>Let’s start by importing the libraries:</p>
-<div id="b5141b7b" class="cell" data-execution_count="1">
+<div id="a708d7c4" class="cell" data-execution_count="1">
 <pre class="python cell-code"><code>from pytrends.request import TrendReq
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -73,7 +74,7 @@ from datetime import datetime, timedelta</code></pre>
 </div>
 <h2 id="data-analysis">Data Analysis</h2>
 <p>Next analyse search trends for different data related job roles in New Zealand:</p>
-<div id="abac7676" class="cell" data-execution_count="2">
+<div id="2379b5ad" class="cell" data-execution_count="2">
 <pre class="python cell-code"><code># Initialize pytrends
 pytrends = TrendReq(hl='en-NZ', tz=360)
 
@@ -119,7 +120,7 @@ Search terms with data: ['data engineer', 'analytics engineer', 'ai engineer', '
 Search terms filtered out (no data): []</code></pre>
 </div>
 </div>
-<div id="1d26b30f" class="cell" data-execution_count="3">
+<div id="568debe8" class="cell" data-execution_count="3">
 <pre class="python cell-code"><code># Create stacked bar chart over time with absolute values
 fig, ax = plt.subplots(figsize=(14, 7))
 
@@ -157,7 +158,7 @@ plt.show()</code></pre>
 </div>
 </div>
 </div>
-<div id="c3bec76a" class="cell" data-execution_count="4">
+<div id="b320d009" class="cell" data-execution_count="4">
 <pre class="python cell-code"><code># Create individual line charts for each job role
 fig, axes = plt.subplots(2, 2, figsize=(14, 10))
 axes = axes.flatten()
@@ -191,7 +192,7 @@ plt.show()</code></pre>
 </div>
 </div>
 <h2 id="conclusions">Conclusions</h2>
-<p>From the analysis we can see that there is a lot of interest in data and AI related job roles in New Zealand. The search interest for these roles has been increasing over the last 5 years. The is consistent demand for data engineer, and increasing interest in analytics engineer and ai engineer roles. There still isn’t uptake in the job role as product engineer in New Zealand.</p>
+<p>From the charts we can see that there is interest in data and AI related job roles in New Zealand. The search interest for these roles overall has been increasing over the last 5 years. The is consistent demand for data engineer, and increasing interest in product engineer and ai engineer roles. There still doesn’t appear to be comparable uptake in the job role as analytics engineer in New Zealand.</p>
 
 
   </div>
