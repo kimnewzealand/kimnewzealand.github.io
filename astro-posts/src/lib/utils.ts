@@ -13,28 +13,14 @@ export function formatDate(date: Date) {
   }).format(date);
 }
 
-export function readingTime(html: string) {
-  const textOnly = html.replace(/<[^>]+>/g, "");
-  const wordCount = textOnly.split(/\s+/).length;
+export function readingTime(content: string) {
+  const textOnly = content
+    .replace(/<[^>]+>/g, "")
+    .replace(/[#*`~>\[\]()!_-]/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+  const wordCount = textOnly.split(/\s+/).filter(Boolean).length;
   const readingTimeMinutes = ((wordCount / 200) + 1).toFixed();
   return `${readingTimeMinutes} min read`;
 }
 
-export function dateRange(startDate: Date, endDate?: Date | string): string {
-  const startMonth = startDate.toLocaleString("default", { month: "short" });
-  const startYear = startDate.getFullYear().toString();
-  let endMonth;
-  let endYear;
-
-  if (endDate) {
-    if (typeof endDate === "string") {
-      endMonth = "";
-      endYear = endDate;
-    } else {
-      endMonth = endDate.toLocaleString("default", { month: "short" });
-      endYear = endDate.getFullYear().toString();
-    }
-  }
-
-  return `${startMonth}${startYear} - ${endMonth}${endYear}`;
-}

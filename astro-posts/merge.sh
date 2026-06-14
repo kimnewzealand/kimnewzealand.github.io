@@ -7,7 +7,7 @@ HERE="$(cd "$(dirname "$0")" && pwd)"
 cd "$HERE"
 
 echo "==> Building Astro site..."
-pnpm astro check && pnpm astro build
+pnpm build
 
 echo "==> Merging assets and posts into site root..."
 # Replace hashed assets (remove stale files first)
