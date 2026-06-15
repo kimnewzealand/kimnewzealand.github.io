@@ -22,7 +22,7 @@ flowchart LR
     VO[Versioned Obligations]
 
     LO -.->|creates| LD
-    LD-.->|creates| VO
+    LD -.->|creates| VO
     LO -.->|extends| LD
     LD -.->|extends| VO
     SH -.->|queries| LD
