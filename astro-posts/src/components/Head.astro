@@ -182,3 +182,29 @@ function toggleTheme(dark) {
   document.addEventListener("astro:after-swap", () => init());
   preloadTheme();
 </script>
+
+<!-- Mermaid diagram renderer -->
+<script is:inline src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script is:inline>
+  mermaid.initialize({ startOnLoad: false });
+
+  function renderMermaid() {
+    document.querySelectorAll('pre[data-language="mermaid"]').forEach((pre) => {
+      const div = document.createElement("div");
+      div.className = "mermaid";
+      div.textContent = pre.textContent;
+      pre.replaceWith(div);
+    });
+    const els = document.querySelectorAll(".mermaid");
+    if (els.length) {
+      mermaid.run({ querySelector: ".mermaid" });
+    }
+  }
+
+  if (document.readyState !== "loading") {
+    renderMermaid();
+  } else {
+    document.addEventListener("DOMContentLoaded", () => renderMermaid());
+  }
+  document.addEventListener("astro:after-swap", () => renderMermaid());
+</script>
