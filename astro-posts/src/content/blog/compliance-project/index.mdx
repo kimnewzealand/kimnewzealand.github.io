@@ -13,12 +13,12 @@ The use case is helping a start up to automate and manage its compliance documen
 A corporate may have teams that can manage compliance. 
 
 ```mermaid
-flowchart LR
+graph LR
     LO[Legal Officer]
     CM[Compliance Manager]
     SH[Stakeholder]
 
-    LD[Legal & Compliance Documents]
+    LD[Legal and Compliance Documents]
     VO[Versioned Obligations]
 
     LO -.->|creates| LD
@@ -37,11 +37,11 @@ flowchart LR
 However in a start up environment most people are wearing many hats.
 
 ```mermaid
-flowchart LR
+graph LR
     LO[Analyst]
     SH[COO]
 
-    LD[Legal & Compliance Documents]
+    LD[Legal and Compliance Documents]
     VO[Versioned Obligations]
 
     LO -.->|creates| LD
@@ -93,14 +93,14 @@ The reason for using a web app is to build an end to end PoC assuming the user w
 See deployed app version here: [https://compliance-rag.streamlit.app/](https://compliance-rag.streamlit.app/)
 
 ```mermaid
-flowchart LR
-    A[Retrieval<br/>(Search DB)] --> B[Augmentation<br/>(Add Context)]
-    B --> C[Generation<br/>(Answer w/LLM model)]
+graph LR
+    A[Retrieval] --> B[Augmentation]
+    B --> C[Generation]
 ```
 
 This system uses free LLM, free Hugging Face transformers library, free ChromaDB storage and runs locally.
 
-However [simply retrieving text snippets using vector search isn’t enough.](https://towardsdatascience.com/beyond-rag/)
+However [simply retrieving text snippets using vector search isn't enough.](https://towardsdatascience.com/beyond-rag/)
 
 This led to the next PoC to attempt to provide better context in the system.
 
@@ -111,16 +111,16 @@ GraphRAG is a variation of RAG where the underlying database used for retrieval 
 This allows the model to reason over entities and relationships rather than flat text chunks.
 
 See this paper for further reading : [A BENCHMARK TO UNDERSTAND THE ROLE OF KNOWLEDGE
-GRAPHS ON LARGE LANGUAGE MODEL’S ACCURACY FOR
+GRAPHS ON LARGE LANGUAGE MODEL'S ACCURACY FOR
 QUESTION ANSWERING ON ENTERPRISE SQL DATABASES](https://arxiv.org/pdf/2311.07509)
 
 The [graphRAG tutorial repo](https://github.com/kimnewzealand/graphrag-tutorial) runs as a CLI interface rather than using a web app.
 It uses a [Neo4j for Desktop](https://neo4j.com/download/) and a python script running locally to view the quality and timing of the responses.
 
 ```mermaid
-flowchart LR
-    A[Graph Retrieval<br/>(Neo4j Query)] --> B[Knowledge Augmentation<br/>(Graph Context)]
-    B --> C[Generation<br/>(Answer w/Anthropic LLM)]
+graph LR
+    A[Graph Retrieval - Neo4j Query] --> B[Knowledge Augmentation - Graph Context]
+    B --> C[Generation - Anthropic LLM]
 ```
 
 The GraphRAG does seem to give more semantic meaning than RAG. However both of these proof of concepts are simple abstractions.
@@ -212,7 +212,7 @@ Lessons so far categorised by the key themes from the requirements:
 
 # Next steps
 
-Microsoft options to try:
+Given they are a Microsft shop, these are Microsoft options to try with a semantic workflow:
 
 | Option | No-code? | Privacy? | Verdict |
 |---|---|---|---|

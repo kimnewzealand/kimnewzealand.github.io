@@ -138,16 +138,16 @@ Back to home
 <p>A client asked the question: Can an Agent run my compliance for me?</p>
 <p>The use case is helping a start up to automate and manage its compliance documentation and obligations to focus on product development.</p>
 <p>A corporate may have teams that can manage compliance.</p>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="mermaid"><code><span class="line"><span style="color:#E1E4E8">flowchart LR</span></span>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="mermaid"><code><span class="line"><span style="color:#E1E4E8">graph LR</span></span>
 <span class="line"><span style="color:#E1E4E8">    LO[Legal Officer]</span></span>
 <span class="line"><span style="color:#E1E4E8">    CM[Compliance Manager]</span></span>
 <span class="line"><span style="color:#E1E4E8">    SH[Stakeholder]</span></span>
 <span class="line"></span>
-<span class="line"><span style="color:#E1E4E8">    LD[Legal &amp; Compliance Documents]</span></span>
+<span class="line"><span style="color:#E1E4E8">    LD[Legal and Compliance Documents]</span></span>
 <span class="line"><span style="color:#E1E4E8">    VO[Versioned Obligations]</span></span>
 <span class="line"></span>
 <span class="line"><span style="color:#E1E4E8">    LO -.-&gt;|creates| LD</span></span>
-<span class="line"><span style="color:#E1E4E8">    LD-.-&gt;|creates| VO</span></span>
+<span class="line"><span style="color:#E1E4E8">    LD -.-&gt;|creates| VO</span></span>
 <span class="line"><span style="color:#E1E4E8">    LO -.-&gt;|extends| LD</span></span>
 <span class="line"><span style="color:#E1E4E8">    LD -.-&gt;|extends| VO</span></span>
 <span class="line"><span style="color:#E1E4E8">    SH -.-&gt;|queries| LD</span></span>
@@ -158,11 +158,11 @@ Back to home
 <span class="line"><span style="color:#E1E4E8">    style CM fill:#dcfce7,stroke:#16a34a,color:#166534</span></span>
 <span class="line"><span style="color:#E1E4E8">    style SH fill:#f3e8ff,stroke:#9333ea,color:#6b21a8</span></span></code></pre>
 <p>However in a start up environment most people are wearing many hats.</p>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="mermaid"><code><span class="line"><span style="color:#E1E4E8">flowchart LR</span></span>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="mermaid"><code><span class="line"><span style="color:#E1E4E8">graph LR</span></span>
 <span class="line"><span style="color:#E1E4E8">    LO[Analyst]</span></span>
 <span class="line"><span style="color:#E1E4E8">    SH[COO]</span></span>
 <span class="line"></span>
-<span class="line"><span style="color:#E1E4E8">    LD[Legal &amp; Compliance Documents]</span></span>
+<span class="line"><span style="color:#E1E4E8">    LD[Legal and Compliance Documents]</span></span>
 <span class="line"><span style="color:#E1E4E8">    VO[Versioned Obligations]</span></span>
 <span class="line"></span>
 <span class="line"><span style="color:#E1E4E8">    LO -.-&gt;|creates| LD</span></span>
@@ -202,9 +202,9 @@ Back to home
 <p>In this repo, the RAG system reads a PDF document, retrieves the most relevant sections based on a user query using a vector ChromaDB in a web app.</p>
 <p>The reason for using a web app is to build an end to end PoC assuming the user would prefer to interact with a chat interface. This assumption will be tested through all the PoCs.</p>
 <p>See deployed app version here: <a href="https://compliance-rag.streamlit.app/">https://compliance-rag.streamlit.app/</a></p>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="mermaid"><code><span class="line"><span style="color:#E1E4E8">flowchart LR</span></span>
-<span class="line"><span style="color:#E1E4E8">    A[Retrieval&lt;br/&gt;(Search DB)] --&gt; B[Augmentation&lt;br/&gt;(Add Context)]</span></span>
-<span class="line"><span style="color:#E1E4E8">    B --&gt; C[Generation&lt;br/&gt;(Answer w/LLM model)]</span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="mermaid"><code><span class="line"><span style="color:#E1E4E8">graph LR</span></span>
+<span class="line"><span style="color:#E1E4E8">    A[Retrieval] --&gt; B[Augmentation]</span></span>
+<span class="line"><span style="color:#E1E4E8">    B --&gt; C[Generation]</span></span></code></pre>
 <p>This system uses free LLM, free Hugging Face transformers library, free ChromaDB storage and runs locally.</p>
 <p>However <a href="https://towardsdatascience.com/beyond-rag/">simply retrieving text snippets using vector search isn’t enough.</a></p>
 <p>This led to the next PoC to attempt to provide better context in the system.</p>
@@ -216,9 +216,9 @@ GRAPHS ON LARGE LANGUAGE MODEL’S ACCURACY FOR
 QUESTION ANSWERING ON ENTERPRISE SQL DATABASES</a></p>
 <p>The <a href="https://github.com/kimnewzealand/graphrag-tutorial">graphRAG tutorial repo</a> runs as a CLI interface rather than using a web app.
 It uses a <a href="https://neo4j.com/download/">Neo4j for Desktop</a> and a python script running locally to view the quality and timing of the responses.</p>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="mermaid"><code><span class="line"><span style="color:#E1E4E8">flowchart LR</span></span>
-<span class="line"><span style="color:#E1E4E8">    A[Graph Retrieval&lt;br/&gt;(Neo4j Query)] --&gt; B[Knowledge Augmentation&lt;br/&gt;(Graph Context)]</span></span>
-<span class="line"><span style="color:#E1E4E8">    B --&gt; C[Generation&lt;br/&gt;(Answer w/Anthropic LLM)]</span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="mermaid"><code><span class="line"><span style="color:#E1E4E8">graph LR</span></span>
+<span class="line"><span style="color:#E1E4E8">    A[Graph Retrieval - Neo4j Query] --&gt; B[Knowledge Augmentation - Graph Context]</span></span>
+<span class="line"><span style="color:#E1E4E8">    B --&gt; C[Generation - Anthropic LLM]</span></span></code></pre>
 <p>The GraphRAG does seem to give more semantic meaning than RAG. However both of these proof of concepts are simple abstractions.</p>
 <p>There are libraries that provide high level abstractions to hide complexity while allowing customisation.</p>
 <h3 id="3-llamaindex">3. LlamaIndex</h3>
@@ -293,7 +293,7 @@ It uses a <a href="https://neo4j.com/download/">Neo4j for Desktop</a> and a pyth
 <li>The team does not have any in house engineers so any solution would need to be as low code or no code as possible</li>
 </ul>
 <h1 id="next-steps">Next steps</h1>
-<p>Microsoft options to try:</p>
+<p>Given they are a Microsft shop, these are Microsoft options to try with a semantic workflow:</p>
 
 
 
