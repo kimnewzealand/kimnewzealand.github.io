@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"> <head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="/img/favicon.ico"><meta name="generator" content="Astro v5.18.2"><!-- Font preloads --><link rel="preload" href="/_astro/inter-latin-400-normal.C38fXH4l.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/_astro/inter-latin-600-normal.LgqL8muc.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/_astro/lora-latin-400-normal.DnxXpLNu.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/_astro/lora-latin-600-normal.B-3RcLOQ.woff2" as="font" type="font/woff2" crossorigin><!-- Canonical URL --><link rel="canonical" href="https://kimnewzealand.github.io/blog/compliance-project/"><!-- Primary Meta Tags --><title>Compliance Management for a Start Up | Kim Fitter</title><meta name="title" content="Compliance Management for a Start Up | Kim Fitter"><meta name="description" content="How we proof of concepted ways to automate and manage compliance obligations for a small start up"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://kimnewzealand.github.io/blog/compliance-project/"><meta property="og:title" content="Compliance Management for a Start Up | Kim Fitter"><meta property="og:description" content="How we proof of concepted ways to automate and manage compliance obligations for a small start up"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://kimnewzealand.github.io/blog/compliance-project/"><meta property="twitter:title" content="Compliance Management for a Start Up | Kim Fitter"><meta property="twitter:description" content="How we proof of concepted ways to automate and manage compliance obligations for a small start up"><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CDGfc0hd.js"></script><!-- RSS Link --><link rel="alternate" type="application/rss+xml" title="Kim Fitter" href="https://kimnewzealand.github.io/rss.xml"><script type="module">document.addEventListener("astro:before-swap",e=>[...e.newDocument.head.querySelectorAll('link[as="font"]')].forEach(o=>o.remove()));</script><script>
+<!DOCTYPE html><html lang="en"> <head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="/img/favicon.ico"><meta name="generator" content="Astro v5.18.2"><!-- Font preloads --><link rel="preload" href="/_astro/inter-latin-400-normal.C38fXH4l.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/_astro/inter-latin-600-normal.LgqL8muc.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/_astro/lora-latin-400-normal.DnxXpLNu.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/_astro/lora-latin-600-normal.B-3RcLOQ.woff2" as="font" type="font/woff2" crossorigin><!-- Canonical URL --><link rel="canonical" href="https://kimnewzealand.github.io/blog/compliance-project/"><!-- Primary Meta Tags --><title>Compliance Management for a Start Up | Kim Fitter</title><meta name="title" content="Compliance Management for a Start Up | Kim Fitter"><meta name="description" content="How to automate and manage compliance obligations for a small start up"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://kimnewzealand.github.io/blog/compliance-project/"><meta property="og:title" content="Compliance Management for a Start Up | Kim Fitter"><meta property="og:description" content="How to automate and manage compliance obligations for a small start up"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://kimnewzealand.github.io/blog/compliance-project/"><meta property="twitter:title" content="Compliance Management for a Start Up | Kim Fitter"><meta property="twitter:description" content="How to automate and manage compliance obligations for a small start up"><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CDGfc0hd.js"></script><!-- RSS Link --><link rel="alternate" type="application/rss+xml" title="Kim Fitter" href="https://kimnewzealand.github.io/rss.xml"><script type="module">document.addEventListener("astro:before-swap",e=>[...e.newDocument.head.querySelectorAll('link[as="font"]')].forEach(o=>o.remove()));</script><script>
   function init() {
     preloadTheme();
     onScroll();
@@ -134,9 +134,29 @@ home
 Back to home
  </div> </a> </div> <div class="space-y-1 my-10"> <div class="animate flex items-center gap-1.5"> <div class="font-base text-sm"> <time datetime="2026-06-15T00:00:00.000Z"> Jun 15, 2026 </time> </div>
 &bull;
-<div class="font-base text-sm"> 7 min read </div> </div> <div class="animate text-2xl font-semibold text-black dark:text-white"> Compliance Management for a Start Up </div> </div> <article class="animate"> <h1 id="introduction">Introduction</h1>
+<div class="font-base text-sm"> 8 min read </div> </div> <div class="animate text-2xl font-semibold text-black dark:text-white"> Compliance Management for a Start Up </div> </div> <article class="animate"> <h1 id="introduction">Introduction</h1>
 <p>A client asked the question: Can an Agent run my compliance for me?</p>
-<p>The use case is helping a start up to automate and manage its compliance documentation and obligations to focus on product development.</p>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+<li><a href="#proof-of-concepts">Proof of Concepts</a>
+<ul>
+<li><a href="#1-retrieval-augmented-generation-rag-with-web-app">1. RAG</a></li>
+<li><a href="#2-graphrag">2. GraphRAG</a></li>
+<li><a href="#3-llamaindex">3. LlamaIndex</a></li>
+<li><a href="#4-langgraph">4. LangGraph</a></li>
+<li><a href="#5-python-scripts">5. Python Scripts</a></li>
+<li><a href="#6-a-data-governance-and-readiness-tool">6. Data Governance Tool</a></li>
+</ul>
+</li>
+<li><a href="#lessons-learnt">Lessons Learnt</a></li>
+<li><a href="#next-steps">Next Steps</a></li>
+</ul>
+<p>Digging into the problem statement, the client has the following challenges:</p>
+<ul>
+<li>The business must comply with obligations across legislation, internal policies, procedures, contracts, standards, and ecosystem rules.</li>
+<li>The current compliance process is too manual for a small organisation with limited resources.</li>
+</ul>
+<p>An example obligation may be “Quarterly access reviews must be conducted for all production systems”</p>
 <p>A corporate may have teams that can manage compliance.</p>
 <pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="mermaid"><code><span class="line"><span style="color:#E1E4E8">graph LR</span></span>
 <span class="line"><span style="color:#E1E4E8">    LO[Legal Officer]</span></span>
@@ -176,14 +196,12 @@ Back to home
 <span class="line"></span>
 <span class="line"><span style="color:#E1E4E8">    style LO fill:#dbeafe,stroke:#2563eb,color:#1e40af</span></span>
 <span class="line"><span style="color:#E1E4E8">    style SH fill:#f3e8ff,stroke:#9333ea,color:#6b21a8</span></span></code></pre>
-<h2 id="problem-overview">Problem Overview</h2>
+<p>The proposed solution is:</p>
 <ul>
-<li>The business must comply with obligations across legislation, internal policies, procedures, contracts, standards, and ecosystem rules.</li>
-<li>The current compliance process is too manual for a small organisation with limited resources.</li>
 <li>The business needs a highly automated solution that identifies obligations and supports an operational process for managing them.</li>
 <li>The solution must provide a complete and transparent view of all obligations in one place.</li>
 </ul>
-<h2 id="non-functional-requirements">Non-Functional Requirements</h2>
+<p>These are the initial non-functional requirements:</p>
 <ul>
 <li>The solution must minimise manual effort because the organisation has limited compliance capacity.</li>
 <li>The solution must be highly automated to reduce dependency on repeated manual review.</li>
@@ -193,10 +211,40 @@ Back to home
 <li>The solution should handle multiple source types without requiring separate tracking processes.</li>
 <li>The solution must maintain a high degree of privacy and use only local storage for sensitive documents and outputs.</li>
 </ul>
-<p>The key themes are <strong>privacy</strong>, <strong>accuracy</strong> and <strong>trust</strong> and <strong>familiar formats</strong>.</p>
+<p>The key non-functional themes are <strong>privacy</strong>, <strong>accuracy</strong>, <strong>trust</strong>, and <strong>familiar formats</strong>.</p>
+<p>The proposed flow for a new “agent” might look like this:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="mermaid"><code><span class="line"><span style="color:#E1E4E8">graph TD</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">    SH[Human]</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">    LD[Legal and Compliance Documents]</span></span>
+<span class="line"><span style="color:#E1E4E8">    VO[Versioned Obligations]</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">    START[Start] --&gt; CREATE[Create Documents Tool]</span></span>
+<span class="line"><span style="color:#E1E4E8">    CREATE --&gt; LD</span></span>
+<span class="line"><span style="color:#E1E4E8">    SH -.-&gt;|document questions| QUERY[Query Documents Tool]</span></span>
+<span class="line"><span style="color:#E1E4E8">    QUERY --&gt; LD</span></span>
+<span class="line"><span style="color:#E1E4E8">    LD --&gt; EXTRACT[Extract Obligations Tool]</span></span>
+<span class="line"><span style="color:#E1E4E8">    EXTRACT --&gt; VO</span></span>
+<span class="line"><span style="color:#E1E4E8">    VO --&gt; MANAGE[Manage Obligations Tool]</span></span>
+<span class="line"><span style="color:#E1E4E8">    MANAGE -.-&gt;|notifies obligations| SH</span></span>
+<span class="line"><span style="color:#E1E4E8">    SH -.-&gt;|reviews obligations| VO</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">    MANAGE --&gt; END[End]</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">    style START fill:#22c55e,color:#fff</span></span>
+<span class="line"><span style="color:#E1E4E8">    style CREATE fill:#6366f1,color:#fff</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">    style EXTRACT fill:#6366f1,color:#fff</span></span>
+<span class="line"><span style="color:#E1E4E8">    style QUERY fill:#6366f1,color:#fff</span></span>
+<span class="line"><span style="color:#E1E4E8">    style MANAGE fill:#6366f1,color:#fff</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">    style END fill:#22c55e,color:#fff</span></span>
+<span class="line"><span style="color:#E1E4E8">    style SH fill:#f3e8ff,stroke:#9333ea,color:#6b21a8</span></span></code></pre>
 <h2 id="proof-of-concepts">Proof of Concepts</h2>
 <p>The first step was to prototype various tools and workflows before making recommendations of what is technically viable given the evolving nature of AI.</p>
-<p>Starting small and initially querying an IT compliance document part of the use case.</p>
+<p>Starting small and focusing on querying an IT compliance document step in the flow.</p>
 <h3 id="1-retrieval-augmented-generation-rag-with-web-app">1. Retrieval Augmented Generation (RAG) with Web App</h3>
 <p>The first <a href="https://github.com/kimnewzealand/rag-tutorial/blob/master/README.md">Rag Tutorial repo</a> proof of concept was using a Retrieval Augmented Generation (RAG) to solve the problem of too much, relevant and sensitive data being loaded into an LLM.</p>
 <p>In this repo, the RAG system reads a PDF document, retrieves the most relevant sections based on a user query using a vector ChromaDB in a web app.</p>
@@ -219,7 +267,7 @@ It uses a <a href="https://neo4j.com/download/">Neo4j for Desktop</a> and a pyth
 <pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="mermaid"><code><span class="line"><span style="color:#E1E4E8">graph LR</span></span>
 <span class="line"><span style="color:#E1E4E8">    A[Graph Retrieval - Neo4j Query] --&gt; B[Knowledge Augmentation - Graph Context]</span></span>
 <span class="line"><span style="color:#E1E4E8">    B --&gt; C[Generation - Anthropic LLM]</span></span></code></pre>
-<p>The GraphRAG does seem to give more semantic meaning than RAG. However both of these proof of concepts are simple abstractions.</p>
+<p>The GraphRAG seems to give more semantic meaning than RAG. However both of these proof of concepts are simple abstractions.</p>
 <p>There are libraries that provide high level abstractions to hide complexity while allowing customisation.</p>
 <h3 id="3-llamaindex">3. LlamaIndex</h3>
 <blockquote>
@@ -227,7 +275,7 @@ It uses a <a href="https://neo4j.com/download/">Neo4j for Desktop</a> and a pyth
 </blockquote>
 <p><a href="https://github.com/kimnewzealand/llama-index-tutorial">LlamaIndex Tutorial repo</a></p>
 <p>Although this is a RAG Application with ChromaDB and Agent Workflow, it can support GraphRAG.</p>
-<p>However I encountered too many  issues and errors during the PoC that I decided not to use LlamaIndex. eg</p>
+<p>However I encountered too many issues and errors during the PoC that I decided not to use LlamaIndex, e.g.:</p>
 <ul>
 <li>Import &amp; Dependency Issues</li>
 <li>Session Management Issues</li>
@@ -253,13 +301,15 @@ It uses a <a href="https://neo4j.com/download/">Neo4j for Desktop</a> and a pyth
 <span class="line"><span style="color:#E1E4E8">    C --&gt;|No Tools| E[END]</span></span>
 <span class="line"><span style="color:#E1E4E8">    D --&gt; B</span></span>
 <span class="line"><span style="color:#E1E4E8">    B --&gt; E</span></span></code></pre>
-<h3 id="5-a-readiness-tool">5. A Readiness Tool</h3>
+<h3 id="5-python-scripts">5. Python Scripts</h3>
+<p>Instead of using a new models to extract obligations, I created a <a href="https://github.com/kimnewzealand/compliance-assistance-prototype">python tool</a> for extracting compliance obligations from PDF documents and exporting them to Excel format.</p>
+<p>As a prototype it runs locally, but with AI coding agents it is relatively quick to write an update these kind of scripts.</p>
+<h3 id="6-a-data-governance-and-readiness-tool">6. A Data Governance and Readiness Tool</h3>
 <p>This idea was a left field one.</p>
-<p>One of the barriers to making a leap to using a full agent was just getting started given the other priorities in the business.</p>
-<p>The concept behind this tool is a daily tip and reward for thinking about data and AI.</p>
+<p>One of the barriers to making a leap to using a full agent was just getting started changing the process, given the other priorities in the business.</p>
+<p>The concept behind this tool is a daily tip and reward for thinking about data governance and AI usage.</p>
 <p><a href="https://chex-wheat.vercel.app">https://chex-wheat.vercel.app</a></p>
-<p>This is still a PoC and the name still resembles a breakfast cereal.</p>
-<p>But it takes the requirements and groups these into categories:</p>
+<p>It takes the requirements and groups these into categories:</p>
 <ul>
 <li>document</li>
 <li>metadata</li>
@@ -270,13 +320,13 @@ It uses a <a href="https://neo4j.com/download/">Neo4j for Desktop</a> and a pyth
 <li>reporting</li>
 <li>pilot</li>
 </ul>
-<p>This tool is still in trial.</p>
+<p>The tool is still a PoC (the name still resembles a breakfast cereal) and is being trialled internally.</p>
 <h2 id="lessons-learnt">Lessons Learnt</h2>
-<p>Lessons so far categorised by the key themes from the requirements:</p>
+<p>Lessons so far categorised by the key themes above:</p>
 <p><strong>Data privacy concerns:</strong></p>
 <ul>
-<li>It is possible to run LLM models locally and not in the cloud</li>
-<li>Realisation that data organisation is key for running the business manually or automating it with AI.</li>
+<li>It is possible to run LLM models locally and not in the cloud to alleviate privacy concerns</li>
+<li>Data governance is key whether running the process manually or automating it with AI.</li>
 </ul>
 <p><strong>Accuracy concerns:</strong></p>
 <ul>
@@ -284,16 +334,16 @@ It uses a <a href="https://neo4j.com/download/">Neo4j for Desktop</a> and a pyth
 </ul>
 <p><strong>Trust concerns:</strong></p>
 <ul>
-<li>The more abstracted a package/tool the more it becomes a black box</li>
-<li>Web app chat UIs do not give transparency or visibility compared to direct reading of the underlying documents</li>
+<li>The more abstracted a package/tool the more the tool becomes a black box to the steps and decisions made by the tool</li>
+<li>Web app chat UIs do not give enough transparency or visibility of underlying documentation or steps or decisions in the process</li>
 </ul>
 <p><strong>Familiar formats:</strong></p>
 <ul>
 <li>Excel is still preferred as a format for the output to manage the obligations</li>
 <li>The team does not have any in house engineers so any solution would need to be as low code or no code as possible</li>
 </ul>
-<h1 id="next-steps">Next steps</h1>
-<p>Given they are a Microsft shop, these are Microsoft options to try with a semantic workflow:</p>
+<h2 id="next-steps">Next steps</h2>
+<p>Given they are a Microsoft shop, these are Microsoft options to try with a semantic workflow:</p>
 
 
 

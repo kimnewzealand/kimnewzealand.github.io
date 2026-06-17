@@ -1,14 +1,32 @@
 ---
 title: "Compliance Management for a Start Up"
-description: "How we proof of concepted ways to automate and manage compliance obligations for a small start up"
+description: "How to automate and manage compliance obligations for a small start up"
 date: 2026-06-15
 ---
+
+
+## Table of Contents
+
+- [Proof of Concepts](#proof-of-concepts)
+  - [1. RAG](#1-retrieval-augmented-generation-rag-with-web-app)
+  - [2. GraphRAG](#2-graphrag)
+  - [3. LlamaIndex](#3-llamaindex)
+  - [4. LangGraph](#4-langgraph)
+  - [5. Python Scripts](#5-python-scripts)
+  - [6. Data Governance Tool](#6-a-data-governance-and-readiness-tool)
+- [Lessons Learnt](#lessons-learnt)
+- [Next Steps](#next-steps)
+
 
 # Introduction 
 
 A client asked the question: Can an Agent run my compliance for me?
+Digging into the problem statement, the client has the following challenges:
 
-The use case is helping a start up to automate and manage its compliance documentation and obligations to focus on product development.
+- The business must comply with obligations across legislation, internal policies, procedures, contracts, standards, and ecosystem rules.
+- The current compliance process is too manual for a small organisation with limited resources.
+
+An example obligation may be "Quarterly access reviews must be conducted for all production systems"
 
 A corporate may have teams that can manage compliance. 
 
@@ -57,14 +75,11 @@ graph LR
     style SH fill:#f3e8ff,stroke:#9333ea,color:#6b21a8
 ```
 
-## Problem Overview
-
-- The business must comply with obligations across legislation, internal policies, procedures, contracts, standards, and ecosystem rules.
-- The current compliance process is too manual for a small organisation with limited resources.
+The proposed solution is:
 - The business needs a highly automated solution that identifies obligations and supports an operational process for managing them.
 - The solution must provide a complete and transparent view of all obligations in one place.
 
-## Non-Functional Requirements
+These are the initial non-functional requirements:
 
 - The solution must minimise manual effort because the organisation has limited compliance capacity.
 - The solution must be highly automated to reduce dependency on repeated manual review.
@@ -74,13 +89,47 @@ graph LR
 - The solution should handle multiple source types without requiring separate tracking processes.
 - The solution must maintain a high degree of privacy and use only local storage for sensitive documents and outputs.
 
-The key themes are **privacy**, **accuracy** and **trust** and **familiar formats**.
+The key non-functional themes are **privacy**, **accuracy**, **trust**, and **familiar formats**.
+
+The proposed flow for a new "agent" might look like this:
+
+```mermaid
+graph TD
+
+    SH[Human]
+
+    LD[Legal and Compliance Documents]
+    VO[Versioned Obligations]
+
+    START --> SH
+    SH -.->|creates| LD
+    SH -.->|document questions| QUERY[Query Documents Tool]
+    QUERY --> LD
+    LD --> EXTRACT[Extract Obligations Tool]
+    EXTRACT --> VO
+    VO --> MANAGE[Manage Obligations Tool]
+    MANAGE -.->|notifies obligations| SH
+    SH -.->|reviews obligations| VO
+
+    MANAGE --> END[End]
+
+    style START fill:#22c55e,color:#fff
+
+    style EXTRACT fill:#6366f1,color:#fff
+    style QUERY fill:#6366f1,color:#fff
+    style MANAGE fill:#6366f1,color:#fff
+
+
+    style END fill:#22c55e,color:#fff
+    style SH fill:#f3e8ff,stroke:#9333ea,color:#6b21a8
+```
+
 
 ## Proof of Concepts
 
 The first step was to prototype various tools and workflows before making recommendations of what is technically viable given the evolving nature of AI.
 
-Starting small and initially querying an IT compliance document part of the use case.
+Starting small and focusing on querying an IT compliance document step in the flow.
 
 ### 1. Retrieval Augmented Generation (RAG) with Web App
 
@@ -123,7 +172,7 @@ graph LR
     B --> C[Generation - Anthropic LLM]
 ```
 
-The GraphRAG does seem to give more semantic meaning than RAG. However both of these proof of concepts are simple abstractions.
+The GraphRAG seems to give more semantic meaning than RAG. However both of these proof of concepts are simple abstractions.
 
 There are libraries that provide high level abstractions to hide complexity while allowing customisation.
 
@@ -135,7 +184,7 @@ There are libraries that provide high level abstractions to hide complexity whil
 
 Although this is a RAG Application with ChromaDB and Agent Workflow, it can support GraphRAG.
 
-However I encountered too many  issues and errors during the PoC that I decided not to use LlamaIndex. eg
+However I encountered too many issues and errors during the PoC that I decided not to use LlamaIndex, e.g.:
 - Import & Dependency Issues 
 - Session Management Issues
 - Extensive configuration overhead
@@ -166,19 +215,26 @@ graph LR
     B --> E
 ```
 
-### 5. A Readiness Tool
+### 5. Python Scripts
+
+Instead of using a new models to extract obligations, I created a [python tool](https://github.com/kimnewzealand/compliance-assistance-prototype) for extracting compliance obligations from PDF documents and exporting them to Excel format.
+
+As a prototype it runs locally, but with AI coding agents it is relatively quick to write an update these kind of scripts.
+
+
+### 6. A Data Governance and Readiness Tool
 
 This idea was a left field one.
 
-One of the barriers to making a leap to using a full agent was just getting started given the other priorities in the business.
+One of the barriers to making a leap to using a full agent was just getting started changing the process, given the other priorities in the business.
 
-The concept behind this tool is a daily tip and reward for thinking about data and AI.
+The concept behind this tool is a daily tip and reward for thinking about data governance and AI usage.
 
 https://chex-wheat.vercel.app
 
-This is still a PoC and the name still resembles a breakfast cereal.
 
-But it takes the requirements and groups these into categories:
+
+It takes the requirements and groups these into categories:
 
 - document
 - metadata
@@ -189,35 +245,59 @@ But it takes the requirements and groups these into categories:
 - reporting
 - pilot
 
-This tool is still in trial.
+The tool is still a PoC (the name still resembles a breakfast cereal) and is being trialled internally.
 
 ## Lessons Learnt
 
-Lessons so far categorised by the key themes from the requirements:
+Lessons so far categorised by the key themes above:
 
 **Data privacy concerns:**
-- It is possible to run LLM models locally and not in the cloud
-- Realisation that data organisation is key for running the business manually or automating it with AI.
+- It is possible to run LLM models locally and not in the cloud to alleviate privacy concerns
+- Data governance is key whether running the process manually or automating it with AI.
 
 **Accuracy concerns:**
 - The LLMs extraction of obligations are still viewed as not accurate compared to an analyst manually extracting the obligations to a spreadsheet
 
 **Trust concerns:**
-- The more abstracted a package/tool the more it becomes a black box 
-- Web app chat UIs do not give transparency or visibility compared to direct reading of the underlying documents
+- The more abstracted a package/tool the more the tool becomes a black box to the steps and decisions made by the tool
+- Web app chat UIs do not give enough transparency or visibility of underlying documentation or steps or decisions in the process
 
 **Familiar formats:**
 - Excel is still preferred as a format for the output to manage the obligations
 - The team does not have any in house engineers so any solution would need to be as low code or no code as possible
 
-# Next steps
+## Recommendation
 
-Given they are a Microsft shop, these are Microsoft options to try with a semantic workflow:
+## Recommendation
 
-| Option | No-code? | Privacy? | Verdict |
-|---|---|---|---|
-| Copilot Studio | ✅ Drag-and-drop GUI | ❌ Cloud | Best fit if client accepts cloud |
-| M365 Copilot + Graph connectors | ✅ Zero code | ❌ Cloud | Second-best, but pricier |
-| Power Automate + AI Builder | ✅ Visual workflow | ❌ Cloud | Good for scheduled Excel output |
-| Semantic Kernel | ❌ Needs Python code | ✅ Local | Best privacy, but requires engineer |
-| Azure AI Studio | ⚠️ Moderate code | ❌ Cloud | Middle ground, still no privacy |
+The recommendation is to Agentify the obligations management only and to limit AI access to the **obligations excel only** leaving the original legal documents ringfenced. This means cloud solutions are acceptable.
+
+The obligations already live in Excel, which are visible and auditable, addressing the trust concern about black-box tools and the preferred formatting.
+
+```mermaid
+graph TD
+
+    SH[Human]
+
+    LD[Legal and Compliance Documents]
+    VO[Versioned Obligations]
+
+    START --> SH
+    SH -.->|creates| LD
+    SH -.->|document questions| LD
+    LD -.->|extracts| VO
+    VO --> MANAGE[Manage Obligations Tool]
+    MANAGE -.->|notifies obligations| SH
+    SH -.->|reviews obligations| VO
+
+    MANAGE --> END[End]
+
+    style START fill:#22c55e,color:#fff
+    style MANAGE fill:#6366f1,color:#fff
+    style END fill:#22c55e,color:#fff
+    style SH fill:#f3e8ff,stroke:#9333ea,color:#6b21a8
+```
+
+Given the startup has no in-house engineers, the recommendation for the next step was to proof of concept Microsoft **Power Automate + AI Builder**.
+
+Although this doesn't create an agent for the whole process yet, it is a step forward in automation alongside the data governance work.
