@@ -268,11 +268,11 @@ Lessons so far categorised by the key themes above:
 
 ## Recommendation
 
-## Recommendation
 
-The recommendation is to Agentify the obligations management only and to limit AI access to the **obligations excel only** leaving the original legal documents ringfenced. This means cloud solutions are acceptable.
+The recommendation is to agentify the obligations management process only using least priviledge data access and limit AI access to the obligations, with a boundary to isolate the legal documents store. 
+This means a cloud AI solution is more acceptable.
 
-The obligations already live in Excel, which are visible and auditable, addressing the trust concern about black-box tools and the preferred formatting.
+The obligations already live in Excel, which is the preferred format that is readable and auditable.
 
 ```mermaid
 graph TD
@@ -298,6 +298,8 @@ graph TD
     style SH fill:#f3e8ff,stroke:#9333ea,color:#6b21a8
 ```
 
-Given the startup has no in-house engineers, the recommendation for the next step was to proof of concept Microsoft **Power Automate + AI Builder**.
+Given the startup has no in-house engineers, the recommendation is two further proof of concepts :
+1. Microsoft Power Automate + [AI Builder](https://learn.microsoft.com/en-us/ai-builder/overview). This has a visual workflow with prebuilt and custom models available. 
+2. Microsoft [Copilot studio](https://www.microsoft.com/en-us/microsoft-365-copilot/microsoft-copilot-studio) which is a platform for building and managing agents. 
 
-Although this doesn't create an agent for the whole process yet, it is a step forward in automation alongside the data governance work.
+Although this doesn't create an agent for the whole process yet, it is a step forward in automation alongside the data governance efforts.
