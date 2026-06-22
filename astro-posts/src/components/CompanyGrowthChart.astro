@@ -1,0 +1,241 @@
+---
+import csvText from "../content/blog/startup-growth-nz/company_size_year.csv?raw";
+
+const lines = csvText.trim().split("\n");
+
+const companies: { name: string; location: string; year: number | null; band: string }[] = [];
+for (let i = 1; i < lines.length; i++) {
+  const cols = lines[i].split(",");
+  if (cols.length >= 4) {
+    const yearStr = cols[2].trim();
+    companies.push({
+      name: cols[0].trim(),
+      location: cols[1].trim(),
+      year: yearStr ? Number(yearStr) : null,
+      band: cols[3].trim() || "Unknown",
+    });
+  }
+}
+
+const validYears = companies.map((c) => c.year).filter((y): y is number => y !== null);
+const minYear = Math.min(...validYears);
+const maxYear = Math.max(...validYears);
+
+const BAND_ORDER = ["1-50", "51-200", "201-800", "801"];
+
+const locCounts = new Map<string, number>();
+for (const c of companies) locCounts.set(c.location, (locCounts.get(c.location) || 0) + 1);
+const topLocations = [...locCounts.entries()].sort((a, b) => b[1] - a[1]).slice(0, 7).map(([l]) => l);
+
+const chartData = companies.map((c) => ({
+  name: c.name,
+  location: c.location,
+  locationGroup: topLocations.includes(c.location) ? c.location : "Other",
+  year: c.year ?? minYear,
+  bandY: (() => { const i = BAND_ORDER.indexOf(c.band); return i >= 0 ? i : BAND_ORDER.length; })(),
+  bandLabel: c.band,
+}));
+chartData.sort((a, b) => a.year - b.year);
+
+const locationGroups = [...new Set(chartData.map((d) => d.locationGroup))];
+const missingYearCount = companies.filter((c) => c.year === null).length;
+
+const payload = { chartData, locationGroups, minYear, maxYear, missingYearCount };
+---
+
+<div class="not-prose w-full my-10">
+  <div id="company-chart" class="w-full relative" style="height: 440px; max-width: 100%;">
+    <svg class="w-full h-full" viewBox="0 0 900 440" preserveAspectRatio="xMidYMid meet"></svg>
+    <div id="chart-tooltip" class="absolute pointer-events-none opacity-0 transition-opacity duration-200 z-10 py-1.5 px-3 rounded text-sm bg-white/90 dark:bg-stone-800/90 text-stone-700 dark:text-stone-300 shadow border border-stone-200 dark:border-stone-700 leading-tight"></div>
+    <div id="chart-status" class="absolute top-3 left-3 flex flex-col gap-0.5 text-xs font-mono text-stone-400 dark:text-stone-500">
+      <span id="year-label">Year: —</span>
+      <span id="company-count" class="text-stone-300 dark:text-stone-600">0 / {chartData.length}</span>
+    </div>
+    <button id="chart-replay" class="absolute top-3 right-3 z-10 text-xs font-mono px-2 py-1 rounded border border-stone-300 dark:border-stone-600 text-stone-400 dark:text-stone-500 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors cursor-pointer">
+      ↻ Replay
+    </button>
+  </div>
+</div>
+
+<script define:vars={{ payload }}>
+  window.__chartPayload = payload;
+</script>
+
+<script>
+  import { animate } from "animejs";
+
+  const { chartData, locationGroups, minYear, maxYear, missingYearCount } = window.__chartPayload;
+
+  const container = document.getElementById("company-chart");
+  const svg = container.querySelector("svg");
+  const tooltip = document.getElementById("chart-tooltip");
+  const yearLabel = document.getElementById("year-label");
+  const countLabel = document.getElementById("company-count");
+
+  const ns = "http://www.w3.org/2000/svg";
+  const W = 900, H = 440;
+  const M = { top: 20, right: 110, bottom: 50, left: 100 };
+  const iW = W - M.left - M.right;
+  const iH = H - M.top - M.bottom;
+
+  function isDark() { return document.documentElement.classList.contains("dark"); }
+  function textCol() { return isDark() ? "#d6d3d1" : "#44403c"; }
+  function gridCol() { return isDark() ? "#44403c" : "#e7e5e4"; }
+
+  const palette = ["#e11d48","#f97316","#eab308","#22c55e","#06b6d4","#3b82f6","#8b5cf6","#ec4899"];
+  const colorMap = {};
+  locationGroups.forEach((g, i) => { colorMap[g] = palette[i % palette.length]; });
+
+  const BANDS = ["1-50","51-200","201-800","801+"];
+  const pad = 2;
+  const xS = (y) => ((y - (minYear - pad)) / (maxYear - minYear + 2 * pad)) * iW;
+  const yS = (b) => iH - ((b + 0.5) / BANDS.length) * iH;
+
+  const root = document.createElementNS(ns, "g");
+  root.setAttribute("transform", `translate(${M.left},${M.top})`);
+  svg.appendChild(root);
+
+  BANDS.forEach((band, i) => {
+    const y = yS(i);
+    const line = document.createElementNS(ns, "line");
+    line.setAttribute("x1","0"); line.setAttribute("y1",y);
+    line.setAttribute("x2",iW); line.setAttribute("y2",y);
+    line.setAttribute("stroke",gridCol()); line.setAttribute("stroke-width","0.5");
+    root.appendChild(line);
+    const lbl = document.createElementNS(ns, "text");
+    lbl.setAttribute("x","-8"); lbl.setAttribute("y",y+4);
+    lbl.setAttribute("text-anchor","end"); lbl.setAttribute("fill",textCol());
+    lbl.setAttribute("font-size","12"); lbl.textContent = band;
+    root.appendChild(lbl);
+  });
+
+  const step = Math.max(1, Math.round((maxYear - minYear) / 10));
+  for (let y = Math.ceil(minYear / step) * step; y <= maxYear; y += step) {
+    const x = xS(y);
+    const lbl = document.createElementNS(ns, "text");
+    lbl.setAttribute("x",x); lbl.setAttribute("y",iH+20);
+    lbl.setAttribute("text-anchor","middle"); lbl.setAttribute("fill",textCol());
+    lbl.setAttribute("font-size","11"); lbl.textContent = String(y);
+    root.appendChild(lbl);
+  }
+
+  const xT = document.createElementNS(ns, "text");
+  xT.setAttribute("x",iW/2); xT.setAttribute("y",iH+42);
+  xT.setAttribute("text-anchor","middle"); xT.setAttribute("fill",textCol());
+  xT.setAttribute("font-size","12"); xT.textContent = "Year Founded";
+  root.appendChild(xT);
+
+  const yT = document.createElementNS(ns, "text");
+  yT.setAttribute("x",-iH/2); yT.setAttribute("y","-70");
+  yT.setAttribute("text-anchor","middle"); yT.setAttribute("transform","rotate(-90)");
+  yT.setAttribute("fill",textCol()); yT.setAttribute("font-size","12");
+  yT.textContent = "Employee Band";
+  root.appendChild(yT);
+
+  const leg = document.createElementNS(ns, "g");
+  leg.setAttribute("transform",`translate(${iW+10},0)`);
+  locationGroups.forEach((loc, i) => {
+    const ly = i * 18;
+    const r = document.createElementNS(ns, "rect");
+    r.setAttribute("x","0"); r.setAttribute("y",ly);
+    r.setAttribute("width","10"); r.setAttribute("height","10");
+    r.setAttribute("fill",colorMap[loc]); r.setAttribute("rx","2");
+    leg.appendChild(r);
+    const t = document.createElementNS(ns, "text");
+    t.setAttribute("x","16"); t.setAttribute("y",ly+9);
+    t.setAttribute("fill",textCol()); t.setAttribute("font-size","10");
+    t.textContent = loc;
+    leg.appendChild(t);
+  });
+  root.appendChild(leg);
+
+  let seed = 42;
+  function seededRandom() { seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646; }
+
+  const yearPx = iW / (maxYear - minYear + 2 * pad);
+  const bandPx = iH / BANDS.length;
+  const dots = [];
+  chartData.forEach((d) => {
+    const cx = xS(d.year) + (seededRandom() - 0.5) * yearPx * 0.6;
+    const cy = yS(d.bandY) + (seededRandom() - 0.5) * bandPx * 0.3;
+
+    const circle = document.createElementNS(ns, "circle");
+    circle.setAttribute("cx",cx); circle.setAttribute("cy",cy);
+    circle.setAttribute("r","5");
+    circle.setAttribute("fill",colorMap[d.locationGroup] ?? palette[palette.length-1]);
+    circle.setAttribute("opacity","0");
+
+    circle.addEventListener("mouseenter", () => {
+      tooltip.innerHTML = `<strong>${d.name}</strong><br>${d.year} &middot; ${d.bandLabel} &middot; ${d.location}`;
+      tooltip.classList.remove("opacity-0");
+    });
+    circle.addEventListener("mousemove", (e) => {
+      const rect = container.getBoundingClientRect();
+      let x = e.clientX - rect.left + 14;
+      let y = e.clientY - rect.top - 14;
+      if (x + 200 > rect.width) x = e.clientX - rect.left - 200;
+      tooltip.style.left = x + "px"; tooltip.style.top = y + "px";
+    });
+    circle.addEventListener("mouseleave", () => { tooltip.classList.add("opacity-0"); });
+
+    root.appendChild(circle);
+    dots.push(circle);
+
+    if (d.name === "Xero Limited" || d.name === "Rocket Lab Limited") {
+      const label = document.createElementNS(ns, "text");
+      label.setAttribute("x",cx + 8);
+      label.setAttribute("y",cy + 1);
+      label.setAttribute("fill",textCol());
+      label.setAttribute("font-size","11");
+      label.setAttribute("font-weight","600");
+      label.setAttribute("opacity","0.85");
+      label.textContent = d.name === "Xero Limited" ? "Xero" : "Rocket Lab";
+      root.appendChild(label);
+    }
+  });
+
+  if (missingYearCount > 0) {
+    const note = document.createElementNS(ns, "text");
+    note.setAttribute("x",M.left); note.setAttribute("y",H-8);
+    note.setAttribute("fill",gridCol()); note.setAttribute("font-size","10");
+    note.setAttribute("font-style","italic");
+    note.textContent = `* ${missingYearCount} companies with unknown founding year shown at ${minYear}`;
+    svg.appendChild(note);
+  }
+
+  let prevAnim;
+
+  function play() {
+    if (prevAnim) prevAnim.pause();
+
+    const n = dots.length;
+    dots.forEach((d) => d.setAttribute("opacity", "0"));
+    yearLabel.textContent = "Year: —";
+    countLabel.textContent = `0 / ${n}`;
+
+    const totalDur = 4000;
+    const delayPer = totalDur / n;
+
+    prevAnim = animate(dots, {
+      opacity: [0, 0.85],
+      duration: 400,
+      delay: (_el, i) => i * delayPer,
+      easing: "easeOutQuad",
+      begin: () => { yearLabel.textContent = "Year: ..."; },
+      update: (anim) => {
+        const idx = Math.min(Math.floor(anim.progress * n), n - 1);
+        if (idx >= 0 && idx < chartData.length) {
+          yearLabel.textContent = `Year: ${chartData[idx].year}`;
+          countLabel.textContent = `${idx + 1} / ${n}`;
+        }
+      },
+      complete: () => {
+        yearLabel.textContent = `Year: ${maxYear}`;
+        countLabel.textContent = `${n} / ${n}`;
+      },
+    });
+  }
+
+  play();
+  document.getElementById("chart-replay").addEventListener("click", play);
+</script>

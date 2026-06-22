@@ -6,7 +6,7 @@ Astro-based blog posts for [kimnewzealand.github.io](https://kimnewzealand.githu
 
 | Command       | Action                                         |
 | ------------- | ---------------------------------------------- |
-| `pnpm dev`    | Start dev server at `localhost:4321`           |
+| `pnpm dev`    | Start dev server at `localhost:4321` where http://localhost:4321/blog/astro-blog-folder-name/         |
 | `pnpm build`  | Type-check and build to `dist/`                |
 | `./merge.sh`  | Build + copy output to site root               |
 | `pnpm add post` | Scaffold a new blog post                    |

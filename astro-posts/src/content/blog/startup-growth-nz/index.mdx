@@ -1,0 +1,70 @@
+---
+title: "Startup Growth in New Zealand"
+description: "Visualisation of startup growth using anime.js"
+date: 2026-06-22
+---
+
+import CompanyGrowthChart from "@components/CompanyGrowthChart.astro";
+import WaveRippleChart from "@components/WaveRippleChart.astro";
+import SwarmExplosionChart from "@components/SwarmExplosionChart.astro";
+
+I was curious to see which startups have grown really quickly in New Zealand.
+
+I have also been looking for an opportunity to try out [anime.js](https://animejs.com) animation package.
+
+The plan for the first animation:
+
+```
+Final Plan: Company Growth Animation
+Plot type
+Scatter/dot plot — each company is a dot. X-axis = year founded, Y-axis = employee band (categorical). This shows how startup sizes vary across time and lets every company be individually visible.
+Animation: Sequential reveal by year
+Dots animate in from oldest to newest using anime.js stagger, with a year counter showing the current year. This creates a "history of NZ startups" timeline effect.
+Technical approach for new 
+1. Install anime.js: pnpm add animejs
+2. New component: src/components/CompanyGrowthChart.astro
+- Reads CSV at build time via fs, parses data
+- Renders SVG chart (axes, labels) with vanilla JS in a <script> block
+- Uses anime.js to animate dot appearance staggered by year
+3. Data handling:
+- Employee bands ordered: 1-50 → 51-200 → 201-800 → 801
+4. Styling: Match your existing site palette (stone/amber tones from Tailwind bg-stone-100 dark:bg-stone-900, text-black/50)
+5. Integration: Import <CompanyGrowthChart /> into index.mdx
+Component structure
+src/components/CompanyGrowthChart.astro
+  └── <script> (client-side)
+       ├── Parse data from embedded JSON
+       ├── Build SVG: axes, gridlines, labels
+       ├── Create circle elements for each company
+       └── anime.js timeline: dots fade+scale in by year
+           └── Year counter updates as animation progresses
+```
+
+### Company Growth chart
+
+The chart shows New Zealand startups by their founding year and estimated employee count. Each dot represents a company, hover to see its name. Companies animate in chronological order, oldest to newest.
+
+<CompanyGrowthChart />
+
+### Wave ripple
+
+A sine wave travels across the chart and dots spring into view with a bounce as the wave passes.
+
+<WaveRippleChart />
+
+### Swarm explosion
+
+All dots cluster at center then burst outward to their positions with elastic bounce, grouped by decade.
+
+<SwarmExplosionChart />
+
+## Conclusion
+
+The scatter plots reveal a clear pattern: only a few tech startups ever scale beyond 200 in New Zealand. The companies that do break out are mostly in Auckland, Wellington, and Christchurch. It appears that only two tech startups, Xero and RocketLab, have grown to over 800 employees (worldwide).
+
+## About the data
+
+I had company data available from another project. It may not be a complete list of all startups in New Zealand as the other project is still work in progress, but it should have enough company data to see the relationship and any stand out startups.
+
+I used opencode DeepSeek V4 Flash Free as the coding agent for generating animations.
+
